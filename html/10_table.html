@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table tag</title>
+    <style>
+        table,th,td{
+            border: 1px solid gray;
+            border-collapse: collapse; /*border의 간격을 없애기*/
+        }
+        table{
+            width: 50%;
+            /* height: 300px; */
+        }
+        th,td{height: 70px; text-align: center;}
+    </style>
+    
+</head>
+<body>
+    <table>
+        <!-- <tr>
+            <th>구분</th>
+            <th>제목1</th>
+            <th>제목2</th>
+            <th>제목3</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>data1</td>
+            <td>data2</td>
+            <td>data3</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>data1</td>
+            <td>data2</td>
+            <td>data3</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>data1</td>
+            <td>data2</td>
+            <td>data3</td>
+        </tr>
+        <tr>
+            <th>합계</th>
+            <td>total1</td>
+            <td>total2</td>
+            <td>total3</td>
+        </tr> -->
+    </table>
+    
+    <table>
+        <thead>
+            <tr> <!--가로방향으로-->
+                <th>구분</th>
+                <th>제목1</th>
+                <th>제목2</th>
+                <th>제목3</th>
+            </tr>
+        </thead>
+
+        <hr>
+
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td colspan="3">data1</td>
+                <!-- <td>data3</td> -->
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td rowspan="2">data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">data2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row">합계</th>
+                <td>total1</td>
+                <td>total2</td>
+                <td>total3</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+</body>
+</html>
