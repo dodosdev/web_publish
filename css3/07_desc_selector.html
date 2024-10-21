@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desc Selector</title>
+    <style>
+        body{font-family: 'NanumGothicCoding';}
+        
+        /* 
+        desc syntax : Tag(조상) Tag(자손) {...}
+                    : Tag(부모) > Tag(자식) {...}
+                    : Tag(형제) + Tag(형제){...}
+        */
+        ul label{ /*한칸을 띄울경우 조상중에 자손을 찾는것*/
+            color: violet;
+        }
+        ul.first > li > label{ /* > : 자신의 바로 앞에있는 자식만 선택*/
+            color: tomato;
+        }
+        ul.first > li > ul{
+            color: blue;
+        }
+        ul.first > li.back-end > ul{
+            color: yellow;
+        }
+        h1 + ul{  /* 바로아래에 있는 가까운 형제만 적용됨*/
+            background-color: yellow;
+        }
+        ul.first ~ ul{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desc(자손) selector</h1>
+    <ul class="first">
+        <li>
+            <label for="">Front-end</label>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>React</li>
+            </ul>
+        </li>
+        <li class="back-end">
+            <label for="">Back-end</label>
+            <ul>
+                <li>NodeJS</li>
+                <li>JSP</li>
+                <li>ASP</li>
+            </ul>
+        </li>
+        <li>
+            <label for="">Database</label>
+            <ul>
+                <li>MySQL</li>
+                <li>Oracle</li>
+                <li>Maria</li>
+            </ul>
+        </li>
+    </ul>
+    <!-- <hr> -->
+    <ul>
+        <li>
+            <label for="">Selector list</label>
+            <ul>
+                <li>Html Tag</li>
+                <li>ID</li>
+                <li>Class</li>
+                <li>Descendant</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
