@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-align</title>
+    <style>
+        p{border: 1px solid tomato;}
+        .left{text-align: left;}
+        .right{text-align: right;}
+        .center{text-align: center;}
+        .justify{text-align: justify;}/*ㅣ양쪽정렬 방식*/
+
+        /* 속성을 바꿀수있음 block, inline*/
+        .block{display: block;}
+        .inline{display: inline;}
+        /* inline 속성을 가진 태그는 text-align 적용 안됨!! */
+        div > p{
+            width: 50px;
+            height: 50px;
+        }
+        div{
+            border: 2px solid red;
+            text-align: center;
+        }
+        .red{background-color: red;}
+        .blue{background-color: blue;}
+        .green{background-color: green;}
+
+        img { width: 10%; }
+        h1{
+            /* letter-spacing: 10px; */
+            word-spacing: 20px;
+        }
+        .lineheight{
+            line-height: 40px;
+        }
+        h2{border: 1px solid blue; margin-left: ;}
+        /* text-indent 들여쓰기 */
+        .indent1{text-indent: 30px;}
+        .indent2{text-indent: -30px;}/*왼쪽으로 가면 -마이너스*/
+        .uppercase{text-transform: uppercase;}
+        .lowercase{text-transform: lowercase;}
+        .capitalize{text-transform: capitalize;}/* capitalize 영단어의 첫문자를 대문자로 바꿔줌*/
+    </style>
+</head>
+<body>
+    <h1>Text align</h1>
+    <h2 class="indent1 uppercase">Text indent1</h2>
+    <h2 class="indent2 lowercase;">Text indent2</h2>
+    <h2 class="capitalize;">Text transform capitalize</h2>
+    <p class="left inline">Text-align : left</p>
+    <p class="right">Text-align : right</p>
+    <p class="center">Text-align : center</p>
+    <p class="justify lineheight">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam qui ipsa dolore minus asperiores voluptate sunt ad aliquid, deleniti in nostrum veritatis eligendi? Esse cumque labore necessitatibus a, vel quam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio eius iste vel numquam iure, aliquam quod incidunt ipsum esse eaque in eos voluptate, veniam ullam tenetur animi neque quibusdam nobis.
+    </p>
+    <div>
+        <!-- <p class="red inline">left</p>
+        <p class="blue inline">right</p>
+        <p class="green inline">center</p> -->
+        <img src="/html/images/logoRed.png" alt="cgv logo">
+        <img src="/html/images/logoRed.png" alt="cgv logo">
+        <img src="/html/images/logoRed.png" alt="cgv logo">
+    </div>
+</body>
+</html>
