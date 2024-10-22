@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/eab1e9b5c5.js" crossorigin="anonymous"></script>
+
+    <title>Pseudo Class Selector</title>
+    <style>
+        h1:hover{
+            background-color: violet;
+            color: white;
+        }
+
+        a{   /*링크걸린 a태그의 언더라인 삭제*/
+            text-decoration: none;
+        }
+        a:hover{  /* 마우스올리면 언더라인 생김*/
+            text-decoration: underline;
+        }
+        a:visited{color: orange;} /*방문한적 있는 링크*/
+        a:active{color: blue;}
+
+        input:focus{  /*입력폼에 포커스가 적용됬을때 색이바뀜 */
+            background-color: orchid;
+            outline: none;
+        } 
+        h1::before{ /*태그앞에 컴텐츠 넣기*/
+            content: "_";
+            color: blueviolet;
+        }
+        h1::after{
+            content: "*";
+            color: rgb(255, 145, 0);
+        }
+        h1::before{
+            content: "";
+        }
+
+    </style>
+</head>
+<body>
+    <h1><i class="fa-solid fa-face-smile"></i>Pseudo Class Selector</h1>
+    <p>
+        <a href="www.naver.com" target="_blank">NAVER</a>
+        <a href="#">Google</a>
+    </p>
+    <div>
+        <input type="text">
+        <button>send</button>
+    </div>
+</body>
+</html>
