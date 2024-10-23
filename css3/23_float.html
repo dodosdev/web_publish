@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+    <style>
+        .box-group{
+            border: 1px solid rgb(110, 110, 110);
+            overflow: hidden;/*넘치는부분 hidden*/
+        }
+        .box-group > div{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            float: left;   /*div마다 동일하게 적용됨 */
+            margin: 10px;
+            border-radius: 10px;    
+        }
+
+        div.box-group > p {clear: both;}
+        ul{
+            padding: 0;
+            list-style-type: none;
+        }
+        ul li{
+            width: 100px;
+            border: 1px solid white;
+            background-color: rgb(196, 196, 196);
+            float: left;
+            padding: 20px 0px;
+            text-align: center;
+        }
+        ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        ul li a:hover{
+            color: #6506ff;
+            text-decoration: underline;
+        }
+        ul li:first-child a{  /*특정 한글자만 다른효과주기*/
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        ul + hr{clear:both}
+        img{display: block;
+            float: right;
+        }
+
+        img + p{  /*img와 가장 근접한 p 선택*/
+            width:4500px;
+            border: 1px solid tomato;
+            text-indent: 10px;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Float : 블록레벨 한줄로 정렬</h1>
+    <div class="box-group">
+        <div>box1</div>
+        <div>box2</div>
+        <div>box3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, beatae dicta? Facere exercitationem nihil iusto impedit nulla rerum tempore sapiente minima aliquid, officia maxime animi recusandae aperiam minus aliquam at.
+        </p>
+    </div>
+    <hr>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
+        <li><a href="#">Mypage</a></li>
+        <li><a href="#">Support</a></li>
+    </ul>
+    <hr>
+    <img src="/html/images/logoRed.png" alt="cgv logo">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum porro quasi dolore doloribus. Possimus quis, exercitationem tempora iusto alias ipsum quidem, aspernatur obcaecati, qui asperiores natus repudiandae enim eveniet magni</p>
+</body>
+</html>

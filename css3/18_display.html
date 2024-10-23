@@ -55,7 +55,7 @@
         
         div.box-group-hidden{display: block;}
         p.show-box:hover + div.box-group-show{
-            /* visibility: visible; */
+            /* visibility: visible; <--display 속성은 요소를 어떻게 표시할지를 선택하고, visibility 속성은 요소를 보일지 말지 결정하는 속성> */
             display: block;
             cursor: pointer;
         }
@@ -68,6 +68,13 @@
             opacity: 0.5;
             cursor: pointer;
         }
+
+        /* 
+        -display: inline : 기본 값으로, 요소를 inline 요소처럼 표시합니다. 따라서 앞뒤로 줄바꿈 되지 않습니다.
+        -display: block : 요소를 block 요소처럼 표시합니다. 따라서 요소 앞 뒤로 줄바꿈 됩니다.
+        -display: none : 박스가 생성되지 않습니다. 따라서 공간을 차지하지도 않습니다.
+        -display: inline-block : 요소는 inline인데 내부는 block처럼 표시함. 즉, 박스 모양이 inline처럼 옆으로 늘어섬
+        */
     </style>
 </head>
 <body>
