@@ -44,13 +44,16 @@
             border: 1px solid rgb(159, 0, 252);
             padding:5px
         }
+
+        /* -----------Hover박스 열리고 닫힘--------------- */
+        
+        /* 열림  */
         div.box-group{display: none;}
 
-            /* 열림  */
         p.show-box:hover + div.box-group{ /* + <--인접해있는 속성선택*/
             display: block;  /*마우스를 올리면 안보이던 박스가 열림*/
         }
-        div.box-group-show{display: none;}
+        div.box-group-show{display: none;} /*마우스를 올리기 전에는 박스를 가려 놓는다*/
 
         
         div.box-group-hidden{display: block;}
@@ -60,6 +63,8 @@
             cursor: pointer;
         }
 
+        /* ----------------------------------------------- */
+        
         /* 닫힘 */
         p.hidden-box:hover + div.box-group-hidden{
             display: none;
@@ -93,6 +98,7 @@
         <div class="box"></div>
         <div class="box"></div>
     </div>
+    <!-- hidden box -->
     <p class="hidden-box">hidden box</p>
     <div class="box-group-hidden">
         <div class="box"></div>
