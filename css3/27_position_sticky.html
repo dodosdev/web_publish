@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky</title>
+    <!-- sticky는 기본적으로 스크롤이 컨텐츠와 같이 움직이다가 지정한 위치에 도달하면 fixed를 적용한 것처럼 화면에 고정됨 -->
+    <style>
+        *{box-sizing: border-box;}
+
+        .wrapper{
+            width: 100%;
+            max-width: 600px;
+            margin: 60px auto 200px;
+        }
+        .content{
+            padding: 0 15px;
+            width: 380px;
+        }
+        .content h1{
+            margin-top: 0; /*기본여백이있음 0으로설정*/
+        }
+        .sidebar{
+            padding: 20px;
+            width: 170px;
+            background-color: black;
+            color: #fff;
+            position:sticky;
+            top:0;
+        }
+        .sidebar h3{
+            margin: 0;
+        }
+        .content, .sidebar{ /* 두개가 각자 float할수있게한다*/
+            float: left;
+        }
+        .cf::after{ /**/
+            content: '';
+            display: block;
+            clear: both; /* float을사용시꼭닫기*/
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper cf">
+        <div class="content">
+            <h1>Scroll Down!!</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat quia nulla qui asperiores consequuntur, minus officiis deserunt illo dolore ut veritatis aliquid omnis rem autem facere vero iusto tempore?
+            </p>
+        </div>
+        <div class="sidebar">
+            <h3>Sidebar</h3>
+            <P>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum accusamus sit eos numquam beatae. Consectetur eveniet voluptate corrupti similique aliquam nostrum mollitia impedit ipsum, doloremque possimus ipsam reprehenderit explicabo ut.
+            </P>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        .sliderwrapper{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            position: relative;
+        }
+        .btn{
+            padding: 0 20px;
+            line-height: 50px; /****line-height사용시 작업이심플 텍스트위치가 center정렬이되고 이미 display: inline-block;이적용되있으므로 사용 *****/
+            /* btn의 세로크기가 50px(line-height)이기때문에 해당크기의 반만큼 위로 올라가야 세로 기준으로 정중앙에 오게 되는 것임. 스타일에 위에 25px 올라가도록 margin-top:25px를 추가함 */
+            color: white;
+            background-color: #000;
+            display: inline-block;  /*인라인으로 정렬필요(사이즈조정필요) */
+            position:absolute;
+            top: 50%;  /*부모위치기준 높이에서(속성의 값50%)*/
+            margin-top: -15px;
+        }
+
+        /* btn에 top:50% 속성의값이50%이므로 btn의 세로 크기가50px(line-height)*/
+        .next{right: -30px;}
+        .prev{left: -30px;}
+        .slide_img{ /*이미지 사이즈조정*/
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sliderwrapper</h1>
+    <div class="sliderwrapper"><!--!!!important-->
+        <img class="slide_img" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000088/88526/88526230725_727.jpg" alt="img">
+        <button class="btn next">next</button> <!--button class="btn next"(클래스 두가지 포함)-->
+        <button class="btn prev">prev</button>
+    </div>
+</body>
+</html>
