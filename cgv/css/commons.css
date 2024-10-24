@@ -1,0 +1,14 @@
+*{  /* 우선순위 가장 아래단계 '*'*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    /* color list  컬러 지정해서 사용 var(--)입력후 컬러 선택*/
+    --color-primary:rgb(77, 77, 77);
+    --color-block:#050a13;
+    --color-white:#fff;
+    --color-border:tomato;
+    --color-silver: silver
+    --color-footer-bg: rgb(248, 248, 248);
+}

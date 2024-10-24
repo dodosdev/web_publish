@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/eab1e9b5c5.js" crossorigin="anonymous"></script>
     <title>CGV-header</title>
+    <link rel="stylesheet" href="/cgv/css/commons.css">
+    <link rel="stylesheet" href="/cgv/css/cgv.css">
 </head>
 <body>
-    <header style="background-color: rgb(255, 241, 228);">
-        <div>
-            <div>
+    
+    <!-- header -->
+    <header>
+        <div class="header-top">
+            <!-- 로고 -->
+            <div class="header-top-logo">
                 <a href="/cgv/index.html" target="_parent"><img src="/cgv/images/logoRed.png" alt="CGV Logo"></a>
                 <span>DEEP DIVE SPACE</span>
             </div>
-        
+
+            <!-- 카드 이미지 -->
             <div>
                 <img src="/cgv/images/header_card.png" alt="Card_img">
             </div>
+
+            <!-- 소메뉴 -->
             <nav>
                 <ul><!--/cgv/ (현재위치부터)어디서든 열리는 경로-->
                     <li><a href="/cgv/login/login.html" target="_parent"><i class="fa-solid fa-lock">로그인</i></a></li> 
@@ -25,9 +34,10 @@
                     <li><a href="/cgv/support/support.html" target="_parent">고객센터</a></li>
                 </ul>
             </nav>
-        </div>
+        </div><!--소메뉴 end-->
 
-        <div>
+        <!-- 대메뉴 -->
+        <div class="header-bottom">
             <ul>
                 <li>
                     <a href="">영화</a>
@@ -75,11 +85,13 @@
                 </li>
             </ul>
 
+            <!-- 검색 -->
             <div>
                 <input type="search">
                 <button type="button">돋보기</button>
             </div>      
-        </div>
+        </div><!--대메뉴 end-->
+
     </header>
 
 </body>
