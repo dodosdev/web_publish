@@ -6,21 +6,21 @@
 **********************************************************/
 
 header{
-    border: 1px solid var(--color-primary);
-    width: 1000px;
-    height: 150px;
+    width: 100%;
+    height: 160px;
     margin: 0 auto; /*가운데 정렬*/
+    border-bottom: 4px solid #fb4357;
 }
-.header-top{
-    padding: 20px 0;
-}
-
-.header-top, .header-bottom{ /* ',' 동일하게 적용*/
+.header-top, .header-bottom-content{ /* ',' 동일하게 적용*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    width: 1000px;
+    margin: 0 auto;
+    padding: 13px 0;
 }
+
+
 .header-top-logo{
     /* border: 1px solid blue; */
     position: relative;
@@ -50,7 +50,7 @@ header{
 .header-top ul li{
     /* background-color: aqua; */
     /* padding: 25px 10px; */
-    margin-left: 30px; /*li icon간격*/
+    margin-left: 35px; /*li icon간격*/
 }
 .header-top ul li a{
     /* background-color: aquamarine; */
@@ -63,9 +63,10 @@ header{
     display: none;
 }
 .header-bottom{
-    /* border: 1px solid silver; */
+    width: 100%;
     height: 40px;
-
+    padding: 5px 0;
+    border-top: 1px solid silver;
 }
 .header-bottom li{
     padding: 10px 25px;
@@ -75,12 +76,13 @@ header{
     font-weight: 700;
 }
 
+
 .header-menu-icon{
     /* border: 1px solid red; */
     display: block;
     width: 46px;
     min-height: 55px;
-    /* overflow: hidden; */
+    position: relative;
 }
 .header-menu-icon img{
     width: 36px;
@@ -88,13 +90,34 @@ header{
     /* border: 1px solid green; */
 }
 .header-menu-icon span{
-    width: 46px;
+    width: 50px;
     height: 19px;
     font-size: 11.5px;
     /* border: 1px solid blue; */
+    position: absolute;
+    bottom: 0;
+    left: -5px;
+    font-weight: 600;
 }
 
+.header-top-card{
+    margin-left: 100px;
+    top: 10px;
+}
 
+.header-bottom-search{
+    border-right: 1px solid silver ;
+    border-left: 1px solid silver ;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+.header-bottom-search input{
+    width: 80%;
+    border: none;
+    padding: 5px;
+}
 /* header end */
 
 
@@ -144,3 +167,197 @@ div .footer-intro > ul{
 
 .p {margin-top: 20px;}
 .p2{margin-bottom: 20px;}
+
+
+
+/**********************************************************
+*  title :  content style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/25
+**********************************************************/
+
+.content,
+.content-top,
+.content-moviechart{
+    width: 100%;
+}
+
+.content-top{
+    background-color:#000;
+}
+.content-top iframe,
+.content-moviechart > div,
+.content-even-special{ /* 바로밑에있는 >*/
+    width: 1000px;
+    display: block;
+    margin: 0 auto;
+}
+.content-moviechart{
+    background-color: aliceblue;
+    padding: 20px 0;
+}
+
+/* .content-moviechart-title{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+fcontent-moviechart-title
+.content-moviechart-title span{
+    font-size: 1.6em;
+    font-weight: 800;
+    color: #222;
+} */
+
+/* 
+공통적으로 적용되는 클래스는 직접 셀렉팅하는 경우 부모를 직관적으로 지정함
+*/
+.content-moviechart .content-title-style >  div{
+    position: relative;
+    /* border: 1px solid orangered; */
+}
+
+.content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: var(--color-);
+    position: absolute;
+    top: 5px;
+    left: 45%;
+
+}
+
+
+
+.content-title-style > div > span:first-child{
+    color: #222;
+    text-align: center;
+
+}
+.content-title-style > div > span:last-child{
+    color: #666;
+}
+.content-title-style > div > span:nth-child(2){
+    border-left: 1px solid #d8d8d8;
+    height: 20px;
+    margin:0 10px;
+}
+.content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 21px;
+    line-height: 21px;
+    color: #d8d8d8;
+    background-color: #d8d8d8;
+}
+
+.content-title-style div:last-child button{
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+}
+
+/* 무비차트 상영예정작 텍스트 */
+.content-moviechart .content-title-style > div:first-child{
+    position: relative;
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+/* 무비트 | 중간라인 */
+.content-moviechart .content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: silver;
+    position:absolute;
+    top: 10px;
+    left: 42%;
+}
+
+.content-title-style h3{
+    
+}
+/* 무비차트 상영예정작 리스트 */
+.content-moviechart-list ul{
+    /* border: 1px solid orchid; */
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+.content-moviechart-list ul li{
+    /* border: 1px solid blue; */
+    padding: 15px 15px 0;
+    text-align: center;
+}
+.content-moviechart-list ul li:first-child{
+    /* border: 1px solid blue; */
+    padding-left: 0px;
+}
+.content-moviechart-list ul li:last-child{
+    /* border: 2px solid pink; */
+    padding-right: 0px;
+}
+.content-moviechart-list ul li img{
+    width: 170px;
+    border-radius: 10px;
+}
+.content-moviechart-list ul li h5{
+    text-align: center;
+    padding: 5px 0;
+    color: var(--color-primary);
+}
+/** 이벤트 섹션**/
+.content-even-special section:first-child{
+    /* border: 2px solid orangered; */
+}
+
+
+section img{
+    width: 310px;
+    height: 207px;
+    border-radius: 10px;
+}
+
+
+/** EVENT **/
+.total-view-button{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+/* .total-view-button { 
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;f
+    line-height: 1.444em;
+}
+
+.total-view-button li p:nth-child(){
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.429em;
+}
+
+.total-view-title{
+    display: flex;
+    justify-content: space-between;
+}
+ */
+
+.content-top{
+    background-color: #000;
+    position: relative;
+    top: -43px;
+}

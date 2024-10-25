@@ -15,38 +15,69 @@
 
     <!-- content -->
     <div class="content"> <!--content는 항상 100%-->
-        <h1>index.html</h1>
+        <h1></h1>
 
         <!-- 영화 예고편 -->
-        <div style="background-color: black; width: 100%;">
-            <iframe width="560" 
-            height="315" 
+        <div class="content-top">
+            <iframe width="900px" 
+            height="400" 
             src="https://www.youtube.com/embed/_OKAwz2MsJs?si=KmW_0sTxqavay-cf" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div style="background-color: rgb(151, 205, 214); width: 100%;">
+        </div><!--content-top end-->
+
+        <div class="content-moviechart">
             <div><!--컨텐츠 가운데 정렬-->
-                <article>
+                <article class="content-title-style ">
                     <div>
-                        <span>무비차트</span>
-                        <span>상영예정작</span>
+                        <span class="content-title-style-font font-color-main">무비차트</span>
+                        <span>&nbsp;</span>
+                        <span class="content-title-style-font font-color-main">상영예정작</span>
                     </div>
                     <div>
-                        <button>전체보기</button>
+                        <button class="total-view-button">전체보기</button>
                     </div>
                 </article>
-                <article>
+                <article class="content-moviechart-list">
                     <ul>
                         <!-- 무비 차트 리스트 -->
                         <li>
                             <div>
                                 <img src="/cgv/images/movie-chart1.jpg" alt="Movie-chart1" width="200px">
                             </div>
-                            <div><h3>제목</h3></div>
+                            <div><h3>보통의 가족</h3></div>
                             <div><h5>예매율 100%</h5></div>
                         </li>
+                        <li>
+                            <div>
+                                <img src="/cgv/images/movie-chart1.jpg" alt="Movie-chart1" width="200px">
+                            </div>
+                            <div><h3>보통의가족</h3></div>
+                            <div><h5>예매율 100%</h5></div>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="/cgv/images/movie-chart1.jpg" alt="Movie-chart1" width="200px">
+                            </div>
+                            <div><h3>보통의가족</h3></div>
+                            <div><h5>예매율 100%</h5></div>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="/cgv/images/movie-chart1.jpg" alt="Movie-chart1" width="200px">
+                            </div>
+                            <div><h3>보통의가족</h3></div>
+                            <div><h5>예매율 100%</h5></div>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="/cgv/images/movie-chart1.jpg" alt="Movie-chart1" width="200px">
+                            </div>
+                            <div><h3>보통의가족</h3></div>
+                            <div><h5>예매율 100%</h5></div>
+                        </li>
+
                         <!-- 무비차트 리스트 반복 -->
                     </ul>
                 </article>
@@ -55,29 +86,47 @@
 
 
         <!-- 이벤트, 특별관 둥 -->
-        <div>
+        <div class="content-even-special">
             <!-- 이벤트 -->
             <section>
-                <div>
+                <div class="content-title-style">
                     <h3>EVENT</h3>
-                    <button>전체보기</button>
+                    <button class="total-view-button">전체보기</button>
                 </div>
-                <ul>
-                    <li>
-                        <img src="/cgv/images/event1.jpg" alt="Event Image" width="200px">
-                    </li>
-                    <p>[콜렉터블 무비머니]Vol.1 맥스 달튼</p>
-                    <p>2024.09.25~2024.10.31</p>
-                </ul>
+            
             </section>
 
             <!-- 특별관 -->
             <section>
-                <div>
-                    <h3>특별관</h3>
-                    <button>전체보기</button>
+                <div class="total-view-button">
+                    <ul>
+                        <li>
+                            <img src="/cgv/images/event3.jpg" alt="Event Image" width="200px">
+                        </li>
+                        <p>영화가 맛있어지다! 씨네밀 전격 출시</p>
+                        <p>2024.09.25~2024.10.31</p>
+                    </ul>
+                    <ul>
+                        <li>
+                            <img src="/cgv/images/event2.jpg" alt="Event Image" width="200px">
+                        </li>
+                        <p>[CGV] 10월 컬처위크</p>
+                        <p>2024.09.25~2024.10.31</p>
+                    </ul>
+                    <!-- 콜렉터블 무비머니 -->
+                    <ul>
+                        <li>
+                            <img src="/cgv/images/event1.jpg" alt="Event Image" width="200px">
+                        </li>
+                        <p>[콜렉터블 무비머니]Vol.1 맥스 달튼</p>
+                        <p>2024.09.25~2024.10.31</p>
+                    </ul>
                 </div>
                 <div>
+                    <div class="content-title-style">
+                        <h3>특별관</h3>
+                        <button class="total-view-button">전체보기</button>
+                    </div>
                     <div><img src="/cgv/images/special1.png" alt="Special Image" width="500px"></div>
                     <ul>
                         <li>
@@ -107,7 +156,7 @@
                     <div>
                         <span>
                             <h5><b>패키지</b></h5>
-                            <button>더보기</button>
+                            <button class="total-view-button">더보기</button>
                         </span>
                     </div>
                     <ul>
@@ -124,7 +173,7 @@
                     <div>
                         <span>
                             <h5><b>영화관람권</b></h5>
-                            <button>더보기</button>
+                            <button class="total-view-button">더보기</button>
                         </span>
                     </div>
                     <ul>

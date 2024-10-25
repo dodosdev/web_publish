@@ -11,4 +11,33 @@
     --color-border:tomato;
     --color-silver: silver
     --color-footer-bg: rgb(248, 248, 248);
+    --color-font-primary:rgb(34,34,34);
+    --color-gray-222:rgb(22,22,22);   
 }
+
+/* index-total */
+.total-view-button{
+    padding: 7px 15px;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+}
+
+
+/* Moviechart, event,special => title style*/
+.content-title-style{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+/* 무비차트/상영예정작 타이틀 */
+.content-title-style-font, h3{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.font-color-main{color:var(--color-font-primary);}
+.font-color-gray{color:var(--color-gray-222)}
