@@ -312,17 +312,14 @@ fcontent-moviechart-title
     padding: 5px 0;
     color: var(--color-primary);
 }
+
+
+
 /** 이벤트 섹션**/
 .content-even-special section:first-child{
     /* border: 2px solid orangered; */
 }
 
-
-section img{
-    width: 310px;
-    height: 207px;
-    border-radius: 10px;
-}
 
 
 /** EVENT **/
@@ -332,6 +329,14 @@ section img{
     
 }
 
+
+.total-view-button ul{list-style-type: none;}
+
+section img{
+    width: 310px;
+    height: 207px;
+    border-radius: 10px;
+}
 
 /* .total-view-button { 
     justify-content: space-between;

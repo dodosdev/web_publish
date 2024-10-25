@@ -34,7 +34,7 @@
 }
 
 /* 무비차트/상영예정작 타이틀 */
-.content-title-style-font, h3{
+.content-title-style-font{
     font-size: 1.5em;
     font-weight: 600;
 }
