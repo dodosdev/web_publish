@@ -72,8 +72,13 @@ header{
     padding: 10px 25px;
 }
 .header-bottom li a{
-    text-decoration: none;
+    font-size: 16px;
     font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+.header-bottom li a:hover{
+    color: #fb4357;
 }
 
 
