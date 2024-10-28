@@ -136,6 +136,7 @@ footer{
     width: 100%;
     height: 150px;
     background-color: var(--color-footer-bg);
+    margin-top: 30px;
 }
 .footer-content{
     width: 1000px;
@@ -285,9 +286,7 @@ fcontent-moviechart-title
     left: 42%;
 }
 
-.content-title-style h3{
-    
-}
+
 /* 무비차트 상영예정작 리스트 */
 .content-moviechart-list ul{
     /* border: 1px solid orchid; */
@@ -371,3 +370,256 @@ section img{
     position: relative;
     top: -43px;
 }
+
+/* event */
+
+.content-even-special {
+    list-style-type: none;
+
+}
+
+
+.content-even-list{
+    display: flex;
+    /* border: 1px solid blue; */
+    list-style-type:none;
+    padding: 20px;
+}
+.content-even-list li{
+    margin-right: 15px;
+    
+}
+
+.content-even-list li p{
+    padding: 5px;
+}
+.event-content-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 10px;
+}
+.event-content-title-date{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-222);
+    margin-top: 10px;
+}
+
+/* 특별관 */
+.special-event-list{
+    display: flex;
+    justify-content: space-between;
+
+}
+.special-event-list li{
+    display: flex;
+    justify-content: space-between;
+
+}
+.special-event-list ul{
+    list-style-type:none;
+    /* border: 1px solid red; */
+    width:480px
+}
+.special-event-list ul li{
+    border-bottom: 1px solid var(--color-gray-222);
+    padding: 16px 0;
+    width:480px
+}
+
+.special-content-list ul li{
+    border: 1px solid var(--color-gray-222);
+    list-style-type: none;
+    padding: 21px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.special-content-list ul li:first-child{
+    border-top: 1px solid var(--color-gray-222);
+}
+.special-content-list ul li span:first-child {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+.special-content-list ul li span:last-child{
+    display: inline-block;
+    padding: 5px;
+    background-color:var(--color-footer-bg);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--color-gray-222);
+}
+.special-content-list ul li:hover{
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+}
+.special-content-list ul li:hover + li{
+    border-top: 1px solid white;
+}
+
+
+
+
+/* 패키지,영화관람권, 기프트카드 */
+.package-content-list{
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0 30px 0;
+}
+
+.package-content-list h5{
+    font-size: 20px;
+}
+
+.package-content-list img{
+    width: 75px;
+    height: 75px;
+}
+.package-title-font{
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.package-title-button{
+    /* border: 1PX solid red; */
+    padding: 4px 7px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight:400;
+    color: var(--color-primary);
+}
+.package-title-border{
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+}
+.package-title-border > ul{
+    /* border: 1px solid red; */
+    list-style: none;
+}
+.package-title-border > ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+/* 공지사항, 앱다운로드 */
+.sale-img img{
+    width: 210px;
+    height: 237px;
+}
+
+.notice-content-list, .notice-content-list > div:first-child{ /* > 자식중의 첫째*/
+    display: flex;
+    /* border: 1px solid red; */
+}
+
+
+.notice-content-list{
+    border-radius: 10px;
+}
+
+.notice-content-border{
+    border: 1px solid silver;
+    border-radius: 8px;
+    width: 750px;
+    padding: 30px;
+
+}
+.notice-content-border img[alt="QR"]{
+    width: 70px;
+    height: 70px;
+    
+}
+
+
+.notice-content-border div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    width: 222px;
+    text-align: center;
+    
+} 
+
+.notice-content-border :last-child{
+
+}
+
+
+
+
+/**********************************************************
+*  title :  login form style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/28
+**********************************************************/
+
+
+.login-form form{
+    /* border: 1px solid green; */
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(137, 137, 137);
+}
+
+.login-form ul{
+    border: 1px solid blue;
+    list-style-type: none;
+    width: 420px;
+}
+.login-form ul li{
+    padding: 10px;
+}
+
+.login-form input:not(input[type="checkbox"]),/*input에서 체크박스 제외하고 적용*/
+.login-form button{
+    width: 263px;
+    padding: 10px;
+}
+
+
+.login-form input[type="text"],
+.login-form input[type="password"]{
+    border: 1px solid blue;
+    padding-left: 20px;
+}
+.login-form button{
+    outline-color:var(--color-button);
+    outline-style: solid;
+    outline-width:1px;
+}
+
+.login-form ul li:nth-child(5){
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10pt;
+}
+
+
+
+.login-form ul > li:nth-child(5) div:last-child > :nth-child(2){
+    /* border: 1px solid green; */
+    padding-right:10px ;
+    /* width: 200px;
+    display: flex;
+    justify-content: space-between; */
+}
+.login-form ul > li:nth-child(5) div:last-child > a{
+    color: var(--color-login-font);
+    font-weight: 700;
+}
+
+
+
+
+
