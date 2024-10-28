@@ -134,21 +134,35 @@ header{
 **********************************************************/
 footer{
     width: 100%;
-    height: 150px;
+    height: 420px;
     background-color: var(--color-footer-bg);
-    margin-top: 30px;
+    margin-top: 60px;
 }
 .footer-content{
     width: 1000px;
     margin: 0 auto;
+    padding-top: 50px;
 }
+
+.footer-content-top{
+    background-color: orange;
+    height: 180px;
+    /* padding: 50px 0; */
+}
+
+.footer-content-top img{
+    margin-top: -60px;
+}
+
+
 div .footer-intro > ul{
     width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    border-bottom: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-footer-line);
+    margin-top: 30px;
 }
 .footer-intro > ul a{
     font-size: 12px;
@@ -210,7 +224,7 @@ div .footer-intro > ul{
 }
 fcontent-moviechart-title
 .content-moviechart-title span{
-    font-size: 1.6em;
+    font-size: 1.6em;f
     font-weight: 800;
     color: #222;
 } */
@@ -232,6 +246,9 @@ fcontent-moviechart-title
     top: 5px;
     left: 45%;
 
+}
+.content-title-style h3{
+    padding: 50px 0 15px;
 }
 
 
@@ -327,11 +344,11 @@ fcontent-moviechart-title
 
 
 /** EVENT **/
-.total-view-button{
+/* .total-view-button{
     display: flex;
     justify-content: space-between;
     
-}
+} */
 
 
 .total-view-button ul{list-style-type: none;}
@@ -424,9 +441,16 @@ section img{
 }
 .special-event-list ul li{
     border-bottom: 1px solid var(--color-gray-222);
-    padding: 16px 0;
+    padding: 16px 20px;
     width:480px
 }
+
+.special-event-list ul li:hover{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+
 
 .special-content-list ul li{
     border: 1px solid var(--color-gray-222);
@@ -452,13 +476,9 @@ section img{
     font-size: 12px;
     color: var(--color-gray-222);
 }
-.special-content-list ul li:hover{
-    border: 1px solid var(--color-primary);
-    border-radius: 10px;
-}
-.special-content-list ul li:hover + li{
+/* .special-content-list ul li:hover + li{
     border-top: 1px solid white;
-}
+} */
 
 
 
@@ -469,6 +489,7 @@ section img{
     display: flex;
     justify-content: space-between;
     margin: 6px 0 30px 0;
+    padding-top: 50px;
 }
 
 .package-content-list h5{
@@ -484,12 +505,12 @@ section img{
     font-weight: 600;
 }
 .package-title-button{
-    /* border: 1PX solid red; */
-    padding: 4px 7px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight:400;
-    color: var(--color-primary);
+    padding: 7px 15px;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
 }
 .package-title-border{
     border: 1px solid silver;
@@ -511,8 +532,9 @@ section img{
 
 /* 공지사항, 앱다운로드 */
 .sale-img img{
-    width: 210px;
+    width: 260px;
     height: 237px;
+    padding-left: 50px;
 }
 
 .notice-content-list, .notice-content-list > div:first-child{ /* > 자식중의 첫째*/
@@ -523,6 +545,7 @@ section img{
 
 .notice-content-list{
     border-radius: 10px;
+    padding: 50px 0;
 }
 
 .notice-content-border{
@@ -530,26 +553,58 @@ section img{
     border-radius: 8px;
     width: 750px;
     padding: 30px;
+    font-size: 14px;
+
+}
+.notice-content-border span a, p{
+    color: #222;
+
+
+}
+
+.notice-content-border div{
+    margin-top:15px ;
+
+}
+.notice-content-border div > p b{
+    font-size: 16px;
+    font-weight: 600;
 
 }
 .notice-content-border img[alt="QR"]{
     width: 70px;
     height: 70px;
-    
-}
-
-
-.notice-content-border div:nth-child(2){
-    display: flex;
-    flex-direction: column;
-    width: 222px;
+    margin: 0 auto;
     text-align: center;
-    
-} 
-
-.notice-content-border :last-child{
-
+    margin: 10px;
 }
+
+.qr-img{
+    text-align: center;
+    border-left: 1px solid rgb(221, 221, 221);
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+.qr-img h3{
+    display: block;
+    font-weight: 800;
+    font-size: 20px;
+    color: #222;
+    line-height: 1.500em;
+}
+
+.notice-content-border div:nth-child(3){
+    border-width: 457px;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+    color: #222;
+    line-height: 1.250em;
+}
+
+
+
 
 
 
