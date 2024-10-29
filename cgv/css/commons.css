@@ -35,14 +35,12 @@
 
 /* 컨텐츠 가운데 정렬  */
 .center-layout{
-    border: 1px solid tomato;
     width: 1000px;
     margin: 0 auto;
 }
 
 .center-title{
     padding: 40px 15px 10px;
-    border: 1px solid red;
 }
 
 
@@ -51,6 +49,7 @@
 .content-title-style{
     display: flex;
     justify-content: space-between;
+    padding: 30px 0;
 }
 
 

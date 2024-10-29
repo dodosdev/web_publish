@@ -22,7 +22,6 @@ header{
 
 
 .header-top-logo{
-    /* border: 1px solid blue; */
     position: relative;
     width: 320px;
 }
@@ -35,25 +34,21 @@ header{
     top:30px;
     left: 110px;
     letter-spacing: 3px; /*글자간 간격 조정*/
-    color: var(--color-primary)
+    color: var(--color-primary);
     font-weight: 500;
 }
 
 /* header-bottom 상단 대메뉴정렬 */
 .header-top ul, .header-bottom ul{  /*메뉴리스트 ul에 flex적용*/
-    /* border: 1px solid green; */
     display: flex;
     list-style-type: none;
     
 }
 
 .header-top ul li{
-    /* background-color: aqua; */
-    /* padding: 25px 10px; */
     margin-left: 35px; /*li icon간격*/
 }
 .header-top ul li a{
-    /* background-color: aquamarine; */
     text-decoration: none;
     color: var(--color-primary);
     text-align: center;
@@ -83,7 +78,6 @@ header{
 
 
 .header-menu-icon{
-    /* border: 1px solid red; */
     display: block;
     width: 46px;
     min-height: 55px;
@@ -92,13 +86,11 @@ header{
 .header-menu-icon img{
     width: 36px;
     height: 36px;
-    /* border: 1px solid green; */
 }
 .header-menu-icon span{
     width: 50px;
     height: 19px;
     font-size: 11.5px;
-    /* border: 1px solid blue; */
     position: absolute;
     bottom: 0;
     left: -5px;
@@ -145,9 +137,7 @@ footer{
 }
 
 .footer-content-top{
-    background-color: orange;
     height: 180px;
-    /* padding: 50px 0; */
 }
 
 .footer-content-top img{
@@ -180,13 +170,18 @@ div .footer-intro > ul{
 }
 .footer-intro ~ p{
     color: var(--color-primary);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     padding: 3px 0;
 }
 
 .p {margin-top: 20px;}
 .p2{margin-bottom: 20px;}
+.p2 > a{
+    text-decoration: none;
+    color:var(--color-primary);
+    cursor: default; /*마우스커서 모양이 안나옴*/
+}
 
 
 
@@ -226,7 +221,6 @@ div .footer-intro > ul{
 */
 .content-moviechart .content-title-style >  div{
     position: relative;
-    /* border: 1px solid orangered; */
 }
 
 .content-title-style > div > span:first-child + span{
@@ -300,22 +294,18 @@ div .footer-intro > ul{
 
 /* 무비차트 상영예정작 리스트 */
 .content-moviechart-list ul{
-    /* border: 1px solid orchid; */
     list-style-type: none;
     display: flex;
     justify-content: space-between;
 }
 .content-moviechart-list ul li{
-    /* border: 1px solid blue; */
     padding: 15px 15px 0;
     text-align: center;
 }
 .content-moviechart-list ul li:first-child{
-    /* border: 1px solid blue; */
     padding-left: 0px;
 }
 .content-moviechart-list ul li:last-child{
-    /* border: 2px solid pink; */
     padding-right: 0px;
 }
 .content-moviechart-list ul li img{
@@ -331,10 +321,6 @@ div .footer-intro > ul{
 
 
 /** 이벤트 섹션**/
-.content-even-special section:first-child{
-    /* border: 2px solid orangered; */
-}
-
 
 
 /** EVENT **/
@@ -392,7 +378,6 @@ section img{
 
 .content-even-list{
     display: flex;
-    /* border: 1px solid blue; */
     list-style-type:none;
     padding: 20px;
 }
@@ -430,7 +415,6 @@ section img{
 }
 .special-event-list ul{
     list-style-type:none;
-    /* border: 1px solid red; */
     width:480px
 }
 .special-event-list ul li{
@@ -479,11 +463,8 @@ section img{
 
 /* 패키지,영화관람권, 기프트카드 */
 .package-content-list{
-    /* border: 1px solid blue; */
     display: flex;
     justify-content: space-between;
-    margin: 6px 0 30px 0;
-    padding-top: 50px;
 }
 
 .package-content-list h5{
@@ -511,9 +492,9 @@ section img{
     border-radius: 10px;
     padding: 20px;
     width: 320px;
+    margin-top: 70px;
 }
 .package-title-border > ul{
-    /* border: 1px solid red; */
     list-style: none;
 }
 .package-title-border > ul li{
@@ -526,14 +507,14 @@ section img{
 
 /* 공지사항, 앱다운로드 */
 .sale-img img{
-    width: 260px;
+    width: 220px;
     height: 237px;
-    padding-left: 50px;
+    margin-left: 20px;
 }
 
 .notice-content-list, .notice-content-list > div:first-child{ /* > 자식중의 첫째*/
     display: flex;
-    /* border: 1px solid red; */
+    justify-content: space-between;
 }
 
 
@@ -596,6 +577,15 @@ section img{
     color: #222;
     line-height: 1.250em;
 }
+.notice-content-border button{
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #222;
+    line-height: 1.429em;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    border: none;
+}
 
 
 
@@ -611,7 +601,6 @@ section img{
 
 
 .login-form form{
-    /* border: 1px solid green; */
     width: 800px;
     margin: 0 auto;
     display: flex;
@@ -620,7 +609,6 @@ section img{
 }
 
 .login-form ul{
-    border: 1px solid blue;
     list-style-type: none;
     width: 420px;
 }
@@ -637,7 +625,6 @@ section img{
 
 .login-form input[type="text"],
 .login-form input[type="password"]{
-    border: 1px solid blue;
     padding-left: 20px;
 }
 .login-form button{
@@ -647,7 +634,6 @@ section img{
 }
 
 .login-form ul li:nth-child(5){
-    border: 1px solid green;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -657,11 +643,7 @@ section img{
 
 
 .login-form ul > li:nth-child(5) div:last-child > :nth-child(2){
-    /* border: 1px solid green; */
     padding-right:10px ;
-    /* width: 200px;
-    display: flex;
-    justify-content: space-between; */
 }
 .login-form ul > li:nth-child(5) div:last-child > a{
     color: var(--color-login-font);
@@ -678,7 +660,6 @@ section img{
 **********************************************************/
 
 .join-form form{
-    /* border:1px solid blue; */
     width: 500px;
     margin: 0 auto;
     /* display: flex;
@@ -689,13 +670,11 @@ section img{
     list-style-type: none;
 }
 .join-form ul li{
-    /* border: 1px solid red; */
     list-style-type: none;
     padding-top: 10px;
 }
 
 .join-form ul li div{
-    /* border: 1px solid gray; */
     border-radius: 8px;
     padding: 10px 0;
     display: flex;
@@ -723,7 +702,6 @@ section img{
 }
 .join-form ul li div:first-child > div,
 .join-form ul li div:nth-child(6) > div{
-    border: 1px solid tomato;
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -801,15 +779,14 @@ section img{
 .mycgv div{
     display: flex;
     justify-content: center;
-    border:1px solid blue;
 }
 .mycgv div span{
-    border: 1px solid tomato;
     display: inline-block;
     width: 200px;
     padding: 30px;
     margin: 30px 20px;
     text-align: center;
+    border: 1px solid silver;
 }
 
 .mycgv div span:hover{
@@ -825,7 +802,6 @@ section img{
 **********************************************************/
 
 .support-content{
-    border: 1px solid blue;
     width: 700px;
     margin:0 auto;
     color: var(--color-primary);
@@ -834,7 +810,6 @@ section img{
 
 /* 검색 카테고리 */
 .support-content > div  {
-    border: 1px solid blue;
     margin: 30px 0 20px;
 }
 .support-content > div select,
@@ -849,20 +824,20 @@ section img{
 .support-content > div > button{
     background-color: #000;
     color:var(--color-white);
-    border: 1px solid red;
     outline:  1px solid #000;
 }
 .support-content > nav ul{
-    border-bottom: 2px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
     display: flex;
     list-style-type: none;
 }
 .support-content > nav ul a{
     width:90px;
-    border-bottom: 2px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
     border: 1px solid var(--color-white);
     display: inline-block;
-    width: 80px;
+    font-size: 13px;
+    font-weight: 600;
     text-align: center;
     padding: 7px 0;
     text-decoration: none;
@@ -872,6 +847,7 @@ section img{
 .support-content > nav ul li:first-child a{
     background-color: var(--color-button);
     border-left: 1px solid var(--color-button);
+    ;
 }
 .support-content > nav + p{
     margin: 40px 0 20px;
@@ -879,17 +855,18 @@ section img{
 .support-content > table{
     width: 700px;
     text-align: center;
-    /* border: 1px solid silver; */
 }
-.support-content > table th,
-.support-content >table td
+.support-content > table th
 {
     padding: 10px 0;
+}
+.support-content >table td
+{
+    padding: 14px 0;
 }
 .support-content > table thead th:first-child
 {
     width: 12%;
-    /* border: 1px solid red; */
 }
 .support-content > table thead th:nth-child(2),
 .support-content > table thead th:nth-child(4),
@@ -902,6 +879,15 @@ section img{
     text-align: left;
     text-indent: 8px;
 }
+
+/* 테이블 제목 세로 경계라인 */
+.support-content >table,
+.support-content >table th,
+.support-content >table td
+{
+    border-collapse: collapse;
+}
+
 .support-content > table thead th,
 .support-content > table thead th
 {
@@ -910,6 +896,29 @@ section img{
     border-bottom: 1px solid silver;
     border-left: 1px solid rgb(234,234,234);
     border-right: 1px solid rgb(234,234,234);
+}
+
+.support-content > table thead th
+{
+    background-color: rgb(234,234,234);
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+.support-content > table tbody td:nth-child(3) a{
+    text-decoration: none;
+    color: var(--color-primary)
+}
+.support-content > table tbody td:nth-child(3) a:hover{
+    text-decoration:underline;
+    font-weight: 700;
+}
+.support-content > table tbody tr:last-child td{
+    border-bottom: 1px solid silver ;
+}
+.support-content > table tfoot td{
+    padding: 20px 0;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 
