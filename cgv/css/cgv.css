@@ -217,17 +217,9 @@ div .footer-intro > ul{
     padding: 20px 0;
 }
 
-/* .content-moviechart-title{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
+.content h1{
+    padding: 30px;
 }
-fcontent-moviechart-title
-.content-moviechart-title span{
-    font-size: 1.6em;f
-    font-weight: 800;
-    color: #222;
-} */
 
 /* 
 공통적으로 적용되는 클래스는 직접 셀렉팅하는 경우 부모를 직관적으로 지정함
@@ -247,8 +239,10 @@ fcontent-moviechart-title
     left: 45%;
 
 }
+
+
 .content-title-style h3{
-    padding: 50px 0 15px;
+    padding: 0px 0 15px;
 }
 
 
@@ -676,5 +670,341 @@ section img{
 
 
 
+
+/**********************************************************
+*  title :  Join Form style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+
+.join-form form{
+    /* border:1px solid blue; */
+    width: 500px;
+    margin: 0 auto;
+    /* display: flex;
+    justify-content: space-between;
+    color: rgb(137, 137, 137); */
+}
+.join-form ul{
+    list-style-type: none;
+}
+.join-form ul li{
+    /* border: 1px solid red; */
+    list-style-type: none;
+    padding-top: 10px;
+}
+
+.join-form ul li div{
+    /* border: 1px solid gray; */
+    border-radius: 8px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.join-form ul li div:not(.join-form ul li:nth-child(6) div),
+.join-form ul li:nth-child(6) input,
+.join-form ul li:nth-child(6) select{
+    border:1px solid var(--color-gray-222);
+    border-radius:8px;
+    padding:10px;
+}
+.join-form ul li:nth-child(6) span{
+    margin: 0 20px;
+}
+
+/* .join-form ul li:nth-child(6) input{
+    width: 40%;
+} */
+.join-form ul li:nth-child(6) span{
+    margin: 0 20px;
+}
+.join-form ul li div:first-child > div,
+.join-form ul li div:nth-child(6) > div{
+    border: 1px solid tomato;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+}
+
+
+
+.join-form ul li label{
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-indent: 7px;
+    margin-right: 10px;
+}
+
+.join-form ul li label + span{
+    font-size: 0.7em;
+    font-weight: 300;
+    color: tomato;
+}
+
+.join-form ul li:first-child input:focus{
+    border: none;
+    outline: none;
+}
+
+.join-form ul li:first-child input:focus{
+    width: 80%;
+    padding-left: 10px;
+}
+
+.join-form ul li:first-child input{
+    width: 80%;
+    padding-left: 10px;
+}
+.join-form ul li input{
+    border: 1px solid white;
+    width: 100%;
+    padding: 7px 10px;
+}
+.join-form ul li:first-child button,
+.join-form ul li:last-child button{
+    /* border: 1px solid blue; */
+    width: 100px;
+    padding: 7px 12px;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border-radius: 7px;
+    margin-left: 10px;
+    border: none;
+}
+.join-form ul li:lst-child button{
+    border-radius: 0;
+    width: 150px;
+}
+.join-form ul li:last-child button:last-child{
+    background-color: var(--color-gray-222);
+}
+
+.join-form ul li:last-child{
+    padding: 30px 0 10px;
+    text-align: center;
+}
+
+
+
+
+/**********************************************************
+*  title :  mycgv style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+
+.mycgv div{
+    display: flex;
+    justify-content: center;
+    border:1px solid blue;
+}
+.mycgv div span{
+    border: 1px solid tomato;
+    display: inline-block;
+    width: 200px;
+    padding: 30px;
+    margin: 30px 20px;
+    text-align: center;
+}
+
+.mycgv div span:hover{
+    background-color: beige;
+}
+
+
+
+/**********************************************************
+*  title :  support style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+
+.support-content{
+    border: 1px solid blue;
+    width: 700px;
+    margin:0 auto;
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
+/* 검색 카테고리 */
+.support-content > div  {
+    border: 1px solid blue;
+    margin: 30px 0 20px;
+}
+.support-content > div select,
+.support-content > div button,
+.support-content > div input
+{
+    padding: 5px 15px;
+}
+.support-content > div select{
+    padding: 5px 25px;
+}
+.support-content > div > button{
+    background-color: #000;
+    color:var(--color-white);
+    border: 1px solid red;
+    outline:  1px solid #000;
+}
+.support-content > nav ul{
+    border-bottom: 2px solid var(--color-primary);
+    display: flex;
+    list-style-type: none;
+}
+.support-content > nav ul a{
+    width:90px;
+    border-bottom: 2px solid var(--color-primary);
+    border: 1px solid var(--color-white);
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    padding: 7px 0;
+    text-decoration: none;
+    color: var(--color-white);
+    background-color: var(--color-gray-222);
+}
+.support-content > nav ul li:first-child a{
+    background-color: var(--color-button);
+    border-left: 1px solid var(--color-button);
+}
+.support-content > nav + p{
+    margin: 40px 0 20px;
+}
+.support-content > table{
+    width: 700px;
+    text-align: center;
+    /* border: 1px solid silver; */
+}
+.support-content > table th,
+.support-content >table td
+{
+    padding: 10px 0;
+}
+.support-content > table thead th:first-child
+{
+    width: 12%;
+    /* border: 1px solid red; */
+}
+.support-content > table thead th:nth-child(2),
+.support-content > table thead th:nth-child(4),
+.support-content > table thead th:nth-child(5)
+{
+    width: 16%;
+}
+.support-content > table thead th:nth-child(3)
+{
+    text-align: left;
+    text-indent: 8px;
+}
+.support-content > table thead th,
+.support-content > table thead th
+{
+    background-color: rgb(234,234,234);
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+    border-left: 1px solid rgb(234,234,234);
+    border-right: 1px solid rgb(234,234,234);
+}
+
+
+
+
+
+/* support 게시판 연습 */
+/* .support nav{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 35.5px 0;
+    font-size: 12px;
+    font-weight:600;
+    border-bottom: 2px solid #898987;
+    height: 50px;
+}
+
+.support nav ul li{
+    display:inline-block;
+    text-align: center;
+    padding: 10px;
+    width: 90px;
+    background-color: #898989;
+}
+.support nav ul li:first-child{
+    background-color: var(--color-button);
+}
+
+.support-content div button{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding:5px 12px;
+    font-size: 12px;
+}
+
+.support nav ul li a{
+    color: inherit;
+    text-decoration: none;
+}
+.support nav ul{
+    width: 100%;
+}
+.support input, select, button{
+    border: 1px solid var(--color-gray-222);
+    padding: 5px;
+}
+.support p{
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+
+.support table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    line-height: 1.2;
+}
+.support table tr, th{
+    padding: 5px;  
+    border: none;
+}
+.support thead{
+    background-color: #f1f1f1;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666666;
+}
+.support thead th{
+    padding: 10px 0 8px 0px;
+    border-bottom: solid 1px #e1dfd5;
+    border-top: solid 1px #e1dfd5;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+.support tbody{
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #666;
+    vertical-align: calc();
+}
+.support tbody tr a{
+    color: inherit;
+    text-decoration: none;
+}
+.support tbody td{
+    padding: 23px 0px 13px 0px;
+    text-align: center;
+    border:none
+} */
+
+
+
+/* table 연습 end */
 
 
