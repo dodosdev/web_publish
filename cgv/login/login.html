@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
-    <title>CGV</title>
+    <script src="https://kit.fontawesome.com/eab1e9b5c5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- header -->
@@ -21,12 +21,19 @@
                         <p>아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요</p>
                     </li>
                     <li>
-                        <input type="text" name="id" placeholder="아이디를 입력해주세요">
+                        <div class="login-form-input">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" name="id" placeholder="아이디를 입력해주세요">
+                        </div>
                     </li>
-                    <li>                      
-                        <input type="password" name="pwd" placeholder="비밀번호를 입력해주세요">
+                    <li>       
+                        <div class="login-form-input">
+                            <i class="fa-solid fa-lock"></i>             
+                            <input type="password" name="pwd" placeholder="비밀번호를 입력해주세요">
+                        </p>
                     </li>
                     <li>
+                        
                         <button class="btn-main-color">로그인</button>
                         <!-- <button>회원가입</button> -->
                     </li>

@@ -125,7 +125,9 @@ header{
 }
 .header-bottom-search i{
     margin: 5px;
-    font-size: 25px;
+    font-size: 1.3em;
+    color: var(--color-primary);
+    cursor: pointer;
 }
 
 /* .header-bottom-search button{
@@ -212,6 +214,31 @@ div .footer-intro > ul{
 *  author : dodosdev@gmail.com
 *  final date : 2024/10/25
 **********************************************************/
+.goto-top{
+    border: 1px solid silver;
+    width: 100px;
+    height:100px;
+    text-align: center;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 40px;
+    bottom:40px;
+    background-color: #ec240a;
+    color: var(--color-white);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 100%;
+    
+}
+.goto-top a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
 
 .content,
 .content-top,
@@ -424,6 +451,10 @@ section img{
     margin-top: 10px;
 }
 
+/* .content-even-list div:hover{ 이미지 확대
+    scale: 150%;
+} */
+
 /* 특별관 */
 .special-event-list{
     display: flex;
@@ -630,13 +661,37 @@ section img{
 *  final date : 2024/10/28
 **********************************************************/
 
+.login-form-input{
+    border: 2px solid silver;
+    width: 270px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
 
+
+.login-form input:not(input[type="checkbox"]){
+    width: 230px;
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.login-form ul li:nth-child(5){
+    font-size: 9px;
+}
+.login-form ul li:nth-child(5),
+.login-form button{
+    width: 270px;
+    padding: 10px;
+}
 .login-form form{
     width: 800px;
+    color: rgb(137, 137, 137);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    color: rgb(137, 137, 137);
 }
 
 .login-form ul{
@@ -689,7 +744,10 @@ section img{
 *  author : dodosdev@gmail.com
 *  final date : 2024/10/29
 **********************************************************/
-
+.login-form i{
+    border-right: 1px solid rgb(235, 235, 235);
+    padding: 15px;
+}
 .join-form form{
     width: 500px;
     margin: 0 auto;

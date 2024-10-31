@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate</title>
+    <style>
+        .translate{
+            /* perspective-origin: 50% 50%; 이미지 확대효과 */
+            /* perspective: 500px; */
+        }
+        .translate img{
+            width: 300px;
+            transition: 0.4s;
+        }
+
+
+        .translate img:hover{
+            /* transform: translateX(50px);  */
+            /* transform: translateY(50px); */
+            /* transform: translate(50px, 50px); */
+            /* transform: translateZ(100px); */
+            /* transform: translate(150px 150px) scaleY(2); */
+            /* transform: rotate(90deg); */
+            /* transform: skewY(45deg);  마지막줄이실행됨 */
+        }
+        .rotate{
+            -webkit-animation: rotate 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: rotate 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+        }
+
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+  }
+}
+
+        
+    </style>
+</head>
+<body>
+    <h1>Translate</h1>
+    <div class="translate">
+        <img src="/cgv/images/event2.jpg" alt=" ">
+    </div>
+    <img src="/cgv/images/event1.jpg" alt="logo" class="rotate">
+</body>
+</html>
