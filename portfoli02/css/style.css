@@ -1,81 +1,81 @@
-/*
-  selector 
-  - class(.)
-  - id(#)
-  - element
-  - parent > child
+    /*
+    selector 
+    - class(.)
+    - id(#)
+    - element
+    - parent > child
 
-  * 명명규칙 - class : header__naming
-  * 변수/상수 - --color-black : #ffffff
-*/
+    * 명명규칙 - class : header__naming
+    * 변수/상수 - --color-black : #ffffff
+    */
 
-/*
-  Global
-*/
-:root {
+    /*
+    Global
+    */
+    :root {
     /* App Color */
     --color-primary: var(--color-black);
     --color-accent: var(--color-blue);
     --color-text: var(--color-white);
-  
+
     /* Color list */
     --color-white: #ffffff;
     --color-black: #050a13;
     --color-blue: #03e8f9;
     --color-orange: #fd6413;
     --color-gray: #1b1e26;
-  
+
     /* size */
     --max-size-width: 1200px;
-  }
-  
-  /* 
+    }
+
+    /* 
     Commons 
-  */
-  * {
+    */
+    * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-  }
-  
-  body{
+    }
+
+    body{
     /* Font-Type */
     margin: 0;
-  }
-  h1, h2, h3, p, ul, nav {
+    }
+    h1, h2, h3, p, ul, nav {
     margin: 0;
-  }
-  ul {
+    }
+    ul {
     list-style-type: none;
     padding: 0;
-  }
-  a {
+    }
+    a {
     text-decoration: none;
-  }
-  button {
+    }
+    button {
     background-color: transparent;   
     border: 0;
     outline: 0;
-  }
-  button:focus {
+    }
+    button:focus {
     outline: 1px solid var(--color-accent);
-  }
-  .max-container {
+    }
+    .max-container {
     max-width: var(--max-size-width);
     margin: auto;
     /* border: 1px solid red; */
-  }
-  .section {
+    }
+    .section {
     padding: 4rem; 
     text-align: center;
-  }
-  .title {
+    }
+    .title {
     font-size: 2.5rem;
     margin: 1rem 0;
-  }
-  .description {
+    }
+    .description {
     font-size: 1.5rem;
     margin: 0.5rem 0;
-  }
+    }
 
 
 
@@ -238,7 +238,8 @@
         margin: 1rem 0;
     }
     .sklls__coding{
-        grid-row:span 2;
+        grid-row:span 2; /*grid-column: span 2; // 가로로 두 그리드 차지
+        grid-row: span 2; // 세로로 두 그리드 차지*/
         padding: 1rem;
         background-color: var(--color-primary)
         
@@ -370,7 +371,7 @@
     }
 
     .testimonial:nth-child(even) .testimonial__img{ 
-        order:1; /*0부터 시작--두번째 이미지만 두번째에 나옴  */
+        order:1; /*0부터 시작--짝수 이미지  */
 
     }
 
