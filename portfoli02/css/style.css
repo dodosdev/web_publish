@@ -369,8 +369,8 @@
         margin-bottom: 2rem;
     }
 
-    .testimonial:nth-child(even) .testimonial__img{ /*even짝수 img는 order:1첫번째로 보여진다*/
-        order:1; /*0부터 시작--두번째 이미지만 두번째에 사진이 나옴  */
+    .testimonial:nth-child(even) .testimonial__img{ 
+        order:1; /*0부터 시작--두번째 이미지만 두번째에 나옴  */
 
     }
 
