@@ -429,3 +429,145 @@
     .contact__link:hover{
         color: var(--color-accent);
     }
+
+
+
+
+
+    /***************************************************************************
+        media screen - 768 × 1024
+        이모지 단축키 : window key + .(period)
+    ***************************************************************************/
+
+    @media screen and (max-width: 768px){
+        .section{
+            padding: 3rem 2rem;
+        }
+        .description{
+            font-size: 1rem;
+        }
+        .header{
+            flex-direction: column;
+            align-items: start;
+        }
+        .header__toggle{
+            display: block; /*오른쪽 햄버거메뉴 보여짐 */
+        }
+        .header__menu{
+            display: none; /*상단메뉴 가려짐*/
+        }
+        #home{
+            padding: 3rem;
+        }
+        .home__title{
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .majors{
+            flex-direction: column;
+            align-items: center;
+        }
+        .major{
+            width: 30rem;
+        }
+        .job{
+            justify-content: center;
+        }
+        .skills{
+            grid-template-columns: 1fr; /*1개로 차지함*/
+        }
+        .categories{
+            flex-direction: column;
+        }
+        .category{
+            width:100%;
+        }
+        .projects{
+            grid-template-columns:repeat(2, 1fr); /*2개씩보여짐*/    
+        }
+        .testimonial{
+            flex-direction: column;
+        }
+        .testimonial:nth-child(even) .testimonial__img{
+            order: 0; /*(0은 첫번재 이미지가 첫번째에 오게 설정*/
+        }
+        .arrow--up{
+            bottom: 1.5rem;
+            right: 2rem;
+            font-size: 2rem;
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+    
+    
+    /***************************************************************************
+    media screen - 412
+    ***************************************************************************/
+    @media screen and (max-width: 412px){
+        .section{
+            padding: 3rem 2rem;
+        }
+        .description{
+            font-size: 1rem;
+        }
+        .header{
+            flex-direction: column;
+            align-items: start;
+        }
+        .header__logo{
+            display: flex;
+            align-items: center;
+            gap:8px; /*갭을 8px씩 띄움*/
+        }
+        .header__logo__title{
+            font-size: 1.3rem;
+        }
+        .header__logo__img{
+            width: 36px;
+            height: 36px;
+        }
+        #home{
+            padding: 6rem 0 1.5rem;           
+        }
+        .home__avatar{
+            width: 200px;
+            height: 200px;
+        }
+        .home__title{
+            width: 15rem;
+            font-size: 2rem;
+            margin: 1rem auto;
+        }
+        .home__title--strong{
+            color: var(--color-accent);
+        }
+        .home__description{
+            width: 15rem;
+            font-size: 0.8rem;
+            margin: 1rem auto;
+        }
+        .home__contact{
+            
+        }
+        
+
+        /* 메뉴 열고닫기 */
+        .header__toggle{
+            display: block; 
+        }
+        .header__menu{
+            display: none;
+        }
+        
+        
+        .projects{
+            grid-template-columns:repeat(1, 1fr); /*1개씩보여짐*/    
+        }
+        .major{
+            width: 22rem;
+        }
+        .testimonials{
+            margin: 0;
+        }
+        }
