@@ -422,6 +422,11 @@
         justify-content: center;
         gap: 1rem;
         font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+footer p{
+        font-size: 0.8rem;
+        font-weight: 200;
     }
     .contact__link{
         color: var(--color-white);
@@ -547,10 +552,6 @@
             font-size: 0.8rem;
             margin: 1rem auto;
         }
-        .home__contact{
-            
-        }
-        
 
         /* 메뉴 열고닫기 */
         .header__toggle{
@@ -570,4 +571,14 @@
         .testimonials{
             margin: 0;
         }
+        .testimonial:nth-child(even) .testimonial__img{
+            order: 0;
         }
+        .arrow--up{
+            bottom:1.5rem;
+            right: 2rem;
+            font-size: 2rem;
+            width: 3rem;
+            height: 3rem;
+        }
+    }
