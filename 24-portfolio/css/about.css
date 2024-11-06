@@ -1,0 +1,209 @@
+@import url(common.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@500;600;700&family=Raleway:wght@100;200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#txt1{position:fixed;top:10px;right:10px;}
+*{box-sizing: border-box;}
+
+
+#about{
+  margin: 150px 0;
+}
+
+#about h2{
+  text-align: center;
+  font-size: 5em;
+  font-weight: 400;
+  letter-spacing: -.07em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.profile_contents{
+  display: flex;
+  margin-top: 50px;
+}
+.title{
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 500; 
+  color: #171010;
+  margin: 20px 0;
+}
+
+/* 왼쪽영역//////////////////// */
+.left{
+  flex: 1;
+  border-right:1px solid #000;
+  padding-right: 100px;
+}
+.left_edu{
+  font-size: 20px;
+  text-align: right;
+  margin-top: 60px;
+  transform:translate(-200px,0px);
+  opacity:0;
+  transition:all 0.6s;
+}
+
+.left_edu img{
+  width: 300px;
+
+}
+
+/* Hobby&Interests */
+.left_hobby{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-top: 200px;
+  transform:translate(-200px,0px);
+  opacity:0;
+  transition:all 0.6s;
+}
+.left_hobby ul{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px 20px;
+  text-align: center;
+}
+.left_hobby ul li{cursor: pointer;}
+.left_hobby ul li span:nth-child(1){
+  display: block;
+  font-size: 42px;
+  color: #000;
+}
+.left_hobby ul li span:nth-child(2){
+  font-size: 20px;
+  color: #666;
+}
+
+
+/* 오른쪽영역//////////////////// */
+.right{
+  flex: 1;
+  padding-left: 100px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #171010;
+}
+
+/* Profile */
+.right_about{
+  margin-top: 60px;
+  transform:translate(200px,0px);
+  opacity:0;
+  transition:all 0.6s;
+}
+.right_about ul li span:nth-child(1){
+  display: inline-block;
+  width: 90px;
+}
+
+/* Skill */
+.right_skill{
+  /* border: 1px solid blue; */
+  margin: 120px 0;
+}
+.skill_ul li{height:40px;}
+.skill_name{
+  display:inline-block;
+  width:115px;
+
+}
+.skill_line{
+  display:inline-block;
+  top:-4px;
+  width:150px;
+  height:5px;
+  background:#444444;
+  position:relative;
+  margin: 0 20px;
+}
+.skill_per{
+  font-size:20px;
+  color: #666;
+}
+.skill_bar{  /*선위에 움직이는 도형바->jQuery에서 움직임*/
+  display:inline-block;
+  position:absolute;
+  top:-9px;
+  left:0px;
+  width:8px;
+  height:18px;
+  background:#c00173;
+  border-radius: 50px;
+  transition:all 0.6s;
+}
+
+/* Hobby-Link */
+.right_link{
+  padding-bottom: 50PX;
+  margin-top: 100px;
+}
+.right_link ul{
+  /* border: 1px solid green; */
+  position: relative;
+  height: 250px;
+}
+.right_link ul li{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.right_link ul li img{
+  width: 400px;
+  height: 249px;
+}
+
+
+/* Profile-Footer */
+.profile_thanks{
+  text-align: center;
+  margin-top: 60px; 
+  padding-bottom: 100px;
+  font-size: 36px;
+  font-family: 'Bellota', cursive;
+  color: #000;
+  transform:scale(0);
+  opacity:0;
+  transition:all 0.9s ease-out; 
+}
+
+
+/*jQuery에서 불러냄/////////////*/
+
+/*오른쪽에서 왼쪽으로 이동(Profile)*/
+.right_about.scrolls1{  
+	transform:translate(0px,0px);
+  opacity:1;
+}
+
+/* 왼쪽에서 오른쪽으로 이동(Education, Hobby) */
+.left_edu.scrolls2, 
+.left_hobby.scrolls3{ 
+	transform:translate(0px,0px);
+  opacity:1;
+  transition:all 0.6s;
+}
+
+/* Skill */
+.skills1{left:90%}
+.skills2{left:80%}
+.skills3{left:70%}
+
+
+
+
+/* Profile-Footer */
+.profile_thanks.scales{
+  transform:scale(1.2);
+  opacity:1;
+}

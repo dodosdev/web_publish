@@ -1,0 +1,407 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@500;600;700&family=Raleway:wght@100;200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+
+
+
+
+#uiux .box{background: #eee;}
+
+/*왼쪽배경이미지 영역/////////////*/
+.bg-m{  
+
+  /* position:absolute;
+  top:0;
+  left:0; */
+  margin-top: 180px;
+  width:700px;
+  height:700px;
+  overflow:hidden; 
+}
+.bg-m ul{
+  width: 7000px;
+  height: inherit;
+  position: relative;
+  top: 0;
+  left:0;
+}
+.bg-m ul li{
+  float: left;
+  width: 700px;
+  height: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 10;
+}
+.bg-m ul li:nth-child(1){background-color:#171010;}
+.bg-m ul li:nth-child(2){background-color:#171010;}
+.bg-m ul li:nth-child(3){background-color:#171010;}
+
+
+
+
+/* 컨텐츠 영역(왼쪽 텍스트 + 오른쪽 모바일) */
+
+.webd_in-m{  
+  position:relative;
+  top:-650px;
+  height:650px;
+  left:50px;
+  width:1400px;
+  display: flex;
+  align-items: center;
+}
+
+/*왼쪽 텍스트영역_____________________*/
+.txt-m{ 
+  /* border: 1px solid orange; */
+  width:500px;
+}
+.title_text-m{
+  display: flex;
+  align-items: center;
+  
+}
+.title_text-m h2{
+  font-family:'Abril Fatface', cursive;
+  font-size:130px;
+  font-weight:normal;   
+  letter-spacing:-5px;
+  color:#fff;
+  text-shadow:-7px 10px 4px rgba(0,0,0,0.3);
+  margin-right:10px;
+}
+.title_text-m span{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: 10px;
+  padding-top: 45px;
+  text-shadow: -7px 10px 4px rgba(0,0,0,0.3);
+  letter-spacing: 2px;
+}
+.title_text-m strong{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 50px;
+  margin-top: 10px;
+  font-weight:500;
+  text-transform: uppercase;
+  color:#fff;
+
+}
+.title-m .title_bar-m{  /*왼쪽흰색선*/
+  clear: both;
+  display: block;
+  width: 600px;
+  height: 1.5px;
+  background: #fff;
+  position: relative;
+  box-shadow: -10px 10px 4px rgba(0,0,0,0.3);
+}
+.title-m .title_bar-m span{  /*오른쪽 회색선*/
+  width:250px;
+  height:1.5px;
+  background:#4d4c4a;
+  position:absolute;
+  right:0;
+}
+
+/* 01~10 숫자 */
+.slide_btn-m{
+  /* border: 1px solid red; */
+  width: 100%;
+	height:40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.slide_btn-m>span{  /*깜빡이는 화살표*/
+	font-size:23px;
+	color:#fff;
+	opacity:0;
+	transition:all 0.5s;
+}
+
+
+
+.slide_btn-m>span.active{opacity: 1;}  /*jQuery에서 불러냄*/
+.list-m{display: flex;}
+.list-m li{
+  font-size:25px;
+  font-weight:500;
+  padding:0 5px;
+  color:#999;
+  cursor:pointer;
+}
+.list-m li.btn_active{
+	color:#fff;
+	text-shadow:-7px 10px 4px rgba(0,0,0,0.3);
+}
+
+
+/*설명텍스트 영역*/
+.txt_slide-m{
+  width:340px;
+  height:400px;
+  position:relative;    
+  overflow:hidden;
+}
+.txt_slide-m ul{
+  width:3400px;  /*슬라이드 총가로폭(340*10=3400)*/
+  height:inherit;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.txt_slide-m ul li{
+  float:left;
+  width:340px;
+  height:300px;
+  padding-left:10px;
+  color:#fff;
+}
+.title-m{
+  font-size:30px;
+  font-family: 'Bebas Neue', cursive;
+  color:#fff;
+  margin: 15px 0 5px 0;
+}
+.text-m{
+  font-size:20px;
+  font-weight: 100;
+  color:#fff;
+}
+
+.txt_slide-m ul li span{  /*Detail 버튼*/
+  display:block;
+  width:200px;
+  height:28px;
+  font-weight:400;
+  font-size: 15px;
+  line-height:28px;
+  text-align:center;
+  color:#fff;
+  background:rgb(141, 106, 59);
+  margin-top:15px;
+  border-radius:5px;
+	cursor:pointer;
+  letter-spacing: 1px;
+
+}
+.txt_slide-m ul li span:hover{
+  color:#fff;
+  background:rgb(141, 106, 59);
+  font-weight:400;
+  transition: 0.7s;
+  border-radius: 40px; 
+}
+
+/* GO TO SITE */
+.txt_slide-m ul li>a{  /*사이트 이동 버튼*/
+  display:block;
+  width:200px;
+  height:28px;
+  font-weight:400;
+  font-size: 15px;
+  line-height:28px;
+  text-align:center;
+  color:#fff;
+  background:rgb(141, 106, 59);
+  margin-top:10px;
+  border-radius:5px;
+	cursor:pointer;
+  letter-spacing: 1px;
+}
+
+/* 컨셉디자인 보기 */
+.concept-btn{  
+  display:block;
+  width:200px;
+  height:28px;
+  font-weight:400;
+  font-size: 15px;
+  line-height:28px;
+  text-align:center;
+  color:#fff;
+  margin-top:10px;
+  border-radius:5px;
+	cursor:pointer;
+  letter-spacing: 1px;
+}
+
+
+.txt_slide-m ul li a:hover{
+  color:#fff;
+  background:rgb(141, 106, 59);
+  font-weight:400;
+  transition: 0.7s;
+  border-radius: 40px;
+}
+
+
+
+
+
+/*오른쪽 모바일 영역_____________________*/
+
+
+.mobile-port{
+  height:849px;
+}
+
+
+.mobile{
+  position:relative;
+  left: 300px;
+
+}
+.mo-m{  /*모바일*/
+  position:relative;
+  width:425px;
+  height:849px;
+  z-index:100;
+	background:url(../images/mobile_view3.png);
+}
+.shadow-m{  /* 모바일 그림자 */
+  position:absolute;
+  top:0;
+  width:410px;
+  height:820px;
+  border-radius:50px;
+  box-shadow:20px 30px 20px rgba(0,0,0,0.3);
+	z-index:0;
+}
+
+.tab_slide-m{ /*보여지는 영역*/   
+  width:380px;
+  height:810px;
+  position:absolute;
+  top:20px;
+  left: 18px;
+  z-index:200; 
+  overflow:hidden;
+  border-radius:40px;
+}
+
+.tab_slide-m ul{
+  width:7940px;  /*슬라이드 전체 가로폭(794*10=7940)*/
+  height:auto;
+  z-index:200;
+  position:relative;
+}
+.tab_slide-m ul li{
+  float:left;
+  width:380px;
+  height:849px;
+  transition: 10s;
+  background-position:0 0;
+  background-size:100% auto;
+  background-repeat:no-repeat;
+  margin-left: 10px;
+}
+
+.tab_slide-m ul li:nth-child(1){background-image:url(../images/posco-mobile.png);}
+.tab_slide-m ul li:nth-child(2){background-image:url(../images/starbucks-mobile.png);}
+.consept-m{background-image:url(../images/starbucks-app-concept-design.png);}
+.tab_slide-m ul li:nth-child(3){background-image:url(../images/hybe-mobile.png);}
+
+
+
+
+/*모달창 영역 //////////////////////*/
+#popup-m{
+	display:none;
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	overflow:auto;
+  
+}
+.pop_body-m{
+	position:relative;
+	height:100%;
+	margin:0 auto;
+	width:1400px;
+	background:#000;
+	z-index:1000;
+}
+.back-m{ /*메뉴 뒤로 나오는 검정배경*/
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+
+}
+.pop-m>li{
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	cursor: default;
+	background: #000;
+	display: none;
+}
+.pop-m>li p{
+	text-align:center;
+	font-size:30px;
+}
+
+
+
+/*버튼영역*/
+.btn-m{
+	position:fixed;
+	left:38%;
+	top:0;
+	margin-left:710px;
+	width:80px;
+	height:150px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;
+	z-index:10000;
+}
+.btn-m>li{
+	cursor: pointer;
+	overflow: hidden;
+}
+.btn-m .btn_close-m{ /*닫기버튼*/
+	height:70px;
+	width:80px;
+	cursor:pointer;
+	border-bottom:1px solid #fff;
+}
+.btn-m .btn_close-m span{ /*아이콘폰트*/
+	position:relative;
+	top:15px;
+	font-size:50px;
+}
+.btn-m .left_btn-m, .btn-m .right_btn-m{float:left;}
+.btn-m .left_btn-m span, .btn-m .right_btn-m span{
+	position:relative;
+	top:10px;
+	font-size:30px;
+	width:40px;
+	height:50px;
+}
+.btn-m .page-m{ 
+	font-size:12px;
+	color:#fff;
+	width:80px;
+	padding-top:10px;
+	height:50px;
+	text-align:center;
+  border-top:1px solid #fff;
+}

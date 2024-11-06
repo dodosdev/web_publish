@@ -1,0 +1,237 @@
+@import url(common.css);
+
+#wrap{width:100%;}
+header, section, footer{width:inherit;} 
+
+
+html{scroll-behavior: smooth;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@500;600;700&family=Raleway:wght@100;200;300;500;700&display=swap');
+
+
+
+
+*{  /* 전체선택자(모든 태그에 여백을 빼줌 */
+  margin: 0;
+  padding: 0;
+}
+html, body{
+  width: 100%;
+  background-color: #e9e5df;
+}
+html{
+  overflow-y:scroll;  /* 문서전체에 세로 스크롤바자국 항상 표시 */
+  overflow-x:hidden;  /* 문서전체에 가로 스크롤바자국 항상 숨김 */
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #171010;
+}
+/* 시멘틱태그를 지원하지 않는 브라우저에서 inline로 인식하기 때문에 block로 변경해줌 */
+article,aside,details,summary,figcaption,figure,
+footer,header,hgroup,main,nav,section{ 
+	display:block;  
+}
+
+li{list-style-type: none;}  /*목록에 점 없애기 */
+
+a{
+  text-decoration: none;   /*하이퍼링크 밑줄 없애기*/
+  color: inherit;  /*하이퍼링크의 글자색 부모한테 상속받기*/
+}
+
+img{
+	vertical-align:top; /*이미지에 원치 않는 여백이 생성되는 브라우저 오류가 발생하는 경우가 있음*/
+	font-size:0;  /*폰트 크기 초기화*/
+	border:0; /* 이미지 링크시 기본적으로 나타나는 테두리 제거 */
+}
+
+.clear:after{    /* float문제해결 */
+	content:"";
+	display:block;
+	clear:both;
+}
+
+.indent{   /* 글자 안보이게 밀어놓기 */
+	display:block;
+	text-indent:-9999px;
+}
+
+
+
+
+
+
+
+/* Header_______________________ */
+header{
+  width: 100%;
+  height: 110px;
+  position: fixed;
+  top:0;
+  z-index: 1000;
+  border-bottom: 1px solid #171010; 
+  background-color: #e9e5df;
+}
+
+
+
+
+nav{
+  width: 1400px;
+  height: inherit;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  line-height: 50px;
+
+  
+}
+
+.logo img{
+  
+  width: 90px;
+  margin-top:20px;
+  
+}
+
+#gnb{
+  display: flex;
+  font-size: 16px; 
+  position: absolute;
+  top:30px;
+  left: 45%;
+  
+}
+
+#gnb li{
+  position:relative;
+  margin: 0 15px;
+}
+#gnb li a{
+  color: #171010;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+#gnb li a:hover{color: #171010;}
+
+
+#gnb li a:before{
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color:#171010;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+
+#gnb li a:hover:before{
+  width: 100%;
+}
+
+
+
+
+/* Contents___________________ */
+
+#container{
+  width: 1400px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+
+.main-con{
+  margin-top: 200px;
+}
+
+
+.main-con span{
+  text-align: left;
+  font-size: 6em;
+  font-weight: 400;
+  letter-spacing: -.07em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.top-copy{
+  margin: 0 0 170px 20px;
+}
+
+.top-img{
+
+
+}
+
+.top-img img{
+  position: absolute;
+  width: 200px;
+  /* height: 272px; */
+  right: 38%;
+  top: 7.6%;
+
+}
+
+
+
+
+
+
+
+
+/* footer */
+footer{
+  /* border: 2px solid violet; */
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.touch{
+  font-size: 60px;
+  font-weight: 100;
+  margin: 50px 0 20px 0;
+}
+
+.last-m{
+  font-size:80px;
+  text-align: center;
+  font-weight: 300;
+  line-height: 80px;
+  margin: 100px;
+}
+.last-m p{
+  font-size: 50px;
+  margin-top: 20px;
+}
+
+footer .copy{
+  height: 30px;
+  font-weight: 100;
+  font-size: 15px;
+  color: #fff;
+  padding: 50px;
+  background-color: #171010;
+  letter-spacing: 1px;
+}
+
+.email{
+  font-size: 25px;
+  font-weight: 100;
+}
+
+
+
+
+
+

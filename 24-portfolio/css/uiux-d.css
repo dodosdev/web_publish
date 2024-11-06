@@ -1,0 +1,196 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@500;600;700&family=Raleway:wght@100;200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+
+/* 타이틀 부분 */
+
+.uiux-title_text{
+  display: flex;
+  align-items: center;
+  margin: 100px 0 50px 0;
+}
+.uiux-title_text h2{
+  font-family:'Abril Fatface', cursive;
+  font-size:130px;
+  font-weight:normal;   
+  letter-spacing:-5px;
+  color:#171010;
+  margin-right:30px;
+}
+
+.uiux-title_text strong{
+  font-size:100px;
+  font-weight:200;
+  text-indent:10px;
+  color:#171010;
+  text-transform:uppercase;
+}
+
+
+
+
+
+
+.item_list-u{ 
+	width: 1400px; 
+	box-sizing:border-box;
+}
+/* .item_list li{
+	float:left; 
+	width:200px; 
+	height:320px; 
+	margin-left:20px;
+	margin-bottom:20px;
+} */
+
+
+.item_list-u li{
+	float:left; 
+	width:400px; 
+	height:300px; 
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+
+.item_list-u li a{
+  width:400px; 
+	height:300px; 
+	font-size:40px;
+	font-weight:700;
+	color:#fff;
+	margin-top: 40px;
+	margin-left: 30px;
+}
+
+.item_list-u li:nth-child(1){	background-image: url(../images/brush400.png);}
+.item_list-u li:nth-child(2){	background-image: url(../images/mockup-cd400.png);}
+.item_list-u li:nth-child(3){	background-image: url(../images/starapp400.png);}
+.item_list-u li:nth-child(4){	background-image: url(../images/blend400.png);}
+.item_list-u li:nth-child(5){	background-image: url(../images/ribbon400.png);}
+.item_list-u li:nth-child(6){	background-image: url(../images/logo400.png);}
+.item_list-u li:nth-child(7){	background-image: url(../images/swatch400.png);}
+.item_list-u li:nth-child(8){	background-image: url(../images/posco400.png);}
+.item_list-u li:nth-child(9){	background-image: url(../images/mobile400.png);}
+
+
+
+
+/* UI/UX Hover */
+/* .item_list-u li:hover{background-color: #000;} */
+
+
+/* POPUP BOX ---------------------*/
+
+#popup-u{ /*검정배경*/
+	display:none; 
+	position:fixed; 
+	left:0; 
+	top:0;
+	width:100%; 
+	height:100vh; 
+	background:rgba(0,0,0,0.7); 
+	z-index:1000;
+	overflow-y:scroll; 
+	/*auto로 하면 스크롤바의 폭때문에 콘텐츠와 버튼사이의 간격이 생김->버튼위치맞춤*/
+}
+
+
+/*각 목록별 나오는 모달팝업 내용 나오는 부분*/
+
+.pop_body-u{   /*팝업내용박스*/
+	position:relative;
+	height:100vh;	
+	margin:0 auto;
+	width:1000px;
+	background:#000;
+	z-index:10000;
+}
+.pop-u>li{
+	width:1000px;
+	position:absolute;
+	text-align:center;
+	background:#fff;
+	display:none;
+}
+.pop-u>li p{
+	text-align:center;
+	font-size:30px;
+}
+
+
+
+/*버튼영역*/ 
+.btn-u{
+	position:fixed;
+	left:50%;
+	top:0px;
+	margin-left:492px;
+	width:80px;
+	height:150px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;
+	z-index:10000;
+}
+.btn-u>li{
+	cursor:pointer;
+	overflow:hidden;
+}
+/* .m_btn>li:hover{background:#de7575;} */
+
+/*닫기버튼*/
+.btn-u .btn_close-u{
+	height:70px;
+	width:80px;
+	cursor:pointer;
+	border-bottom:1px solid #fff;
+	
+}
+.btn-u .btn_close-u i{  /*아이콘폰트*/
+	position:relative;
+	top:15px;
+	font-size:50px;
+}
+
+/*다음이전 버튼*/
+
+.btn-u .left_btn-u, .btn-u .right_btn-u{float:left;}
+.btn-u .left_btn-u i,.btn-u .right_btn-u i{ 
+	position:relative;
+	top:10px;
+	font-size:30px;	
+	width:40px;
+	height:50px;	
+}
+/* .btn-u .page-u{  Page번호
+	font-size:12px;
+	color:#fff;
+	width:80px;
+	padding-top:10px;
+	height:50px;
+	text-align:center;
+} */
+
+.btn-u .right_btn-u .material-symbols-outlined {
+	font-size: 43px;
+}
+
+.btn-u .left_btn-u .material-symbols-outlined {
+	font-size: 43px;
+}
+
+
+
+
+
+
+
+
+
