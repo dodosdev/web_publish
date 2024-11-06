@@ -41,7 +41,7 @@ let address = undefined; ///primitive
 let addressList = null; //reference
 
 
-//데이터 타입 비교 : typeof
+//데이터 타입 비교 : typeof 연산자는 변수의 데이터 타입을 반환하는 연산자
 let x = 10;
 let xx = 10;
 let y = "10";

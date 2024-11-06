@@ -26,6 +26,6 @@ console.log(orange.display);
 // 1~5까지 출력
 let numberList = [1, 2, 3, 4, 5];
 console.log(numberList);
-console.log(numberList[0]); /*배열은[]로 구분*/
+console.log(numberList[0]); //배열은[]로 구분 
 console.log(numberList[5]); //undifind로 나옴
 console.log(numberList[4]); 
