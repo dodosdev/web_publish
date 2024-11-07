@@ -45,3 +45,15 @@ console.log(typeof obj1 === typeof obj3);
 console.log(obj1.name == obj2.name); //JSON은 .으로 구분
 
 
+
+/*
+ 표현식 삽입(Expression interpolation)
+▶︎ ${ } 사이에 변수나 연산 등을 삽입할 수 있게 되었다.
+var name = `사과`
+var price = 100
+var num = 5;
+console.log(`${name}의 구매가는 ${price * num}원 입니다.`)
+
+${}결과는 문자열로 자동변환됨
+console.log(`${5+10} 입니다`)  // 15 입니다.
+*/
