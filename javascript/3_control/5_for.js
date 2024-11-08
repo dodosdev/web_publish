@@ -19,10 +19,13 @@ for(let i =1 ; i <= 10 ; i++){  // i <= 100까지 반복
 }
 
 //숫자 배열을 출력해주세요.
-let numberList = ['🍕','🍔','🍟'];
-for(let i=0 ; i <= 4 ; i++ ){   //0 ~ 4 배열의 인덱스!!
+let numberList = ['🍕','🍔','🥓']; // [0, 1, 2]
+//배열의 마지막 인덱스주소는 배열크기보다 하나작다!!
+//배열의 크기 구하는 형식 : 배열객체.length
+console.log(`numberList.lenght = ${numberList.length}`);
+
+for(let i=0 ; i <= numberList.length-1 ; i++ ){   //0 ~ 4 배열의 인덱스!! (0부터시작해서 5번출력)  //numberList.length-1 배열크기의 -1
     console.log(numberList[i]);
-    
 }
 
 
@@ -34,3 +37,22 @@ for(let i=0 ; i <= 4 ; i++ ){   //0 ~ 4 배열의 인덱스!!
 //let flag = true; 
 //while(flag){  //true면 무한반복 false로 멈춤
 //}
+
+
+//과일리스트 출력
+
+let fruitList = ['apple' , 'orange', 'lemon']; // obj객체 -변수와메서드를 한곳에모아줌
+// let lenght = fruitList.length-1;
+let emojiList = ['🍎','🍊','🍋'];
+
+
+for(let k=0; k <= length ; k++){
+    let fruit = fruitList[k];
+    let emoji = emojiList[k];
+    //lemon만 출력
+    if(fruit === 'lemon'){
+        console.log(emoji);
+    }
+    
+}
+
