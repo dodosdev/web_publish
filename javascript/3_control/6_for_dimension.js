@@ -4,21 +4,28 @@
     행, 열
 
 
-for(){ //행
-    for(){ //열
+    for(){ //행
+        for(){ //열
+        }
     }
-}
 
 */
-for(let i=1; i<3 ; i++){
+let count =1;  //카운트할때마다 1부터 시작, 계속 초기화가 이루어짐
+for(let i=1; i<6 ; i++){ //1~2번동작   
     let rows = '';
-    for(let j=1; j<4 ; j++) {
-        rows += `${j}\t`;  //한줄로 나열하기
+    for(let j=1; j<4 ; j++) { //1~3번동작
+        // rows += `${j}\t`;    //i =2, row =[1] [2] [3]  //한줄로 나열하기  /
+        // rows += `${count ++}\t`;
+        rows += `${count += 2}\t`; //매번 2씩증가
     }
     console.log(rows); 
-
+    
 }
+console.clear();
 
+
+//i = 1, row =[1][2][3]
+//i = 2, row =[1][2][3]
 
 
 
