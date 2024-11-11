@@ -36,9 +36,9 @@ for(let row=1; row<10; row++){ //가로
 */
 console.clear();
 
-for(let row=1; row<=5; row++){
+for(let row=1; row<=5; row++){ //가로..1부터 시작해서 5개까지
     let output = '';
-    for(let col=1; col<=row; col++) {
+    for(let col=1; col<=row; col++) { //세로..
         if(row === 3){   //3번째줄만 빨간사과 출력
             output += `🍎 \t`;
         }else{

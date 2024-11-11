@@ -27,7 +27,7 @@ for(let i =1 ; i <= 10 ; i++){  // i <= 10까지 반복
 let numberList = ['🍕','🍔','🥓']; // [0, 1, 2]
 //배열의 마지막 인덱스주소는 배열크기보다 하나작다!!
 //배열의 크기 구하는 형식 : 배열객체.length
-console.log(`numberList.lenght = ${numberList.length}`);
+console.log(`numberList.lenght = ${numberList.length}`); 
 
 for(let i=0 ; i <= numberList.length-1 ; i++ ){   //0 ~ 4 배열의 인덱스!! (0부터시작해서 5번출력)  //numberList.length-1 배열크기의 -1
     console.log(numberList[i]);
