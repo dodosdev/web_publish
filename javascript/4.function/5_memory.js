@@ -4,7 +4,7 @@ function add(a, b){
     
 }
 
-let sum = add;
+let sum = add;   // call by reference
 console.log(add); //add라는 이름을 가지고 있다...
 console.log(sum);
 // console.log(add(1,2));
