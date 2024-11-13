@@ -40,7 +40,7 @@ const deleteValue = (object, key) => delete object[key];
 // }
 
 
-//set은 새로운 값으로 바꿔줄때/ 추가할때
+//set은 새로운 값으로 바꿔줄때 / 추가할때
 setValue(person, "address", "서울시" );
 setValue(fruits, "color", "red");
        // Object, "key",  "value"

@@ -13,7 +13,7 @@
 
  */
 class Animal {
-    //생성자 함수 //선언
+    //생성자 함수 선언
     constructor(emoji, color){  //생성자 함수
         this.emoji = emoji;
         this.color = color;

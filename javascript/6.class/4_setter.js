@@ -12,11 +12,11 @@ class Employee{
         this.dept = dept;
     }
 
-    setEmpno = (empno) => this.#empno = empno;  //프로퍼티에 값을 할당할때,값이 변경될때 실행
+    setEmpno = (empno) => this.#empno = empno;  //setter는 특정한 속성에 값이 변경되어질 때마다 함수를 실행하는데 사용될 수 있다
     setEname = (ename) => this.ename = ename;
     setDept = (dept) => this.dept = dept;
     
-    getEmpno = () => this.#empno;  //프로퍼티를 읽으려고할때 실행
+    getEmpno = () => this.#empno;  //어떤 프로퍼티에 접근할 때마다 그 값을 계산하도록 해야 하거나, 내부 변수의 상태를 명시적인 함수 호출 없이 보여주고 싶을 때,
     getEname = () => this.ename;
     getDept = () => this.dept;
 
