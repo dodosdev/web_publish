@@ -1,15 +1,16 @@
-//객체를 생성하기 위한 틀 ==> class(클래스)
-/*
-    class 클래스명 {
-        // constructor 생성자 함수
-        constructor() {
-            //filed
-            this.필드명 = 값;
-            ...
-        }
+//객체를 생성하기 위한 틀 ==> class(클래스) 클래스명은 앞에 대문자가 들어감
 
-        //메소드
+/*
+class 클래스명 {
+    // constructor (생성자) 함수
+    constructor() {
+        //filed
+        this.필드명 = 값;
+        ...
     }
+
+    //메소드
+}
 
  */
 class Animal {
