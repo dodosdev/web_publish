@@ -84,9 +84,38 @@ const signupCheck = () => {
         default :
     }
     console.log(member);
-    
+
 }
 
+//display
+const display = (type) => {
+    alert('111');
+    //type=1 학생폼
+    if(type === '1'){
+        document.querySelector('#student').style.display = "block";
+        document.querySelector('#professor').style.display = "none";
+        document.querySelector('#parent').style.display = "none";
+        document.querySelector('#employee').style.display = "none";
+    } else if(type === '2'){
+        document.querySelector('#student').style.display = "none";
+        document.querySelector('#professor').style.display = "block";
+        document.querySelector('#parent').style.display = "none";
+        document.querySelector('#employee').style.display = "none";
+    }else if(type === '3'){
+        document.querySelector('#student').style.display = "none";
+        document.querySelector('#professor').style.display = "none";
+        document.querySelector('#parent').style.display = "block";
+        document.querySelector('#employee').style.display = "none";
+    }else if(type === '4'){
+        document.querySelector('#student').style.display = "none";
+        document.querySelector('#professor').style.display = "none";
+        document.querySelector('#parent').style.display = "none";
+        document.querySelector('#employee').style.display = "block";
+    }
+    
+    
+    
+}
 
 /*
 const hong = new Student('1234', '홍길동', 20, '서울시 강남구'); //학생
