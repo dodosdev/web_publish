@@ -1,4 +1,4 @@
-//학사관리 프로르램을 생성하는 경우, 사용자를 정의하는 클래스를 설계
+//학사관리 프로그램을 생성하는 경우, 사용자를 정의하는 클래스를 설계
 //학생, 교수, 학부모, 직원 ==> Member 부모클래스 (name, age, address)
 class Member {
     #name;
@@ -10,13 +10,13 @@ class Member {
         this.#address = address;
     }
 
-    get name(){ return this.#name;}
+    get name(){ return this.#name;} //생성자함수가 생성하는객체로 this가 바인딩됨
     get age(){ return this.#age;}
     get address(){ return this.#address;}
 
 }
 
-class Student extends Member{   
+class Student extends Member{    
     #sno; //학번 
     constructor(sno, name, age, address){ //각각의 들어갈 정보모두 입력
         super(name, age, address); //super부분은 동일하게 들어가는 정보를입력(name, age, address)
