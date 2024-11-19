@@ -1,4 +1,7 @@
-// iterable object의 요소를 순회하여 출력함
+// iterable object의 요소를 순회하여 출력함 // 순회 가능한 이터러블(iterable) 객체를 순회하는 반복문
+//variable: 반복문 내에서 현재 순회 중인 요소를 저장할 변수의 이름을 지정합니다. 이 변수는 반복문의 각 순회에서 업데이트되어 각 요소에 대한 작업에 사용됨
+//iterable: 반복하고자 하는 이터러블 객체입니다. 배열, 문자열, Map, Set, NodeList 등 다양한 객체를 순회할수 있음
+
 // 형식 : for( variable of iterable_object ) {statement(실행문); }
 
 // 베열의 요소를 교체하는 함수를 정의  for...of
@@ -41,6 +44,22 @@ let numbers = [1, 2, 3, 4, 2, 2, 5, 2];
 let result2 = replace(numbers, 2, 7); //2-->7로 변경
 console.log(result2);
 
+
+
+/*
+const iterable = "Hello"; // 문자열을 이터러블로 사용하여 문자열의 각 문자에 접근하고 출력 //문자열을 예시로 사용 배열의 각 요소가 출력
+
+for (const char of iterable) {
+    console.log(char);
+}
+    결과
+H
+e
+l
+l
+o
+
+*/
 
 
 // 중요!!!!  

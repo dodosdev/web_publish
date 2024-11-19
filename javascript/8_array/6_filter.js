@@ -54,6 +54,23 @@ console.log(`count ==> ${searchItem(nList, '4')}`); //
 
 
 
+/**
+ * 자바스크립트 화살표 함수 - Arrow function expressions
+ * 화살표 함수는 function 키워드 대신 =>기호(화살표)를 사용하여 함수를 사용하여 기존의 함수보다 간단하고 간결하게 작성할수있음
+ * 
+    const add = (a, b) => {
+    const sum = a + b;
+    console.log("Sum:", sum);
+    
+    // return 키워드를 생략할 수 없습니다.
+    return sum;
+};
+
+const result = add(3, 5);
+console.log("Result:", result); // 결과: Sum: 8, Result: 8
+ */
+
+
 
 
 
