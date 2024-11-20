@@ -42,7 +42,7 @@ const numbers = [1, 2, 3];
 numbers.forEach((element, i) => console.log(i, element));
 
 const myMap = new Map();
-myMap.set('name','홍길동'); //''싱글코테이션
+myMap.set('name','홍길동'); //''싱글코테이션 ()파라미터
 myMap.set('age', 20);
 myMap.forEach((value, key) => console.log(key, value));
 
