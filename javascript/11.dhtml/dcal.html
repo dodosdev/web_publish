@@ -4,34 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src=""></script>
-    <style>
-        .counter_contaner{
-            width: 180px;
-        }
-        #number {
-            font-size: 30px;
-            text-align: center;
-            padding-bottom: 20px;
-        } 
-    </style>
+    <script type="module" src="./dcal.js"></script>   <!--./dcal.js 같은위치   type="module" 모듈타입-->
 </head>
 <body>
-    <div id="content">
-        <h1>DHTML - Calculator</h1>
-        <ul>
-            <li>
-                <input type="text" id="number1" placeholder="첫번째 숫자">
-                <input type="text" id="number2" placeholder="두번째 숫자">
-            </li>
-            <li>
-                <button type="button" class="button" data-="">➕</button>
-                <button type="button" class="button" data-="">➖</button>
-                <button type="button" class="button" data-="">✖</button>
-                <button type="button" class="button" data-="">➗</button>
-            </li>
-        </ul>
-        <div class="result">Result :</div>
-    </div>
+    <div id="content"></div>
 </body>
 </html>
+
+<!--React를 브라우저에화면을띄우려면 index.html이있어야함-->
