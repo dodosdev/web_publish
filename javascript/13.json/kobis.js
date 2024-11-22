@@ -33,8 +33,8 @@ function initForm() {
     searchButton.addEventListener('click', ()=>{
         //searchDt 입력창의 유효성 체크
         //비어있을때 메세지
-        let type = document.querySelector("#type");
-        let searchDt = document.querySelector('#searchDt');
+        let type = document.querySelector("#type"); //일별간주말 선택리스트
+        let searchDt = document.querySelector('#searchDt'); //날짜입력
         // alert(type.value + searchDt.value);
 
         if(type.value === 'default') {
@@ -42,9 +42,9 @@ function initForm() {
             type.focus(); 
         }else if(searchDt.value === '') {
             alert('검색일자를 입력해주세요'); 
-            searchDt.focus();   //비어있는 상태에서 search 버튼을 누르면 자동으로 input박스에 커서가  
+            searchDt.focus();   //비어있는 상태에서 search 버튼을 누르면 자동으로 input박스에 커서가들어감!  
         }else{ 
-            searchBoxOffice(type.value, searchDt.value); 
+            searchBoxOffice(type.value, searchDt.value);  
         }
     });
 
@@ -71,7 +71,7 @@ function initForm() {
     /**
      * 일별 박스오피스 정보 화면 출력
      */
-    function searchBoxOffice(ktype, searchDt) {
+    function searchBoxOffice(ktype, searchDt) {  //기간선택, 날짜박스
         boxOffice(ktype, searchDt)  // Promise 객체로 리턴
             .then((result) => {
 
@@ -120,7 +120,7 @@ function initForm() {
                 
             
                 //테이블 화면 출력
-                document.querySelector("#result").innerHTML = output;
+                document.querySelector("#result").innerHTML = output; //output 출력 //Document.querySelector()는 제공한 선택자 또는 선택자 뭉치와 일치하는 문서 내첫번째 Element를 반환함
         
             })
             .catch();
