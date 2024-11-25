@@ -11,7 +11,7 @@ function createMoviesList() {
     kobisMovieList()
     .then((list) => {
         const tcount = list.movieListResult.totCnt;  // "totCnt": 107423,
-        const length = list.movieListResult.movieList .length;  // "totCnt": 107423,
+        const length = list.movieListResult.movieList .length;  
         const movieList = list.movieListResult.movieList;
         console.log(`tcount --> ${tcount}`);//변수명
         console.log(`length --> ${length}`);
@@ -80,7 +80,7 @@ function searchMovieCd(title) {
         return movieCd;
     
         
-    }
+}
 
 
 
@@ -95,7 +95,7 @@ function searchMovieList(title){
     console.log(`code ==>> ${movieCd}`);
 
     kobisMovieDetail(movieCd)
-     .then((result) => { 
+    .then((result) => { 
         console.log(result);
     let info = result.movieInfoResult.movieInfo;
 
@@ -143,7 +143,7 @@ function searchMovieList(title){
             // let info = result. movieInfoResult, movieInfo;
             // console.log(result.movieInfoResult.movieInfo,movieNmEn);
             
-        })
+    })
 
 } //searchMovieList
 
