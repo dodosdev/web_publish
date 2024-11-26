@@ -16,9 +16,10 @@ http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?coll
 포스터 이미지 제공
 http://file.koreafilm.or.kr/thm/02/99/18/07/tn_DPK020635.jpg|http://file.koreafilm.or.kr/thm/02/99/17/71/tn_DPK019094.jpg|http://file.koreafilm.or.kr/thm/02/99/17/67/tn_DPK018968.jpg|http://file.koreafilm.or.kr/thm/02/99/17/70/tn_DPK019054.jpg|http://file.koreafilm.or.kr/thm/02/99/17/68/tn_DPK018979.jpg|http://file.koreafilm.or.kr/thm/02/99/17/73/tn_DPK019172.jpg|http://file.koreafilm.or.kr/thm/02/99/17/70/tn_DPK019053.jpg
 
+
 http://file.koreafilm.or.kr/thm/02/99/17/67/tn_DPK018968.jpg
 
 
 
-// detail=Y (상세정보)
+// detail=Y (Y는상세하게 정보보기)
 https://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&detail=Y&director=%EB%B0%95%EC%B0%AC%EC%9A%B1&title=%ED%97%A4%EC%96%B4%EC%A7%88%20%EA%B2%B0%EC%8B%AC&ServiceKey=TDSG188W34566K65X667
