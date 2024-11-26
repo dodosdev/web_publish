@@ -48,7 +48,7 @@ function initForm() { //호이스팅 방식
 
 
 //KMDB API 연동 후 출력화면
-function searchMovieResult(type, value, title) {
+function searchMovieResult(type, value, title) {  //(type, value, title)자유이름변경가능하고 순서만맞으면됨
     // console.log(type, value, title);
     /** 검색결과 출력 Promise --> 화면 */
     kmdb(type, value, title)
@@ -70,10 +70,10 @@ function searchMovieResult(type, value, title) {
                 let title =  info.title.replaceAll('!HS', '').replaceAll('!HE', ''); // 대체된 새 문자열을 반환
                 
                 actors.forEach((actor, i) => {
-                    if(i<5)actorFive.push(actor.actorNm); //if(i<5) 4명까지나옴
+                    if(i<5)actorFive.push(actor.actorNm); //if(i<5) 기본값으로 배우이름4명나옴
                 });
                 actors.forEach((actor) => {
-                    actorAll.push(actor.actorNm); //if(i<5) 4명까지나옴
+                    actorAll.push(actor.actorNm); 
                 });
                 // console.log(`actorFive--> ${actor.actorFive}`);
                 
@@ -158,7 +158,7 @@ function searchMovieResult(type, value, title) {
                 document.querySelector("#more_actors")
                 .addEventListener('click', ()=>{
                     document.querySelector("#actors").textContent = actorAll.join();
-                    document.querySelector("#more_actors").style.display = "none";
+                    document.querySelector("#more_actors").style.display = "none";  //더보기가려짐
                     document.querySelector("#close_actors").style.display = "inline-block";
 
                 });
@@ -167,7 +167,7 @@ function searchMovieResult(type, value, title) {
                 document.querySelector("#close_actors")
                 .addEventListener('click', ()=>{
                     document.querySelector("#actors").textContent = actorFive.join();
-                    document.querySelector("#more_actors").style.display = "inline-block";
+                    document.querySelector("#more_actors").style.display = "inline-block"; //더보기보여짐
                     document.querySelector("#close_actors").style.display = "none";
                 });
 
