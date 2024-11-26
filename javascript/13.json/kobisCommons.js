@@ -3,7 +3,7 @@
         const key = `e0a980916aa2f83b657475b56aa5203f`;
         const curPage = 1;
         const itemPerPage = 100;
-        const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${key}&curPage${curPage}&itemPerPage=${itemPerPage}`;
+        const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${key}&curPage${curPage}&itemPerPage=${itemPerPage}`;   //파라미터 연결
         console.log(url);
 
         const movieList = await fetch(url);//fetch 문자로 가져옴
