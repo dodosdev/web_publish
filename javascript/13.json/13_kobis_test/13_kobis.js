@@ -169,7 +169,7 @@ function initForm() {
             
         }
         /** 이미지 이벤트 처리 함수 */ 
-    function kmdbMovieDetail(movieNm, openDt){
+    
 
         // 모달 상세화면 - 241127
         kmdbMovieDetail(movieNm, openDt)
@@ -269,5 +269,5 @@ function initForm() {
             /**순차적으로 비동기식 호출을위해 getPoster 호출 */
             async function getPoster(movieNm, openDt){
                 return await searchMoviePoster(movieNm, openDt);
-    }
+    
 }
