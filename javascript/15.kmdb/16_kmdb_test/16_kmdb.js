@@ -52,7 +52,7 @@ function searchMovieResult(type, value, title) {  //(type, value, title)자유�
     // console.log(type, value, title);
     /** 검색결과 출력 Promise --> 화면 */
     kmdb(type, value, title)
-        .then((result) => {      //then성공시 //result로모든데이터를가져옴
+        .then((result) => {      // then성공시  
             let count = result.TotalCount;
             let output = ``;
             let actorFive = [];

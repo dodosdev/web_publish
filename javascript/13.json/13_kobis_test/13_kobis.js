@@ -22,7 +22,8 @@ function initForm() {
         <div id="imageModal" class="modal">
             <div class="modal-content">
                 <span id="closeModal" class="close" > &times; </span>
-                <img id="modalImage" src="" alt="Modal Image" style="width:50%"/>
+                <!--<img id="modalImage" src="" alt="Modal Image" style="width:50%"/>-->
+                <div id="result"></div>
             </div>
 
         </div>
@@ -62,19 +63,6 @@ function initForm() {
     
 
 
-    /**
-     * KOBIS 박스오피스 정보 호출 함수
-     */
-    // async function kobisBoxOffice(type, searchDt) {
-    //     const key = `e0a980916aa2f83b657475b56aa5203f`;
-    //     const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/search${type}BoxOfficeList.json?key=${key}&targetDt=${searchDt}`; 
-
-    //     const kobis = await fetch(url);
-    //     const jsonData = await kobis.json();
-        
-    //     return jsonData;
-
-    // }
 
 
 
@@ -181,52 +169,10 @@ function initForm() {
             
         }
         /** 이미지 이벤트 처리 함수 */ 
-        function onMovieDetail(event) {
-            // console.log(event.target.id.split(",")); //split은 배열로만들어줌
-            // let [movieNm, openDt] = event.target.id.split(","); //구조분해할당
-            // console.log(`movieNm --> ${movieNm}`);
-            // console.log(`openDt --> ${openDt}`);
-
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const closeModalBtn = document.getElementById('closeModal');
-
-            let [movieNm, openDt] = event.target.id.split(","); 
-
-            kmdbMovieDetail(movieNm, openDt)
-            .then((result) => {
-                const imageSrc = event.target.src;
-                modalImage.src = imageSrc;
-                modal.style.display = 'block';
-                // console.log(result.Data[0].Result[0].title); 배열로 
-                
-            })
-            .catch((error) => console.log(error) );
-
-            //모달닫기 버튼 클릭 시 모달 닫기
-            closeModalBtn.addEventListener('click', () => {
-                modal.style.display = 'none';  //모달창 닫기
-            });
-
-            //모달 바깥쪽 클릭시 모달 닫기
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none'; //모달창닫기
-                }
-            });
-
-            
-            // console.log(event.target.src); // src 정보를 가져옴
-            // console.log(event.target.id); // id값 가져옴      
-            
-        }//onMovieDetail
-
-
-
-
+    function kmdbMovieDetail(movieNm, openDt){
 
         // 모달 상세화면 - 241127
-        kmdb(type, value, title)
+        kmdbMovieDetail(movieNm, openDt)
         .then((result) => {      // then성공시  
             let count = result.TotalCount;
             let output = ``;
@@ -252,7 +198,6 @@ function initForm() {
                 });
                 // console.log(`actorFive--> ${actor.actorFive}`);
                 
-
                 output = `
                         <div class="container">
                             <div class="container-img"></div>
@@ -310,8 +255,6 @@ function initForm() {
 
 
 
-                
-
         })
 
         .catch((error) => console.log(error)); //실패시
@@ -327,3 +270,4 @@ function initForm() {
             async function getPoster(movieNm, openDt){
                 return await searchMoviePoster(movieNm, openDt);
     }
+}
