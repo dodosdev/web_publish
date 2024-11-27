@@ -98,7 +98,7 @@ function searchMovieResult(type, value, title) {  //(type, value, title)자유�
                                 <img src="${posterArray[1]}" alt="">
                             </div>
                         </div>
-                        <div class="container-stills>
+                        <div class="container-stills">
                 
                 `;
 

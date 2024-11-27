@@ -1,4 +1,4 @@
-import { kobisBoxOffice as boxOffice } from './kobisCommons.js';
+import { kobisBoxOffice as boxOffice, searchMoviePoster } from './kobisCommons.js';
 
 
 
@@ -6,7 +6,7 @@ initForm();
 
 function initForm() {
     const output = `
-        <h1>일별 박스 오피스</h1>
+        <h1>KOBIS 박스 오피스</h1>
         <div id="search">
             <select id="type">
                 <option value="default">선택</option>
@@ -77,6 +77,7 @@ function initForm() {
 
                 console.log(result.boxOfficeResult.boxofficeType);
                 let rankList = null;
+                let posertList = [];
 
 
                 const type = result.boxOfficeResult.boxofficeType;
@@ -88,41 +89,81 @@ function initForm() {
                     rankList = result.boxOfficeResult.weeklyBoxOfficeList;
                 }
 
-                
-                
-                let output = `
-                    <h5>박스오피스 타입 : ${type}</h5>
-                    <h5>박스오피스 일자 : ${range}</h5>
-                    <table border=1>
-                        <tr>
-                            <th>순위</th>
-                            <th>제목</th>
-                            <th>개봉일</th>
-                            <th>당일관객수</th>
-                            <th>누적관객수</th>
-                        </tr>`;
 
-                    rankList.forEach((element) => {
-                        output += `
-                        <tr>
-                            <td>${element.rank}</td>
-                            <td>${element.movieNm}</td>
-                            <td>${element.openDt}</td>
-                            <td>${element.audiCnt}</td>
-                            <td>${element.audiAcc }</td>
-                        </tr>
 
-                    `;
-                });
+
+
+                // 영화 포스터 가져오기- 20241127
+                rankList.forEach((element) => {
+                        let movieNm = element.movieNm;
+                        let openDt = element.openDt.replaceAll('-','');
+                    console.log(element.movieNm, element.openDt.replaceAll('-',''));
+                    console.log(element.rank);
                     
-                output += `</table>`;
-                // console.log();
+                    posertList.push(getPoster(movieNm, openDt)); //await를 넣지않으면순서를보장하지않음
+                });
                 
+                Promise.all(posertList) //비동기식 처리는 모두 종료가 되도록 실행  //posertList 포스터10개 출력
+                .then((poster) => {
+
+
+        
+                        let output = `
+                            <h5>박스오피스 타입 : ${type}</h5>
+                            <h5>박스오피스 일자 : ${range}</h5>
+                            <table border=1>
+                                <tr>
+                                    <th>순위</th>
+                                    <th>제목</th>
+                                    <th>개봉일</th>
+                                    <th>당일관객수</th>
+                                    <th>누적관객수</th>
+                                </tr>`;
+
+                            rankList.forEach((element, i) => {
+                                output += `
+
+                                <tr>
+                                    <td>${element.rank}</td>
+                                    <td><img src ="${poster[i]}" width="100px" class="a" > ${element.movieNm}</td>
+                                    <td>${element.openDt}</td>
+                                    <td>${element.audiCnt}</td>
+                                    <td>${element.audiAcc }</td>
+                                </tr>
+                                
+
+                            `;
+                        });
+                    
+                    
+                        output += `</table>`;
+                        // console.log();
+                        
+
+                    //테이블 화면 출력
+                    document.querySelector("#result").innerHTML = output; 
+                    //output 출력 //Document.querySelector()는 제공한 선택자 또는 선택자 뭉치와 일치하는 문서 내첫번째 Element를 반환함
+
+
+                    //이미지 클릭 이벤트 (모달띄우기)
+                    // let a = document.getElementsByClassName("a");
+                    // a.forEach((element) => {
+                    //     element.addEventListener('click', function(){
+                    //         alert("이미지 클릭");
+
+                    //     });
+                    // });
+
+                
+
+                }).catch(); //Promise.all()
+
+            }) 
+            .catch(); //
             
-                //테이블 화면 출력
-                document.querySelector("#result").innerHTML = output; //output 출력 //Document.querySelector()는 제공한 선택자 또는 선택자 뭉치와 일치하는 문서 내첫번째 Element를 반환함
-        
-            })
-            .catch();
-        
-    }
+        }
+
+            /**순차적으로 비동기식 호출을위해 getPoster 호출 */
+            async function getPoster(movieNm, openDt){
+                return await searchMoviePoster(movieNm, openDt);
+        }

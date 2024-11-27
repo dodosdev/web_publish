@@ -15,24 +15,6 @@
 
 
 
-/** KMDB 영화 포스터 검색 - 20241127 */
-export async function searchMoviePoster(movieNm, openDt){
-
-    const key = `TDSG188W34566K65X667`;
-    const url = `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&title=${movieNm}&ServiceKey=${key}&releaseDts=${openDt}`; 
-
-    // console.log(url);
-
-    const result = await fetch(url);
-    const jsonData = await result.json();
-    
-    return jsonData.Data[0].Result[0].posters.split("|")[0];
-
-}
-
-
-
-
 /** KOBIS 영화 정보 호출 함수 */
 
 export async function kobisMovieDetail(movieCd) {
@@ -56,6 +38,7 @@ export async function kobisMovieDetail(movieCd) {
 /** KOBIS 박스오피스 정보 호출 함수 */
 
 export async function kobisBoxOffice(type, searchDt) {
+    alert(type + searchDt)
     const key = `1387ed83604df30a0c5d9dfdea0cba00`;
     // const key = `e0a980916aa2f83b657475b56aa5203f`;
     const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/search${type}BoxOfficeList.json?key=${key}&targetDt=${searchDt}`; 
