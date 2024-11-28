@@ -359,6 +359,7 @@ div .footer-intro > ul{
 }
 .content-moviechart-list ul li img{
     width: 170px;
+    height: 250px;
     border-radius: 10px;
 }
 .content-moviechart-list ul li h5{
