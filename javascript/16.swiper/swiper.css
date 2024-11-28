@@ -1,0 +1,20 @@
+
+
+.swiper {
+    width: 1200px;
+    height: 700px;
+    margin: auto;
+    border: 3px solid violet;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(233, 241, 255); */
+}
+
+.swiper-slide img {
+    width: 80%;
+    /* border: 2px solid blue; */
+}

@@ -1,0 +1,1108 @@
+
+/**********************************************************
+*  title :  header style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/24
+**********************************************************/
+
+header{
+    width: 100%;
+    height: 160px;
+    margin: 0 auto; /*가운데 정렬*/
+    border-bottom: 4px solid #fb4357;
+}
+.header-top, .header-bottom-content{ /* ',' 동일하게 적용*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 13px 0;
+}
+
+
+.header-top-logo{
+    position: relative;
+    width: 320px;
+}
+
+.header-top-logo > a > img{
+    width: 120px;
+}
+.header-top-logo > span{
+    position: absolute;
+    top:30px;
+    left: 110px;
+    letter-spacing: 3px; /*글자간 간격 조정*/
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* header-bottom 상단 대메뉴정렬 */
+.header-top ul, .header-bottom ul{  /*메뉴리스트 ul에 flex적용*/
+    display: flex;
+    list-style-type: none;
+    
+}
+
+.header-top ul li{
+    margin-left: 35px; /*li icon간격*/
+}
+.header-top ul li a{
+    text-decoration: none;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.header-bottom dl{
+    display: none;
+}
+.header-bottom{
+    width: 100%;
+    height: 40px;
+    padding: 5px 0;
+    border-top: 1px solid silver;
+}
+.header-bottom li{
+    padding: 10px 25px;
+}
+.header-bottom li a{
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+.header-bottom li a:hover{
+    color: #fb4357;
+}
+
+
+.header-menu-icon{
+    display: block;
+    width: 46px;
+    min-height: 55px;
+    position: relative;
+}
+.header-menu-icon img{
+    width: 36px;
+    height: 36px;
+}
+.header-menu-icon span{
+    width: 50px;
+    height: 19px;
+    font-size: 11.5px;
+    position: absolute;
+    bottom: 0;
+    left: -5px;
+    font-weight: 600;
+}
+
+.header-top-card{
+    margin-left: 100px;
+    top: 10px;
+}
+
+.header-bottom-search{
+    border-right: 1px solid silver ;
+    border-left: 1px solid silver ;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+/* .header-bottom-search{
+    border-right: 1px solid silver ;
+    border-left: 1px solid silver ;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+} */
+.header-bottom-search input{
+    width: 80%;
+    border: none;
+    padding: 5px;
+}
+.header-bottom-search i{
+    margin: 5px;
+    font-size: 1.3em;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* .header-bottom-search button{
+    padding: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+} */
+/* header end */
+
+
+
+/**********************************************************
+*  title :  footer style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/24
+**********************************************************/
+footer{
+    width: 100%;
+    height: 420px;
+    background-color: var(--color-footer-bg);
+    margin-top: 60px;
+}
+.footer-content{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.footer-content-top{
+    height: 180px;
+}
+
+.footer-content-top img{
+    margin-top: -60px;
+}
+
+
+div .footer-intro > ul{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    border-bottom: 1px solid var(--color-footer-line);
+    margin-top: 30px;
+}
+.footer-intro > ul a{
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.footer-intro > ul a:hover{
+    text-decoration: underline;
+}
+.footer-intro > ul li:nth-child(8) a{
+    color:var(--color-black);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.footer-intro ~ p{
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 0;
+}
+
+.p {margin-top: 20px;}
+.p2{margin-bottom: 20px;}
+.p2 > a{
+    text-decoration: none;
+    color:var(--color-primary);
+    cursor: default; /*마우스커서 모양이 안나옴*/
+}
+
+
+
+/**********************************************************
+*  title :  content style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/25
+**********************************************************/
+.goto-top{
+    border: 1px solid silver;
+    width: 100px;
+    height:100px;
+    text-align: center;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 40px;
+    bottom:40px;
+    background-color: #ec240a;
+    color: var(--color-white);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 100%;
+    
+}
+.goto-top a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+.content,
+.content-top,
+.content-moviechart{
+    width: 100%;
+}
+
+.content-top{
+    background-color:#000;
+}
+.content-top iframe,
+.content-moviechart > div,
+.content-even-special{ /* 바로밑에있는 >*/
+    width: 1000px;
+    display: block;
+    margin: 0 auto;
+}
+.content-moviechart{
+    background-color: aliceblue;
+    padding: 20px 0;
+}
+
+.content h1{
+    padding: 30px;
+}
+
+/* 
+공통적으로 적용되는 클래스는 직접 셀렉팅하는 경우 부모를 직관적으로 지정함
+*/
+.content-moviechart .content-title-style >  div{
+    position: relative;
+}
+
+.content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: var(--color-);
+    position: absolute;
+    top: 5px;
+    left: 45%;
+
+}
+
+
+.content-title-style h3{
+    padding: 0px 0 15px;
+}
+
+
+
+.content-title-style > div > span:first-child{
+    color: #222;
+    text-align: center;
+
+}
+.content-title-style > div > span:last-child{
+    color: #666;
+}
+.content-title-style > div > span:nth-child(2){
+    border-left: 1px solid #d8d8d8;
+    height: 20px;
+    margin:0 10px;
+}
+.content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 21px;
+    line-height: 21px;
+    color: #d8d8d8;
+    background-color: #d8d8d8;
+}
+
+.content-title-style div:last-child button{
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+}
+
+/* 무비차트 상영예정작 텍스트 */
+.content-moviechart .content-title-style > div:first-child{
+    position: relative;
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+/* 무비트 | 중간라인 */
+.content-moviechart .content-title-style > div > span:first-child + span{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: silver;
+    position:absolute;
+    top: 10px;
+    left: 42%;
+}
+
+
+/* 무비차트 상영예정작 리스트 */
+.content-moviechart-list ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+.content-moviechart-list ul li{
+    padding: 15px 15px 0;
+    text-align: center;
+}
+.content-moviechart-list ul li:first-child{
+    padding-left: 0px;
+}
+.content-moviechart-list ul li:last-child{
+    padding-right: 0px;
+}
+.content-moviechart-list ul li img{
+    width: 170px;
+    border-radius: 10px;
+}
+.content-moviechart-list ul li h5{
+    text-align: center;
+    padding: 5px 0;
+    color: var(--color-primary);
+}
+
+
+
+/** 이벤트 섹션**/
+
+
+/** EVENT **/
+/* .total-view-button{
+    display: flex;
+    justify-content: space-between;
+    
+} */
+
+
+.total-view-button ul{list-style-type: none;}
+
+section img{
+    width: 310px;
+    height: 207px;
+    border-radius: 10px;
+}
+
+/* .total-view-button { 
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;f
+    line-height: 1.444em;
+}
+
+.total-view-button li p:nth-child(){
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.429em;
+}
+
+.total-view-title{
+    display: flex;
+    justify-content: space-between;
+}
+ */
+
+.content-top{
+    background-color: #000;
+    position: relative;
+    top: -43px;
+}
+
+/* event */
+
+.content-even-special {
+    list-style-type: none;
+
+}
+
+
+.content-even-list{
+    display: flex;
+    list-style-type:none;
+    padding: 20px;
+}
+.content-even-list li{
+    margin-right: 15px;
+    
+}
+
+.content-even-list li p{
+    padding: 5px;
+}
+.event-content-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 10px;
+}
+.event-content-title-date{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-222);
+    margin-top: 10px;
+}
+
+/* .content-even-list div:hover{ 이미지 확대
+    scale: 150%;
+} */
+
+/* 특별관 */
+.special-event-list{
+    display: flex;
+    justify-content: space-between;
+
+}
+.special-event-list li{
+    display: flex;
+    justify-content: space-between;
+
+}
+.special-event-list ul{
+    list-style-type:none;
+    width:480px
+}
+.special-event-list ul li{
+    border-bottom: 1px solid var(--color-gray-222);
+    padding: 16px 20px;
+    width:480px
+}
+
+.special-event-list ul li:hover{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+
+
+.special-content-list ul li{
+    border: 1px solid var(--color-gray-222);
+    list-style-type: none;
+    padding: 21px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.special-content-list ul li:first-child{
+    border-top: 1px solid var(--color-gray-222);
+}
+.special-content-list ul li span:first-child {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+.special-content-list ul li span:last-child{
+    display: inline-block;
+    padding: 5px;
+    background-color:var(--color-footer-bg);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--color-gray-222);
+}
+
+.special-event-list ul li span:nth-child(2){
+    padding: 2px 7px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.429em;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+}
+/* .special-content-list ul li:hover + li{
+    border-top: 1px solid white;
+} */
+
+
+
+
+/* 패키지,영화관람권, 기프트카드 */
+.package-content-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.package-content-list h5{
+    font-size: 20px;
+}
+
+.package-content-list img{
+    width: 75px;
+    height: 75px;
+}
+.package-title-font{
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.package-title-button{
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+}
+.package-title-border{
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+    margin-top: 70px;
+}
+.package-title-border > ul{
+    list-style: none;
+}
+.package-title-border > ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+/* 공지사항, 앱다운로드 */
+.sale-img img{
+    width: 220px;
+    height: 237px;
+    margin-left: 20px;
+}
+
+.notice-content-list, .notice-content-list > div:first-child{ /* > 자식중의 첫째*/
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.notice-content-list{
+    border-radius: 10px;
+    padding: 50px 0;
+}
+
+.notice-content-border{
+    border: 1px solid silver;
+    border-radius: 8px;
+    width: 750px;
+    padding: 30px;
+    font-size: 14px;
+
+}
+.notice-content-border span a, p{
+    color: #222;
+
+
+}
+
+.notice-content-border div{
+    margin-top:15px ;
+
+}
+.notice-content-border div > p b{
+    font-size: 16px;
+    font-weight: 600;
+
+}
+.notice-content-border img[alt="QR"]{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px;
+}
+
+.qr-img{
+    text-align: center;
+    border-left: 1px solid rgb(221, 221, 221);
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+.qr-img h3{
+    display: block;
+    font-weight: 800;
+    font-size: 20px;
+    color: #222;
+    line-height: 1.500em;
+}
+
+.notice-content-border div:nth-child(3){
+    border-width: 457px;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+    color: #222;
+    line-height: 1.250em;
+}
+.notice-content-border button{
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #222;
+    line-height: 1.429em;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+
+
+/**********************************************************
+*  title :  login form style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/28
+**********************************************************/
+
+.login-form-input{
+    border: 2px solid silver;
+    width: 270px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.login-form input:not(input[type="checkbox"]){
+    width: 230px;
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.login-form ul li:nth-child(5){
+    font-size: 9px;
+}
+.login-form ul li:nth-child(5),
+.login-form button{
+    width: 270px;
+    padding: 10px;
+}
+.login-form form{
+    width: 800px;
+    color: rgb(137, 137, 137);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-form ul{
+    list-style-type: none;
+    width: 420px;
+}
+.login-form ul li{
+    padding: 10px;
+}
+
+.login-form input:not(input[type="checkbox"]),/*input에서 체크박스 제외하고 적용*/
+.login-form button{
+    width: 263px;
+    padding: 10px;
+}
+
+
+.login-form input[type="text"],
+.login-form input[type="password"]{
+    padding-left: 20px;
+}
+.login-form button{
+    outline-color:var(--color-button);
+    outline-style: solid;
+    outline-width:1px;
+}
+
+.login-form ul li:nth-child(5){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10pt;
+}
+
+
+
+.login-form ul > li:nth-child(5) div:last-child > :nth-child(2){
+    padding-right:10px ;
+}
+.login-form ul > li:nth-child(5) div:last-child > a{
+    color: var(--color-login-font);
+    font-weight: 700;
+}
+
+
+
+
+/**********************************************************
+*  title :  Join Form style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+.login-form i{
+    border-right: 1px solid rgb(235, 235, 235);
+    padding: 15px;
+}
+.join-form form{
+    width: 500px;
+    margin: 0 auto;
+    /* display: flex;
+    justify-content: space-between;
+    color: rgb(137, 137, 137); */
+}
+.join-form ul{
+    list-style-type: none;
+}
+.join-form ul li{
+    list-style-type: none;
+    padding-top: 10px;
+}
+
+.join-form ul li div{
+    border-radius: 8px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.join-form ul li div:not(.join-form ul li:nth-child(6) div),
+.join-form ul li:nth-child(6) input,
+.join-form ul li:nth-child(6) select{
+    border:1px solid var(--color-gray-222);
+    border-radius:8px;
+    padding:10px;
+}
+.join-form ul li:nth-child(6) span{
+    margin: 0 20px;
+}
+
+/* .join-form ul li:nth-child(6) input{
+    width: 40%;
+} */
+.join-form ul li:nth-child(6) span{
+    margin: 0 20px;
+}
+.join-form ul li div:first-child > div,
+.join-form ul li div:nth-child(6) > div{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+}
+
+
+
+.join-form ul li label{
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-indent: 7px;
+    margin-right: 10px;
+}
+
+.join-form ul li label + span{
+    font-size: 0.7em;
+    font-weight: 300;
+    color: tomato;
+}
+
+.join-form ul li:first-child input:focus{
+    border: none;
+    outline: none;
+}
+
+.join-form ul li:first-child input:focus{
+    width: 80%;
+    padding-left: 10px;
+}
+
+.join-form ul li:first-child input{
+    width: 80%;
+    padding-left: 10px;
+}
+.join-form ul li input{
+    border: 1px solid white;
+    width: 100%;
+    padding: 7px 10px;
+}
+.join-form ul li:first-child button,
+.join-form ul li:last-child button{
+    /* border: 1px solid blue; */
+    width: 100px;
+    padding: 7px 12px;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border-radius: 7px;
+    margin-left: 10px;
+    border: none;
+}
+.join-form ul li:lst-child button{
+    border-radius: 0;
+    width: 150px;
+}
+.join-form ul li:last-child button:last-child{
+    background-color: var(--color-gray-222);
+}
+
+.join-form ul li:last-child{
+    padding: 30px 0 10px;
+    text-align: center;
+}
+
+
+
+
+/**********************************************************
+*  title :  mycgv style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+
+.mycgv div{
+    display: flex;
+    justify-content: center;
+}
+.mycgv div span{
+    display: inline-block;
+    width: 200px;
+    padding: 30px;
+    margin: 30px 20px;
+    text-align: center;
+    border: 1px solid silver;
+}
+
+.mycgv div span:hover{
+    background-color: beige;
+}
+
+
+
+/**********************************************************
+*  title :  support style
+*  author : dodosdev@gmail.com
+*  final date : 2024/10/29
+**********************************************************/
+
+.support-content{
+    width: 700px;
+    margin:0 auto;
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
+/* 검색 카테고리 */
+.support-content > div  {
+    margin: 30px 0 20px;
+}
+.support-content > div select,
+.support-content > div button,
+.support-content > div input
+{
+    padding: 5px 15px;
+}
+.support-content > div select{
+    padding: 5px 25px;
+}
+.support-content > div > button{
+    background-color: #000;
+    color:var(--color-white);
+    outline:  1px solid #000;
+}
+.support-content > nav ul{
+    border-bottom: 3px solid var(--color-primary);
+    display: flex;
+    list-style-type: none;
+}
+.support-content > nav ul a{
+    width:90px;
+    border-bottom: 3px solid var(--color-primary);
+    border: 1px solid var(--color-white);
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 7px 0;
+    text-decoration: none;
+    color: var(--color-white);
+    background-color: var(--color-gray-222);
+}
+.support-content > nav ul li:first-child a{
+    background-color: var(--color-button);
+    border-left: 1px solid var(--color-button);
+    ;
+}
+.support-content > nav + p{
+    margin: 40px 0 20px;
+}
+.support-content > table{
+    width: 700px;
+    text-align: center;
+}
+.support-content > table th
+{
+    padding: 10px 0;
+}
+.support-content >table td
+{
+    padding: 14px 0;
+}
+.support-content > table thead th:first-child
+{
+    width: 12%;
+}
+.support-content > table thead th:nth-child(2),
+.support-content > table thead th:nth-child(4),
+.support-content > table thead th:nth-child(5)
+{
+    width: 16%;
+}
+.support-content > table thead th:nth-child(3)
+{
+    text-align: left;
+    text-indent: 8px;
+}
+
+/* 테이블 제목 세로 경계라인 */
+.support-content >table,
+.support-content >table th,
+.support-content >table td
+{
+    border-collapse: collapse;
+}
+
+.support-content > table thead th,
+.support-content > table thead th
+{
+    background-color: rgb(234,234,234);
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+    border-left: 1px solid rgb(234,234,234);
+    border-right: 1px solid rgb(234,234,234);
+}
+
+.support-content > table thead th
+{
+    background-color: rgb(234,234,234);
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+.support-content > table tbody td:nth-child(3) a{
+    text-decoration: none;
+    color: var(--color-primary)
+}
+.support-content > table tbody td:nth-child(3) a:hover{
+    text-decoration:underline;
+    font-weight: 700;
+}
+.support-content > table tbody tr:last-child td{
+    border-bottom: 1px solid silver ;
+}
+.support-content > table tfoot td{
+    padding: 20px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+
+
+
+
+/* support 게시판 연습 */
+/* .support nav{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 35.5px 0;
+    font-size: 12px;
+    font-weight:600;
+    border-bottom: 2px solid #898987;
+    height: 50px;
+}
+
+.support nav ul li{
+    display:inline-block;
+    text-align: center;
+    padding: 10px;
+    width: 90px;
+    background-color: #898989;
+}
+.support nav ul li:first-child{
+    background-color: var(--color-button);
+}
+
+.support-content div button{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding:5px 12px;
+    font-size: 12px;
+}
+
+.support nav ul li a{
+    color: inherit;
+    text-decoration: none;
+}
+.support nav ul{
+    width: 100%;
+}
+.support input, select, button{
+    border: 1px solid var(--color-gray-222);
+    padding: 5px;
+}
+.support p{
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+
+.support table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    line-height: 1.2;
+}
+.support table tr, th{
+    padding: 5px;  
+    border: none;
+}
+.support thead{
+    background-color: #f1f1f1;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666666;
+}
+.support thead th{
+    padding: 10px 0 8px 0px;
+    border-bottom: solid 1px #e1dfd5;
+    border-top: solid 1px #e1dfd5;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+.support tbody{
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #666;
+    vertical-align: calc();
+}
+.support tbody tr a{
+    color: inherit;
+    text-decoration: none;
+}
+.support tbody td{
+    padding: 23px 0px 13px 0px;
+    text-align: center;
+    border:none
+} */
+
+
+
+/* table 연습 end */
+
+
