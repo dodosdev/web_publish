@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
+    <script src="/cgv/js/cgvForm.js"></script>
     <title>CGV</title>
 </head>
 <body>
@@ -25,45 +26,75 @@
                 <ul>
                     <li><!--아이디 입력-->
                         <label for="아이디" class="join-title-font"><b>아이디</b></label>
-                        <span>사용할 수 없는 아이디입니다</span>
+                        <span id="error-msg-id">사용할 수 없는 아이디입니다</span>
                         <div>
-                            <input type="text" name="id" placeholder="아이디 입력(6~20자)">
-                            <button>중복확인</button>
+                            <input type="text"
+                            name="id" 
+                            id="id"
+                            oninput="handleChangeJoin(event)"
+                            placeholder="아이디 입력(6~20자)">
+                            <button type="button" onclick="idCheck()">중복확인</button>
                         </div>
                     </li>
                     <li><!--비밀번호 입력-->
                         <label for=""><b>비밀번호</b></label>  
-                        <span>12자 이내의 비밀번호를 입력해주세요</span>
+                        <span id="error-msg-pwd">12자 이내의 비밀번호를 입력해주세요</span>
                         <div>
-                            <input type="password" name="pwd" placeholder="비밀번호 입력(6~12자)">
+                            <input type="password"
+                            name="pwd"
+                            id="pwd"
+                            oninput="handleChangeJoin(event)" 
+                            placeholder="비밀번호 입력(6~12자)">
                         </div>                      
                     </li>
                     <li><!--비밀번호 재입력-->
                         <label for="">비밀번호 확인</label>    
-                        <span>비밀번호가 일치하지 않습니다</span>
+                        <span id="error-msg-cpwd">비밀번호가 일치하지 않습니다</span>
                         <div>
-                            <input type="password" name="cpwd" placeholder="비밀번호 재입력">
+                            <input type="password"
+                            name="cpwd"
+                            id="cpwd"
+                            oninput="handleChangeJoin(event)" 
+                            placeholder="비밀번호 재입력">
                         </div>                    
                     </li>
                     <li>
                         <label for=""><b>이름</b></label>
+                        <span id="error-msg-name">이름을 입력해주세요</span>
                         <div>
-                            <input type="text" name="name" placeholder="이름을 입력해주세요">
+                            <input type="text"
+                            name="name"
+                            id="name"
+                            oninput="handleChangeJoin(event)" 
+                            placeholder="이름을 입력해주세요">
+                            <!--(even)입력한값을보낸다-->
                         </div>
                     </li>
                     <li>
                         <label for=""><b>전화번호</b></label>
+                        <span id="error-msg-phone">전화번호를 입력해주세요</span>
                         <div>
-                            <input type="text" name="phone" placeholder="">
+                            <input type="text"
+                            name="phone" 
+                            id="phone"
+                            oninput="handleChangeJoin(event)" 
+                            placeholder="전화번호를 입력해주세요">
                         </div>
                     </li>
                     <!-- 이메일주소 입력선택 select -->
                     <li>
                         <label for=""><b>이메일 주소</b></label>
+                        <span id="error-msg-emailname">이메일 주소를 입력해주세요</span>
                         <div>
-                            <input type="text" name="emailname" placeholder="이메일 주소">
+                            <input type="text" 
+                            name="emailname"
+                            id="emailname" 
+                            oninput="handleChangeJoin(event)" 
+                            placeholder="이메일 주소">
                             <span>@</span>
-                            <select name="emaildomain">
+                            <select name="emaildomain"
+                                    id="emaildomain"
+                                    oninput="handleChangeJoin(event)" >
                                 <option value="default">선택</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>
@@ -72,8 +103,8 @@
                         </div>
                     </li>
                     <li>
-                        <button>가입하기</button>
-                        <button>가입취소</button>
+                        <button type="button" onclick="joinFormCheck()">가입하기</button>
+                        <button type="reset">가입취소</button>
                     </li>
                 </ul>
             </form>
