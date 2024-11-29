@@ -33,7 +33,9 @@
                             id="id"
                             oninput="handleChangeJoin(event)"
                             placeholder="아이디 입력(6~20자)">
-                            <button type="button" onclick="idCheck()">중복확인</button>
+                            <button type="button" onclick="idCheck(event)">중복확인</button>
+                            <input type="hidden" id="idCheckResult" value="default">  
+                            <!--type="hidden"<--화면에만안보임  type="text"<-- 입력할수있는폼이생김-->
                         </div>
                     </li>
                     <li><!--비밀번호 입력-->
@@ -44,7 +46,8 @@
                             name="pwd"
                             id="pwd"
                             oninput="handleChangeJoin(event)" 
-                            placeholder="비밀번호 입력(6~12자)">
+                            placeholder="비밀번호 입력(6~12자)"
+                            minlength="4" maxlength="12">
                         </div>                      
                     </li>
                     <li><!--비밀번호 재입력-->
@@ -55,7 +58,9 @@
                             name="cpwd"
                             id="cpwd"
                             oninput="handleChangeJoin(event)" 
-                            placeholder="비밀번호 재입력">
+                            onblur="passwordCheck()"
+                            placeholder="비밀번호 재입력"
+                            minlength="4" maxlength="12">
                         </div>                    
                     </li>
                     <li>

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
+    <script src="/cgv/js/cgv_support.js"></script> 
+    <script src="/cgv/js/cgvForm.js"></script> 
+    <!--type="module" 함수바로호출-->
     <title>CGV</title>
 </head>
 <body>
@@ -22,15 +25,19 @@
                         <option value="title">제목</option>
                         <option value="content">내용</option>
                     </select>
-                    <input type="text">
-                    <button>검색하기</button>
+                    <input type="text"
+                    name="notice"
+                    id="notice"
+                    oninput="handleChangeNotice(event)" 
+                    placeholder="검색어를 입력해주세요">
+                    <button type="button" onclick="noticeFormCheck()">검색하기</button>
                 </div>
 
                 <!-- 탭메뉴 -->
                 <nav>
                     <ul>
-                        <li><a href="#">전체</a></li>
-                        <li><a href="#">시스템점검</a></li>
+                        <li><a href="#" onclick="onChangNoticeList('total')">전체</a></li>
+                        <li><a href="#" onclick="onChangNoticeList('system')">시스템점검</a></li>
                         <li><a href="#">극장</a></li>
                         <li><a href="#">행사/이벤트</a></li>
                         <li><a href="#">제휴이벤트</a></li>
@@ -39,9 +46,10 @@
                 </nav>
                 <p>총 114건이 검색되었습니다.</p>
                 <!-- 테이블 목록 -->
-                <table>
-                    <!-- 테이블 제목 -->
-                    <thead>
+                <table> 
+
+                <!--<thead>
+
                         <tr>
                             <th>번호</th>
                             <th>구분</th>
@@ -50,7 +58,7 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
-                    <!-- 테이블 tbody 리스트 -->
+
                     <tbody>
                         <tr>
                             <td>114</td>
@@ -132,13 +140,14 @@
                             <td>118691</td>
                         </tr>
                     </tbody>
-                    <!-- table footer -->   
+
                     <tfoot>
                         <tr>
                             <td colspan="5">1 2 3 4 >></td>
                         </tr>
-                    </tfoot>
+                    </tfoot> -->
                 </table>
+                
             </div>
         </div>
     </div>
