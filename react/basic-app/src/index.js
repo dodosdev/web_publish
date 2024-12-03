@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App2 from './App2.jsx';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App2 />
+    <App /> 
   </React.StrictMode>
 );
 
@@ -17,5 +17,3 @@ root.render(
 reportWebVitals();
 
 
-// React DOM 설명
-// https://ko.legacy.reactjs.org/docs/rendering-elements.html
