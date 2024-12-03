@@ -1,5 +1,6 @@
 import './App.css';
 import AppMenu from './components/AppMenu.jsx'
+// import AppMenu from './components/AppMenu.jsx'
 // import Avatar from './components/Avatar.jsx';
 // import AvatarImage from './components/AvatarImage.jsx';
 // import AvatarImageList from './components/AvatarImageList.jsx';
@@ -8,9 +9,12 @@ import AppMenu from './components/AppMenu.jsx'
 export default function App() {
 
   return (
-    <div className='"App'>
+    <div className="App">
       <AppMenu />
+
+      {/* <AppButton /> */}
     </div>
+    
   );
   // const imgList = [
   //   {"img": "/images/people1.webp"},

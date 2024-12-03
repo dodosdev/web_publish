@@ -6,7 +6,6 @@ export default function AvatarImageList({list}) {
         <ul>
             {list.map((item) => <li><AvatarImage img={item.img} /></li> ) } 
             
-
         </ul>
     );
 }
