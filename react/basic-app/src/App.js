@@ -1,5 +1,8 @@
 import './App.css';
-import AppMenu from './components/AppMenu.jsx'
+// import AppButton from './components/AppButton.jsx'
+import AppDwitter from './components/dwitter/AppDwitter.jsx';
+
+
 // import AppMenu from './components/AppMenu.jsx'
 // import Avatar from './components/Avatar.jsx';
 // import AvatarImage from './components/AvatarImage.jsx';
@@ -10,9 +13,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <AppMenu />
+      {/* <AppMenu /> */}
 
-      {/* <AppButton /> */}
+      <AppDwitter />
     </div>
     
   );
