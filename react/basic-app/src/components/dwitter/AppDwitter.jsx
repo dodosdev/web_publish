@@ -7,8 +7,11 @@ import {useEffect, useState} from 'react';
 
 
 export default function AppDwitter() {
-    const [dwitters, setDwitters]= useState([]);
+    const [dwitters, setDwitters] = useState([]);
+
+    
     //[관리할변수이름, 변수에 넣는 함수명]
+    // let dwitters = [];
 
 
 
@@ -16,12 +19,13 @@ export default function AppDwitter() {
     // react hooks -- useEffect();
     // useEffect(callback함수, dependencies) : 맨 처음에 실행되는 함수
 
-    useEffect(() => {
+    useEffect(() => {  //맨처음 한번만 호출하도록 상태 관리
         fetch("/data/dwitters.json")  //network을 통해 접속(외부시스템) fetch-비동기
-            .then((result) => result.json())
-            .then((jsonData) => setDwitters(jsonData))
-            .catch(error => console.log(error));
+        .then((result) => result.json())
+        .then((jsonData) => setDwitters(jsonData))
+        .catch(error => console.log(error));
     }, []);
+    
 
     console.log(`dwitters --> ${dwitters}`);
         
