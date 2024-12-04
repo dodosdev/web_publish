@@ -71,3 +71,11 @@ https://ko.react.dev/
   7.터미널 프로그램 다운 및 설치
   1) 윈도우 : cmder
   2) mac : iterm2
+
+
+
+/* React learn
+https://ko.react.dev/learn
+*/
+
+  
