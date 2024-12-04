@@ -2,14 +2,14 @@ import './App.css';
 // import AppDwitter from './components/dwitter/AppDwitter.jsx';
 // import AppAvatar from './AppAvatar.js';
 // import AppButton from './components/AppButton.jsx'
-import AppBoxOffice from './components/kobis/AppBoxOffice.jsx'
-
-
 // import AppMenu from './components/AppMenu.jsx'
 // import Avatar from './components/Avatar.jsx';
 // import AvatarImage from './components/AvatarImage.jsx';
 // import AvatarImageList from './components/AvatarImageList.jsx';
 // import AvatarList from './components/AvatarList.jsx';
+import AppBoxOffice from './components/kobis/AppBoxOffice.jsx'
+
+
 
 export default function App() {
 
@@ -19,6 +19,10 @@ export default function App() {
     </div>
     
   );
+
+
+
+
   // const imgList = [
   //   {"img": "/images/people1.webp"},
   //   {"img": "/images/people2.webp"},
