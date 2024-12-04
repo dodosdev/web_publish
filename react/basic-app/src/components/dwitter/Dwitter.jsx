@@ -1,21 +1,19 @@
-import './Dwitter.css';
+// import './Dwitter.css';
 
 
 
-export default function Dwitter() {
+export default function Dwitter(props) {  //구조분해할당
     return (
         <div className="dwitter">
             <div className="dwitter-image">
-                <img src="/images/people1.webp" alt="image" />
+                <img src={props.img} alt="image" />
             </div>
             <div className="title">
-                <span>Smith</span>
-                <span>@smith</span>
-                <span>2024-12-01</span>
+                <span>{props.name}</span>
+                <span>{props.id}</span>
+                <span>{props.date}</span>
             </div>
-            <div className="content">
-                감기 조심하세요~
-            </div>
+            <div className="content">{props.content}</div>
         </div>
     );
 }

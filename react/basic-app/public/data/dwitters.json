@@ -1,0 +1,32 @@
+
+    [
+            {
+                "img": "/images/people1.webp",
+                "name" : "Smith Kim",
+                "id" :"@smith",
+                "date" :"2024.12.04",
+                "content" : "겨울입니다. 감기조심하세요~"
+            },
+            {
+                "img": "/images/people2.webp",
+                "name" : "James Kim",
+                "id" :"@james",
+                "date" :"2024.12.04",
+                "content" : "겨울입니다. 감기조심하세요~"
+            },
+            {
+                "img": "/images/people3.webp",
+                "name" : "Kelly ",
+                "id" :"@kelly",
+                "date" :"2024.12.04",
+                "content" : "겨울입니다. 감기조심하세요~"
+            },
+            {
+                "img": "/images/people2.webp",
+                "name" : "James ",
+                "id" :"@james",
+                "date" :"2024.11.01",
+                "content" : "겨울입니다. 감기조심하세요~"
+            }
+
+    ]
