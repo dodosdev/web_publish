@@ -359,7 +359,6 @@ div .footer-intro > ul{
 }
 .content-moviechart-list ul li img{
     width: 170px;
-    height: 250px;
     border-radius: 10px;
 }
 .content-moviechart-list ul li h5{
@@ -811,7 +810,7 @@ section img{
 .join-form ul li label + span{
     font-size: 0.7em;
     font-weight: 300;
-    color: gray;
+    color: tomato;
 }
 
 .join-form ul li:first-child input:focus{
