@@ -1,0 +1,126 @@
+{
+    "specialList" :[
+        { "text1": "SUITE CINEMA", "text2":"CINE & LIVINGROOM"},
+        { "text1": "SUITE CINEMA", "text2":"CINE & LIVINGROOM"},
+        { "text1": "SUITE CINEMA", "text2":"CINE & LIVINGROOM"},
+        { "text1": "SUITE CINEMA", "text2":"CINE & LIVINGROOM"}
+    ],
+
+
+
+    "packageList" : [
+        {   "title": "패키지",
+            "list": [
+                {
+                    "src":"/images/package.jpg",
+                    "alt":"Packag Image",
+                    "text":"우리패키지",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/package.jpg",
+                    "alt":"Packag Image",
+                    "text":"우리패키지",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/package.jpg",
+                    "alt":"Packag Image",
+                    "text":"우리패키지",
+                    "price":"62000"
+
+                }
+            ]
+            
+        },
+        {   "title": "영화관람권",
+            "list": [
+                {
+                    "src":"/images/ticket1.jpg",
+                    "alt":"Packag Image",
+                    "text":"영화관람권",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/ticket2.jpg",
+                    "alt":"Packag Image",
+                    "text":"영화관람권",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/ticket3.jpg",
+                    "alt":"Packag Image",
+                    "text":"영화관람권",
+                    "price":"62000"
+
+                }
+            ]
+        },
+        {   "title": "기프트카드",
+            "list": [
+                {
+                    "src":"/images/giftcard1.jpg",
+                    "alt":"Packag Image",
+                    "text":"기프트카드",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/giftcard2.jpg",
+                    "alt":"Packag Image",
+                    "text":"기프트카드",
+                    "price":"62000"
+
+                },
+                {
+                    "src":"/images/giftcard3.jpg",
+                    "alt":"Packag Image",
+                    "text":"기프트카드",
+                    "price":"62000"
+
+                }
+            ]
+        }
+    ],
+
+    "eventList": [
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        },
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        },
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        }
+    ],
+
+    "setList" : [
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        },
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        },
+        {
+            "src": "/images/event2.jpg",
+            "title": "[CGV] 10월 컬처위크",
+            "date":"2024.09.25~2024.10.31"
+        }
+    ]
+
+}

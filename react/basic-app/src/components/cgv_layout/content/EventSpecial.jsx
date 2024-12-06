@@ -3,7 +3,9 @@ import Special from "./Special.jsx";
 
 export default function EventSpecial() {
     return (
-        <div class="content-even-special">
+        <div className="content-even-special">
+            <Event />
+            <Special />
         
         </div>
     );
