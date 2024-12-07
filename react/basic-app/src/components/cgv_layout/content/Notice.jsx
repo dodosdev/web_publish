@@ -1,6 +1,6 @@
 export default function Notice() {
     return(
-        
+        <div class="content-even-special">
         <section className="notice-content-list">
             <div className="notice-content-border">
                 <div>
@@ -40,6 +40,6 @@ export default function Notice() {
             </div>
             
         </section>
-
+        </div>
     );
 }

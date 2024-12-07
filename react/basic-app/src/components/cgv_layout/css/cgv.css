@@ -255,6 +255,7 @@ div .footer-intro > ul{
     width: 1000px;
     display: block;
     margin: 0 auto;
+    margin-top: 43px;
 }
 .content-moviechart{
     background-color: aliceblue;

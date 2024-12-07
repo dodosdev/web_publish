@@ -1,13 +1,12 @@
-import PackgeContent from "./PackgeContent.jsx";
 import { useEffect, useState } from "react";
-
+import PackageContent from './PackgeContent.jsx';
 
 export default function Package() {
     const [plist, setPlist] = useState([]);
     
     useEffect(() =>{
-        fetch("/date/cgv_content.json")
-        .then(date => date.json())
+        fetch("/data/cgv_content.json")
+        .then(data => data.json())
         .then(jsonData => setPlist(jsonData.packageList))
         .catch(error => console.log(error));     
         
@@ -17,12 +16,9 @@ export default function Package() {
 
     return(
             <div className="content-even-special">
-
                 <section className="package-content-list">
-                    {plist.map(object=>
-                    <PackgeContent 
-                        title={object.title}
-                        list={object.list}  /> 
+                    {plist && plist.map((item) => // && - 들어오는 데이터(plist)가 True일 경우
+                        <PackageContent title={item.title} list={item.list}></PackageContent>
                     )}
                 </section>
             </div>
