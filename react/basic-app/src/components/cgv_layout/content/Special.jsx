@@ -3,6 +3,7 @@ import SpecialItem from "./SpecialItem.jsx";
 
 export default function Special(){
     const [list, setList] = useState([]);
+    //set 상태값을 변경하는 함수
     //useState리액트가 관리하고 const[list, setList]list함수명
     //setList함수명앞에 set를붙이고대문자로시작함 setList로데이터를 넣고빼는기능을함.
     
@@ -14,6 +15,8 @@ export default function Special(){
         .catch(error => console.log(error));
         
         }, []);
+        //데이터가져오는건 }, []); 빈배열은 마운트 될때마다1번만 실행
+        // )); 렌더링될때마다 실행
         console.log(list);
         
     return(
