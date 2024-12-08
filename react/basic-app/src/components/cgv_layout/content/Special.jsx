@@ -6,6 +6,7 @@ export default function Special(){
     //useState리액트가 관리하고 const[list, setList]list함수명
     //setList함수명앞에 set를붙이고대문자로시작함 setList로데이터를 넣고빼는기능을함.
     
+    //dependency형태에따라 유즈이펙트안의 코드 실행 여부가 달라진다
     useEffect(()=>{
         fetch("/data/cgv_content.json")
         .then(data => data.json())
