@@ -31,7 +31,8 @@ export default function Special(){
                     <img src="/images/special1.png" alt="Special Image" width="500px" />
                     <ul>
                         {list && list.map(item => 
-                        //list && list.map비어있을때안들어감
+                        //list && list.map 리스트가 && AND
+                        //있으면 불러오기
                             <li>
                                 <SpecialItem
                                 text1={item.text1}
