@@ -41,6 +41,12 @@ export default function Special(){
                         )}
                     </ul>
                 </div>
+                const A = 1
+                const B = 3
+
+                const result = (A==2) && (B==3)
+
+
             </div>
         </section>
     );
