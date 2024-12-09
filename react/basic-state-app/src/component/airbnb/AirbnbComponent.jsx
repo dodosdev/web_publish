@@ -2,7 +2,12 @@
 export default function AirbnbComponent(props) {
     return (  //JSX
         <div className="container">
-            <img src= {props.img} />
+            <div className="img">
+                <img src= {props.img} />  
+                {props.isGood && <span className="isGood">게스트 선호</span>}
+                <span className="isheart" 
+                    style={{color:props.color}}>♥</span>
+            </div>
             <div className="description">
                 <p className="d1">{props.d1}</p>
                 <p className="d2">{props.d2}</p>

@@ -1,6 +1,6 @@
 .container {
-    width: 300px;
-    border: 1px solid gray;
+    width: 260px;
+    /* border: 1px solid gray; */
     padding: 10px;
 }
 .container img {
@@ -26,7 +26,41 @@
 
 ul{
     display: flex;
-    justify-content: space-between;
-    gap: 5;
-    
+    list-style-type: none;
 }
+
+div.img{
+    position: relative;
+}
+
+div.img span {
+    position: absolute;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 6px;
+}
+.isGood {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    color: gray;
+
+}
+.isheart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* background-color: #fff; */
+    margin: 5px 10px;
+    padding: 5px 10px;
+    /* border-radius: 6px; */
+    font-size: 1.5rem;
+    color: coral;
+
+}
+
