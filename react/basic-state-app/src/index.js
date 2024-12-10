@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppAirbnb from './component/airbnb/AppAirbnb.jsx';
-// import reportWebVitals from './reportWebVitals';
+// import AppAvatar from './component/avatar/AppAvatar.jsx';
+// import AppCounter from './component/counter/AppCounter.jsx'
+// import AppCounter from './component/counter/AppCounter.jsx';
+import AppBestSeller from './component/yes24/AppBestSeller.jsx';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppAirbnb />
+    <AppBestSeller />
   </React.StrictMode>
 );
 
