@@ -32,3 +32,6 @@ export default function BestBookButton({qtyChange}) {
             </ul>
     );
 }
+
+//<button type="button" onClick={()=> {handleClick('-')}}>-</button>
+//자식에서 onClick버튼을 눌러 호출을하면 부모에게 호출이됨

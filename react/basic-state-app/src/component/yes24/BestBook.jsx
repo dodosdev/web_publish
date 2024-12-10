@@ -9,8 +9,10 @@ export default function BestBook() {
         {"img": "https://image.yes24.com/goods/103495056/L"},
     ];
 
-    const handleChangeQty = (qty) => {
-        setTotalQty(totalQty + qty);
+    const handleChangeQty = (qty) => { 
+        //(카트에넣기)수량클릭을하면자식에받은호출을부모가받음
+        setTotalQty(totalQty + qty); 
+        //카트에담은수와버튼눌러담은책의수량과합산해서숫자가올라감
     }
 
 
