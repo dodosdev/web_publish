@@ -19,8 +19,17 @@ header ul {
     margin-right:20px;
 }
 
+header ul li{
+    margin-right: 10px;
+}
+
+
+
 
 /**********************************/
+
+
+
 body{
     width: 1000px;
     margin: auto;
@@ -31,7 +40,7 @@ body{
     display: flex;
     gap: 40px;
     list-style-type: none;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 
 
