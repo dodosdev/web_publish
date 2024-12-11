@@ -5,16 +5,16 @@ export default function AppAvatar() {
 
     const list = [
         {
-            "img": "/images/prople1.webp",
+            "img": "/images/people1.webp",
             "name": "Smith",
             "isNew" : true
         },
         {
-            "img": "/images/prople2.webp",
+            "img": "/images/people2.webp",
             "name": "James"
         },
         {
-            "img": "/images/prople3.webp",
+            "img": "/images/people3.webp",
             "name": "Kelly"
         },
 

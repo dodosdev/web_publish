@@ -4,6 +4,7 @@ import './index.css';
 import AppOlive from './component/olive/AppOlive.jsx';
 // import AppAvatar from './component/avatar/AppAvatar.jsx';
 // import AppCounter from './component/counter/AppCounter.jsx'
+// import AppAirbnb from './component/airbnb/AppAirbnb.jsx'
 // import AppCounter from './component/counter/AppCounter.jsx';
 // import AppBestSeller from './component/yes24/AppBestSeller.jsx';
 
@@ -12,6 +13,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AppOlive />
+    {/* <AppAvatar /> */}
+    {/* <AppAirbnb /> */}
   </React.StrictMode>
 );
 
