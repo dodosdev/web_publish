@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product.jsx';
 
-export default function ProductList() {
+export default function ProductList({cart}) {  
+    //cart <--handleCartApp
     const [productList, setProductList] = useState([]);
     
     //useEffect(()=>{},[]);
@@ -13,7 +14,14 @@ export default function ProductList() {
         
     }, []);
 
-    console.log(`productList --> ${productList}`);
+    const totalCart = (id) => {
+        // alert(`producList- ${id} ::: 카트클릭!!`); //id값으로 상품 구분
+        cart(id); //AppOlive의 HandleCartApp 함수호출
+    }
+
+    
+
+    // console.log(`productList --> ${productList}`);
     
 
 
@@ -78,6 +86,8 @@ export default function ProductList() {
         <ul className='product-list-container'>
             {productList && productList.map(item =>  //productList && (null일때 넣음)
             <li><Product 
+                totalCart = {totalCart}
+                id={item.id}
                 img = {item.img} 
                 title = {item.title}
                 description ={item.description}  
@@ -93,4 +103,9 @@ export default function ProductList() {
         </ul>
     );
 }
+
+
+
+
+// "id": "p_0003", data.json 에서 제품을 구분할수있는 id사용(중복되면 안됨)
 

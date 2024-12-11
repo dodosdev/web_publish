@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Menu from './Menu.jsx';
 
-export default function MenuList() {
+
+export default function MenuList({id, count}) {
+    const [cartCount, setCartCount] = useState(0);
+
+
     const menuList = [
         {"name": "회원가입"},
         {"name": "로그인"},
@@ -15,7 +19,12 @@ export default function MenuList() {
     return (
             <ul>
                 {menuList.map( item =>
-                    <li><Menu name={item.name} /></li>
+                    <li>
+                        <Menu name={item.name}
+                                count={count} />
+                        {/* {(item.name === '장바구니') ? <span>{cartCount}</span> : ''} */}
+
+                    </li>
                 )}
             </ul>
     );

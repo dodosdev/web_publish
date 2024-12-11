@@ -3,6 +3,8 @@ header {
     border-bottom: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
+    margin: 10px 0;
+    padding: 20px 0;
 }
 
 header img {
@@ -21,6 +23,7 @@ header ul {
 /**********************************/
 body{
     width: 1000px;
+    margin: auto;
 
 }
 
@@ -50,32 +53,44 @@ body{
 }
 .product-container .price{
     text-align: center;
+    margin: 10px 0;
+}
+.product-container .price span{
+    margin-left: 20px;
 }
 .product-container .sprice{
     font-size: 13pt;
     font-weight: bold;
-    color: tomato;
+    color: #e02020;
 }
 .product-container .tags{
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50% ;
 }
 .product-container .tags span{
     /* background-color: aquamarine; */
     font-size: 9pt;
     padding: 3px 5px;
     margin:5px;
-    border-radius: 10%;
+    border-radius: 9px;
     color: white
 }
 
 .product-container .t1{
-    background-color: tomato;
+    background-color: #f65c60;
 }
 
 .product-container .t2{
-    background-color: pink;
+    background-color: #9bce26;;
 }
 .product-container .t3{
-    background-color: aquamarine;
+    background-color: #f374b7;
+}
+
+.cart{
+    color: gray;
+    font-size:20px;
+}
+.cart:hover{
+    color: tomato;
 }
