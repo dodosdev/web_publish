@@ -15,6 +15,7 @@ export default function Product(props) {  // <li><Product><li>에 있는리스�
 
 
 
+console.log(props);
 
 
     return (
