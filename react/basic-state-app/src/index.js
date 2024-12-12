@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppOlive from './component/olive/AppOlive.jsx';
+import AppAladin from './component/aladin/AppAladin.jsx';
 // import AppAvatar from './component/avatar/AppAvatar.jsx';
 // import AppCounter2 from './component/counter2/AppCounter2.jsx'
 // import AppAirbnb from './component/airbnb/AppAirbnb.jsx'
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     {/* <AppCounter2 /> */}
     {/* <AppAvatar /> */}
-    <AppOlive />
+    <AppAladin />
   </React.StrictMode>
 );
 

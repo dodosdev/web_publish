@@ -7,7 +7,7 @@ export default function AppCounter2() {
     const handleTotal = (type) => {  //(type)에 +(증가)가 저장됨..//heap에 저장  
         type === '+' ? setTotal(total+1) : setTotal(total-1);
     }
-                //자식에서 click이된것을 handleTotal로 부모에알려줌
+                //자식에서 click이된것을 handleTotal로 부모에게알려줌
     return (
         <div>
             <Counter2 total={total} click={handleTotal} /> 
