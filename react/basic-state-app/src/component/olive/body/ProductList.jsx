@@ -43,7 +43,8 @@ export default function ProductList({cart}) {
                     return item;   //해당하는 item만 실행
                 }else if(type === 'coupon' && item.isCoupon){ //순회하면서체크
                     return item; 
-                }else if(type === 'today' && item.isToday) {
+                }else if(type === 'today' && item.isToday) { 
+                    
                     return item; 
                 }
                 
