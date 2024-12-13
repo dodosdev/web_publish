@@ -52,13 +52,7 @@ div.img span {
 
 }
 .isheart {
-    position: absolute;
-    top: 0;
-    right: 0;
-    /* background-color: #fff; */
     margin: 5px 10px;
-    padding: 5px 10px;
-    /* border-radius: 6px; */
     font-size: 1.5rem;
     color: coral;
 
