@@ -1,0 +1,75 @@
+*{  /* 우선순위 가장 아래단계 '*'*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    /* color list  컬러 지정해서 사용 var(--)입력후 컬러 선택*/
+    --color-primary:rgb(77, 77, 77);
+    --color-block:#050a13;
+    --color-white:#fff;
+    --color-border:tomato;
+    --color-silver: rgb(235, 235, 235);
+    --color-footer-bg: rgb(248, 248, 248);
+    --color-font-primary:rgb(34,34,34);
+    --color-gray-222:rgb(180, 180, 180);   
+    --color-font-primary:(34,34,34);
+    --color-button:rgb(251, 67, 67);   
+    --color-login-font:rgb(137, 137, 137);
+    --color-footer-line:rgb(235, 235,235);
+    --color-footer-table-line: rgb(234, 234, 234);
+
+}
+
+
+/* index-total */
+.total-view-button{
+    padding: 4px 10px;
+    font-size: 13px;
+    color: #222;
+    line-height: 1.429em;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+}
+
+
+/* 컨텐츠 가운데 정렬  */
+.center-layout{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.center-title{
+    padding: 40px 15px 10px;
+}
+
+
+
+/* Moviechart, event,special => title style*/
+.content-title-style{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+
+/* 무비차트/상영예정작 타이틀 */
+.content-title-style-font{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.font-color-main{color:var(--color-font-primary);}
+.font-color-gray{color:var(--color-gray-222)}
+/* .special-event-list {padding: 0 20px;} */
+.btn-main-color{
+    border: 1px double var(--color-white);
+    background-color:var(--color-button);
+    color:var(--color-white);
+    font-weight: 700;
+}
+
+.login-form p{
+    font-size: 13px;
+}
+
