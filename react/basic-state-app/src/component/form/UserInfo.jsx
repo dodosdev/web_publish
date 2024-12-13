@@ -14,7 +14,7 @@ export default function UserInfo() {
 
     return (
         <div>
-            <h1>UserInfo</h1>
+            <h1>User Info</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     <li>
