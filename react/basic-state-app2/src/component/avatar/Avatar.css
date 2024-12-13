@@ -1,0 +1,23 @@
+.container{
+    width: 220px;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    border: 1px solid lightblue;
+    position: relative;
+}
+.container img{
+    width: 200px;
+    border-radius: 100%;
+}
+
+.new{
+    position: absolute;
+    top: 30px;
+    left: 190px;
+    background-color: aquamarine;
+    padding: 5px 10px;
+
+}
