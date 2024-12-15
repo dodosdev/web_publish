@@ -35,3 +35,6 @@ export default function BestBookButton({qtyChange}) {
 
 //<button type="button" onClick={()=> {handleClick('-')}}>-</button>
 //자식에서 onClick버튼을 눌러 호출을하면 부모에게 호출이됨
+
+
+//async function => async를 함수 앞에 쓰면 코드블럭이 자동으로 promise로 바뀜
