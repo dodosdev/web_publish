@@ -50,7 +50,7 @@ export default function Login2() {
             'idRegf' : idRef,
             'passRef': passRef,
             'errorMsg':errorMsg,
-            'setErrorMsg': 
+            'setErrorMsg': setErrorMsg
         };
 
 
