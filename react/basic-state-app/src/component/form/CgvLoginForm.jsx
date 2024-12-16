@@ -29,7 +29,7 @@ export default function CgvLoginForm() {
         } else if(name === 'pwd') {
             (value === '') ?
             setErrors({...errors, ['pwd']:'패스워드를 입력해주세요'})
-            : setErrors({...errors, ['pwd']: ''})
+            : setErrors({...errors, ['pwd']: ''});
         };
 
         
@@ -81,7 +81,6 @@ export default function CgvLoginForm() {
                             name="pwd"  
                             id="pwd" 
                             ref={refs.pwdRef}
-                            // oninput="handleChange(event)"
                             onChange={handleChangForm}
                             placeholder="비밀번호를 입력해주세요" />                        
                         </div>

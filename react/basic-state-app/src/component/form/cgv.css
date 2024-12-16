@@ -857,6 +857,11 @@ section img{
     text-align: center;
 }
 
+.join-form ul li label + span {
+    color: tomato;
+    padding-left: 10px;
+}
+
 
 
 
