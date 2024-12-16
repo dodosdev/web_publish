@@ -17,7 +17,7 @@
             // alert("패스워드를 입력해주세요");
             param.setErrors({...param.errors, ['pwd']: '패스워드를 입력해주세요'});
             param.refs.pwdRef.current.focus();
-            result = false;
+            result = false; //입력을 안했을시 focus입력을유도하도록커서가 입력창으로감
         }
         return result;
     }
