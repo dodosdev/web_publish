@@ -1,38 +1,53 @@
 import React, { useState, useRef } from 'react';
+import { validationFormCheck } from '../../apis/validate';
 import './commons.css';
 import './cgv.css';
 
 
 export default function CgvLoginForm() {
-    const idRef = useRef(null);
-    const pwdRef = useRef(null);
+    // const idRef = useRef(null);
+    // const pwdRef = useRef(null);
+
+    const refs = {
+        idRef:useRef(null),  //refs.idRef
+        pwdRef: useRef(null)
+    };
 
     const initFormData = {'id': '', 'pwd': ''};
     const [formData, setFormData] = useState(initFormData); 
+     //아이디 패스워드 입력폼에 빈값일경우 에러메세지
+    const [errors, setErrors] = useState({'id':'', 'pwd':''}); 
+
+
     const handleChangForm = (event) => {
         const {name, value} = event.target;
         setFormData({...formData, [name]:value});
+        if(name === 'id') {
+            (value === '') ?
+            setErrors({...errors, ['id']:'아이디를 입력해주세요'})
+            : setErrors({...errors, ['id']: ''});
+        } else if(name === 'pwd') {
+            (value === '') ?
+            setErrors({...errors, ['pwd']:'패스워드를 입력해주세요'})
+            : setErrors({...errors, ['pwd']: ''});
+        };
+
+        
     }
 
-    const validationFormCheck = () => {
-        let result = true;
-
-        if(idRef.current.value === '') {
-            alert("아이디를 입력해주세요");
-            idRef.current.focus();
-            result = false;
-        }else if(pwdRef.current.value === '') {
-            alert("패스워드를 입력해주세요");
-            pwdRef.current.focus();
-            result = false;
-        }
-        return result;
-    }
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(validationFormCheck()) console.log(formData);
+        const param = {
+            // 'idRef':idRef,
+            // 'pwdRef':pwdRef,
+            'refs': refs,
+            'errors': errors,
+            'setErrors':setErrors
+        };
+        if(validationFormCheck(param))
+            console.log(formData);
         
     }
 
@@ -51,12 +66,13 @@ export default function CgvLoginForm() {
                             <input type="text" 
                                     name="id" 
                                     id="id" 
-                                    ref={idRef}
+                                    ref={refs.idRef}
                                     // oninput="handleChange(event)"
                                     onChange={handleChangForm}
-                                    placeholder="아이디를 입력해주세요" />
+                                    placeholder="아이디를 입력해주세요" 
+                                    />
                         </div>
-                        <p id="error-msg-id"></p>
+                        <p id="error-msg-id" style={{'color':'red'}}>{errors.id}</p>
                     </li>
                     <li>       
                         <div className="login-form-input">
@@ -64,12 +80,11 @@ export default function CgvLoginForm() {
                             <input type="password" 
                             name="pwd"  
                             id="pwd" 
-                            ref={pwdRef}
-                            // oninput="handleChange(event)"
+                            ref={refs.pwdRef}
                             onChange={handleChangForm}
                             placeholder="비밀번호를 입력해주세요" />                        
                         </div>
-                        <p id="error-msg-pwd"></p>
+                        <p id="error-msg-pwd" style={{'color':'red'}}>{errors.pwd}</p>
                     </li>
                     <li>
                         

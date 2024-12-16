@@ -26,6 +26,7 @@ export default function AppAirbnb(){
                             d3={item.d3}
                             d4={item.d4}
                             isGood={item.isGood} //json -"isGood" : true <--true일때만 손호마크남옴
+                            isheart={item.isheart}
                             color={item.color}
                             />
                 </li>
