@@ -1,7 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { validateFormSignup2 } from '../../apis/validate.js';
+import { initFormNames } from '../../apis/initial.js';
 
 export default function Signup2() {
+    //배열 + reduce() 함수
+
+    const initArray = [
+        'id', 'pass', 'name', 'phone1', 'phone2','phone3', 'address', 'birth1', 'birth2', 'birth3', 'job', 'gender', 'email', 'intro' 
+        //formData가 관리
+    ];
+
+    // const refArray = ['idRef','passRef','nameRef','phone1Ref'];
+
+    // const init = initArray.reduce((acc, key)=>{
+    //     acc[key] = '';
+    //     return acc;
+    // }, {});
+    //
+
+
     const refs = {
         idRef:useRef(null),  //useRef로 객체의 주소값을가져옴
         passRef:useRef(null),
@@ -18,31 +35,30 @@ export default function Signup2() {
         emailRef:useRef(null),
         introRef:useRef(null),
     }
-    const init = {
-        'id':'', 'pass':'', 'name':'', 'phone1':'', 'phone2':'','phone3':'', 'address':'', 'birth1':'', 'birth2':'', 'birth3':'', 'job':'', 'gender':'', 'intro':''  
-        //formData가 관리
 
-    }
 
-    const [ formData, setFormData] = useState(init); //formData가 init을가리킴
 
+    const [formData, setFormData] = useState(initFormNames(initArray));
     const handleChangeForm = (event) => {
         const {name, value} = event.target;
-        setFormData({...formData, [name]:value});
+        setFormData({...formData, [name]: value});
     }
+
+
+    // acc = { 'idRef':useRef(null)};
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(validateFormSignup2(refs))console.log(formData);
-        
+        if(validateFormSignup2(refs))console.log(formData);  //formData가 init을가리킴
     }
+    
 
     //handleSubmit 백엔드로보내줌
     return (
         <div>
             <h1>회원가입</h1>
             <form onSubmit={handleSubmit}> 
-            <div>
+                <div>
                     <label htmlFor="">아이디</label>
                     <input type="text" 
                             name="id"
@@ -98,12 +114,12 @@ export default function Signup2() {
                             name="birth1"
                             value={formData.birth1}
                             ref={refs.birth1Ref} 
-                            onChange={handleChangeForm} />-
+                            onChange={handleChangeForm} />/
                     <input type="text" 
                             name="birth2"
                             value={formData.birth2}
                             ref={refs.birth2Ref} 
-                            onChange={handleChangeForm} />-
+                            onChange={handleChangeForm} />/
                     <input type="text" 
                             name="birth3"
                             value={formData.birth3}

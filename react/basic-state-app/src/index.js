@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import AppForm from './component/form/AppForm.jsx';
-import Signup2 from './component/form/Signup2.jsx';
+import Signup from './component/form/Signup.jsx';
 // import AppAvatar from './component/avatar/AppAvatar.jsx';
 // import AppCounter2 from './component/counter2/AppCounter2.jsx'
 // import AppAirbnb from './component/airbnb/AppAirbnb.jsx'
@@ -16,7 +16,7 @@ root.render(
     {/* <AppCounter2 /> */}
     {/* <AppAvatar /> */}
     {/* <AppAladin2 /> */}
-    <Signup2 />
+    <Signup />
     {/* <AppAirbnb /> */}
   </React.StrictMode>
 );

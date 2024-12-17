@@ -6,16 +6,15 @@
  */
 
 export function validateFormSignup2(refs) {  
-    
+    /** !!! 배열.map() or 배열.forEach() 함수는 배열객체를 순회하는 것이
+     * 목적이므로 if 체크후 focus가 적용되지 않음!!
+      */
     const refEntries = Object.entries(refs);
     console.log(refEntries);
     const msgs = {
         'idRef':'아이디',  'passRef':'패스워드',
         'nameRef':'이름',  'phone1Ref':'휴대폰번호',
     };
-    /** !!! 배열.map() or 배열.forEach() 함수는 배열객체를 순회하는 것이
-     * 목적이므로 if 체크후 focus가 적용되지 않음!!
-      */
 
 
     for(const item of refEntries) {

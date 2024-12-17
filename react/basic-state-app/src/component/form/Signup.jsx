@@ -1,10 +1,13 @@
 import React, {useRef, useState} from 'react';
 import { validateSignup } from '../../apis/validate.js';
 import { errorCheckSignup } from '../../apis/errorCheck.js';
+import { initFormNames } from '../../apis/initial.js';
 import './commons.css';
 import './cgv.css';
 
 export default function Signup() {
+    const idMsgRef = useRef(null);
+    const passMsgRef = useRef(null);
     const refs = {  
         idRef: useRef(null),  
         pwdRef: useRef(null),
@@ -16,29 +19,9 @@ export default function Signup() {
     }
 
     //폼데이터 장소
-    const init = {
-        'id': '',
-        'pwd':'',
-        'cpwd':'',
-        'name':'',
-        'phone':'',
-        'emailName':'',
-        'emailDomain':''
-    };
-
-    const initErrors = {
-        'id': '',
-        'pwd':'',
-        'cpwd':'',
-        'name':'',
-        'phone':'',
-        'emailName':'',
-        'emailDomain':''
-    };
-
-
-    const [formData, setFormData] = useState(init);
-    const [errors, setErrors] = useState(initErrors);
+    const names = ['id','pwd','cpwd','name','phone','emailName','emailDomain'];
+    const [formData, setFormData] = useState(initFormNames(names));
+    const [errors, setErrors] = useState(initFormNames(names));
 
 
     //폼의 입력이 변경되는 경우 호출되는 함수
@@ -57,6 +40,59 @@ export default function Signup() {
 
 
 
+
+    // Signup 아이디 중복체크
+    const handleIdCheck = () => {
+        const id = refs.idRef.current;
+        if(id.value === '') {
+            errorCheckSignup('id', id.value, errors, setErrors);
+        }else {
+            const did = "test"; 
+            if(did === id.value) {
+                setErrors({...errors, ['id']:'이미 사용중인 아이디 입니다. 다시 입력해주세요'});
+                id.focus();
+        }else{
+            setErrors({...errors, ['id']:'사용이 가능한 아이디 입니다.'});
+            idMsgRef.current.style.setProperty('color','green');
+            idMsgRef.current.style.setProperty('fontWeight','bold');
+        }
+        
+
+        }
+    }
+
+
+    // 패스워드/ 패스워드 중복체크
+    const handlePasswordCheck = () => {  //파라미터로 받기
+        const pwd = refs.pwdRef.current;
+        const cpwd = refs.cpwdRef.current;
+        if(pwd.value === '') {  //''빈값이면 입력요청
+            errorCheckSignup('pwd', pwd.value, errors, setErrors);
+            pwd.focus();
+        } else { 
+            if (cpwd.value === '') {
+                errorCheckSignup('cpwd', cpwd.value, errors, setErrors);
+                cpwd.focus();
+        }else if(pwd.value === cpwd.value) {
+                setErrors({...errors, ['pwd']:'비밀번호가 동일합니다.'});
+                passMsgRef.current.style.setProperty('color','green');
+                passMsgRef.current.style.setProperty('fontWeight','bold');
+        }else{
+            setErrors({...errors, ['pwd']: '비밀번호가 일치하지 않습니다, 다시 입력해주세요'});
+            setFormData({...formData, ['pwd']: '', ['cpwd']:'' });
+            refs.pwdRef.current.value = '';
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
     return (
         <div class="content">
         <div class="center-layout join-form">
@@ -65,7 +101,7 @@ export default function Signup() {
                 <ul>
                     <li>
                         <label for="아이디" class="join-title-font"><b>아이디</b></label>
-                        <span id="error-msg-id">{errors.id}</span>
+                        <span id="error-msg-id" ref={idMsgRef}>{errors.id}</span>
                         <div>
                             <input type="text"
                             name="id" 
@@ -74,13 +110,13 @@ export default function Signup() {
                             onChange={handleChangeSignup}
                             id="id"
                             placeholder="아이디 입력(6~20자)" />
-                            <button type="button" onclick="idCheck(event)">중복확인</button>
+                            <button type="button" onClick={handleIdCheck}>중복확인</button>
                             <input type="hidden" id="idCheckResult" value="default" />   
                         </div>
                     </li>
                     <li>
                         <label for=""><b>비밀번호</b></label>  
-                        <span id="error-msg-pwd">{errors.pwd}</span>
+                        <span id="error-msg-pwd" ref={passMsgRef}>{errors.pwd}</span>
                         <div>
                             <input type="password"
                             name="pwd"
@@ -102,8 +138,7 @@ export default function Signup() {
                             value={formData.cpwd}
                             ref={refs.cpwdRef}
                             onChange={handleChangeSignup}
-                            // oninput="handleChangeJoin(event)" 
-                            onblur="passwordCheck()"
+                            onBlur={handlePasswordCheck} //비밀번호가 동일한지 체크
                             placeholder="비밀번호 재입력"
                             minlength="4" maxlength="12" />
                         </div>                    
