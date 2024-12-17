@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import { validateSignup } from '../../apis/validate.js';
+import { validateSignup, handleIdCheck } from '../../apis/validate.js';
 import { errorCheckSignup } from '../../apis/errorCheck.js';
 import { initFormNames } from '../../apis/initial.js';
 import './commons.css';
@@ -19,7 +19,7 @@ export default function Signup() {
     }
 
     //폼데이터 장소
-    const names = ['id','pwd','cpwd','name','phone','emailName','emailDomain'];
+    const names = ['id','pwd','cpwd','name','phone','emailName','emailDomain']; //중요!!
     const [formData, setFormData] = useState(initFormNames(names));
     const [errors, setErrors] = useState(initFormNames(names));
 
@@ -41,7 +41,7 @@ export default function Signup() {
 
 
 
-    // Signup 아이디 중복체크
+    // Signup 아이디 중복체크!!!
     const handleIdCheck = () => {
         const id = refs.idRef.current;
         if(id.value === '') {
@@ -62,7 +62,7 @@ export default function Signup() {
     }
 
 
-    // 패스워드/ 패스워드 중복체크
+    // 패스워드 && 패스워드 확인 중복체크!!!
     const handlePasswordCheck = () => {  //파라미터로 받기
         const pwd = refs.pwdRef.current;
         const cpwd = refs.cpwdRef.current;

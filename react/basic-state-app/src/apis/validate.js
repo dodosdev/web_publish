@@ -20,7 +20,8 @@ export function validateFormSignup2(refs) {
     for(const item of refEntries) {
         const name = item[0];
         const ref = item[1];
-        if(ref && ref.current.value === '') {
+        if(ref && ref.current.value === '') { 
+            //current 함수형 컴포넌트에서 useState와 함께 사용될 때, 상태값을 업데이트하는 함수를 정의하는방법중하나
             alert(`${msgs[name]}를 입력해주세요`);
             ref.current.focus();
             return false;
