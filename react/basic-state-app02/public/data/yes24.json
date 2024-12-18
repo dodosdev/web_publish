@@ -1,0 +1,187 @@
+{
+        "menuList" : [
+            {
+                "name": "종합", 
+                "href":"#",
+                "bg": "rgb(0, 128, 255)",
+                "color": "#fff",
+                "category":"total"
+            },
+            {
+                "name": "실시간", 
+                "href":"#",
+                "bg": "rgb(0, 128, 255)",
+                "color": "#fff",
+                "category":"realtime"
+            },
+            {
+                "name": "일별", 
+                "href":"#",
+                "bg": "rgb(0, 128, 255)",
+                "color": "#fff",
+                "category":"day"
+            },
+            {
+                "name": "월별/주별", 
+                "href":"#",
+                "bg": "rgb(0, 128, 255)",
+                "color": "#fff",
+                "category":"month"
+            },
+            {
+                "name": "스테디셀러", 
+                "href":"#",
+                "bg": "rgb(0, 128, 255)",
+                "color": "#fff",
+                "category":"steady"
+            }
+        ],
+        
+
+        "bookList" : [
+            {
+                "rank": "1",
+                "img" : "https://image.yes24.com/goods/13137546/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"소년이 온다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category": "realtime"
+    
+            },
+            {
+                "rank": "2",
+                "img" : "https://image.yes24.com/goods/108422348/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"소년이 온다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"hotprice"
+    
+            },
+            {
+                "rank": "3",
+                "img" : "https://image.yes24.com/goods/5926713/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"희랍 언어",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"day"
+    
+            },
+            {
+                "rank": "4",
+                "img" : "https://image.yes24.com/goods/139881528/L",
+                "suggest": false,
+                "today" : true, 
+                "type":"도서",
+                "title":"소년이 온다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"month"
+    
+            },
+            {
+                "rank": "5",
+                "img" : "https://image.yes24.com/goods/108422348/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"서랍에 저녁을 넣어 두었다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"steady"
+    
+            },
+            {
+                "rank": "6",
+                "img" : "https://image.yes24.com/goods/108422348/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"서랍에 저녁을 넣어 두었다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"realtime"
+    
+            },
+            {
+                "rank": "7",
+                "img" : "https://image.yes24.com/goods/108422348/L",
+                "suggest": false,
+                "today" : true, 
+                "type":"도서",
+                "title":"소년이 온다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"month"
+    
+            },
+            {
+                "rank": "8",
+                "img" : "https://image.yes24.com/goods/138573316/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"희랍 언어",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category":"day"
+    
+            },
+            {
+                "rank": "9",
+                "img" : "https://image.yes24.com/goods/138573316/L",
+                "suggest": true,
+                "today" : true, 
+                "type":"도서",
+                "title":"소년이 온다",
+                "author":"한강",
+                "company":"창비",
+                "pubDate":"2014년 05월",
+                "price":"13,500원",
+                "perSale":"10",
+                "point":"750",
+                "category": "steady"
+    
+            }
+        ]
+}

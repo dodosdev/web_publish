@@ -1,0 +1,58 @@
+    {   
+        "category": [
+            {"name": "에세이"},
+            {"name": "소설"},
+            {"name": "자기계발"},
+            {"name": "사회과학"},
+            {"name": "고전"},
+            {"name": "외국어"}
+        ],
+
+        "books": [
+        {   "img" : "https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
+            "title": "[국내] 소년이 온다",
+            "type" : "domestic",
+            "category":"소설"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg", 
+            "title": "[국외] 작별하지 않는다",
+            "type" : "overseas",
+            "category": "소설"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg", 
+            "title": "[국내] 채식주의자",
+            "type" : "domestic",
+            "category":"에세이"
+        },
+        {   "img": "https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
+            "title": "[국내] 소년이 온다",
+            "type" : "domestic"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg", 
+            "title": "[국외] 작별하지 않는다",
+            "type" : "overseas"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg", 
+            "title": "[국내] 채식주의자",
+            "type" : "domestic"
+        },
+        {   "img": "https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
+            "title": "[국내] 소년이 온다",
+            "type" : "domestic"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg", 
+            "title": "[국외] 작별하지 않는다",
+            "type" : "overseas"
+        },
+        {   
+            "img": "https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg", 
+            "title": "[국내] 채식주의자",
+            "type" : "domestic"
+        }
+    ]
+}
