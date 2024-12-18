@@ -242,3 +242,59 @@ export const validateSignup = (refs, errors, setErrors) => {
     // console.log(refs);
     
 }
+
+
+
+
+
+
+    /** 
+     *  Signup 컴포넌트 아이디 중복체크!!! 
+     * */
+    export const handleIdCheck = ({idRef,  //구조분해할당으로받음
+                                    errorCheckSignup, 
+                                    errors, 
+                                    setErrors, 
+                                    idMsgRef}) => {
+        const id = idRef.current;
+        if(id.value === '') {
+        errorCheckSignup('id', id.value, errors, setErrors);
+        }else {
+        const did = "test"; 
+        if(did === id.value) {
+        setErrors({...errors, ['id']:'이미 사용중인 아이디 입니다. 다시 입력해주세요'});
+        id.focus();
+        }else{
+        setErrors({...errors, ['id']:'사용이 가능한 아이디 입니다.'});
+        idMsgRef.current.style.setProperty('color','green');
+        idMsgRef.current.style.setProperty('fontWeight','bold');
+        }
+        }
+    }
+
+
+
+    /**
+     * 패스워드 && 패스워드 확인!! 중복체크!!!
+     * */
+    export const handlePasswordCheck = (param) => {  //파라미터로 받기
+        const pwd = param.refs.pwdRef.current; 
+        const cpwd = param.refs.cpwdRef.current;
+        if(pwd.value === '') {  //''빈값이면 입력요청
+            param.errorCheckSignup('pwd', pwd.value, param.errors, param.setErrors);
+        pwd.focus();
+        } else { 
+        if (cpwd.value === '') {
+            param.errorCheckSignup('cpwd', cpwd.value, param.errors, param.setErrors);
+        cpwd.focus();
+        }else if(pwd.value === cpwd.value) {
+            param.setErrors({...param.errors, ['pwd']:'비밀번호가 동일합니다.'});
+            param.passMsgRef.current.style.setProperty('color','green');
+            param.passMsgRef.current.style.setProperty('fontWeight','bold');
+        }else{
+            param.setErrors({...param.errors, ['pwd']: '비밀번호가 일치하지 않습니다, 다시 입력해주세요'});
+            param.setFormData({...param.formData, ['pwd']: '', ['cpwd']:'' });
+            param.refs.pwdRef.current.value = '';
+        }
+    }
+}
