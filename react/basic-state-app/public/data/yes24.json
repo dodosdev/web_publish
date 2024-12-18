@@ -3,35 +3,35 @@
             {
                 "name": "종합", 
                 "href":"#",
-                "bg": "rgb(0, 128, 255)",
+                "bg": "#1d7ab7",
                 "color": "#fff",
                 "category":"total"
             },
             {
                 "name": "실시간", 
                 "href":"#",
-                "bg": "rgb(0, 128, 255)",
+                "bg": "#1d7ab7",
                 "color": "#fff",
                 "category":"realtime"
             },
             {
                 "name": "일별", 
                 "href":"#",
-                "bg": "rgb(0, 128, 255)",
+                "bg": "#1d7ab7",
                 "color": "#fff",
                 "category":"day"
             },
             {
                 "name": "월별/주별", 
                 "href":"#",
-                "bg": "rgb(0, 128, 255)",
+                "bg": "#1d7ab7",
                 "color": "#fff",
                 "category":"month"
             },
             {
                 "name": "스테디셀러", 
                 "href":"#",
-                "bg": "rgb(0, 128, 255)",
+                "bg": "#1d7ab7",
                 "color": "#fff",
                 "category":"steady"
             }
@@ -105,7 +105,7 @@
             },
             {
                 "rank": "5",
-                "img" : "https://image.yes24.com/goods/108422348/L",
+                "img" : "https://image.yes24.com/goods/93082287/L",
                 "suggest": true,
                 "today" : true, 
                 "type":"도서",
@@ -121,7 +121,7 @@
             },
             {
                 "rank": "6",
-                "img" : "https://image.yes24.com/goods/108422348/L",
+                "img" : "https://image.yes24.com/goods/5926713/L",
                 "suggest": true,
                 "today" : true, 
                 "type":"도서",
@@ -153,7 +153,7 @@
             },
             {
                 "rank": "8",
-                "img" : "https://image.yes24.com/goods/138573316/L",
+                "img" : "https://image.yes24.com/goods/93082287/L",
                 "suggest": true,
                 "today" : true, 
                 "type":"도서",

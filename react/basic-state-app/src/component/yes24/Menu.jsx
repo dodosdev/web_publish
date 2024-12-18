@@ -13,3 +13,6 @@ export default function Menu({name, href, bg, color, category, click}) {
     );
 }
 
+
+
+
