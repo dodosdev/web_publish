@@ -27,9 +27,17 @@
 }
 .container-button{
     list-style-type: none;
-    background-color: #c6d2e0;
+    background-color:#eff2f7;
     padding: 30px;
-    
+    border-radius: 5px;   
+}
+
+.container-button li{
+    margin-bottom: 7px;
+}
+
+.container-contant{
+    font-size: 0.9rem;
 }
 
 .container-contant .suggest{
