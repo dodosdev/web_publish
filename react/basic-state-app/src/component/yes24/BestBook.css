@@ -8,8 +8,8 @@
 .container-avatar{
     display: flex;
     align-items: center;
-    /* width: 300px;s */
-    /* .border: 1px solid red;  */
+    width: 150px;
+    height:200px;
 }
 
 .container-avatar p{

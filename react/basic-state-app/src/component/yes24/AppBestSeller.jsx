@@ -5,7 +5,7 @@ import './Menu.css';
 import MenuList from './MenuList.jsx';
 
 export default function AppBestSeller() {
-    const [ menuList, setMenuList ] = useState([])
+    const [ menuList, setMenuList ] = useState([])  //use가붙으면 상태관리가됨
     const [ bookList, setBookList] = useState([])
     const [ category, setCategory] = useState(`total`);
 
