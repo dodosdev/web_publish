@@ -22,6 +22,7 @@ export default function AppCgv() {
         <>
             <Header>
                 <HeaderTop />
+                
                 <HeaderBottom />
             </Header>
             <Content>
