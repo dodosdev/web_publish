@@ -1,0 +1,32 @@
+{   
+    "headerLogo" : [
+        
+        {   "src":"images/favicon.ico",
+            "alt" : "logo",
+            "logo": "dodo"
+        }
+    ],
+
+
+    
+    "HeaderTopMenuList" : [
+        {   "href":"#home",
+            "name": "Home"
+        },
+        {   "href":"#about",
+            "name":"About"       
+        },
+        {   "href":"#skill",
+            "name":"Skill"       
+        },
+        {   "href":"#work",
+            "name":"My work"       
+        },
+        {   "href":"testimonial",
+            "name":"testimonial"       
+        },
+        {   "href":"#contact",
+            "name":"Contact"       
+        }
+    ]
+}

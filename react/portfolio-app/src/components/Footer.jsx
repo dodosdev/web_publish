@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Footer() {
+export default function Footer({children}) {
     return (
-        <div>
-            
-        </div>
+        <footer id="contact" class="section">
+            {children}
+        </footer>
     );
 }
 

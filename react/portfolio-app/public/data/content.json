@@ -1,0 +1,107 @@
+{   
+
+        "majors" : [
+            {
+                "title":"Front-end",
+                "majorsCon":">HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+            },
+            {
+                "title":"Mobile",
+                "majorsCon":">Android Studio, React Native, iOS, Swift, Java, Kotlin"
+            },
+            {
+                "title":"Back-end",
+                "majorsCon":"Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+            }
+
+        ],
+        
+        "jobs" : [
+            {
+                "img":"images/jobs/google.png",
+                "alt":"google",
+                "jobName":"Google as Junior Software Engineer",
+                "jobPeriod":"2019 Oct - Until now"
+            },
+            {
+                "img":"images/jobs/samsung.png",
+                "alt":"samsung",
+                "jobName":"Samsung as Junior Software Engineer",
+                "jobPeriod":"2010 Oct - 2019 Oct"
+            }
+
+        ],
+
+        "projectMenu" : [
+            {
+                "name": "All",
+                "category":"all"
+            },
+            {
+                "name": "Front-end",
+                "category":"frontend"
+            },
+            {
+                "name": "Back-end",
+                "category":"backend"
+            },
+            {
+                "name": "Mobile",
+                "category":"mobile"
+            }
+        ],
+
+        "projectList" : [
+            {
+                "img": "images/projects/project1.webp",
+                "title": "Project #1",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project1"
+            },
+            {
+                "img": "images/projects/project2.webp",
+                "title": "Project #2",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project2"
+            },
+            {
+                "img": "images/projects/project3.webp",
+                "title": "Project #3",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project3"
+            },
+            {
+                "img": "images/projects/project4.webp",
+                "title": "Project #4",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project4"
+            },
+            {
+                "img": "images/projects/project5.webp",
+                "title": "Project #5",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project5"
+            },
+            {
+                "img": "images/projects/project1.webp",
+                "title": "Project #1",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project1"
+            },
+            {
+                "img": "images/projects/project1.webp",
+                "title": "Project #1",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project1"
+            },
+            {
+                "img": "images/projects/project1.webp",
+                "title": "Project #1",
+                "info" : "Clone Coding with HTML, CSS",
+                "alt" : "project1"
+            }
+        ]
+        
+
+    
+}

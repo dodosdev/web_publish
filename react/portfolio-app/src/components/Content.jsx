@@ -1,10 +1,10 @@
-import React from 'react';
 
-export default function Content() {
+export default function Content({children}) {
     return (
-        <div>
-            
-        </div>
+        <section id="home">
+            {children}
+        </section>
+        
     );
 }
 
