@@ -1,15 +1,25 @@
 import React from 'react';
+import Menu from './Menu.jsx';
 
 export default function MenuList() {
+    const list = [
+        {"href": "#home", "name":"Home"},
+        {"href": "#about", "name":"About"},
+        {"href": "#skill", "name":"Skill"},
+        {"href": "#work", "name":"Work"},
+        {"href": "#testimonial", "name":"Testimonial"},
+        {"href": "#contact", "name":"Contact"}
+    ];
+
+
     return (       
         <nav>
             <ul className="header__menu">
-            <li><a className="header__menu__item active" href="#home">Home</a></li>
-            <li><a className="header__menu__item" href="#about">About</a></li>
-            <li><a className="header__menu__item" href="#skill">Skills</a></li>
-            <li><a className="header__menu__item" href="#work">My work</a></li>
-            <li><a className="header__menu__item" href="#testimonial">Testimonial</a></li>
-            <li><a className="header__menu__item" href="#contact">Contact</a></li>
+                {list && list.map((menu) =>
+                    <li>
+                        <Menu href={menu.href} menuName={menu.name} />
+                    </li>
+                )}
             </ul>
         </nav>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Menu() {
+export default function Menu({href, menuName}) {
     return (
-        <a class="header__menu__item active" href="#home">Home</a>
+        <a class="header__menu__item" href={href}>{menuName}</a>
     );
 }
 
