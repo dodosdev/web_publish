@@ -1,14 +1,14 @@
 import React from 'react';
 import Menu from './Menu.jsx';
 
-export default function ProjectsMenu() {
+export default function ProjectsMenu({item}) {
     return (
         <>
 
             <li><Menu name={item.name}
                         count={item.count}
                         category={item.category}
-                        click ={handMenuClickReq}
+                        // click ={handMenuClickReq}
             /></li>
 
 
