@@ -22,7 +22,7 @@ export default function Major({icon, title, subjects}) {
     );
 }
 
-// 터미널 설치후 사용
+// 터미널에 fortawesome 설치후 사용
 // npm i @fortawesome/free-solid-svg-icons
 
 // npm i @fortawesome/react-fontawesome
