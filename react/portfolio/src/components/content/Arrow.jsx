@@ -6,8 +6,11 @@ import {faArrow} from "@fortawesome/free-solid-svg-icons";
 export default function Arrow() {
     return (
         <aside>
-            <a class="arrow--up" href="#"><i class="fa-solid fa-arrow-up"></i></a>
+            <a class="arrow--up" href="#"><FontAwesomeIcon className="fa-solid fa-arrow-up" icon={faArrow} /></a>
         </aside>
     );
 }
+
+
+
 
