@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import AppForm from './component/form/AppForm.jsx';
-import AppRouter2 from './component/router2/AppRouter2.jsx';
+import AppRouter from './component/router/AppRouter.jsx';
 // import AppAvatar from './component/avatar/AppAvatar.jsx';
 // import AppCounter2 from './component/counter2/AppCounter2.jsx'
 // import AppAirbnb from './component/airbnb/AppAirbnb.jsx'
@@ -13,7 +13,7 @@ import AppRouter2 from './component/router2/AppRouter2.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppRouter2 />
+    <AppRouter />
   </React.StrictMode>
 );
 

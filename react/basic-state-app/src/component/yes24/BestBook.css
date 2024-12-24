@@ -1,63 +1,39 @@
-
 .container {
     width: 1000px;
     margin: auto;
-    background-color: #f8f8f8;  
 }
-
-.container-avatar{
+.container-avatar {
     display: flex;
     align-items: center;
-    width: 150px;
-    height:200px;
+    /* width: 300px;
+    border: 1px solid red; */
 }
-
-.container-avatar p{
+.container-avatar p {
     font-size: 1rem;
     font-weight: bold;
-    padding: 0 15px
+    padding:0 15px;
 }
-
-.container-avatar img{
+.container-avatar img {
     width: 120px;
-    margin-right: 120px;
 }
-.container-contant{
+.container-content {
+    width: 500px;
     padding: 0 40px;
+    background-color: rgb(248, 241, 232);
 }
-.container-button{
+.container-content-tags {
+    padding: 10px 0;
+}
+.container-content-tags span {
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: .8rem;
+    margin: 5px;
+    padding: 2px 5px;
+}
+.container-button {    
     list-style-type: none;
-    background-color:#eff2f7;
+    background-color: rgb(228, 225, 222);
     padding: 30px;
-    border-radius: 5px;   
+    margin: 0;
 }
-
-.container-button li{
-    margin-bottom: 7px;
-}
-
-.container-contant{
-    font-size: 0.9rem;
-}
-
-.container-contant .suggest{
-    background-color:  #6699cc;
-    padding: 5px;
-    margin: 3px;
-    border-radius: 5px;
-    font-size: 12px;
-    color: #fff;
-}
-.container-contant .today{
-    background-color:  #ff6666;
-    padding: 5px;
-    margin: 3px;
-    border-radius: 5px;
-    font-size: 12px;
-    color: #fff
-}
-
-.container-contant div:first-child {
-    margin-bottom: 10px;
-}
-

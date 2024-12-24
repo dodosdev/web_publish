@@ -53,8 +53,7 @@ export default function Projects() {
         }
     ]
 
-
-
+    
     return (
         <ul class="projects">
             {projectList && projectList.map((project) =>
