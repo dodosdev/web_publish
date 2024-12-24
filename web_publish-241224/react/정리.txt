@@ -1,0 +1,203 @@
+1. React(리액트)?
+User Interface(사용자 인터페이스)를 만들기 위한 JavaScript 라이브러리
+- Meta(구,facebook)에서 2013년도 오픈소스로 공개, 2015년도에 React Native 출시
+- 2019년도 함수형태로 업데이트 됨, 그 전에는 클래스 기반이었음
+- 2022년도 서버사이드 렌더링이 가능해짐
+
+2. React 장점
+- 빠른 업데이트와 렌더링 속도 : React DOM
+- 컴포넌트 기반 구조 : 함수기반의 컴포넌트 생성
+- 재 사용성
+- 든든한 지원군 : Meta(구,facebook)에서 support
+- 활발한 지식공유 & 방대한 커뮤니티(NPM)
+- 모바일 앱 개발 가능 : 2015년 React Native 출시
+
+3. React 단점
+- 방대한 학습량 : HTML, CSS, 자바스크립트 기본 + React 문법
+- 높은 상태 관리 복잡도 : React Hooks를 통한 상태 관리
+
+4. React 프로젝트 생성 및 실행
+ 1) NodeJS 설치가 선행되어져야 함 
+ 2) NPM 커뮤니티를 통해 React 앱을 생성함
+ 3) React 앱 생성
+  - npx create-react-app [생성할 앱 이름]
+  예) npx create-react-app my-app
+ 4) React 앱 실행
+   ~    > cd [이동할 앱 이름]
+  my-app> npm start  
+
+5. React 실행 순서  
+ - npm start > src/index.js > App.js 
+
+6. 컴포넌트(Component) 
+- UI를 구성하는 함수 컴포넌트 
+- 첫 글자는 대문자로 정의한다. 
+- return 키워드 다음에는 ()로 묶어준다.
+- 반환되는 컴포넌트는 반드시 하나의 태그로 그룹핑을 한 후
+  반환하도록 한다. (예) <div>, <>
+- 로직을 실행하는 코드는 {} 묶어서 반환코드에 추가한다.
+
+
+메뉴 클릭 이벤트 적용
+--------------------------------------
+  /* .header__menu li:first-child {
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+  } */
+  .header__menu__selected {
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+  }
+
+--------------------------------------
+import React from 'react';
+
+export default function Menu({href, menuName, click, style}) {
+
+    return (
+        <a  className={style} 
+            href={href}
+            onClick={()=>{ click(menuName) }}>{menuName}</a>
+    );
+}
+-----------------------------------------
+import React, {useState} from 'react';
+import Menu from './Menu.jsx';
+
+export default function MenuList() {
+    const [selected, setSelected] = useState('Home');
+    const list = [
+        {"href": "#home", "name":"Home"},
+        {"href": "#about", "name":"About"},
+        {"href": "#skill", "name":"Skills"},
+        {"href": "#work", "name":"My work"},
+        {"href": "#testimonial", "name":"Testimonial"},
+        {"href": "#contact", "name":"Contact"}
+    ];
+
+    const handleClick = (name) => {
+        setSelected(name);
+    }
+
+    return (
+        <nav>
+            <ul className="header__menu">
+                {list && list.map((menu) => 
+                    <li>
+                        <Menu href={menu.href} 
+                                menuName={menu.name}
+                                click={handleClick}
+                                style= {menu.name === selected ? 'header__menu__item header__menu__selected' 
+                                        : 'header__menu__item'}
+                                />
+                    </li>                
+                )}
+            </ul>
+        </nav>
+    );
+}
+        {/* About me */}
+        <SectionWrap
+            id="about"
+            title="About me"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Iure natus, temporibus perspiciatis repudiandae nostrum modi
+        doloremque expedita non eius ipsum! Beatae porro adipisci 
+        omnis architecto dignissimos. Iusto ipsa inventore adipisci.">
+              <Majors />
+              <Jobs />
+        </SectionWrap>
+
+        {/* My Skills */}
+        <SectionWrap
+            id="skill"
+            title="My Skills"
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Nobis beatae, aliquid ratione commodi nam ex voluptate rem 
+        eveniet cupiditate optio natus? Cum, harum eum sint id quod 
+        nulla adipisci. Sunt?">
+              <Skills>
+                <Coding />
+                <Ariticle type="Tools" />
+                <Ariticle type="Etc" />
+              </Skills>
+        </SectionWrap>
+
+        {/* My Work */}
+        <SectionWrap
+            id="work"
+            title="My work"
+            description="Projects"
+        >
+          <Categories />
+          <Projects />
+        </SectionWrap>
+
+        {/* Testimonials */}
+        <SectionWrap
+            id="testimonial"
+            title="Testimonial"
+            description="See what they say about me"
+        >
+          <Testimonials />
+        </SectionWrap>
+
+
+-------------------------------------------
+# react & github deploy
+
+1. 깃허브 deploy 레파지토리 생성 : public 
+2. (1) 번의 레파지토리를 git remote 저장소로 추가
+
+git remote -v   : 추가된 레파지토리 확인
+
+git remote remove origin : 등록된 레파지토리 삭제
+
+레파지토리 추가
+
+git remote add origin https://github.com/<username>/<repository>.git
+
+1. gh-pages 패키지 설치
+- gh-pages는 빌드된 파일을 GitHub Pages에 배포하기 위한 npm 패키지이다.
+
+npm install gh-pages --save-dev
+
+1. package.json 설정
+
+```jsx
+{
+  "name": "react_deploy",
+  "version": "0.1.0",
+  "private": true,
+  **"homepage": "https://lkm1401.github.io/react_deploy",**
+  "dependencies": {
+    "cra-template": "1.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    **"predeploy": "npm run build",
+    "deploy": "gh-pages -d build"**
+  },
+```
+
+1. 배포 실행
+
+```jsx
+npm run deploy
+```
+
+1. GitHub Pages 설정
+- GitHub 저장소의 **Settings** 탭으로 이동합니다.
+- **Pages** 섹션을 찾습니다.
+- 배포 브랜치를 `gh-pages`로 설정:
+    - **Source**: `gh-pages` 브랜치를 선택하고 저장.
+
+1. 배포된 react 앱에 접속
+
+배포가 완료되면 `https://<username>.github.io/<repository>`에서 React 앱에 접속할 수 있습니다.
