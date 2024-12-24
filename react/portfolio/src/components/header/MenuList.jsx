@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Menu from './Menu.jsx';
 
 export default function MenuList() {
-    const [select, setSelect] = useState('Home');
-
+    const [selected, setSelected] = useState('Home');
     const list = [
         {"href": "#home", "name":"Home"},
         {"href": "#about", "name":"About"},
-        {"href": "#skill", "name":"Skill"},
-        {"href": "#work", "name":"Work"},
+        {"href": "#skill", "name":"Skills"},
+        {"href": "#work", "name":"My work"},
         {"href": "#testimonial", "name":"Testimonial"},
         {"href": "#contact", "name":"Contact"}
     ];
 
-
     const handleClick = (menuName) => {
-        console.log('menuName--->> ',menuName);
-        setSelect(menuName);   
+        setSelected(menuName);
     }
-
-    console.log('setSelect-->>, ');
     
-    return (       
+
+    return (
         <nav>
             <ul className="header__menu">
-                {list && list.map((menu) =>
+                {list && list.map((menu) => 
                     <li>
                         <Menu href={menu.href} 
-                            menuName={menu.name} 
-                            click={handleClick}
-                            style={menu.name && setSelect ? 
-                                    'header__menu__item .active'
-                                    : 'header__menu__item'     // :아니면..
-                            }
-                            />
-                    </li>
+                                menuName={menu.name}
+                                click={handleClick}
+                                style={menu.name === selected ? 
+                                            'header__menu__item active'
+                                        :   'header__menu__item'
+                                }
+                                />
+                    </li>                
                 )}
             </ul>
         </nav>
     );
 }
-

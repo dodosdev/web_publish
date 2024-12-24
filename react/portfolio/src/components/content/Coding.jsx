@@ -2,44 +2,47 @@ import React from 'react';
 import CodingBar from './CodingBar.jsx';
 
 export default function Coding() {
-    const codingList = [
+    const codeList = [
         {
-            "title": "HTML",
+            "title":"HTML",
+            "percent": 70
+        },
+        {
+            "title":"CSS",
+            "percent": 90
+        },
+        {
+            "title":"JavaScript",
+            "percent": 90
+        },
+        {
+            "title":"TypeScript",
+            "percent": 80
+        },
+        {
+            "title":"React",
             "percent": 98
         },
         {
-            "title": "HTML",
-            "percent": 97
-        },
-        {
-            "title": "HTML",
-            "percent": 88
-        },
-        {
-            "title": "HTML",
-            "percent": 78
-        },
-        {
-            "title": "HTML",
+            "title":"NodeJS",
             "percent": 60
-        }
-        
-    ]
+        },
+    ];
+
     return (
-        <article class="sklls__coding">
-                <h3 class="skill__title">Coding Skills</h3>
-                <ul>
-                    {codingList && codingList.map((code) =>
-                        <li class="bar">
-                            < CodingBar 
-                                title={code.title}
-                                percent={code.percent}
-                                
+        <article className="sklls__coding">
+            <h3 className="skill__title">Coding Skills</h3>
+            <ul>
+                {codeList && codeList.map((code) =>
+                    <li className="bar">
+                        <CodingBar 
+                            title={code.title}
+                            percent={code.percent}
                             />
-                        </li>     
-                    )}
-                </ul>
-            </article>
+                    </li>                
+                )}
+                
+            </ul>
+        </article>
     );
 }
-

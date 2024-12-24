@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Categorie from './Categorie.jsx';
 
 
 export default function Categories() {
+    const [selected, setSelected] = useState('All');
+    const handleSelected = (name) => {
+        setSelected(name)
+    }
+
     const categoryList = [
         {
             "name": "All",
@@ -24,11 +29,18 @@ export default function Categories() {
     
     return (
         <ul class="categories">
-            {categoryList && categoryList.map((item)=>
+            {categoryList && categoryList.map((category)=>
                 <li>
                     <Categorie 
-                        name={item.name}
-                        count={item.count}
+                        name={category.name}
+                        count={category.count}
+                        click={handleSelected}
+                        style={category.name === selected ?
+                            'category category--selected'
+                            : 'category'
+                            }
+
+
                     />
                 </li>
             )}
