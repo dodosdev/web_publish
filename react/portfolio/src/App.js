@@ -79,7 +79,7 @@ function App() {
 
   //자식 컴포넌트 렌더링  :: 재귀함수 (끝날때까지 자기를 실행)
   const renderComponent = (childObj) => {    //{ "component": "Testimonials" } 같은이름을찾음
-    const Component = componentMap[childObj.component]; //컴퍼넌트를 찾음 Component<--주소가 들어옴
+    const Component = componentMap[childObj.component]; //컴퍼넌트를 찾음 Component<--여기에 주소가 들어옴
     if (!Component) return null; //null을 return해서 종료
 
     return (
@@ -172,3 +172,9 @@ export default App;
 //    description="See what they say about me">
 //    <Testimonials />
 //  </ SectionWrap>
+
+
+
+
+
+
