@@ -5,7 +5,7 @@ export default function Top(){
         <div class="content-top">
             <iframe width="900px" 
             height="400px" 
-            src="https://www.youtube.com/embed/_OKAwz2MsJs?si=KmW_0sTxqavay-cf" 
+            src="https://www.youtube.com/embed/SKTeMqRgQhE?si=K93DdsmcjRuZ6Vs7"  
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
