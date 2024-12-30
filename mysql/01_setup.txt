@@ -12,7 +12,7 @@ https://www.mysql.com/  접속 > Downloads > MySQL Workbench
 
 
 
-//처음에테스트
+//처음에 적용
 show databases;
 use hrdb2019;
 select database(); 
