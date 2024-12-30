@@ -5,7 +5,15 @@
 2. MySQL 서버 다운로드
 https://www.mysql.com/  접속 > Downloads > MySQL Community Server(LTS 버전)
 
-root/mysql1234
+root/mysql1234 <--pw
 
 3.MySQL 툴 다운로드 : MySQL Workbench
 https://www.mysql.com/  접속 > Downloads > MySQL Workbench
+
+
+
+//처음에테스트
+show databases;
+use hrdb2019;
+select database(); 
+show tables;
