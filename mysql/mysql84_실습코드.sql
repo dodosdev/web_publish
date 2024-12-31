@@ -239,6 +239,7 @@ SELECT
         
 -- 현재 근무중인 사원인 퇴사일에 현재의 날짜를 출력해주세요.
 
+
 /*
 	DISTINCT : 데이터 중복 배제, 중복된 데이터 하나만 출력
     형식 - SELECT [DISTINCT 컬럼리스트 (중복데이터포함)]
@@ -535,7 +536,7 @@ SELECT EMP_ID,
         FROM EMPLOYEE;
         
 -- (2) SUBSTRING(문자열, 위치, 추출자릿수) : 문자열 추출 함수
-SELECT 	SUBSTRING('대한민국 홍길동 만세 1234', 1, 4) 대한민국,
+SELECT 	SUBSTRING('대한민국 홍길동 만세 1234', 1, 4) 대한민국,  -- 1번째 문자열부터 읽고 4글자만 가져오기
 		SUBSTRING('대한민국 홍길동 만세 1234', 6, 3) 홍길동,
 		SUBSTRING('대한민국 홍길동 만세 1234', 10, 2) 만세,
 		SUBSTRING('대한민국 홍길동 만세 1234', 17, 2) '!!'
@@ -555,7 +556,7 @@ SELECT EMP_ID,
 -- 2015년도 입사한 모든 사원들을 조회
 SELECT *
 	FROM EMPLOYEE
-    WHERE SUBSTRING(HIR_DATE, 1, 4) = '2015';
+    WHERE SUBSTRING(HIRE_DATE, 1, 4) = '2015';
     
 SELECT HIRE_DATE FROM EMPLOYEE;
 
@@ -610,7 +611,7 @@ SELECT TRIM('       MYSQL 84') AS TRIM1,
 -- (6) FORMAT(문자열, 소수점자리) : 문자열의 포맷 수정
 -- 숫자를 3자리씩 콤마로 구분하여 출력하는 포맷 생성
 SELECT FORMAT(123456, 0) FORMAT1,
-		FORMAT(123456, 2) FORMAT2 FROM DUAL;
+		FORMAT(123456, 2) FORMAT2 FROM DUAL;  -- FORMAT(123456, 2)숫자뒤 소수점2개붙이기
 
 
 -- 사원테이블의 사원아이디, 사원명, 입사일, 연봉을 조회
@@ -636,6 +637,261 @@ SELECT EMP_ID,
 	FROM EMPLOYEE;
         
     
+-- 3. 날짜 함수 : CURDATE(), SYSDATE()
+-- (1) CURDATE() : 현재 시스템 날짜를 출력, 년월일 만 출력
+SELECT CURDATE() FROM DUAL;
+
+-- (2) NOW(), SYSDATE() : 현재 시스템 날짜를 출력, 년월일 시분초 출력
+SELECT NOW(), SYSDATE() FROM DUAL
+
+-- 4. 형변환 함수 : CAST(), CONVERT()
+-- CAST(변경데이터 AS 데이터타입)
+SELECT 12345 숫자, CAST(12345 AS CHAR) 문자 FROM DUAL;
+SELECT '12345' 문자, CAST('1234' AS UNSIGNED INTEGER) 정수 FROM DUAL;
+-- 입력폼에서 '20150101' 데이터 날짜를 가진 사원을 조회
+SELECT *
+	FROM EMPLOYEE
+    WHERE HIRE_DATE = CAST('20150101' AS DATE);
     
+-- FLOOR 함수를 적용한 CAST 함수
+SELECT FLOOR('12-34-5') 문자,
+	FLOOR(CAST('12-34-5' AS UNSIGNED INTEGER)) 정수
+FROM DUAL;
+    
+-- 5. 문자열 치환 함수 : REPLACE(문자열, OLD, NEW)
+SELECT '123,456',
+	REPLACE('123,456', ',', '') 문자,
+	CAST(REPLACE('123,456', ',', '') AS UNSIGNED INTEGER) 숫자
+FROM DUAL;
+
+-- 사원테이블의 입사일 포맷을 변경 '2015-01-01'  --> '2015/01/01
+SELECT EMP_NAME,
+		HIRE_DATE,
+        REPLACE(HIRE_DATE, '_', '/') HIRE_DATE
+	FROM EMPLOYEE;
     
 	
+    
+    
+/****************************************************
+	그룹(집계)함수 : SUM(), AVG(), MIN(), MAX(), COUNT()...
+	GROUP BY : 그룹함수를 적용하기 위해 일반컬럼을 그룹핑하는 단위
+	HAVING : 그룹함수의 조건절을 적용하는 구문
+*****************************************************/
+-- 1. SUM(숫자, 숫자컬럼)
+-- 사원테이블에서 모든 사원의 연봉 총합을 조회
+SELECT SUM(SALARY) 총연봉,
+		CONCAT(FORMAT(SUM(SALARY), 0), '만원') 총연봉
+ FROM EMPLOYEE;
+ 
+ 
+ 
+-- 2. AVG(숫자, 숫자컬럼)
+-- 사원들의 총연봉, 평균연봉 조회
+-- 3자리 구분, '만원' 단위 추가
+SELECT CONCAT(FORMAT(SUM(SALARY), 1), '만원') 총연봉,
+		CONCAT(FORMAT(AVG(SALARY), 1), '만원') 평균연봉
+        FROM EMPLOYEE;
+        
+
+
+-- 3. MIN(숫자, 숫자컬럼)
+-- 가장 작은 값을 출력
+-- 사원들의 총연봉, 평균 연봉, 최소연봉을 출력
+SELECT CONCAT(FORMAT(SUM(SALARY), 0), '만원') 총연봉,
+        CONCAT(FORMAT(MIN(SALARY), 0), '만원') 최소연봉
+	FROM EMPLOYEE;
+        
+ 
+ 
+-- 4. MAX(숫자, 숫자컬럼)
+-- 가장 큰 값을 출력
+-- 사원들의 총연봉, 평균연봉, 최소 연봉, 최대연봉을 출력
+-- 3자리 구분, 만원 추가, 소수점자리 생략
+SELECT CONCAT(FORMAT(SUM(SALARY), 0), '만원') 총연봉,
+		CONCAT(FORMAT(AVG(SALARY), 0), '만원') 평균연봉,
+        CONCAT(FORMAT(MIN(SALARY), 0), '만원') 최소연봉,
+        CONCAT(FORMAT(MAX(SALARY), 0), '만원') 최대연봉
+	FROM EMPLOYEE;
+    
+ 
+ 
+-- 5. COUNT(컬러명)
+-- 테이블의 ROW COUNT를 출력
+-- NULL을 포함한 데이터의 COUNT를 계산하지 않음
+SELECT COUNT(*) 총사원수,
+		COUNT(SALARY) 연봉협상완료사원수
+    FROM EMPLOYEE; -- 20
+SELECT *
+	FROM EMPLOYEE
+    WHERE SALARY IS NULL;
+    
+-- 총사원수, 퇴직사원수, 현재사원수를 조회
+SELECT CONCAT(CAST(COUNT(*) AS CHAR), '명') 총사원수,
+		CONCAT(COUNT(RETIRE_DATE), '명') 퇴직사원수,
+        CONCAT(COUNT(*) - COUNT(RETIRE_DATE), '명') 재직사원수
+	FROM EMPLOYEE;
+    
+    
+    
+-- 사원테이블에서 정보시스템 부서의 사원수를 조회
+SELECT COUNT(*)
+	FROM EMPLOYEE
+    WHERE DEPT_ID ='SYS';
+
+
+-- 2015년도에 입사한 사원수를 조회
+SELECT COUNT(*) '2015입사자(명)',
+		SUM(SALARY) 총연봉,
+        MIN(SALARY) 평균연봉,
+        MAX(SALARY) 최대연봉
+	FROM ENPLOYEE
+    WHERE LEFT(HIRE_DATE, 4) ='2015';
+    
+-- HRD 부서 기준 최근 입사자와 오래된 입사자의 입사일 조회
+SELECT MAX(HIRE_DATE) '최근 입사일',
+		MIN(HIRE_DATE) '최초 입사일'
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'HRD';
+
+-- 마케팅부서 기준 가장 낮은 연봉과 높은 연봉을 조회
+
+SELECT MIN(SALARY) 'MKT-최소연봉',
+		MAX(SALARY) 'MKT- 최대연봉'
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'MKT';
+
+
+        
+
+-- 6. GROUP BY ~ 적용 : ~~별 그룹함수를 적용해야 하는 경우
+-- 사원테이블에서 부서별 사원수를 조회
+-- GROUP BY에 사용된 일반컬럼은 그룹함수와 함께 조회가 가능
+-- 형식 : SELECT
+-- 		FROM [테이블명]
+
+
+SELECT DEPT_ID,COUNT(*) 부서별사원수  -- COUNT(*) 부서별 그룹
+	FROM EMPLOYEE  
+    GROUP BY DEPT_ID;
+
+
+-- 입사년도별 총연봉, 평균연봉, 최저연봉, 최고연봉, 입사사원수를 조회
+SELECT  CONCAT(LEFT(HIRE_DATE, 4), '년도') 입사년도,
+		CONCAT(FORMAT(SUM(SALARY), 0), '만원') 총연봉,
+        TRUNCATE(AVG(SALARY), 0) 평균연봉,
+        MIN(SALARY) 최저연봉,
+        MAX(SALARY) 최고연봉,
+		CONCAT(COUNT(*), '명') 사원수
+	FROM EMPLOYEE
+    GROUP BY CONCAT(LEFT(HIRE_DATE, 4),  '년도');
+    
+-- 부서별 총연봉, 평균연봉, 최저연봉, 최고연봉, 입사사원수를 조회
+SELECT DEPT_ID 부서아이디,
+	CONCAT(FORMAT(SUM(IFNULL(SALARY, 0)), 0), '만원' ) 총연봉,
+        TRUNCATE(AVG(SALARY), 0) 평균연봉,
+        MIN(SALARY) 최저연봉,
+        MAX(SALARY) 최고연봉,
+    CONCAT(COUNT(*), '명') 사원수
+    FROM EMPLOYEE
+    GROUP BY DEPT_ID;
+    
+
+-- 7.  HAVING 절
+-- GROUP BY를 통해 그룹핑한 결과에 조건절을 추가하는 구문
+-- 부서별 평균 연봉을 조회
+-- NULL값이 포함된 경우 0으로 변환
+-- 부서아이디 함께 출력
+-- 부서 평균연봉이 6000 이상인 부서만 출력
+
+SELECT DEPT_ID 부서ID, 
+	TRUNCATE(AVG(IFNULL(SALARY, 0)), 0) 평균연봉 -- 오라클 NVL(컬럼명, 값)
+	FROM EMPLOYEE
+    GROUP BY DEPT_ID
+    HAVING 평균연봉 >= 6000 -- HAVING 절에는 별칭컬럼명을 조건으로 사용가능함
+    ORDER BY 평균연봉 ASC;
+    
+
+-- 입사년도 기준 총연봉, 평균연봉을 조회
+-- 총연봉이 2500 이상인 사원들만 출력
+-- NULL 값을 포함한 경우 0으로 초기화
+SELECT LEFT(HIRE_DATE, 4) 입사년도,  -- (HIRE_DATE, 4)숫자뒤 소수점 4개까지보여짐
+		SUM(SALARY),
+        AVG(SALARY)
+	FROM EMPLOYEE
+    GROUP BY LEFT(HIRE_DATE, 4)
+    HAVING SUM(SALARY) >= 5000; 
+    
+    
+-- 부서별 남녀사원의 사원수를 조회
+SELECT DEPT_ID 부서ID,
+		GENDER,
+		COUNT(*) 사원수
+	FROM EMPOLYEE
+	GROUP BY DEPT_ID, GENDER;
+
+
+
+    
+-- 8. ROLLUP 함수 : REPORTING을 위한 함수
+-- 형식 : SELECT [컬럼리스트] FROM [테이블명]
+-- 			WHERE [조건절]
+-- 			GROUP BY [그룹핑 컬럼] WITH ROLLUP;
+-- 부서별 총연봉을 조회, 연봉이 정해지지 않는 부서는 포함하지 않음
+SELECT IF(GROUPING(DEPT_ID), '부서총합계', IFNULL(DEPT_ID, '_')) 부서ID,  -- (DEPT_ID, '_')-문자를 추가
+		CONCAT(FORMAT(SUM(SALARY), 0), '만원') 총연봉
+        FROM EMPLOYEE
+        WHERE SALARY IS NOT NULL
+        GROUP BY DEPT_ID WITH ROLLUP;
+        
+        
+        
+-- 입사년도별 평균연봉을 조회
+-- 연봉이 정해지지 않는 부서는 포함하지 않음
+-- 평균연봉이 4000 이상되는 입사년도만 출력
+-- 3자리 구분, '만원' 단위 추가
+-- 리포팅 함수 사용, '연도별 총합계' 컬럼명 추가
+SELECT IF(GROUPING(YEAR), 
+			'연도별평균연봉', IFNULL(YEAR, '-')) 연도별,
+		CONCAT(FORMAT(AVG(SALARY), 0), '만원') 평균연봉
+	FROM (SELECT LEFT(HIRE_DATE, 4) YEAR,  -- 서브쿼리
+					SALARY
+                FROM EMPLOYEE) T
+    WHERE SALARY IS NOT NULL
+    GROUP BY YEAR WITH ROLLUP;
+    -- HAVING AVG(SALARY) >= 6000;
+    
+    
+    
+SHOW TABLES;
+
+-- 사원들의 휴가사용 내역을 조회
+SELECT * FROM VACATION;
+
+
+-- 사원아이디별 휴가사용 횟수 조회
+-- 총휴가사용일 기준으로 내림차순 정렬
+SELECT EMP_ID 사원아이디,
+		COUNT(*) 휴가상신횟수,
+        SUM(DURATION) 총휴가사용일
+	FROM VACATION
+    GROUP BY EMP_ID
+    ORDER BY 총휴가사용일 DESC;
+
+
+-- 2016 ~ 2017년도 사이에 사원아이디별 휴가사용 횟수 조회
+-- 총휴가사용일 기준으로 내림차순 정렬
+SELECT IF(GROUPING(EMP_ID), '총휴가사용내역', IFNULL(EMP_ID,'-')) 사원ID,
+		COUNT(*) 휴가성신횟수,
+        SUM(DUTATION) 총사용일수
+	FROM VACATION
+	WHERE LEFT(BEGIN_DATE, 4) BETWEEN 2016 AND 2017
+    GROUP BY EMP_ID WITH ROLLUP
+    ORDER BY 총사용일수;
+    
+    
+
+
+
+    
+    
