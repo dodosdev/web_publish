@@ -948,10 +948,10 @@ DESC EMP;
 
 DESC DEPARTMENT;
 -- DEPT 테이블 생성 : DEPT_ID 고정형(3), DEPT_NAME  가변형(10), LOC  가변형(20)
-CREATE TABLE DEPARTMENT(
-	DEPT_ID 	CHAR(3),
-    DEPT_NAME   VARCHAR(10),
-    LOC         VARCHAR(20)
+CREATE TABLE DEPT(
+	DEPT_ID CHAR(3),
+	DEPT_NAME VARCHAR(10),
+	LOC  VARCHAR(20)
 );
 SHOW TABLES;
 DESC DEPT;
@@ -1100,9 +1100,11 @@ ALTER TABLE EMPLOYEE_WORKING
 	DROP COLUMN DNAME;
 DESC EMPLOYEE_WOROKING;
 
+
 -- EMPLOYEE_WORKING 테이블 제거
 DROP TABLE EMPLOYEE_WORKING;
 SHOW TABLES;
+
 
 -- EMPLOYEE 테이블에서 HRD 부서에 속한 사원들의 사원아이디, 사원명, 입사일, 연봉, 보너스(연봉 10%)
 -- 정보를 별칭을 사용하여 조회한 후
@@ -1118,6 +1120,218 @@ SELECT EMP_ID 사원아이디,
 SHOW TABLES;
 SELECT * FROM EMPLOYEE_HRD;
 DESC EMPLOYEE_HRD;
+
+
+
+
+
+
+
+/*************************************************
+	DML : INSERT(C), SELECT(R), UPDATE(U), DELETE(D)
+*************************************************/
+-- 1.INSERT : 데이터추가
+-- 형식 : INSERT INTO [테이블명](컬럼리스트)
+-- 			VALUES(데이터리스트...);
+SHOW TABLES;
+DESC EMP;
+SELECT * FROM EMP;
+-- S001, 홍길동, 현재날짜, 1000 데이터 추가
+INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S001', '홍길동', CURDATE(), 1000); -- 결과값이아무것도 안나오면INSERT된거임!
+SELECT * FROM EMP;
+
+
+-- S002, 홍길순, 현재날짜(NOW, SYSDATE), 2000데이터 추가
+DESC EMP;
+INSERT INTO EMP(SALARY, HIRE_DATE, EMP_NAME, EMP_ID)
+		VALUES(2000, NOW(), '홍길순', 'S002');
+	SELECT * FROM EMP;
+
+
+-- S002, 김철수, 현재날짜(NOW, SYSDATE), 3000데이터 추가
+-- 컬럼리스트 생략시에는 생성시 컬럼순서대로 INSERT 실행됨
+DESC EMP;
+INSERT INTO EMP
+	VALUES('S003', '김철수', SYSDATE(), 3000);
+SELECT * FROM EMP;
+
+
+-- S004, 이영희, 현재날짜(NOW, SYSDATE), 연봉협상전 데이터 추가
+DESC EMP;
+INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S004', '이영희', NOW(), NULL); 	-- 넣을정보없으면 NULL  -NOW()현재시간
+SELECT * FROM EMP;
+
+
+INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('NULL', '홍길동', NOW(), NULL); 
+SELECT * FROM EMP;
+
+
+
+-- EMPLOYEE 테이블의 정보시스템 부서의 사원들 정보 중
+-- 사원아이디, 사원명, 입사일, 부서아이디, 연봉
+-- 2016년 이전에 입사한 사원들
+-- 복제하여 EMPLOYEE_SYS 테이블 생성
+CREATE TABLE EMPLOYEE_SYS
+AS
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'SYS' AND LEFT(HIRE_DATE, 4) < '2016';
+SELECT * FROM EMPLOYEE_SYS;
+SELECT * FROM EMPLOYEE WHERE DEPT_ID ='SYS';
+
+
+
+-- EMPLOYEE_SYS 테이블에 2016년도 이후에 입사한 정보시스템 부서 사원 추가
+DESC EMPLOYEE_SYS;
+
+-- 서브쿼리를 이용한 데이터 추가
+INSERT INTO EMPLOYEE_SYS(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'SYS' AND LEFT(HIRE_DATE, 4) >= '2016';  
+    -- LEFT(문자, 가져올 갯수); LEFT : 문자에 왼쪽을 기준으로 일정 갯수를 가져오는 함수.
+    -- LEFT('20200822', 4) -- print 2020   RIGHT('20200822', 2) -- print 22
+SELECT * FROM EMPLOYEE_SYS;
+
+
+-- DEPT 테이블 구조 확인 및 데이터 추가
+SHOW TABLES;
+DESC DEPT;
+-- SYS, 정보시스템, 서울
+-- MKT, 마케팅, 뉴욕
+-- HRD, 인사, 부산
+-- ACC, 회계, 정해지지않음
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC) VALUES('SYS', '정보시스템', '서울');
+SELECT * FROM DEPT;
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC) VALUES('MKT', '마케팅', '뉴욕');
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC) VALUES('HRD', '인사', '부산');
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC) VALUES('ACC', '회계', 'NULL');
+SELECT * FROM DEPT;
+DESC DEPT;
+INSERT INTO DEPT VALUES('영업', NULL, 'SALES');
+SELECT * FROM DEPT;
+
+-- 에러발생!!  - 컬럼리스트와 매칭 카운트가 다름
+DESC DEPT;
+INSERT INTO DEPT(DEPT_NAME, LOC, DEPT_ID) VALUES('영업', NULL, 'SALES');
+
+-- 에러발생!! - 컬럼라스트 DEPT_ID 컬럼 사이즈보다 큰 데이터 입력
+INSERT INTO DEPT(DEPT_NAME, LOC, DEPT_ID) VALUES('영업', NULL, 'SALES');
+INSERT INTO DEPT(DEPT_NAME, LOC, DEPT_ID) VALUES('영업', NULL, 'SAL');
+SELECT * FROM DEPT;
+
+
+    
+SELECT DATABASE();
+SHOW TABLES;
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++
+	CONSTRAINT(제약사항) :데이터 무결성의 원칙을 적용하기 위한 규칙
+    - UNIQUE :  유니크(중복방지) 제약사항 
+    - NOT NULL : NULL 값을 허용하지 않는 제약
+    - PRIMARY KEY(기본키) :  UNIQUE + NOT NULL 제약을 지정
+    - FOREIGN KEY(참조키) : 타 테이블을 참조하기 위한 제약
+    - DEFAULT : 디폴트로 저장되는 데이터 정의하는 제약
+    
+    사용 형식 : CREATE TABLE + 제약사항
+			  ALTER TABLE + 제약사항 
+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
+-- INFORMATION _SCHEMA.TABLE_CONSTRAINTS
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+		WHERE TABLE_NAME = 'EMPLOYEE';
+DESC EMPLOYEE;
+SHOW TABLES;
+DESC EMP;
+
+
+-- EMP_COST 테이블 생성
+-- 기본키 제약 : EMP_ID
+-- 유니크 제약 : EMP_NAME
+-- NOT NULL 제약 : SALARY
+CREATE TABLE EMP_CONST(
+	EMP_ID		CHAR(4)		PRIMARY KEY,
+    EMP_NAME    VARCHAR(10) UNIQUE,
+    HIRE_DATE 	DATETIME,
+    SALARY		INT 		NOT NULL
+);
+SHOW TABLES;
+DESC EMP_CONST;
+SELECT *
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+    WHERE TABLE_NAME = 'EMP_CONST';
+    
+    
+-- S001, 홍길동, 현재날짜, 1000 데이터 추가
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S001', '홍길동', NOW(), 1000);
+SELECT * FROM EMP_CONST;
+    
+    
+-- EMP_CONST : S001, 김철수, 현재날짜, 1000 데이터 추가
+-- Error Code: 1062. Duplicate entry 'S001' for key 'emp_const.PRIMARY'   //똑같은 값이 들어가면 에러가뜸
+-- PRIMARY 키로 설정되어 있는 컬럼은 입력폼에서 아이디 중복체크 기능을 통해 확인함 
+
+
+-- Error Code: EN
+-- SOLUTION : 중복된 'S001' NULL 또는 중복된 값을 배제하여 진행
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S002', '김철수', NOW(), 1000);
+SELECT * FROM EMP_CONST;
+
+
+-- Error Code: 1062. Duplicate entry '김철수' for key 'emp_const.EMP_NAME' 
+-- SOLUTION : 이미 저장된 '김철수' 대신 유니크한 이름으로 진행
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S003', '이영희', NOW(), 1000);
+ 
+ 
+ -- EMP_NAME 컬럼을 널값을 추가   
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S004', NULL , NOW(), 1000);   
+ 
+ 
+-- EMP_NAME 컬럼에 널값은 중복으로 저장 가능   
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S005', NULL , NOW(), 1000);   -- NULL값은 중복해서 허용가능
+
+
+DESC EMP_CONST;
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUE('S006', '스미스' , NOW(), 1000);
+
+
+SELECT * FROM EMP_CONST;
+
+
+SELECT *
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+    WHERE TABLE_NAME = 'EMP_CONST';
+    
+-- EMP_CONST2 테이블 생성
+-- EMP_ID :PRIMARY KEY
+-- EMP_NAME : UNIQUE
+
+CREATE TABLE EMP_CONST2(
+	EMP_ID		CHAR(4),
+    EMP_NAME    VARCHAR(10),
+		CONSTRAINT	 PK_EMP_ID 	PRIMARY KEY(EMP_ID),  -- PRIMARY KEY는 한번만 사용가능
+        CONSTRAINT 	UK_EMP_NAME 	UNIQUE(EMP_NAME)
+);
+DESC EMP_CONST2;
+SELECT *
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+    WHERE TABLE_NAME = 'EMP_CONST2';
+
+
+        
+
+
+
 
 
 
