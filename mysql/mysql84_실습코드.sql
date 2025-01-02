@@ -882,16 +882,245 @@ SELECT EMP_ID 사원아이디,
 -- 2016 ~ 2017년도 사이에 사원아이디별 휴가사용 횟수 조회
 -- 총휴가사용일 기준으로 내림차순 정렬
 SELECT IF(GROUPING(EMP_ID), '총휴가사용내역', IFNULL(EMP_ID,'-')) 사원ID,
-		COUNT(*) 휴가성신횟수,
-        SUM(DUTATION) 총사용일수
+		COUNT(*) 휴가상신횟수,
+        SUM(DURATION) 총사용일수
 	FROM VACATION
 	WHERE LEFT(BEGIN_DATE, 4) BETWEEN 2016 AND 2017
     GROUP BY EMP_ID WITH ROLLUP
     ORDER BY 총사용일수;
     
     
-
-
-
     
     
+/*************************************************
+	DDL : 테이블 생성, 수정, 삭제
+    명령어 : CREATE, ALTER, DROP, TRUNCATE
+*************************************************/
+-- 1. 테이블 생성 : CREATE
+-- 형식 : CREATE TABLE [생성할 테이블명] (   
+--  		컬럼명 	테이터타입(크기) [제약사항],	
+-- 			...			
+-- 		)
+
+SHOW DATABASES;
+USE HRDB2019;
+SELECT DATABASE();
+SHOW TABLES; 
+
+-- TEST 테이블생성 및 제거
+CREATE TABLE TEST(
+	ID CHAR(4)	NOT NULL
+);
+SHOW TABLES; -- 테이블이 생성확인
+DESC TEST;  -- 아이디 확인
+SELECT * FROM TEST;
+DROP TABLE TEST;  -- TEST 삭제
+SHOW TABLES;	--  확인
+
+
+-- DATA TYPE(데이터 타입) : 숫자, 문자, 날짜(시간)
+-- (1) 숫자 데이터 타입
+-- 1) 정수 : SMALLINT(2), INT(4), BIGINT(8)   <-- SMALLINT(2)숫자를 2자리까지 넣을수 있음- 1~99
+-- 2) 실수 : FLOAT(4), DOUBLE(8)
+-- 3) 문자 : CHAR(크기 : 고정형), VARCHAR(크기:가변형) <--가변형은 데이터에따라 변형됨
+-- 			예) NAME CHAR(20), NAME	VARCHAR(20) -- - CHAR는 3개까지 입력한다면 나머지는 사용불가  - VARCHAR는최대20자까지
+-- 				'홍길동'				'홍길동'
+-- 4) 텍스트 : TEXT - 긴 문장을 저장하는 데이터 타입
+-- 5) BLOB 타입 : BLOB - 큰 바이너리 타입의 데이터 저장
+-- 6) 날짜 : DATE - 년, 월, 일,   DATETIME - 년,월,일,시,분,초 (오라클에는없음)
+-- 			데이터타입에 맞는 날짜 함수 호출필요!!
+
+DESC EMPLOYEE;
+SELECT * FROM EMPLOYEE;
+
+
+-- EMP 테이블 생성
+-- 컬럼리스트 : EMP_ID 고정형(4), EMP_NAME 가변형(10), HIRE_DATE 날짜/시간, SALARY 정수(5)
+CREATE TABLE EMP(
+	EMP_ID		CHAR(4),
+    EMP_NAME  	VARCHAR(10),
+    HIRE_DATE	DATETIME,
+    SALARY		INT(5)
+);
+SHOW TABLES; -- 확인
+DESC EMP;
+
+
+DESC DEPARTMENT;
+-- DEPT 테이블 생성 : DEPT_ID 고정형(3), DEPT_NAME  가변형(10), LOC  가변형(20)
+CREATE TABLE DEPARTMENT(
+	DEPT_ID 	CHAR(3),
+    DEPT_NAME   VARCHAR(10),
+    LOC         VARCHAR(20)
+);
+SHOW TABLES;
+DESC DEPT;
+
+
+-- EMP, DEPT 테이블의 모든 데이터 조회
+SELECT * FROM EMP;
+SELECT * FROM DEPT;
+
+
+
+-- 2 테이블 생성(복제) : CREATE TABLES ~ AS ~ SELECT   --복제(CAS)
+-- 물리적으로 메모리 생성 (수동으로메모리삭제필요)
+-- 기본키, 참조키 등의 제약사항은 복제가 불가능, 복제 후 ALTER TABLE 명령으로 제약사항 추가
+/*형식 : CREATE TABLE [생성(복제)할 테이블명] 
+		AS
+        SELECT [컬럼리스트]
+			FROM [테이블명]
+            WHERE [조건절]
+*/
+-- 정보시스템 부서의 사원들만 별도로 테이블 복제
+-- EMPLOYEE_SYS
+CREATE TABLE EMPLOYEE_SYS
+AS
+SELECT * 
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'SYS';
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_SYS;
+DESC EMPLOYEE_SYS;
+DESC EMPLOYEE;
+
+-- 퇴직한 사원들을 복제하여 EMPLOYEE_RETIRE 테이블로 관리
+CREATE TABLE EMPLOYEE_RETIRE
+AS
+SELECT * 
+	FROM EMPLOYEE
+    WHERE RETIRE_DATE IS NOT NULL;   -- IS NOT NULL (비어있지않은사람들)
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_RETIRE;
+DESC EMPLOYEE_RETIRE;
+
+
+-- 2015, 2017년 입사자들을 복제하여 별도로 관리
+-- 테이블명 : EMPLOYEE_2015_2017
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, PHONE, SALARY
+	FROM EMPLOYEE
+    WHERE LEFT(HIRE_DATE, 4) IN ('2015', '2017');
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_2015_2017;
+
+SHOW TABLES;
+
+
+/*************************************************
+	테이블 제거 : DROP TABLE
+    형식 : DROP TABLE [제거할 테이블명]
+    명령 즉시 메모리에서 바로 테이블 삭제하므로 주의!!
+    복구가 불가능
+*************************************************/
+SHOW TABLES;
+-- EMPLOYEE_2015_2017 테이블 제거
+DROP TABLE EMPLOYEE_2015_2017;
+SHOW TABLES;
+
+
+-- EMPLOYEE_RETIRE 테이블 제거
+SHOW TABLES;
+DROP TABLE EMPLOYEE_RETIRE;
+
+
+-- 재직중인 사원테이블 생성(복제)
+-- EMPLOYEE_WORKING
+CREATE TABLE EMPLOYEE_WORKING
+AS
+SELECT *
+	FROM EMPLOYEE
+    WHERE RETIRE_DATE IS NULL;
+    
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_WORKING;
+
+
+
+/*************************************************
+	데이터 테이블 제거 : TRUNCATE TABLE
+    형식 : TRUNCATE TABLE [제거할 데이터를 가진 테이블명]
+    명령 즉시 메모리에서 바로 테이블의 데이터가 모두 제거되므로 주의!!
+    복구가 불가능
+*************************************************/
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_WORKING;
+-- EMPLOYEE_WORKING 테이블의 모든 데이터(ROW)를 제거
+TRUNCATE TABLE EMPLOYEE_WORKING;
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_WORKING;
+
+
+/*************************************************
+	데이터 구조 변경 : ALTER TABLE
+    형식 : ALTER TABLE [변경할 테이블명]
+    1) 컬럼 추가 : ADD COLUMN [NEW 컬럼명 데이터타입(크기) 제약사항]
+    2) 컬럼 변경 : MODIFY COLUMN [변경할 컬럼명 데이터타입(크기) 제약사항]
+    3) 컬럼 삭제 : DROP COLUMN [삭제할 컬럼명]
+    -- 데이터베이스 사용시 데이터가 있는경우 데이터를 늘리는건 가능, 데이터를 줄이는건 불가능
+*************************************************/
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_WORKING;  
+DESC EMPLOYEE_WORKING;
+
+-- EMPLOYEE_WORKING 테이블에 BONUS 컬럼을 추가, 데이터타입 정수형 4자리, NULL값 허용
+ALTER TABLE EMPLOYEE_WORKING
+	ADD COLUMN BONUS   INT(4);
+DESC EMPLOYEE_WORKING;
+
+
+-- EMPLOYEE_WORKING 테이블에 DNAME(부서명) 추가, 데이터타입 가변형(10), 널값 허용
+ALTER TABLE EMPLOYEE_WORKING
+	ADD COLUMN DNAME 	VARCHAR(10);
+    DESC EMPLOYEE_WORKING;
+    
+    
+-- EMPLOYEE_WORKING 이메일 주소 컬럼 크기를 30으로 수정
+ALTER TABLE EMPLOYEE_WORKING
+	MODIFY COLUMN EMAIL VARCHAR(30);
+DESC EMPLOYEE_WORKING; -- 구조확인
+
+
+-- EMPLOYEE_WORKING SALARY 컬럼을 실수타입(DOUBLE)로 수정
+ALTER TABLE EMPLOYEE_WORKING
+	MODIFY COLUMN SALARY DOUBLE;
+    
+    
+    
+SELECT COUNT(*) EMPLOYEE_SYS;
+-- EMPLOYEE_SYS 테이블의 이메일주소 컬럼 크기를 가변형 10 크기로 수정
+ALTER TABLE EMPLOYEE_SYS
+	MODIFY COLUMN EMAIL VARCHAR(10); -- 1개의 데이터가 유실될 가능성이 있으므로 에러발생!
+DESC EMPLOYEE_SYS;
+-- ELECT COUNT(*) FROM EMPLOYEE_SYS;
+
+
+
+-- EMPLOYEE_WORKING 테이블의 BONUS 컬럼 삭제
+ALTER TABLE EMPLOYEE_WORKING
+	DROP COLUMN DNAME;
+DESC EMPLOYEE_WOROKING;
+
+-- EMPLOYEE_WORKING 테이블 제거
+DROP TABLE EMPLOYEE_WORKING;
+SHOW TABLES;
+
+-- EMPLOYEE 테이블에서 HRD 부서에 속한 사원들의 사원아이디, 사원명, 입사일, 연봉, 보너스(연봉 10%)
+-- 정보를 별칭을 사용하여 조회한 후
+-- EMPLOYEE_HRD 이름을 복제
+CREATE TABLE EMPLOYEE_HRD
+SELECT EMP_ID 사원아이디,
+	   EMP_NAME 사원명,
+       HIRE_DATE 입사일,
+       SALARY 연봉,
+       SALARY*0.1 보너스
+	FROM EMPLOYEE
+	WHERE DEPT_ID = 'HRD';
+SHOW TABLES;
+SELECT * FROM EMPLOYEE_HRD;
+DESC EMPLOYEE_HRD;
+
+
+
+
+
+
