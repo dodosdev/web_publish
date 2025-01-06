@@ -1567,7 +1567,270 @@ SHOW TABLES;
 
 
 
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++
+	하나 이상의 테이블 생성 및 연결, 조회
+	- 생성 : CREATE TABLE
+    - 연결 : FOREIGN KEY(참조키) 제약 추가
+    - 조회 : JOIN, SUBQUERY
+    ** 데이터베이스의 테이블 설계과정 : 데이터 베이스 모델링
+		-> 데이터 정규화 
+        -> ERD(Entity Relationship Diagram)
+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+USE HRDB2019;
+SELECT DATABASE();
+SHOW TABLES;
+DESC EMPLOYEE;
+-- ERD : Datebase > Reverse Engeering...(ctrl+r)
+-- 정규화 : 데이터베이스 저장 효율성을 높이기 위한 방식 - 데이터 중복배제, 데이블 분리...
+-- 반정규화 : 분리된 테이블을 하나로 합치는 방식
 
+-- [KK전자의 인사관리시스템 : 사원테이블 생성 - 정규화X]
+-- 사원 테이블의 데이터 : 
+-- 사원아이디(KID, 기본키), 사원명, 주소, 입사일, 연봉, 부서번호, 부서명, 부서위치 
+
+
+
+SHOW TABLES;
+CREATE TABLE KK_DEPARTMENT(
+	DEPT_ID		CHAR(3)		PRIMARY KEY,
+    DEPT_NAME VARCHAR(20) NOT NULL,
+    LOC		VARCHAR(30) 
+    );
+    DESC KK_DEPARTMANT;
+    SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+		WHERE TABLE_NAME LIKE 'KK';
+        
+	INSERT INTO KK_DEPARTMENT(DEPT_ID, DEPT_NAME,LOC)
+		VALUES('SYS', '정보시스템', '서울시 서초구');
+	INSERT INTO KK_DEPARTMENT(DEPT_ID, DEPT_NAME,LOC)
+		VALUES('HRD', '인사', '서울시 서초구');
+	INSERT INTO KK_DEPARTMENT(DEPT_ID, DEPT_NAME,LOC)
+		VALUES('ACC', '회계관리', '서울시 서초구');
+	SELECT * FROM KK_DEPARTMENT;
+    
+    
+    
+    CREATE TABLE KK_EMPLOYEE(
+		KID       INT    PRIMARY KEY     AUTO_INCREMENT,
+        KNAME     VARCHAR(10) NOT NULL,
+        ADDRESS   VARCHAR(20),
+        HIRE_DATE DATE,
+        SALARY    INT,
+        DEPT_ID   CHAR(3),
+        CONSTRAINT FK_KK_EMPLOYEE   FOREIGN KEY(DEPT_ID)
+					REFERENCES KK_DEPARTMENT(DEPT_ID)
+    );
+    DESC KK_EMPLOYEE;
+    SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+		WHERE TABLE_NAME LIKE 'KK%';
+	SELECT * FROM KK_EMPLOYEE;
+    SHOW TABLES;
+    
+    
+    INSERT INTO KK_EMPLOYEE(KNAME, ADDRESS, HIRE_DATE, SALARY, DEPT_ID)
+		VALUES('홍길동', '서울시 강남구', CURDATE(), 5000, 'SYS');
+    SELECT * FROM KK_DEPARTMENT;
+    SELECT * FROM KK_EMPLOYEE;
+    
+
+    INSERT INTO KK_EMPLOYEE(KNAME, ADDRESS,HIRE_DATE, SALARY, DEPT_ID)
+		VALUES('스미스', '뉴욕', CURDATE(), 5000, 'HRD');
+        
+
+/*
+	[학사관리 시스템 설계]
+	1. 과목(SUBJECT) 테이블은 
+		컬럼 : SID(과목아이디), SNAME(과목명), SDATE(등록일:년월일 시분초)
+		SID는 기본키, 자동으로 생성한다
+    
+    2. 학생(STUDENT) 테이블은 반드시 하나이상의 과목을 수강해야한다
+    컬럼: STID(학생아이디), 기본키, 자동생성
+    GNAME(성별) 문자1자 널허용x
+    SID(과목아이디)
+    STFATE(등록일자) 년월일 시분초
+    
+    3.교수 (PROFESSOR) 테이블은 반드시 하나이상의 과목을 강의해야한다
+    컬럼 : PID(교수아이디)기본키, 자동생성
+    NAME(교수명) 널허용x
+    SID(과목아이디),
+    PDATE(등록일자) 년월일 시분초
+*/
+
+-- SUBJECT(과목)
+
+CREATE TABLE SUBJECT(
+		SID       INT    PRIMARY KEY     AUTO_INCREMENT,   -- INT 자동생성
+        SNAME     VARCHAR(20) NOT NULL,
+        SDATE     DATETIME
+);
+SHOW TABLES;
+DESC SUBJECT;
+
+-- STUDENT(학생)
+CREATE TABLE STUDENT(
+	STID    INT    PRIMARY KEY AUTO_INCREMENT,
+    SNAME   VARCHAR(20) NOT NULL,
+    GENDER  CHAR(1)     NOT NULL,
+    SID      INT,       -- FOREIGN KEY, SUBJECT(SID)
+    SDATE    DATETIME,
+		CONSTRAINT FK_STUDENT_SID   FOREIGN KEY(SID) 
+				REFERENCES SUBJECT(SID)
+);
+SHOW TABLES;
+DESC STUDENT;
+
+CREATE TABLE PROFESSOR(
+	PID   INT   PRIMARY KEY AUTO_INCREMENT,
+    NAME   VARCHAR(10) NOT NULL,
+    SID  INT,  -- FOREIGN KEY, SUBJECT(SID)
+    PDATE DATETIME,
+     CONSTRAINT PROFESSOR_SID FOREIGN KEY(SID) 
+				REFERENCES SUBJECT(SID)
+);
+
+SHOW TABLES;
+DESC PROPESSOR;
+
+-- SUBJECT 데이터 추가
+INSERT INTO SUBJECT(SNAME, SDATE) VALUES('HTML', NOW());
+INSERT INTO SUBJECT(SNAME, SDATE) VALUES('JAVASCRIPT', NOW());
+INSERT INTO SUBJECT(SNAME, SDATE) VALUES('MYSQL', NOW());
+SELECT * FROM SUBJECT;
+
+ 
+ 
+-- STUDENT 데이터 추가
+INSERT INTO STUDENT(SNAME, GENDER, SID, SDATE)
+	VALUES('홍길동', 'M', 1, SYSDATE());
+INSERT INTO STUDENT(SNAME, GENDER, SID, SDATE)
+	VALUES('테스트', 'F', 2, SYSDATE());
+INSERT INTO STUDENT(SNAME, GENDER, SID, SDATE)
+	VALUES('김철수', 'M', 3, SYSDATE());
+INSERT INTO STUDENT(SNAME, GENDER, SID, SDATE) 
+	VALUES('이영희', 'F', 2, SYSDATE());
+SELECT * FROM STUDENT;
+
+
+-- PROFESSER 데이터 추가
+INSERT INTO PROFESSOR(NAME, SID, PDATE) VALUE('스미스', 1, NOW());
+INSERT INTO PROFESSOR(NAME, SID, PDATE) VALUE('이순신', 2, NOW());
+INSERT INTO PROFESSOR(NAME, SID, PDATE) VALUE('강감찬', 3, NOW());
+SELECT * FROM PROFESSOR;
+
+
+-- HTML 과목의 정보를 조회
+SELECT * FROM SUBJECT WHERE SNAME = 'HTML';
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++
+	조인(JOIN) : 두 개 이상의 테이블 연동
+    - 두 개이상의 테이블을 조합하여 집합
+    - CROSS(CATESIAN) JOIN (합집합) 
+		: 두 개 테이블이 독립적으로 생성된 경우 , JOIN 연결고리X
+		PROFESSER & STUDENT => PROFESSOR * STUDENT
+    - INNER(EQUI) JOIN (교집합)
+		: 두 개 테이블이 JOIN 연결고리를 통해 연동
++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+SELECT * FROM PROFESSOR;
+SELECT * FROM STUDENT;
+-- CROSS(CATESIAN) JOIN (합집합) 형식
+-- SELECT [컬럼라스트] FROM [테이블명[테이블별칭], 테이블명 [테이블별칭[],...]
+-- WHERE [조건절]
+SELECT *
+	FROM PROFESSOR, STUDENT
+    ORDER BY PID;
+
+SELECT PID, NAME, P.SID, SNAME, GENDER, SDATE  -- P.SID별칭사용가능
+	FROM PROFESSOR P, STUDENT S;
+    
+-- PROFESSOR, STUDENT, DEPARTMENT 조인하여 모든 데이터 조회
+SELECT COUNT(*) FROM PROFESSOR;-- 3
+SELECT COUNT(*) FROM STUDENT;  -- 4
+SELECT COUNT(*) FROM DEPARTMENT;  -- 7
+SELECT * FROM PROFESSOR, STUDENT, DEPARTMENT; -- 84
+SELECT *
+	FROM POFESSOR, STUDENT, DEPARTMENT;
+-- ANSI SQL (SEQUL ::MS-SQL)
+SELECT *
+	FROM PROFESSOR CROSS JOIN STUDENT
+         CROSS JOIN DEPARTMENT;
+
+
+
+-- INNER JOIN (교집합) 형식
+-- SELECT [컬럼리스트] FROM [테이블명1 [테이블별칭], 테이블명2 [테이블별칭],...]
+-- WHERE [테이블1.조인컬럼 = 테이블명2.조인컬럼]
+-- AND [조건절 ~~]
+SELECT * FROM SUBJECT;
+SELECT * FROM PROFESSOR;
+SELECT *
+	FROM SUBJECT S, PROFESSOR P
+    WHERE S.SID - P.SID;
+    
+INSERT INTO PROFESSOR(NAME, SID, PDATE) VALUES('안중근', 1, NOW());
+SELECT * FROM PROFESSOR;
+INSERT INTO SUBJECT (SNAME,hrdb2019, SDATE)VALUES('REACT', NOW());
+SELECT * FROM SUBJECT;
+
+
+-- 이순신 교수가 강의하는 과목아이디, 교수명, 교수 아이디, 교수명, 교수등록알을 조회
+SELECT S.SID, S.SNAME, P.PID, P.NAME, P.PDATE
+	FROM SUBJECT S, PROFESSOR P
+    WHERE S.SID = P.SID
+		AND P.NAME = '이순신';
+	
+SELECT S.SID, S.SNAME, P.PID, P.NAME, P.PDATE
+	FROM SUBJECT S INNER JOIN PROFESSOR P ON S.SID = P.SID
+	WHERE P.NAME = '이순신';
+        
+-- HTML 과목을 수강하는 모든 학생을 조회
+SELECT *
+	FROM SUBJECT SU, STUDENT ST
+		WHERE SU.SID = ST.SID AND SU.SNAME = 'HTML';
+        
+        
+-- HTML 과목을 수강하는 모든 학생과 강의하는 교수를 모두 조회
+SELECT *
+	FROM SUBJECT SU INNER JOIN STUDENT ST ON SU.SID 
+    WHERE SU.SNAME = 'HTML';
+    
+-- HTML 과목을 수강하는 모든 학생과 강의하는 교수를 모두 조회
+SELECT *
+	FROM SUBJECT SU, PROFESSOR P, STUDENT ST
+    WHERE SU.SID = P.SID 
+		AND SU.SID = ST.SID
+        AND SU.SNAME ='HTML';
+
+SELECT *
+	FROM SUBJECT SU INNER JOIN PROFESSOR P INNER JOIN STUDENT ST
+		ON SU.SID = P.SID AND SU.SID = ST.SID
+	WHERE SU.SNAME = 'HTML';
+    
+-- EMPLOYEE, DEPARTMENT, VACATION, UNIT 테이블들의 ERD 참조
+-- 모든 사원들의 사원번호, 사원명, 성별, 부서명, 입사일 조회
+-- 사원번호 기준으로 오름차순
+SELECT * FROM EMPLOYEE;
+SELECT * FROM DEPARTMENT;
+SELECT E.EMP_ID, E.EMP_NAME, E.GENDER, D.DEPT_NAME, E.HIRE_DATE
+	FROM EMPLOYEE E, DEPARTMENT D
+    WHERE E.DEPT_ID = D.DEPT_ID;
+    
+SELECT E.EMP_ID, E.EMP_NAME, E.GENDER, D.DEPT_NAME, E.HIRE_DATE
+	FROM EMPLOYEE E INNER JOIN DEPARTMENT D
+		ON E.DEPT_ID = D.DEPT_ID;
+        
+-- 마케팅부서에 속해있는 사원들의 사원번호, 사원명, 입사일, 급여, 부서 아이디, 부서명 조회
+SELECT E.EMP_ID, E.EMP_NAME, E.HIRE_DATE, E.SALARY, D.DEPT_ID, D.DEPT_NAME
+		FROM EMPLOYEE E, DEPARTMENT D
+        WHERE E.DEPT_ID = D.DEPT_ID
+			AND D.DEPT_NAME = '영업';
+            
+-- 인사과에 속한 사람들 중에 휴가를 사용한 사원들의 리스트를 모두 조회
+SELECT *
+	FROM DEPARTMENT D, EMPLOYEE E, VACATION V
+    WHERE D.DEPT_ID = E.DEPT_ID
+			AND E.EMP_ID = V.EMP_ID
+			AND D.DEPT_NAME = '인사';
+        
 
 
 
