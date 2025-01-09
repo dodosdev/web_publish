@@ -591,7 +591,7 @@ SELECT  EMP_NAME,
 SELECT  SUM(SALARY) 총연봉,
 		CONCAT(FORMAT(SUM(SALARY), 0), ' 만원') 총연봉
 	FROM EMPLOYEE;
-    
+
 -- 2. AVG(숫자, 숫자컬럼)   
 -- 사원들의 총연봉, 평균연봉 조회
 -- 3자리 구분, '만원' 단위 추가
@@ -1093,7 +1093,7 @@ DESC DEPT;
         사용 형식 :   CREATE TABLE + 제약사항 
 					ALTER TABLE + 제약사항
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
--- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인 -- 스키마(데이터베이스)안에 테이블이있고, 그테이블안에 데이터가있음
 -- INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 		WHERE TABLE_NAME = 'EMPLOYEE';
@@ -2272,130 +2272,113 @@ DROP VIEW VIEW_EMP_DEPT_UNIT;
 
 
 
-  -- 2013~2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
-  -- VIEW 생성 : VIEW_SUM_SALARY
+-- 2013~ 2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
+-- VIEW 생성 : VIEW_SUM_SALARY
+CREATE VIEW VIEW_SUM_SALARY
+AS
+SELECT ROW_NUMBER() OVER(ORDER BY YEAR) AS NO,
+		YEAR, DEPT_ID, SALARY
+FROM (SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2013'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1    
+		UNION 
+		SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2014'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1 
+		UNION
+		SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2015'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1) TT; 
+    
+SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'HRDB2019';
+
+-- 
+SELECT  NO,
+		CONCAT(YEAR, '년도') AS YEAR,
+        DEPT_ID,
+        CONCAT(FORMAT(SALARY, 0), '만원') AS SALARY
+ FROM VIEW_SUM_SALARY;
+
   
-	CREATE VIEW VIEW_SUM_SALARY
-	AS
-    SELECT ROW_NUMBER() OVER(ORDER BY YEAR) AS NO,
-			YEAR, DEPT_ID, SALARY 
-    FROM (SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2013'
-			GROUP BY YEAR, DEPT_ID) T1
-	WHERE NO = 1
-    UNION
-        SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2014'
-			GROUP BY YEAR, DEPT_ID) T1
-	WHERE NO = 1
-    UNION
-       SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2015'
-			GROUP BY YEAR, DEPT_ID) T1
-	WHERE NO = 1) TT;
-    
-    SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA ='HRDB2019';
-    
-    -- 
-    SELECT NO,
-			CONCAT(YEAR, '년도') AS YEAR,
-            DEPT_ID,
-            CONCAT(FORMAT(SALARY, 0), '만원') AS SALARY
-	FROM VIEW_SUM_SALARY;
-    --
-    -- 전체 사원의 휴가일수 조회:
-    -- 매니저(홍길동, 오감자, 정주고)에 따라 관리하는 모든 사원들의 
-    -- 사원번호 , 사원명, 입사일, 급여, 부서아이디, 부서명을 조회하는 서브쿼리 생성 후 뷰로 저장
-    -- VIEW 이름 : VIEW_EMP_MGR
-    
-    -- 홍길동 매니저가 관리하는 사원들 조회
-    SELECT * FROM VIEW_EMP_MGR;
-    DROP VIEW VIEW_EMP_MGR;
- CREATE VIEW VIEW_EMP_MGR
-    AS
-    SELECT E.EMP_ID AS MGR_ID,
+-- 매니저(홍길동, 오감자, 정주고)에 따라 관리하는 모든 사원들의 
+-- 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명를 조회하는 서브쿼리 생성 후 뷰로 저장
+-- VIEW 이름 : VIEW_EMP_MGR
+CREATE VIEW VIEW_EMP_MGR
+AS
+SELECT E.EMP_ID AS MGR_ID,
 			E.EMP_NAME AS MGR_NAME,
-            M.EMP_ID,
-            M.EMP_NAME,
-            M.DEPT_ID,
-            D.DEPT_NAME
+			M.EMP_ID,
+			M.EMP_NAME,
+			M.DEPT_ID,
+			D.DEPT_NAME
 		FROM EMP E, EMP M, DEPARTMENT D
-        WHERE E.EMP_ID = M.MGR AND M.DEPT_ID = D.DEPT_ID
-        ORDER BY E.EMP_ID;
-        
-        SELECT * FROM INFORMATION_SCHEMA.VIEWS
-			WHERE TABLE_SCHEMA = 'RDB2019';
-            
-        SELECT * FROM VIEW_EMP_MGR;
-        -- 홍길동 매니저가 관리하는 사원들 조회
-        SELECT EMP_ID,EMP_NAME, DEPT/_ID, DEPT_NAME
-        FROM VIEW_EMP_MGR
-        WHERE MGR_NAME = '정주고';
-        
-        
-        
-        
-	SELECT E.EMP_ID,
-			E.EMP_NAME,
-            E.HIRE_DATE,
-            E.SALARY,
-            V.COUNT,
-            V.VCOUNT,
-            D.DEPT_NAME,
-            U.UNIT_NAME
-		FROM EMPLOYEE E LEFT OUTER JOIN
-				(SELECT EMP_ID, 
-						COUNT(EMP_ID) AS COUNT,
-						SUM(DURATION) AS VCOUNT
-					FROM VACATION
-					GROUP BY EMP_ID) V ON E.EMP_ID = V.EMP_ID
-			INNER JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID
-            LEFT OUTER JOIN UNIT U ON D.UNIT_ID = U.UNIT_ID
+		WHERE E.EMP_ID = M.MGR AND M.DEPT_ID = D.DEPT_ID
 		ORDER BY E.EMP_ID;
-        
-        
 
-   
-   
-   
-   
+SELECT * FROM INFORMATION_SCHEMA.VIEWS 
+	WHERE TABLE_SCHEMA = 'HRDB2019';
 
+SELECT * FROM VIEW_EMP_MGR;
+DROP VIEW VIEW_EMP_MGR;
+
+-- 홍길동, 정주고, 오감자 매니저가 관리하는 사원들 조회
+SELECT  ROW_NUMBER() OVER(ORDER BY MGR_ID) NO,
+		EMP_ID,
+        EMP_NAME,
+        DEPT_ID,
+        DEPT_NAME
+FROM VIEW_EMP_MGR WHERE MGR_NAME = '정주고'; 
     
-    
+-- [전체 사원의 휴가일수 조회 : 휴가를 사용한 사원정보 + 사용하지 않은 사원]
+-- 사원별 휴가결제횟수, 휴가전체사용일수를 그룹핑하여,  
+-- 사원아이디, 사원명, 입사일, 연봉, 휴가결제횟수, 휴가전체사용일수, 부서아이디, 부서명, 소속본부를 조회해주세요. 
+-- 단, 휴가를 사용하지 않은 사원의 휴가결제횟수, 휴가전체사용일수는 0값으로 할당
+-- VIEW 이름 : VIEW_EMP_VACATION
+CREATE VIEW VIEW_EMP_VACATION
+AS
+SELECT 	E.EMP_ID,
+		E.EMP_NAME,
+        E.HIRE_DATE, 
+        E.SALARY,
+        V.COUNT,
+        V.VCOUNT,
+        D.DEPT_ID,
+        D.DEPT_NAME,
+        U.UNIT_NAME
+	FROM EMPLOYEE E LEFT OUTER JOIN
+			(SELECT  EMP_ID, 
+					COUNT(EMP_ID) AS COUNT, 
+					SUM(DURATION) AS VCOUNT
+				FROM VACATION
+				GROUP BY EMP_ID) V	ON E.EMP_ID = V.EMP_ID
+		INNER JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID
+        LEFT OUTER JOIN UNIT U ON D.UNIT_ID = U.UNIT_ID
+	ORDER BY E.EMP_ID;
 
+SELECT * FROM INFORMATION_SCHEMA.VIEWS
+	WHERE TABLE_SCHEMA = 'HRDB2019';
+SELECT * FROM VIEW_EMP_VACATION;
 
-
-
-    
-
-    
-    
-    
-    
-
-
-    
-    
-
-
-
-    
-    
+-- 홍길동 휴가 사용일수 및 정보 조회
+SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';    
 
 
     
