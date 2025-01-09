@@ -1095,6 +1095,21 @@ DESC DEPT;
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 -- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인 -- 스키마(데이터베이스)안에 테이블이있고, 그테이블안에 데이터가있음
 -- INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+
+/*
+- 제약조건(constraint)란, 데이터의 무결성을 지키기 위해 제한된 조건을 의미한다.
+데이터를 삽입할때 조건을 만족했을 경우에만 데이터가 삽입되도록 제약을 할 수 있는 것.
+
+- 무결성 null - 필수 입력 사항이 아니며 데이터 값이 비워져있어도 상관없다.
+- not null - 필수 입력 사항. 데이터값이 무조건 있어야 한다.
+- unique -같은 테이블 내에서 중복이 안되는 제약조건으로 고유한 데이터들의 제약조건이다.
+- primary key -  not null 과 unique가 합쳐진 제약조건. 데이터들을 식별할때 쓰이는 제약조건. pk 라고도 불린다.
+- foreign key -  외래키이다. 다른 테이블을 참조하며 참조하는 테이블에서 존재하는 값만 사용 가능하다.
+- check - 주어진 조건에 해당하는 값만 입력 가능하다. 조건에 해당하지 않는 데이터가 들어오면 오류를 발생시킨다.
+- default - 기본값을 설정한다.
+*/
+
+
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 		WHERE TABLE_NAME = 'EMPLOYEE';
 DESC EMPLOYEE;   
@@ -1456,7 +1471,8 @@ CREATE TABLE KK_EMPLOYEE(
 DESC KK_EMPLOYEE;
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 	WHERE TABLE_NAME LIKE 'KK%';
-SELECT * FROM KK_EMPLOYEE;    
+SELECT * FROM KK_EMPLOYEE;  
+  
 SHOW TABLES;
 
 INSERT INTO KK_EMPLOYEE(KNAME, ADDRESS, HIRE_DATE, SALARY, DEPT_ID)
