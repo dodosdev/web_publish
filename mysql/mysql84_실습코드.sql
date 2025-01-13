@@ -2247,46 +2247,45 @@ SELECT COUNT(*)
 	WHERE NO = 1) TT;
     
     
+
+
+
     
-    /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		VIEW(뷰) : 논리적인 가상의 테이블
-        - SQL을 실행하여 생성되는 테이블
-        - 형식 : CREATE VIEW [생성하는 VIEW명] 
-				AS 
-                서브 쿼리
-		- 삭제: DROP VIEW [VIEW명]
-    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    -- VIEW는 SQL을 통해 생성되므로 INFORMATION_SCHEMA라는 사전에 등록됨
-    -- 전체 뷰 리스트 조회 시 INFORMATION_SCHEMA.VIEWS
-    SELECT * FROM
-		INFORMATION_SCHEMA.VIEWS;
-    
-    -- EMPLOYEE, DEPARTMENT, UNIT 테이블을 조인한 뷰 생성
-    -- 뷰 이름 : VIEW_EMP_DEPT_UNIT
-    CREATE VIEW VIEW_EMP_DEPT_UNIT
-    AS
-    SELECT E.EMP_ID,
-			E.EMP_NAME,
-            E.HIRE_DATE,
-            D.DEPT_ID,
-            D.DEPT_NAME,
-            U.UNIT_NAME
-		FROM EMPLOYEE E, DEPARTMENT D, UNIT U
-        WHERE E.DEPT_ID = D.DEPT_ID
-			AND D.UNIT_ID = U.UNIT_ID
-		ORDER BY E.EMP_ID ASC;
-        
+/*+++++++++++++++++++++++++++++++++++++++++        
+	VIEW(뷰) : 논리적인 가상의 테이블
+	- SQL을 실행하여 생성되는 테이블
+	- 형식 : CREATE VIEW [생성하는 VIEW명]
+			AS 
+            서브 쿼리
+	- 삭제 : DROP VIEW [VIEW명]
++++++++++++++++++++++++++++++++++++++++++*/                
+-- VIEW는 SQL을 통해 생성되므로 INFORMATION_SCHEMA라는 사전에 등록됨
+-- 전체 뷰 리스트 조회 시 INFORMATION_SCHEMA.VIEWS
+SELECT * FROM
+	INFORMATION_SCHEMA.VIEWS;
+
+-- EMPLOYEE, DEPARTMENT, UNIT 테이블을 조인한 뷰 생성
+-- 뷰 이름 : VIEW_EMP_DEPT_UNIT
+CREATE VIEW VIEW_EMP_DEPT_UNIT
+AS
+SELECT  E.EMP_ID,
+		E.EMP_NAME,
+        E.HIRE_DATE,
+        D.DEPT_ID,
+        D.DEPT_NAME,
+        U.UNIT_NAME
+	FROM EMPLOYEE E, DEPARTMENT D, UNIT U
+    WHERE E.DEPT_ID = D.DEPT_ID
+		AND D.UNIT_ID = U.UNIT_ID
+	ORDER BY E.EMP_ID ASC;
+
 SELECT * FROM INFORMATION_SCHEMA.VIEWS
-	WHERE TABLE_SCHEMA = 'HRDB2019';
-    
+	WHERE TABLE_SCHEMA = 'HRDB2019';    
+
 SELECT * FROM VIEW_EMP_DEPT_UNIT
-	WHERE DEPT_ID = 'SYS';
-    
-    
-DROP VIEW VIEW_EMP_DEPT_UNIT;
+	WHERE DEPT_ID = 'SYS';    
 
-
-
+DROP VIEW VIEW_EMP_DEPT_UNIT;    
 
 -- 2013~ 2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
 -- VIEW 생성 : VIEW_SUM_SALARY
@@ -2394,7 +2393,7 @@ SELECT * FROM INFORMATION_SCHEMA.VIEWS
 SELECT * FROM VIEW_EMP_VACATION;
 
 -- 홍길동 휴가 사용일수 및 정보 조회
-SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';    
+SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';   
 
 
     
