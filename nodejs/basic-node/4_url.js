@@ -1,7 +1,6 @@
 const url = require('url');
 
-const { URL } = url;   //구조분
-// 해 할당
+const { URL } = url;   //구조분해 할당
 const myURL = new URL('https://docs.github.com/ko/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop');
 
 
