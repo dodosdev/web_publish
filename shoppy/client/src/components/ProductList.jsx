@@ -25,7 +25,7 @@ export default function ProductList() {
 
     //출력 리스트 생성 [ [{},{},{}], [{},{},{}], [{}]]
     const rows = [];
-    for(let i=0; i < list.length; i+=3)  //[{0},{1},{3}]  {4}
+    for(let i=0; i < list.length; i+=3)  //[{0},{1},{2},{3}]  {4}
         rows.push(list.slice(i, i+3));  //[ [{0},{1},{2},{3}] 이미지 개씩 나열
 
     // console.log('rows-->', rows);
@@ -55,6 +55,7 @@ export default function ProductList() {
         <ProductAvata img={product.image} />
     )
 }              */}
+
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
+import './styles/shoppy.css';
 import Layout from './pages/Layout.jsx';
 import Home from './pages/Home.jsx';
 import Products from './pages/Products.jsx';
@@ -8,7 +8,7 @@ import Carts from './pages/Carts.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 
-function App() {
+export default function App() {
   return (
       <div>
         <BrowserRouter>
@@ -26,4 +26,3 @@ function App() {
   );
 }
 
-export default App;
