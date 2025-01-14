@@ -1,0 +1,18 @@
+1. web_publish/shoppy 프로젝트 (폴더) 생성
+    mkdir shoppy
+    cd shoppy
+
+2. react 프로젝트 생성 : client
+    npx create-react-app client
+
+    cd client  (여기로 이동)
+
+     cat package.json (설치된 라이브러리 내용확인)
+     설치위치:  c:\dev\web_publish\shoppy\client (main -> origin)
+
+     npm i react-router-dom  # 리액트 라우터 돔 패키지 설치
+     npm i axios             # axios 패키지 설치
+     npm i react-icons       # 리액트 제공 아이콘 패키지 설치
+     npm start  
+
+     http://localhost:3000/
