@@ -4,9 +4,11 @@ import axios from 'axios';
 //{ useParams }에 pid가 있음
 
 
-export default function DetailProduct() {
+export default function DetailProduct({addCart}) { 
+    //DetailProduct를 갖고있는부모에게 addCart(장바구니의 상품정보)를알려줌
     const { pid } = useParams();  //구조분해할당으로 pic를 가져옴 { "pid":pid }
     const [product, setProduct] = useState({}); //useState가 관리하는 product의 정보가 들어감({object넣음})
+    const [size, setSize] = useState('XS');
 
     useEffect(()=>{
         axios.get('/data/products.json') //http://localhost:3000/data/products.json
@@ -19,14 +21,25 @@ export default function DetailProduct() {
 
             .catch((error)=> console.log(error));
             
-            
     }, []);
 
-    console.log('product--->> ', product); //상품상세페이지
-    
+
+    //장바구니 추가 버튼 이벤트
+    const addCartItem = () => {
+        //장바구니 추가 항목 : {pid, size, count, price}  -- {}오브젝트 리터럴로 묶음
+        // alert(`${pid} --> 장바구니 담기 완료!! `);
+        console.log(product.pid, product.price, size, 1);  // 7 115000 XS 1
+        const cartItem = {
+            "pid" : pid,
+            "size" : size,
+            "qty" : 1,
+            "price" : product.price
+        }
+        addCart(cartItem);  //cartItem부모에 넘겨줌--App.js 의 addCart 함수호출
+    }
 
 
-    
+
 
     return (
         <div className='content'>
@@ -38,7 +51,9 @@ export default function DetailProduct() {
                         <li className="product-detail-subtitle">{product.info}</li>
                         <li>
                             <span className='product-detail-select1'>옵션 : </span>
-                            <select className='product-detail-select2'>
+                            <select className='product-detail-select2'      
+                                    onChange={(e)=> setSize(e.target.value)}> 
+
                                     <option value="XS">XS</option>
                                     <option value="S">S</option>
                                     <option value="M">M</option>
@@ -47,7 +62,7 @@ export default function DetailProduct() {
                             </select>
                         </li>
                         <li>
-                            <button type="button" className='product-detail-button'>장바구니 추가</button>
+                            <button type="button" className='product-detail-button' onClick={addCartItem}>장바구니 추가</button>
                         </li>
                 </ul>
             </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { LuShoppingBag } from "react-icons/lu";
 
 
-export default function Header() {
+export default function Header({cartCount}) {
     return (
         <div className='header-outer'>
             <div className='header'>
@@ -13,7 +13,7 @@ export default function Header() {
                 </Link>
                 <nav className='header_right'>
                     <Link to='/all'>Products</Link> 
-                    <Link to='/cart'>My Cart</Link>
+                    <Link to='/cart'>My Cart({cartCount})</Link>
                     <Link to='/login'>
                         <button type='button'>Login</button>
                     </Link>

@@ -74,6 +74,13 @@
     align-items: baseline;
   }
   
+
+  .header_right a{
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
   .header-right-icon {
     font-size: 14px;
   }
