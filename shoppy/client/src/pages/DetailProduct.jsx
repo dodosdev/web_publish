@@ -6,7 +6,8 @@ import axios from 'axios';
 
 export default function DetailProduct({addCart}) { 
     //DetailProduct를 갖고있는부모에게 addCart(장바구니의 상품정보)를알려줌
-    const { pid } = useParams();  //구조분해할당으로 pic를 가져옴 { "pid":pid }
+    const { pid } = useParams();  //구조분해할당으로 pid를 가져옴 { "pid":pid } 
+    //useParams() -> react-router에서 제공하는 Hooks Parameter(파라미터) 값을 URL을 통해서넘겨받은 페이지에서 사용할 수 있도록 도와줌.
     const [product, setProduct] = useState({}); //useState가 관리하는 product의 정보가 들어감({object넣음})
     const [size, setSize] = useState('XS');
 

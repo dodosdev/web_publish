@@ -20,7 +20,6 @@ export default function DetailProduct({addCart}) {
             })
 
             .catch((error)=>console.log(error));
-            
     }, []);
 
     //장바구니 추가버튼
@@ -33,7 +32,6 @@ export default function DetailProduct({addCart}) {
             "price" : product.price
         }
         addCart(cartItem);
-        
     }
 
     return (
