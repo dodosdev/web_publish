@@ -7,6 +7,7 @@ import Products from './pages/Products.jsx';
 import Carts from './pages/Carts.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
+import DetailProduct from './pages/DetailProduct.jsx';
 
 
 
@@ -22,10 +23,14 @@ export default function App() {
                         <Route path='/cart' element={<Carts />} />  
                         <Route path='/login' element={<Login />} />  
                         <Route path='/signup' element={<Signup />} />  
+                        <Route path='/products/:pid' element={<DetailProduct />} />  
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </div>  // <BrowserRouter> -->바뀌는 전체 페이지
+        </div>  // <BrowserRouter> -->전체 페이지가 바뀜
     );
 }
+
+//data/products.json의   <Route path='/products/:pid' pid는변수
+//react hook  -->pid -->use param
 

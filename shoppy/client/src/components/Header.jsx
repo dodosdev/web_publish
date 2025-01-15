@@ -12,7 +12,7 @@ export default function Header() {
                     <span>Shoppy</span>
                 </Link>
                 <nav className='header_right'>
-                    <Link to='/all'>Products</Link>
+                    <Link to='/all'>Products</Link> 
                     <Link to='/cart'>My Cart</Link>
                     <Link to='/login'>
                         <button type='button'>Login</button>
@@ -28,3 +28,5 @@ export default function Header() {
 
 
 // 리액트 아이콘 제공  https://react-icons.github.io/react-icons  /
+
+//Router - path를 관리고 찾음 /cart

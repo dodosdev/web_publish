@@ -5,7 +5,7 @@
 2. react 프로젝트 생성 : client
     npx create-react-app client
 
-    cd client  (여기로 이동)
+    cd client  (여기로 이동) > npm install (node_modules 설치)
 
      cat package.json (설치된 라이브러리 내용확인)
      설치위치:  c:\dev\web_publish\shoppy\client (main -> origin)
