@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import '../styles/login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import { validateLogin } from '../utils/funcValidate.js';
+
 
 export default function Login() {
 
+    const refs = {
+        "idRef" : useRef(null),
+        "pwdRef" : useRef(null)
+    }
+
+    const [formData, setFormData] = useState({'id':'', 'pwd':''});
+
+
+    const handleChangeForm = (event) => {
+        console.log(event.target.value);
+        const {name, value} = event.target;
+        setFormData({...formData, [name] : value});
+    }
+
+
     const handleLoginSubmit = (event) => {
         event.preventDefault();
-        
+        if(validateLogin(refs)) {
+            console.log('send data -->>', formData);   
+        }
     }
+
+    
     return (
         <div className="content">
             <h1 className="center-title">LOGIN</h1>
@@ -23,7 +44,7 @@ export default function Login() {
                             <input type="text" 
                                     name="id" 
                                     id="id" 
-                                    ref={idRef}
+                                    ref={refs.idRef}
                                     onChange={handleChangeForm}
                                     placeholder="아이디를 입력해주세요" />
                         </div>
@@ -35,7 +56,7 @@ export default function Login() {
                             <input type="password" 
                                     name="pwd" 
                                     id="pwd" 
-                                    ref={pwdRef}
+                                    ref={refs.pwdRef}
                                     onChange={handleChangeForm}
                                     placeholder="패스워드를 입력해주세요" />
                         </div>
