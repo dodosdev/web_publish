@@ -83,7 +83,7 @@
   */
   .banner {
     /* border: 1px solid blue; */
-    background-image: url("http://localhost:3000/images/banner.jpg");
+    background-image: url("http://localhost:3001/images/banner.jpg");
     width: 1400px;
     height: 400px;
     text-align: center;
