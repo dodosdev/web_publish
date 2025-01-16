@@ -3,6 +3,20 @@ import '../styles/signup.css';
 import { validateSignup } from '../utils/funcValidate.js';
 
 export default function Signup() {
+
+    const msgRefs = {
+        'msgIdRef': useRef(null),
+        'msgPwdRef': useRef(null),
+        'msgCpwdRef': useRef(null),
+        'msgNameRef': useRef(null),
+        'msgPhoneRef': useRef(null),
+        'msgEmailnameRef': useRef(null),
+        'msgEmailDomainRef': useRef(null),
+    }
+
+
+
+
     const refs = {
         'idRef': useRef(null),
         'pwdRef': useRef(null),
@@ -12,6 +26,7 @@ export default function Signup() {
         'emailnameRef': useRef(null),
         'emailDomainRef': useRef(null),
     }
+
 
     const initFormData = {
         'id':'',
@@ -43,7 +58,7 @@ export default function Signup() {
     //submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(validateSignup(refs)){  //(validateSignup()괄호가 없으면 결과값이 안나옴
+        if(validateSignup(refs, msgRefs)){  //(validateSignup()괄호가 없으면 결과값이 안나옴//(refs, msgRefs) msgRefs메세지 위치정보
             console.log('submit --->> ', formData);  //http://localhost:3000/signup (주소확인)리액트에서 관리
         }   
     }
@@ -57,7 +72,7 @@ export default function Signup() {
                 <ul>
                     <li>
                         <label for="" ><b>아이디</b></label>
-                        <span id="error-msg-id">아이디를 입력해주세요</span>
+                        <span ref={msgRefs.msgIdRef}>아이디를 입력해주세요</span>
                         <div>
                             <input type="text" 
                                     name="id"
@@ -71,7 +86,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>비밀번호</b></label>
-                        <span id="error-msg-pwd">12자 이내의 비밀번호를 입력해주세요</span>
+                        <span ref={msgRefs.msgPwdRef} >12자 이내의 비밀번호를 입력해주세요</span>
                         <div>
                             <input type="password" 
                                     name="pwd"
@@ -83,7 +98,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>비밀번호 확인</b></label>
-                        <span id="error-msg-cpwd">비밀번호 확인을 입력해주세요</span>
+                        <span ref={msgRefs.msgCpwdRef}>비밀번호 확인을 입력해주세요</span>
                         <div>
                             <input type="password" 
                                     name="cpwd"
@@ -95,7 +110,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>이름</b></label>
-                        <span id="error-msg-name">이름을 입력해주세요</span>
+                        <span ref={msgRefs.msgNameRef}>이름을 입력해주세요</span>
                         <div>
                             <input type="text" 
                                     name="name"
@@ -107,7 +122,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>휴대폰번호</b></label>
-                        <span id="error-msg-phone">휴대폰번호를 입력해주세요('-' 포함)</span>
+                        <span ref={msgRefs.msgPhoneRef}>휴대폰번호를 입력해주세요('-' 포함)</span>
                         <div>
                             <input type="text" 
                                     name="phone"
@@ -119,7 +134,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>이메일 주소</b></label>
-                        <span id="error-msg-emailname">이메일 주소를 입력해주세요</span>
+                        <span ref={msgRefs.msgEmailnameRef}>이메일 주소를 입력해주세요</span>
                         <div>
                             <input type="text" 
                                     name="emailname"
