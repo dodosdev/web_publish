@@ -1,64 +1,70 @@
 import React, { useState, useRef } from 'react';
 import '../styles/signup.css';
 import { validateSignup } from '../utils/funcValidate.js';
+import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
 
 export default function Signup() {
-    const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
-    const namesKor = ['아이디', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
-    const placeholdersKor = ['아이디(6~12자이내)', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
 
-
-
-    /** 배열.reduce(콜백함수, 리턴데이터 타입정의 */ 
-    const placeholders =  names.reduce((acc, name, idx) => {   //(누적값, 현재값, idx ->id )
-        acc[name] = placeholdersKor[idx];   return acc;  
-    }, {}); 
-
-
-    const lables = names.reduce((acc, name, idx) => { 
-        acc[name] = namesKor[idx];  return acc;  //{id: "아이디", pwd:"아이디"..}  
-        //idx--> names = ['id'...] 배열의 'id' 0번째값 -->아이디  
-    }, {});
-    // console.log('lables -->>', lables);
-
-//  누산기 (acc)
-//  현재 값 (cur)
-//  현재 인덱스 (idx)
-//  원본 배열 (src)
-
-
-    
-    const initFormData =  names.reduce((acc, name) => {  
-        //실행코드 ///acc에 데이터가쌓이므로 acc를 return함 
-        acc[name] = "";   return acc; 
-        // {"id":""...}오브젝트타입 // [emailname]가 끝날때까지계속돌아감
-    }, {});  // }, {반환되는 타입});
-    //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
-
-
-    const refs = useRef(
-        names.reduce((acc, name)=>{
-            acc[name.concat('Ref')] = React.createRef(); //useRef(null) Hook 바로호출 X
-            return acc;
-        }, {})
-    );
-    refs.current.emaildomainRef = React.createRef();
-
-    
-
-
-
-    const msgRefs = useRef(
-        names.reduce((acc, name)=>{  //(acc 누적되있는함수, name배열)
-            acc[name.concat('MsgRef')] = React.createRef();
-            return acc; //
-        }, {})
-    );
-
-
-
-    
+    const { names, placeholders, lables, initFormData} = initSignup();
+    const {refs, msgRefs} = useInitSignupRefs(names);
     const [formData, setFormData] = useState(initFormData);
+
+//     const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
+//     const namesKor = ['아이디', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
+//     const placeholdersKor = ['아이디(6~12자이내)', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
+
+
+
+//     /** 배열.reduce(콜백함수, 리턴데이터 타입정의 */ 
+//     const placeholders =  names.reduce((acc, name, idx) => {   //(누적값, 현재값, idx ->id )
+//         acc[name] = placeholdersKor[idx];   return acc;  
+//     }, {}); 
+
+
+//     const lables = names.reduce((acc, name, idx) => { 
+//         acc[name] = namesKor[idx];  return acc;  //{id: "아이디", pwd:"아이디"..}  
+//         //idx--> names = ['id'...] 배열의 'id' 0번째값 -->아이디  
+//     }, {});
+//     // console.log('lables -->>', lables);
+
+// //  누산기 (acc)
+// //  현재 값 (cur)
+// //  현재 인덱스 (idx)
+// //  원본 배열 (src)
+
+
+    
+//     const initFormData =  names.reduce((acc, name) => {  
+//         //실행코드 ///acc에 데이터가쌓이므로 acc를 return함 
+//         acc[name] = "";   return acc; 
+//         // {"id":""...}오브젝트타입 // [emailname]가 끝날때까지계속돌아감
+//     }, {});  // }, {반환되는 타입});
+//     //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
+
+//     const refs = useRef(
+//         names.reduce((acc, name)=>{
+//             acc[name.concat('Ref')] = React.createRef(); //useRef(null) Hook 바로호출 X
+//             return acc;
+//         }, {})
+//     );
+//     refs.current.emaildomainRef = React.createRef();
+
+    
+
+
+
+//     const msgRefs = useRef(
+//         names.reduce((acc, name)=>{  //(acc 누적되있는함수, name배열)
+//             acc[name.concat('MsgRef')] = React.createRef();
+//             return acc; //
+//         }, {})
+//     );
+
+
+
+
+
 
 
     //change
@@ -174,7 +180,7 @@ export default function Signup() {
                                         </>
                                     ) : (
                                         <>
-                                            <input type="text" 
+                                            <input type={(name === "pwd" || name === "cpwd") ? "password" : "text"} 
                                             name={name}
                                             // id="id"
                                             ref={refs.current[name.concat("Ref")]}
