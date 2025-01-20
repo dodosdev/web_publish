@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles/signup.css';
 import { validateSignup } from '../utils/funcValidate.js';
+import { initSignup, useInitSignup, Refs } from '../utils/funcInitialize.js';
+
 
 export default function Signup() {
-    const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
-    const nameKor = ['아이디', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
-    const placeholderKor = ['아이디(6~12자이내', '비밀번호', '비밀번호 확인', '이름', '휴대폰 번호', '이메일 주소'];
+    const {names, placeholder, labels, initFormData, id} = initSignup();
+    const {refs, }
 
-
-    const placeholders = names.reduce(()=>{})
     
 
 
@@ -18,17 +17,44 @@ export default function Signup() {
             <h1 className="center-title">SIGINUP</h1>
             <form className="signup-form" onSubmit={{handleSubmit}}>
                 <ul>
-                    {
-
+                    { 
+                        names && names.map((name)=>(
+                            <li>
+                                <label for=""><b>이메일 주소</b></label>
+                                <span id="error-msg-emailname">이메일 주소를 입력해주세요</span>
+                                <div>
+                                    { name === 'emailname' ? (
+                                        <>
+                                        <input type="text" 
+                                                name="emailname"
+                                                id = "emailname"
+                                                placeholder="이메일 주소" />
+                                        <span>@</span>       
+                                        <select name="emaildomain" 
+                                                id="emaildomain"  >
+                                            <option value="default">선택</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                            <option value="daum.net">daum.net</option>
+                                        </select>
+                                    </>
+                                    ):(
+                                        
+                                    ) }
+                                </div>
+                            </li>    
+                        ))
                     }
 
                     <li>
-                        <label for="" ><b>아이디</b></label>
-                        <span id="error-msg-id">아이디를 입력해주세요</span>
+                        <label for="" ><b>{lables[name]}</b></label>
+                        <span ref={msgRefs.current[name.concat("MsgRef")]}>{lables[name]}를 입력해주세요</span>
                         <div>
                             <input type="text" 
                                     name="id"
-                                    id="id"
+                                    // id="id"
+                                    ref={refs.current[name.concat("Ref")]}
+                                    onChange={handleChangeForm}
                                     placeholder = "아이디 입력(6~20자)" />
                             <button type="button" >중복확인</button>
                             <input type="hidden" id="idCheckResult" value="default" />

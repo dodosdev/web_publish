@@ -22,7 +22,7 @@
 
 
 /********************************************
- *            title : Signup 회원가입
+ *           title : Signup 회원가입
  *********************************************/
 
     //validate (빈값 체크)
@@ -61,13 +61,12 @@
                 if(ref.current.value === 'default') {  //도메인일경우 default로 체크
                     // alert('이메일 주소를 선택해주세요');
                         ref.current.focus();
-                        return false;
-                        
-            }
-        }  //for문은 바로 리턴됨
-    }//for문 밖에 return true 해야함
-    return true;
-}
+                        return false;         
+                    }
+                }  //for문은 바로 리턴됨
+            }//for문 밖에 return true 해야함
+            return true;
+        }
 
         // const refEntries = [
         //     ['idRef', {...}],
@@ -77,6 +76,7 @@
         // ]
         
 
+        
 
         
     // //(refs)수정범위가 넓을경우 구조분해할당으로하면작업이번거로움
@@ -92,3 +92,69 @@
     //     }
     //     return result;
     
+
+
+    
+
+/*******************************************
+ *         Signup : 아이디 중복 확인 체크
+ *********************************************/
+
+
+    export const handleDuplicateIdCheck = (idRef, pwdRef, idMsgRef, setIdCheckResult) => {
+        // console.log('id --->', refs.current["idRef"].current.value);    //확인
+        if(idRef.current.value === '') {
+            idMsgRef.current.style.setProperty('color','red');
+            idRef.current.focus();
+            return false;
+        }else{
+            const did = "test"; 
+            if(idRef.current.value === did) {
+                alert("이미 사용중인 아이디 입니다. 새로운 아이디를 입력해주세요");
+                idRef.current.focus();
+                return false;
+            }else{
+                alert("사용이 가능한 아이디 입니다");
+                setIdCheckResult("complete");
+                pwdRef.current.focus();
+                return false;
+            }
+        }
+    }
+
+
+    //idMsgRef 메세지 주소값을 갖고있음
+
+
+    
+/********************************************
+ *     Signup : 비밀번호 & 비밀번호 확인 체크
+ *********************************************/
+
+    export const handlePasswordCheck = (pwdRef, cpwdRef, nameRef, pwdMsgRef, cpwdMsgRef) => {
+
+
+        if(pwdRef.current.value === "") {
+            pwdMsgRef.current.style.setProperty('color', 'red');
+            pwdRef.current.focus();
+            return false;
+
+        } else if (cpwdRef.current.value === "" ) {
+            cpwdMsgRef.current.style.setProperty('color', 'red');
+            cpwdRef.current.focus();
+            return false;
+        } else {
+            if(pwdRef.current.value ===  cpwdRef.current.value) { //2번입력한비번이 동일한지비교
+                alert("비밀번호가 동일합니다 ");
+                nameRef.current.focus(); //비번을 동일하게 입력후 포커스로 넘어감(Tab키 이동해서확인)
+                return false;
+            }else{
+                alert("비밀번호가 다릅니다. 다시 입력해주세요");
+                pwdRef.current.value = "";
+                cpwdRef.current.value = "";
+                cpwdMsgRef.current.value = "";
+                return false;
+            }
+        }
+
+    }

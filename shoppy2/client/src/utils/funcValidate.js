@@ -21,7 +21,19 @@
 
 
 /********************************************* 
- *            title : Signup
+ *            title : Signup 회원가입
  *********************************************/
+
+export default function validateSignup =  (refs, msgRefs) => {
+    const refEntries
+}
+    return (
+        <div>
+            
+        </div>
+    );
+}
+
+
 
 
