@@ -1,10 +1,12 @@
-import React from 'react';
+import ReturnDeliveryTable from "./ReturnDeliveryTable";
+import ReturnDeliveryTitle from "./ReturnDeliveryTitle";
 
 export default function ReturnDelivery() {
-    return (
-        <div>
+return (
+    <div className="product-detail-tab-return-delivery">
+            <ReturnDeliveryTitle/>
             
-        </div>
+            <ReturnDeliveryTable/>            
+    </div>
     );
-}
-
+};
