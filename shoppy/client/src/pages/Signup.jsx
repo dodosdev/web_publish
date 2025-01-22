@@ -29,7 +29,7 @@ export default function Signup() {
 
         if(validateSignup(refs, msgRefs)){ 
             if(idCheckResult === "default") { 
-            alert("중복 확인을 진행해 주세요");
+                alert("중복 확인을 진행해 주세요");
             
             } else {
                 console.log('submit --->>', formData);   

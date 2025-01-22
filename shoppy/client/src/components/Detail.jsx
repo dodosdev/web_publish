@@ -72,9 +72,8 @@ return (
         <span className="detail-info-tit">
         MINIMAL HOOD PADDED JACKET
         <br/>
-        미니멀 후드 패디드 재킷
+        미니멀 후드 패디드 재킷 FABRIC
         </span>
-        <span>FABRIC</span>
         <p>
         - Color : Charcoal<br/>
         - Shell : Cotton 45% Nylon 55%<br/>
@@ -84,7 +83,7 @@ return (
         - 일반 솜보다 탄성이 좋고 가벼우며, 솜의 뭉침이나 틀어짐이 없고, 세탁 건조 후에는<br/> 복원력이 뛰어난 특성이 있습니다.
         </p>
 
-        <span className="detail-info-tit" style={{marginTop: "25px"}}>DETAIL</span>
+        <span className="detail-info-tit">DETAIL</span>
         <p>
         - 클래식한 오버핏으로 전체적으로 볼륨감 있는 실루엣이 특징인 하프 기장의 패디드     재킷입니다.<br/>
         - 넓은 암홀 라인과 넉넉한 품으로 편안한 착용감과 멋진 실루엣을 선사합니다.<br/>

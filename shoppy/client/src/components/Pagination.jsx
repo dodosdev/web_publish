@@ -16,7 +16,7 @@ export default function Pagination({page, setPage}) {
     }
 
     return (
-        <ul className='qna-pasinate-ul'>
+        <ul className='una-paginate-ul'>
             <li onClick={handlePrev}>&lt;</li>
             <li onClick={() => handlePageNum(1)}>1</li>
             <li onClick={() => handlePageNum(2)}>2</li>

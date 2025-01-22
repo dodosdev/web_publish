@@ -1,14 +1,41 @@
 import React, { useState, useRef } from 'react';
 import '../styles/signup.css';
-import { validateSignup } from '../utils/funcValidate.js';
+import { validateSignup,
+            handleDuplicate,
+            handlePasswordCheck } from '../utils/funcValidate.js';
 import { initSignup, useInitSignup, Refs } from '../utils/funcInitialize.js';
 
 
 export default function Signup() {
+
     const {names, placeholder, labels, initFormData, id} = initSignup();
-    const {refs, }
+    const {refs, msgRefs} = useInitSignupRefs(names);
+    const [formData, setFormData] = useState(initFormData);
+    const [idCheckResult, setIdCheckResult] = useState('default');
+    
+
+
+    //change
+
+
+
+
+    //submit
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if(validateSignup(refs, msgRefs)){
+            if(idCheckResult === "default") {
+                alert("중복 확인을 진행해 주세요");
+            } else {
+                console.log('submit -->> ', FormData);
+            }
+        }
+    }
 
     
+
+
 
 
 
@@ -17,35 +44,9 @@ export default function Signup() {
             <h1 className="center-title">SIGINUP</h1>
             <form className="signup-form" onSubmit={{handleSubmit}}>
                 <ul>
-                    { 
-                        names && names.map((name)=>(
-                            <li>
-                                <label for=""><b>이메일 주소</b></label>
-                                <span id="error-msg-emailname">이메일 주소를 입력해주세요</span>
-                                <div>
-                                    { name === 'emailname' ? (
-                                        <>
-                                        <input type="text" 
-                                                name="emailname"
-                                                id = "emailname"
-                                                placeholder="이메일 주소" />
-                                        <span>@</span>       
-                                        <select name="emaildomain" 
-                                                id="emaildomain"  >
-                                            <option value="default">선택</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                            <option value="daum.net">daum.net</option>
-                                        </select>
-                                    </>
-                                    ):(
-                                        
-                                    ) }
-                                </div>
-                            </li>    
-                        ))
+                    {
+                        names && (()=())
                     }
-
                     <li>
                         <label for="" ><b>{lables[name]}</b></label>
                         <span ref={msgRefs.current[name.concat("MsgRef")]}>{lables[name]}를 입력해주세요</span>

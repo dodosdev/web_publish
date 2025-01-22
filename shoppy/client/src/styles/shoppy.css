@@ -941,13 +941,12 @@ p {
   margin: 120px;
 }
 
-
 .detail-info-tit{
   font-weight: bold;
 }
 
 .detail-info-tit p{
-  margin: 15px 0;
+  margin: 15px;
 }
 
 /****************Review***************************/
@@ -1400,12 +1399,12 @@ p {
 
 
 /* ********************************** QnA2 ************************************ */
-.qna-pasinate-ul {
+.una-paginate-ul {
   display: flex;
   justify-content: center;
   gap: 15px;
 }
 
-.qna-pasinate-ul li {
+.una-paginate-ul li {
   cursor: pointer;
 }
