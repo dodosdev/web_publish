@@ -941,6 +941,7 @@ p {
   margin: 120px;
 }
 
+
 .detail-info-tit{
   font-weight: bold;
 }
@@ -1396,3 +1397,15 @@ p {
     list-style: '▪';
 }
 
+
+
+/* ********************************** QnA2 ************************************ */
+.qna-pasinate-ul {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.qna-pasinate-ul li {
+  cursor: pointer;
+}
