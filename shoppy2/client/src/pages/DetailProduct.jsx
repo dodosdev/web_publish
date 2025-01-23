@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import Detail from "../components/detail_tabs/Detail.jsx";
-import Review from "../components/detail_tabs/Review.jsx";
+// import Review from "../components/detail_tabs/Review.jsx";
 import ImageList from "../components/ImageList.jsx";
 import StarRating from "../components/detail_tabs/StarRating.jsx";
 import axios from "axios";
@@ -115,18 +115,19 @@ export default function DetailProduct({ addCart }) {
           <li className={tabName==="detail" ? "active": ''}>
             <button type="button" onClick={(e)=> setTabName("detail")}>DETAIL</button>
           </li>
-          <li>
-            <button>REVIEW</button>
+          <li className={tabName==="review" ? "active" : '' }>
+            <button type="button" onClick={(e)=> setTabName("review")}>REVIEW</button>
           </li>
-          <li>
-            <button>Q&A</button>
+          <li className={tabName==="qna" ? "active": ''}>
+            <button type="button" onClick={(e)=> setTabName("qna")}>Q&A</button>
           </li>
-          <li>
-            <button>RETURN & DELIVERY</button>
+          <li className={tabName==="return" ? "active": ''}>
+            <button type="button" onClick={(e)=> setTabName("return")}>RETURN & DELIVERY</button>
           </li>
         </ul>
-        <div className="tabs_contents">
+        <div className="tabs_contents"> 
           { tabName === "detail" && <Detail imgList={imgList} /> }
+          {/* { tabName === "review" && <Review />} */}
         </div>
       </div>
     </div>

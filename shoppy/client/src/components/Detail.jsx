@@ -7,7 +7,7 @@ export default function Detail() {
             "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/2.jpg"
         },
         {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/3.jpgg"
+            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/3.jpg"
         },
         {
             "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/4.jpg"

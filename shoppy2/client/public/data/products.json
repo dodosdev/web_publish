@@ -1,14 +1,13 @@
 [
     {
         "pid" : "1",
-        "image" : "/images/1.webp",
-        "name" : "후드티",
+        "image" : "http://qhdrus123.cafe24.com/web/21fall/balmacaan/black/16.jpg",
         "price": 15000,
         "info" : "분홍색 후드티",
         "imgList" : [
-            "/images/1.webp",
-            "/images/1.webp",
-            "/images/1.webp"
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/2.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/3.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/4.jpg"
         ]
     },
     {
@@ -25,14 +24,14 @@
     },
     {
         "pid" : "3",
-        "image" : "/images/3.webp",
+        "image" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/7.jpg",
         "name" : "원피스",
         "price": 25000,
         "info" : "원피스",
         "imgList" : [
-            "/images/3.webp",
-            "/images/3.webp",
-            "/images/3.webp"
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/7.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/7.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/7.jpg"
         ]
     },
     {
