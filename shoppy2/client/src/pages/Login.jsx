@@ -1,35 +1,35 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles/login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { validateLogin } from '../utils/funcValidate.js';
 
-
 export default function Login() {
-
     const refs = {
         "idRef" : useRef(null),
-        "pwdRef" : useRef(null)
+        "pwdRef" : useRef(null) 
+    }  
+    const msgRefs = {
+        "msgRef" : useRef(null)
     }
 
     const [formData, setFormData] = useState({'id':'', 'pwd':''});
 
-
+    /** form 데이터 입력 함수 */
     const handleChangeForm = (event) => {
-        console.log(event.target.value);
-        const {name, value} = event.target;
-        setFormData({...formData, [name] : value});
+        const {name, value} = event.target; 
+        setFormData({...formData, [name] : value}); 
     }
 
-
+    /** Submit 함수 */
     const handleLoginSubmit = (event) => {
-        event.preventDefault();
-        if(validateLogin(refs)) {
-            console.log('send data -->>', formData);   
+        event.preventDefault();        
+        if(validateLogin(refs, msgRefs)) {
+            console.log('send data -->> ', formData);        
+            //리액트 ---> 노드서버(express) 데이터 전송
         }
     }
 
-    
     return (
         <div className="content">
             <h1 className="center-title">LOGIN</h1>
@@ -38,7 +38,7 @@ export default function Login() {
                     <li>
                         <p className="login-form-message">✔ 아이디와 비밀번호를 입력하신 후, 로그인을 진행해주세요.</p>
                     </li>
-                    <li>
+                    <li>                        
                         <div className="login-form-input">
                             <span className="login-form-input-icons"><FaUser/></span>
                             <input type="text" 
@@ -62,6 +62,8 @@ export default function Login() {
                         </div>
                         <p id="error-msg-pwd"></p>
                     </li>
+                    <li><span style={{fontSize: "0.7em", color:"white"}}
+                                ref={msgRefs.msgRef}>아이디 또는 패스워드를 입력해주세요</span></li>
                     <li>
                         <button type="submit" className="login-button">로그인</button>
                     </li>
