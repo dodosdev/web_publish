@@ -59,6 +59,9 @@ const handleClickQnA = () => {
     setCategory("qna");
 
 };
+
+
+
     return (
         <div className="content">
             <div className="product-detail-top">
@@ -143,3 +146,6 @@ const handleClickQnA = () => {
         </div>
     );
 }
+
+
+
