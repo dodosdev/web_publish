@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import Detail from "../components/detail_tabs/Detail.jsx";
-// import Review from "../components/detail_tabs/Review.jsx";
+import Review from "../components/detail_tabs/Review.jsx";
 import ImageList from "../components/ImageList.jsx";
 import StarRating from "../components/detail_tabs/StarRating.jsx";
 import axios from "axios";
@@ -127,7 +127,7 @@ export default function DetailProduct({ addCart }) {
         </ul>
         <div className="tabs_contents"> 
           { tabName === "detail" && <Detail imgList={imgList} /> }
-          {/* { tabName === "review" && <Review />} */}
+          { tabName === "review" && <Review />}
         </div>
       </div>
     </div>
