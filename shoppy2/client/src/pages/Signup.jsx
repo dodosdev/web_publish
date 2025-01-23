@@ -1,37 +1,36 @@
 import React, { useState, useRef } from 'react';
 import '../styles/signup.css';
-import { validateSignup,
-            handleDuplicate,
-            handlePasswordCheck } from '../utils/funcValidate.js';
-import { initSignup, useInitSignup, Refs } from '../utils/funcInitialize.js';
+// import { validateSignup,
+//             handleDuplicate,
+//             handlePasswordCheck } from '../utils/funcValidate.js';
+// import { initSignup, useInitSignup, Refs } from '../utils/funcInitialize.js';
 
 
 export default function Signup() {
 
-    const {names, placeholder, labels, initFormData, id} = initSignup();
-    const {refs, msgRefs} = useInitSignupRefs(names);
-    const [formData, setFormData] = useState(initFormData);
-    const [idCheckResult, setIdCheckResult] = useState('default');
+    // const {names, placeholder, labels, initFormData, id} = initSignup();
+    // const {refs, msgRefs} = useInitSignupRefs(names);
+    // const [formData, setFormData] = useState(initFormData);
+    // const [idCheckResult, setIdCheckResult] = useState('default');
     
 
 
-    //change
 
 
 
 
     //submit
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        if(validateSignup(refs, msgRefs)){
-            if(idCheckResult === "default") {
-                alert("중복 확인을 진행해 주세요");
-            } else {
-                console.log('submit -->> ', FormData);
-            }
-        }
-    }
+    //     if(validateSignup(refs, msgRefs)){
+    //         if(idCheckResult === "default") {
+    //             alert("중복 확인을 진행해 주세요");
+    //         } else {
+    //             console.log('submit -->> ', FormData);
+    //         }
+    //     }
+    // }
 
     
 
@@ -42,12 +41,9 @@ export default function Signup() {
     return (
         <div className="content">
             <h1 className="center-title">SIGINUP</h1>
-            <form className="signup-form" onSubmit={{handleSubmit}}>
+            <form className="signup-form" onSubmit={{}}>
                 <ul>
-                    {
-                        names && (()=())
-                    }
-                    <li>
+                    {/* <li>
                         <label for="" ><b>{lables[name]}</b></label>
                         <span ref={msgRefs.current[name.concat("MsgRef")]}>{lables[name]}를 입력해주세요</span>
                         <div>
@@ -60,7 +56,7 @@ export default function Signup() {
                             <button type="button" >중복확인</button>
                             <input type="hidden" id="idCheckResult" value="default" />
                         </div>
-                    </li>
+                    </li> */}
                     <li>
                         <label for=""><b>비밀번호</b></label>
                         <span id="error-msg-pwd">12자 이내의 비밀번호를 입력해주세요</span>
