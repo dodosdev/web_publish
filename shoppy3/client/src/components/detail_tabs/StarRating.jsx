@@ -5,8 +5,7 @@ import { TbStar } from "react-icons/tb";
 
 export default function StarRating({ totalRate, className }) {
   const stars = [...Array(5)];
-  const color = (className === "star-coral") ? "coral" : "black"; 
-                //className이 starcoral이면 coral로아니면black
+  const color = (className === "star-coral") ? "coral" : "black";
 
   const fillStars = Math.floor(totalRate); // 채워진 별 개수
   const halfStar = totalRate % 1 !== 0; // 반별 여부
@@ -39,21 +38,20 @@ export default function StarRating({ totalRate, className }) {
       ))}
 
       {/** 반만 채워진 별 : ⭐ */}
-      {/**css를 표현->className와""(띄어쓰기)color를가져옴->.star-coral{ color:coral; }  */}
       { halfStar && 
-        <span key={halfStar} className= {className.concat(" ", color)}> 
+        <span key={halfStar} className= {className.concat(" ", color)}>
           <TbStarHalfFilled />
         </span>
       }
 
       {/** 빈 별 : ⭐ */}
       { [...Array(emptyStars)].map((_, i) => (
-        <span key={i} className= "empty-star"> 
+        <span key={i} className= "empty-star">
           <TbStar />
         </span>
       ))}
 
-      {/** shoppy.css에서 스타일가져옴*/}
+
       { className === "star-black-big"  && 
         <>
           <span className={className.concat(" number")}>{totalRate} /</span>

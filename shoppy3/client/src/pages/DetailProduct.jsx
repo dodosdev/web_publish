@@ -5,7 +5,6 @@ import Detail from "../components/detail_tabs/Detail.jsx";
 import Review from "../components/detail_tabs/Review.jsx";
 import ImageList from "../components/ImageList.jsx";
 import StarRating from "../components/detail_tabs/StarRating.jsx";
-import QnA from "../components/detail_tabs/QnA.jsx";
 import axios from "axios";
 
 export default function DetailProduct({ addCart }) {
@@ -14,6 +13,8 @@ export default function DetailProduct({ addCart }) {
   const [imgList, setImgList] = useState([]);
   const [size, setSize] = useState("XS");
   const [tabName, setTabName] = useState('detail');
+  const tabLabels = ['DETAIL', 'REVIEW', 'Q&A', 'RETURN & DELIVERY'];
+  const tabEventNames = ['detail', 'review', 'qna', 'return'];
 
   useEffect(() => {
     axios
@@ -44,7 +45,6 @@ export default function DetailProduct({ addCart }) {
   };
 
   //Tabs event
-
   // const handleChangeTabs = (text) => {
   //   console.log('tab name===>>', text);
   //   //text를 처리하는 로직
@@ -111,12 +111,24 @@ export default function DetailProduct({ addCart }) {
 
       {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY  */}
       <div className="product-detail-tab">
+
         {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY */}
         <ul className="tabs">
+          {
+            tabLabels.map((label, i) => 
+                <li className={tabName === tabEventNames[i] ? "active": ''}>
+                  <button type="button" onClick={(e)=> setTabName(tabEventNames[i])}>{ label }</button>
+                </li>
+            )
+          }
+        </ul>      
+        
+
+        {/* <ul className="tabs">
           <li className={tabName==="detail" ? "active": ''}>
             <button type="button" onClick={(e)=> setTabName("detail")}>DETAIL</button>
           </li>
-          <li className={tabName==="review" ? "active" : '' }>
+          <li className={tabName==="review" ? "active": ''}>
             <button type="button" onClick={(e)=> setTabName("review")}>REVIEW</button>
           </li>
           <li className={tabName==="qna" ? "active": ''}>
@@ -125,11 +137,10 @@ export default function DetailProduct({ addCart }) {
           <li className={tabName==="return" ? "active": ''}>
             <button type="button" onClick={(e)=> setTabName("return")}>RETURN & DELIVERY</button>
           </li>
-        </ul>
-        <div className="tabs_contents"> 
+        </ul> */}
+        <div className="tabs_contents">
           { tabName === "detail" && <Detail imgList={imgList} /> }
-          { tabName === "review" && <Review />}
-          { tabName === "qna" && <QnA /> } 
+          { tabName === "review" && <Review /> }
         </div>
       </div>
     </div>

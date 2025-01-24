@@ -11,7 +11,7 @@ import DetailProduct from './pages/DetailProduct.jsx';
 
 export default function App() {
   const [cartList, setCartList] = useState([]);   /** 장바구니 아이템 저장 : 배열 */
-  const [cartCount, setCartCount] = useState(0);  /** 장바구니 상품 갯수 (초기값) */
+  const [cartCount, setCartCount] = useState(0);  /** 장바구니 상품 갯수 */
 
   const addCart = (cartItem) => {
     setCartList([...cartList, cartItem]);
