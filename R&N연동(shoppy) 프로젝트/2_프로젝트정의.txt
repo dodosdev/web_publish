@@ -16,3 +16,35 @@
      npm start  
 
      http://localhost:3000/
+
+
+----------
+
+3. NodeJS 서버생성 :server
+shoppy > mkdir server
+
+shoppy/server/npm init --yes  : 프로젝트 초기화 - Node모듈 설치
+shoppy/server/npm i express --save :  익스프레스 서버 라이브러리 설치
+shoppy/server/npm mysql2  : mysql 연동 라이브러리 설치
+shoppy/server/npm i cors : 리액트 연동 시 특정 도메인 허용 라이브러리 설치
+shoppy/server/npm i nodemon --save-dev
+
+
+*  package.json에 "module": "commonjs",   :  추가
+express 사이트 :  https://expressjs.com/
+
+*서버 실행:  
+C:\dev\web_publish\shoppy\server (main -> origin) (server@1.0.0)
+λ nodemon server.js
+
+
+-------
+
+
+4. 웹서버 ( UI + Server ) + DB
+localhost:8000
+터미널 ipconfig -->  http://192.168.50.13:3000/ 
+
+UI : React - 3000대의 포트로 별도 서비스
+Server : NodeJS - 9000 포트로 별도 서비스
+DB : MYSQL - 별도 서비스
