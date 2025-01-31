@@ -20,17 +20,18 @@
 
 ----------
 
-3. NodeJS 서버생성 :server
+3. NodeJS 서버생성 :server (라이브러리)
 shoppy > mkdir server
 
 shoppy/server/npm init --yes  : 프로젝트 초기화 - Node모듈 설치
 shoppy/server/npm i express --save :  익스프레스 서버 라이브러리 설치
 shoppy/server/npm mysql2  : mysql 연동 라이브러리 설치
 shoppy/server/npm i cors : 리액트 연동 시 특정 도메인 허용 라이브러리 설치
-shoppy/server/npm i nodemon --save-dev
+shoppy/server/npm i nodemon -g --save-dev  (-g에러방지)
 
 
-*  package.json에 "module": "commonjs",   :  추가
+
+*  package.json에   "type": "module",   : 추가하면 import명령어를 사용할수있음
 express 사이트 :  https://expressjs.com/
 
 *서버 실행:  
