@@ -27,6 +27,7 @@ export const getEmployeeAll = async() => {
     return employees;
 }
 
-//  Prepared Statements 반복되는 쿼리를 저장해놨다가 사용
+// Prepared Statements 반복되는 쿼리를 저장해놨다가 사용
+// https://sidorares.github.io/node-mysql2/docs/examples/queries/prepared-statements/select
 
 
