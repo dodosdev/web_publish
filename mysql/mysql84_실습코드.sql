@@ -591,7 +591,7 @@ SELECT  EMP_NAME,
 SELECT  SUM(SALARY) 총연봉,
 		CONCAT(FORMAT(SUM(SALARY), 0), ' 만원') 총연봉
 	FROM EMPLOYEE;
-
+    
 -- 2. AVG(숫자, 숫자컬럼)   
 -- 사원들의 총연봉, 평균연봉 조회
 -- 3자리 구분, '만원' 단위 추가
@@ -1093,23 +1093,8 @@ DESC DEPT;
         사용 형식 :   CREATE TABLE + 제약사항 
 					ALTER TABLE + 제약사항
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
--- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인 -- 스키마(데이터베이스)안에 테이블이있고, 그테이블안에 데이터가있음
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
 -- INFORMATION_SCHEMA.TABLE_CONSTRAINTS
-
-/*
-- 제약조건(constraint)란, 데이터의 무결성을 지키기 위해 제한된 조건을 의미한다.
-데이터를 삽입할때 조건을 만족했을 경우에만 데이터가 삽입되도록 제약을 할 수 있는 것.
-
-- 무결성 null - 필수 입력 사항이 아니며 데이터 값이 비워져있어도 상관없다.
-- not null - 필수 입력 사항. 데이터값이 무조건 있어야 한다.
-- unique -같은 테이블 내에서 중복이 안되는 제약조건으로 고유한 데이터들의 제약조건이다.
-- primary key -  not null 과 unique가 합쳐진 제약조건. 데이터들을 식별할때 쓰이는 제약조건. pk 라고도 불린다.
-- foreign key -  외래키이다. 다른 테이블을 참조하며 참조하는 테이블에서 존재하는 값만 사용 가능하다.
-- check - 주어진 조건에 해당하는 값만 입력 가능하다. 조건에 해당하지 않는 데이터가 들어오면 오류를 발생시킨다.
-- default - 기본값을 설정한다.
-*/
-
-
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 		WHERE TABLE_NAME = 'EMPLOYEE';
 DESC EMPLOYEE;   
@@ -1173,7 +1158,7 @@ INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
 
 SELECT * FROM EMP_CONST;  
 
-SELECT * 
+SELECT *
 	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
     WHERE TABLE_NAME = 'EMP_CONST';
 
@@ -1251,7 +1236,7 @@ SELECT * FROM CONST_TEST;
 -- ** 자동번호 생성기 : AUTO_INCREMENT ===> 기본키
 --    오라클 : SEQUENCE
 CREATE TABLE PRODUCT_TEST(
-	PID		INT		PRIMARY KEY		AUTO_INCREMENT,  -- 테이블생성시 제약조건 설정함
+	PID		INT		PRIMARY KEY		AUTO_INCREMENT,
     PNAME	VARCHAR(30)		NOT NULL,
     PRICE	INT,
     COMPANY	VARCHAR(20)
@@ -1471,8 +1456,7 @@ CREATE TABLE KK_EMPLOYEE(
 DESC KK_EMPLOYEE;
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 	WHERE TABLE_NAME LIKE 'KK%';
-SELECT * FROM KK_EMPLOYEE;  
-  
+SELECT * FROM KK_EMPLOYEE;    
 SHOW TABLES;
 
 INSERT INTO KK_EMPLOYEE(KNAME, ADDRESS, HIRE_DATE, SALARY, DEPT_ID)
@@ -1585,15 +1569,6 @@ SELECT * FROM STUDENT;
 -- CROSS(CATESIAN) JOIN (합집합) 형식
 -- SELECT [컬럼리스트] FROM [테이블명 [테이블별칭], 테이블명 [테이블별칭], ...]
 -- WHERE [조건절]
-
-/* 별칭붙이기 (여러 개의 테이블이 사용되었을 때 혼선을 줄여주고 긴 테이블명이나 컬럼명을 짧게 만들어 SQL 작성에 효율성을 높여줌)
-	SELECT  T1.STK_CD ,T1.STK_NM ,T1.SEC_NM
-	FROM    STOCK T1 # STOCK 테이블을 T1으로 별칭을 지정한다.
-	WHERE   T1.STK_NM = '삼성전자'
-	ORDER BY T1.STK_CD ASC;
-*/
-
-
 SELECT *
 	FROM PROFESSOR, STUDENT
     ORDER BY PID;
@@ -1842,47 +1817,15 @@ SELECT 	MANAGER.EMP_ID,
 		AND MANAGER.MGR = 'S0001';
 
 -- HRD 부서를 관리하는 매니저의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명를 조회
-SELECT * 
-	FROM DEPARTMENT D,
-		(SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, DEPT_ID
-			FROM EMP
-			WHERE EMP_ID = (SELECT DISTINCT MGR FROM EMP WHERE DEPT_ID = 'HRD')) E
-	WHERE D.DEPT_ID = E.DEPT_ID;
-    
-
-
-
-
--- 매니저가 없는 사원의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명, 소속본부를 조회
-SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME, UNIT_NAME
-	FROM DEPARTMENT D,
-		UNIT U,
-		(SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, DEPT_ID
-			FROM EMP  
-			WHERE MGR IS NULL) E
-	WHERE D.DEPT_ID = E.DEPT_ID AND D.UNIT_ID = U.UNIT_ID;
-    
-    --
-    SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME, UNIT_NAME
-	FROM DEPARTMENT D,
-		UNIT U,
-        EMP E
-    WHERE D.DEPT_ID = E.DEPT_ID AND D.UNIT_ID = U.UNIT_ID
-		AND E.MGR IS NULL;
-
-
-
-
 SELECT DISTINCT E.EMP_ID, E.EMP_NAME, E.HIRE_DATE, E.SALARY, E.DEPT_ID, D.DEPT_NAME
     FROM EMP E, EMP M, DEPARTMENT D
     WHERE E.EMP_ID = M.MGR
 		AND M.DEPT_ID = D.DEPT_ID
         AND M.DEPT_ID = 'HRD';
 
-SELECT * FROM EMP ORDER BY MGR ; 
+SELECT * FROM EMP ORDER BY MGR ;        
 
-       
-
+-- 매니저가 없는 사원의 사원번호, 사원명, 입사일, 급여, 부서아이디를 조회
 -- INNER JOIN 진행 시 매니저가 없는 사원은 제외됨  
 -- 제외되는 데이터까지 조회하기 위해서는 OUTER JOIN
 SELECT COUNT(*)  -- 15
@@ -1978,14 +1921,10 @@ SELECT *
     WHERE DEPT_ID = (SELECT DEPT_ID FROM DEPARTMENT WHERE DEPT_NAME = '정보시스템')
 		AND EMP_ID NOT IN (SELECT DISTINCT EMP_ID FROM VACATION);
 
-
-
 /***
 	출력 번호 생성 : ROW_NUMBER() OVER(ORDER BY [정렬할 컬럼명])
     ** SELECT의 컬럼리스트 자리에 사용되며, * 문자와는 동시에 사용 불가능
 **/
-
-
 -- 정보시스템 부서 사원들 사원아이디, 사원명, 입사일 조회
 SELECT  ROW_NUMBER() OVER(ORDER BY EMP_ID) AS NO,
 		EMP_ID AS ID,
@@ -2043,120 +1982,112 @@ SELECT  ROW_NUMBER() OVER(ORDER BY VCOUNT DESC) AS NO,
 			GROUP BY EMP_ID) V,
 		EMPLOYEE E
 	WHERE V.EMP_ID = E.EMP_ID;
-    
 
 USE HRDB2019;
 SELECT DATABASE();
 
--- [휴가를 사용한 사원정보만!!] 
--- 사원별 휴가사용 일수를 그룹핑하여, 사원아이디, 사원명, 입사일, 연봉, 휴가사용일수를 조회해주세요.
+-- [휴가를 사용한 사원정보만!!]
+-- 사원별 휴가사용 일수를 그룹핑하여,  사원아이디, 사원명, 입사일, 연봉, 휴가사용일수를 조회해주세요. 
 -- 1. 사원별 휴가사용 일수를 그룹핑 작업을 수행하는 인라인뷰
 SELECT EMP_ID, SUM(DURATION) AS VCOUNT
 	FROM VACATION
     GROUP BY EMP_ID;
 
 -- 2. 1번의 인라인뷰와 EMPLOYEE 테이블과 조인
-SELECT ROW_NUMBER() OVER(ORDER BY VCOUNT DESC) AS NO, 
-	EMP_ID, EMP_NAME, HIRE_DATE, SALARY, VCOUNT
+SELECT  ROW_NUMBER() OVER(ORDER BY VCOUNT DESC) AS NO,
+		E.EMP_ID, EMP_NAME, HIRE_DATE, SALARY, VCOUNT
 	FROM EMPLOYEE E,
-		(SELECT EMP_ID, SUM(DURATION) AS VCOUNT
+		 (SELECT EMP_ID, SUM(DURATION) AS VCOUNT
 			FROM VACATION
 			GROUP BY EMP_ID) V
 	WHERE E.EMP_ID = V.EMP_ID;
-    
+
 
 -- [전체 사원의 휴가일수 조회 : 휴가를 사용한 사원정보 + 사용하지 않은 사원]
--- 사원별 휴가사용결제횟수, 휴가전체사용일수를 그룹핑하여,
--- 사원아이디, 사원명, 입사일, 연봉, 휴가결제횟수, 휴가전체사용일수를 조회해주세요.
+-- 사원별 휴가결제횟수, 휴가전체사용일수를 그룹핑하여,  
+-- 사원아이디, 사원명, 입사일, 연봉, 휴가결제횟수, 휴가전체사용일수를 조회해주세요. 
 -- 단, 휴가를 사용하지 않은 사원의 휴가결제횟수, 휴가전체사용일수는 0값으로 할당
 
--- 1.사원별 휴가결제횟수, 휴가전체사용일수를 그룹핑 작업 인라인뷰
+-- 1. 사원별 휴가결제횟수, 휴가전체사용일수를 그룹핑 작업 인라인뷰
 SELECT EMP_ID, COUNT(EMP_ID) COUNT, SUM(DURATION) VCOUNT
 	FROM VACATION
     GROUP BY EMP_ID;
     
--- 2. 1번의 인라인뷰 결과 테이블과 EMPLOYEE 테이블 LEDT/RIGHT OUTER JOIN
--- MYSQL에서 OUTER JOIN은 ANSI SQL 형식만 가능!!
-SELECT ROW_NUMBER() OVER(ORDER BY COUNT DESC) AS NO,
+-- 2. 1번의 인라인뷰 결과 테이블과 EMPLOYEE 테이블 LEFT/RIGHT OUTER JOIN
+-- *** MYSQL에서 OUTER JOIN은 ANSI SQL 형식만 가능!!!
+SELECT  ROW_NUMBER() OVER(ORDER BY COUNT DESC) AS NO,
 		E.EMP_ID,
         E.EMP_NAME,
         E.HIRE_DATE,
-        CONCAT(FORMAT(E.SALARY,0), '만원') AS SALARY,  -- 금액에 만원붙이기
-        IFNULL(V.COUNT, 0) AS COUNT,
-        IFNULL(V.VCOUNT, 0) AS VCOUNT  -- NULL값을 0으로 바꿈
+        CONCAT(FORMAT(E.SALARY, 0), '만원') AS SALARY,
+        IFNULL(V.COUNT,0) AS COUNT,
+        IFNULL(V.VCOUNT,0) AS VCOUNT
 	FROM EMPLOYEE E LEFT OUTER JOIN
-		(SELECT EMP_ID, COUNT(EMP_ID) COUNT, SUM(DURATION) VCOUNT
+		 (SELECT EMP_ID, COUNT(EMP_ID) COUNT, SUM(DURATION) VCOUNT
 			FROM VACATION
 			GROUP BY EMP_ID) V
-		ON E.EMP_ID = V.EMP_ID;
-        
-	-- 스칼라 서브쿼리 : MYSQL에서는 사용이 가능하나 권장하지 않음X, ORACLE, DB2 등 데이터베이스는 사용불가
-    -- HRD 부서의 사원들의 사원아이디, 사원명, 부서아이디, 부서명 조회
-SELECT EMP_ID,
+		ON E.EMP_ID = V.EMP_ID ;
+
+-- 스칼라 서브쿼리 : MYSQL에서는 사용이 가능하나 권장하지 않음x, ORACLE, DB2 등 데이터베이스는 사용불가
+-- HRD 부서의 사원들의 사원아이디, 사원명, 부서아이디, 부서명 조회
+SELECT  EMP_ID,
 		EMP_NAME,
-		DEPT_ID,
-		(SELECT DEPT_NAME FROM DEPARTMENT WHERE DEPT_ID = 'HRD') AS DEPT_NAME,
-        (SELECT DEPT_NAME FROM UNIT
-			WHERE UNIT_ID = (SELECT UNIT_ID FROM DEPARTMENT WHERE DEPT_ID = 'HRD'))
-		AS UNIT_NAME
+        DEPT_ID,
+        (SELECT DEPT_NAME FROM DEPARTMENT WHERE DEPT_ID = 'HRD') AS DEPT_NAME,
+        (SELECT UNIT_NAME FROM UNIT
+			WHERE UNIT_ID = (SELECT UNIT_ID FROM DEPARTMENT WHERE DEPT_ID='HRD'))
+        AS UNIT_NAME    
 	FROM EMPLOYEE
-	WHERE DEPT_ID = 'HRD';
-    
+    WHERE DEPT_ID = 'HRD';  
 
-SELECT UNIT_NAME FROM UNIT
-	WHERE UNIT_ID = (SELECT DEPT_NAME FROM DEPARTMENT WHERE DEPT_ID = 'HRD');
-    
-
--- 급여 순으로 사원들을 정렬, 상위 5명의 사원만 출력
 -- 번호, 사원아이디, 사원명, 입사일, 부서아이디, 연봉
-SELECT NO,
-		EMP_ID,
-		EMP_NAME,
-		SALARY
-FROM (SELECT ROW_NUMBER() OVER(ORDER BY SALARY DESC) AS NO,
-				EMP_ID,
-				EMP_NAME,
-				HIRE_DATE,
-				DEPT_ID,
-				SALARY
+-- 급여 순으로 사원들을 정렬, 상위 5명의 사원만 출력
+	SELECT 	NO,
+			EMP_ID,
+			EMP_NAME,
+			SALARY
+	FROM (SELECT  ROW_NUMBER() OVER(ORDER BY SALARY DESC) AS NO,
+					EMP_ID,
+					EMP_NAME,
+					HIRE_DATE,
+					DEPT_ID,
+					SALARY
 			FROM EMPLOYEE) T1
-	WHERE NO <= 5;  -- 5명만 출력
-
+	WHERE NO <= 5;
+    
 -- 입사일이 가장 빠른 사원 10명의 사원아이디, 사원명, 부서아이디를 조회
 SELECT *
-	FROM (SELECT ROW_NUMBER() OVER(ORDER BY HIRE_DATE) AS NO, -- 입사일이 빠른순으로 나열
-			EMP_ID,
-            EMP_NAME,
-            DEPT_ID,
-            HIRE_DATE
-		FROM EMPLOYEE) T1
+	FROM (SELECT  ROW_NUMBER() OVER(ORDER BY HIRE_DATE) AS NO,
+				EMP_ID,
+				EMP_NAME,
+				DEPT_ID,
+				HIRE_DATE
+			FROM EMPLOYEE ) T1
 	WHERE NO <= 10;
-    
-    
 
--- 사원들의 급여 합계가 가장 작은 부서의 사원들을 조회해주세요. -- 예)쇼핑몰 등수카운트매길때 사용
+-- 사원들의 급여 합계가 가장 작은 부서의 사원들을 조회해주세요
 SELECT *
 	FROM EMPLOYEE
-	WHERE DEPT_ID = (SELECT DEPT_ID
-						FROM (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY)) AS NO,  
-								DEPT_ID,
-								SUM(SALARY)U
+    WHERE DEPT_ID = (SELECT DEPT_ID
+						FROM (SELECT 	ROW_NUMBER() OVER(ORDER BY SUM(SALARY)) AS NO,
+								DEPT_ID, 
+								SUM(SALARY)
 							FROM EMPLOYEE
 							WHERE SALARY IS NOT NULL
 							GROUP BY DEPT_ID) T1
 						WHERE NO = 1);
-                        
-                        
-	/*+++++++++++++++++++++++++++++++++++++++++++++++++++
-    - SELF JOIN을 서브쿼리로 변경해서 조회하기!!!
-++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+   
+    
+/***************************************
+	SELE JOIN을 서브쿼리로 변경해서 조회하기!!!
+*****************************************/    
 -- SELF JOIN : EMP 테이블의 EMP_ID(기본키), MGR(참조키)
--- 홍길동 사원이 관리하는 모든 사원들의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명을 조회
+-- 홍길동 사원이 관리하는 모든 사원들의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명를 조회
 -- 서브쿼리를 이용하여 실행
-SELECT ROW_NUMBER() OVER(ORDER BY EMP_ID) AS NO, 
+SELECT 	ROW_NUMBER() OVER(ORDER BY EMP_ID) AS NO,
 		EMP_ID, EMP_NAME, HIRE_DATE, D.DEPT_ID, DEPT_NAME
-	FROM DEPARTMENT D,  -- FROM에서 DEPARTMENT D<--별칭을만들고 SELECT에서 만든별칭을 사용 D.DEPT_ID(DEPARTMENT의 DEPT_ID를사용!!
-		(SELECT EMP_ID,
+	FROM DEPARTMENT D,
+		(SELECT  EMP_ID,
 				EMP_NAME,
 				HIRE_DATE,
 				SALARY,
@@ -2164,93 +2095,106 @@ SELECT ROW_NUMBER() OVER(ORDER BY EMP_ID) AS NO,
 				MGR
 			FROM EMP
 			WHERE MGR = (SELECT EMP_ID FROM EMP WHERE EMP_NAME = '홍길동')) E
-		WHERE D.DEPT_ID = E.DEPT_ID;
-        
-        
-        
-	/** 조인이나 서브쿼리 작업시에는 효율성을 높이기 위해 집합을 작게 만들고 진행하는 것이 좋음 **/
-    /******************************************************************
-		쿼리 결과 합치기 : UNION, UNION ALL
-        형식 : 쿼리1 UNION/UNION ALL 쿼리2
-        ** 쿼리1, 쿼리2의 실행 결과 컬럼리스트가 동일해야함
-    ******************************************************************/
-    -- HRD 부서의 사원아이디, 사원명, 부서명, 연봉
-    -- SYS 부서의 사원 아이디, 사원명, 부서명, 연봉 실행결과 합치기
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY
-		FROM EMPLOYEE
-        WHERE DEPT_ID = 'HRD';
-        
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY
-		FROM EMPLOYEE
-        WHERE DEPT_ID = 'SYS';
+	WHERE D.DEPT_ID = E.DEPT_ID;
+ 
+
+-- HRD 부서를 관리하는 매니저의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명를 조회
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME
+	FROM DEPARTMENT D,
+		(SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, DEPT_ID
+			FROM EMP
+			WHERE EMP_ID = (SELECT DISTINCT MGR FROM EMP WHERE DEPT_ID = 'HRD')) E
+	WHERE D.DEPT_ID = E.DEPT_ID;
     
-    
--- 영업, 정보시스템 부서로 조회
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY
-		FROM EMPLOYEE
-        WHERE DEPT_ID = (SELECT DEPT_ID FROM DEPARTMENT WHERE DEPT_NAME='영업')
+-- 매니저가 없는 사원의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명, 소속본부를 조회
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME, UNIT_NAME
+	FROM DEPARTMENT D,
+		 UNIT U,
+		(SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, DEPT_ID
+				FROM EMP
+				WHERE MGR IS NULL) E
+	WHERE D.DEPT_ID = E.DEPT_ID AND D.UNIT_ID = U.UNIT_ID;    
+-- 
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME, UNIT_NAME
+	FROM DEPARTMENT D,
+		 UNIT U,
+		 EMP E
+	WHERE D.DEPT_ID = E.DEPT_ID AND D.UNIT_ID = U.UNIT_ID
+		AND E.MGR IS NULL;
+
+/**  조인이나 서브쿼리 작업시에는 효율성을 높이기 위해 집합을 작게 만들고 진행하는 것이 좋음  **/
+
+/***************************************
+	쿼리 결과 합치기 : UNION, UNION ALL
+	형식 : 쿼리1  UNION/UNION ALL   쿼리2
+    ** 쿼리1, 쿼리2의 실행 결과 컬럼리스트가 동일해야함
+****************************************/
+-- HRD 부서의 사원아이디, 사원명, 부서아이디, 연봉
+-- SYS 부서의 사원아이디, 사원명, 부서아이디, 연봉 실행결과 합치기
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'HRD'
 UNION ALL
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY
-		FROM EMPLOYEE
-        WHERE DEPT_ID = (SELECT DEPT_ID FROM DEPARTMENT WHERE DEPT_NAME='정보시스템');
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
+	FROM EMPLOYEE
+    WHERE DEPT_ID = 'SYS';
+	
+-- 영업, 정보시스템 부서명로 조회
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
+	FROM EMPLOYEE
+    WHERE DEPT_ID = (SELECT DEPT_ID FROM DEPARTMENT WHERE DEPT_NAME = '영업')
+UNION ALL
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
+	FROM EMPLOYEE
+    WHERE DEPT_ID = (SELECT DEPT_ID FROM DEPARTMENT WHERE DEPT_NAME = '정보시스템');
 
-SELECT * FROM EMPLOYEE;
 
-
-
--- 2013 ~ 2016년도 사이에 입사한 사원들과
+-- 2013 ~ 2016년도 사이에 입사한 사원과 
 -- SYS 부서의 사원들의 아이디, 사원명, 부서아이디, 폰번호, 연봉 조회
--- UNION ALL (중복허용, 전체 데이터 모두 출력) :22
--- UNION (중복허용X, 전체데이터 모두 출력) :17
-SELECT COUNT(*)
-	FROM(SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY -- 16
-		FROM EMPLOYEE
-		WHERE LEFT(HIRE_DATE, 4) BETWEEN '2013' AND '2016' -- 6
-		UNION
-		SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY
+-- UNION ALL(중복허용, 전체 데이터 모두 출력) : 22
+-- UNION(중복허용x, 전체 데이터 모두 출력) : 17
+SELECT COUNT(*) 
+	FROM (SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY -- 16
+			FROM EMPLOYEE
+			WHERE LEFT(HIRE_DATE,4) BETWEEN '2013' AND '2016' 
+		UNION 
+		SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY  -- 6
 			FROM EMPLOYEE
 			WHERE DEPT_ID = 'SYS') T1;
-    
-    
-    
-    -- 2013~2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
-    SELECT ROW_NUMBER() OVER(ORDER BY YEAR) AS NO,
-			YEAR, DEPT_ID, SALARY 
-    FROM (SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2013'
-			GROUP BY YEAR, DEPT_ID) T1
-	WHERE NO = 1
-    UNION
-        SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2014'
-			GROUP BY YEAR, DEPT_ID) T1
-	WHERE NO = 1
-    UNION
-       SELECT YEAR, DEPT_ID, SALARY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
-				LEFT(HIRE_DATE, 4) AS YEAR, -- 연도별 부서별로 연봉 결과
-				DEPT_ID,
-				SUM(SALARY) AS SALARY
-			FROM EMPLOYEE
-			WHERE LEFT(HIRE_DATE,4) = '2015'
-			GROUP BY YEAR, DEPT_ID) T1  -- FROM()T1 별칭을만들어붙여서 중복되지 않게함
-	WHERE NO = 1) TT;
-    
-    
 
+-- 2013~ 2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
+SELECT ROW_NUMBER() OVER(ORDER BY YEAR) AS NO,
+		YEAR, DEPT_ID, SALARY
+FROM (SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2013'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1    
+		UNION 
+		SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2014'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1 
+		UNION
+		SELECT 	YEAR, DEPT_ID, SALARY
+		FROM   (SELECT  ROW_NUMBER() OVER(ORDER BY SUM(SALARY) DESC) AS NO,
+					LEFT(HIRE_DATE, 4) AS YEAR,
+					DEPT_ID,
+					SUM(SALARY) AS SALARY
+				FROM EMPLOYEE
+				WHERE LEFT(HIRE_DATE, 4) = '2015'
+				GROUP BY YEAR, DEPT_ID) T1
+		WHERE NO = 1) TT;
 
-
-    
 /*+++++++++++++++++++++++++++++++++++++++++        
 	VIEW(뷰) : 논리적인 가상의 테이블
 	- SQL을 실행하여 생성되는 테이블
@@ -2393,32 +2337,13 @@ SELECT * FROM INFORMATION_SCHEMA.VIEWS
 SELECT * FROM VIEW_EMP_VACATION;
 
 -- 홍길동 휴가 사용일수 및 정보 조회
-SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';   
-
-
-    
-
-	
-        
+SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';    
 
 
 
 
 
 
-        
-
-
-    
-        
-
-
-  
-
-
-
-
-    
 
 
 

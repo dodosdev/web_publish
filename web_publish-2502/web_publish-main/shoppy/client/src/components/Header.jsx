@@ -18,7 +18,7 @@ export default function Header({cartCount}) {
                     </Link>
                     <Link to='/signup'>
                         <button type="button">Signup</button>
-                    </Link>
+                    </Link>                    
                 </nav>
             </div>
         </div>
