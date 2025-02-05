@@ -30,5 +30,11 @@ select count(id) as result from shoppy_member where id = 'test9';
 -- {result: 0}
 
 
+use hrdb2019;
+select database();
+
+-- login
+select count(*) as result_rows from shoppy_member
+	where id = 'test1' and pwd = '1111';
 
 

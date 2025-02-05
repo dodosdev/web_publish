@@ -6,16 +6,19 @@ import jwt from 'jsonwebtoken';
  */
 export const checkLogin = async(req, res) => {
     // console.log('login data --->>', req.body);
-    let jwt_token = '';
-    let { result } = await repository.checkLogin(req.body);  
-
-    if(result === 1) {  // 로그인 성공 : jwt 토큰 생성 ⭕ 
-        jwt_token = jwt.sign({userId : req.body.id}, '5KldLlOVja');
-        // console.log('token-->> ', jwt_token);        
-    } 
-    
-    res.json({"result":result, "token":jwt_token});
+    const result = await repository.checkLogin(req.body);  
+    res.json(result);
     res.end();
+
+
+
+    // if(result === 1) {  // 로그인 성공 : jwt 토큰 생성 ⭕ 
+    //     jwt_token = jwt.sign({userId : req.body.id}, '5KldLlOVja');
+    //     // console.log('token-->> ', jwt_token);        
+    // } 
+    
+    // res.json({"result":result, "token":jwt_token});
+    // res.end();
 }
 
 

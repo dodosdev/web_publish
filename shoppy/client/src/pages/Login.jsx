@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { validateLogin } from '../utils/funcValidate.js';
 import axios from 'axios';
-import * as cookie from '../utils/cookies.js';
+// import * as cookie from '../utils/cookies.js';
 
 export default function Login() {
     const refs = {
@@ -28,6 +28,29 @@ export default function Login() {
         event.preventDefault();        
         if(validateLogin(refs, msgRefs)) {
             console.log('send data -->> ', formData);  
+
+            //리액트 --> 노드서버(express) 데이터 전송 로그인
+            axios
+                .post('http://localhost:9000/member/login', formData)
+                .then(res => console.log('res.data --> ', res.data))
+                .catch(error => console.log(error));
+
+
+            //브라우저의 로컬스토리지 영역에 아이디, 패스워드 저장
+            // localStorage.setItem("useId", formData.id);
+            // localStorage.setItem("usePassword", formData.pwd);
+
+            // console.log(localStorage.getItem("userId"));
+
+            // localStorage.removeItem("userId");
+            // localStorage.clear();
+            
+
+
+
+
+            //리액트 -->>노드서버(express) 데이터 전송
+
             
             // 브라우저 쿠키와 로컬 스토리지 테스트
             //쿠키에 토큰 저장

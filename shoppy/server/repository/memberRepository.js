@@ -1,16 +1,28 @@
 import { db } from './db.js';
 
+
 /**
  * 로그인 체크 - select
  */
-export const checkLogin = async({id, pwd}) => {  // {id: 'test1', pwd: '1111'}
+
+export const checkLogin = async({id, pwd}) => {  //{id:'test', pwd:'1234'}
     const sql = `
-        select count(id) as result from shoppy_member where id = ? and pwd =?
+        select count(*) as result_rows from shoppy_member
+        where id = ? and pwd = ?  
     `;
-    const [result] = await db.execute(sql, [id, pwd]);
-    
-    return result[0];
+    const [result] = await db.execute(sql, [id, pwd]);  //[[],[]] 첫번째 배열을 [result]로 받음
+
+    return result;
 }
+
+// export const checkLogin = async({id, pwd}) => {  // {id: 'test1', pwd: '1111'}
+//     const sql = `
+//         select count(id) as result from shoppy_member where id = ? and pwd =?
+//     `;
+//     const [result] = await db.execute(sql, [id, pwd]);
+    
+//     return result[0];
+// }
 
 
 /**
