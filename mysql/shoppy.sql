@@ -36,5 +36,10 @@ select database();
 -- login
 select count(*) as result_rows from shoppy_member
 	where id = 'test1' and pwd = '1111';
+    
+select * from shoppy_member;
+
+select count(*) as result_rows from shoppy_member
+        where id = 'test1' and pwd = '1234';
 
 

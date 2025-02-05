@@ -8,6 +8,7 @@ import Carts from './pages/Carts.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import DetailProduct from './pages/DetailProduct.jsx';
+import { AuthProvider } from './auth/AuthContext.js';
 
 
 
@@ -33,6 +34,7 @@ export default function App() {
 
     return (
         <div> 
+            <AuthProvider>
             <BrowserRouter> 
                 <Routes>
                     <Route path='/' element={<Layout cartCount={cartCount}/>}> 
@@ -45,6 +47,7 @@ export default function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
+            </AuthProvider>
         </div>  // <BrowserRouter> -->전체 페이지가 바뀜
     );
 }

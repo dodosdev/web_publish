@@ -11,8 +11,8 @@ export const checkLogin = async({id, pwd}) => {  //{id:'test', pwd:'1234'}
         where id = ? and pwd = ?  
     `;
     const [result] = await db.execute(sql, [id, pwd]);  //[[],[]] 첫번째 배열을 [result]로 받음
-
-    return result;
+    //[{result_rows : 1}]
+    return result[0];
 }
 
 // export const checkLogin = async({id, pwd}) => {  // {id: 'test1', pwd: '1111'}
