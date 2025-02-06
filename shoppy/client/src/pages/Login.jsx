@@ -6,6 +6,7 @@ import { validateLogin } from '../utils/funcValidate.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext.js';
+// import ImageUpload from '../components/ImageUpload.jsx';
 
 
 export default function Login() {
@@ -62,6 +63,7 @@ export default function Login() {
     return (
         <div className="content">
             <h1 className="center-title">LOGIN</h1>
+                {/* <ImageUpload /> */}
             <form className="login-form" onSubmit={handleLoginSubmit}>
                 <ul>
                     <li>

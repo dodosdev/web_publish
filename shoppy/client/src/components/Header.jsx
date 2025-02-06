@@ -37,13 +37,21 @@ export default function Header({cartCount}) {
                     <Link to='/cart'>MyCart({cartCount})</Link>
                     {/* <Link to='/login'>
                     </Link> */}
-                    <Link to='/signup'>
-                        <button type="button">Signup</button>
-                    </Link>    
-
                     <button type="button" onClick={handleLoginToggle}>
                         { isLoggedIn ? "Logout" :"Login"}
                     </button>
+                    <Link to='/signup'>
+                        <button type="button">Signup</button>
+                    </Link>
+
+                    
+                    { isLoggedIn &&
+                        <Link to='/products/new'>
+                            <button type="button">New Product</button>
+                        </Link>    
+                    }
+
+
                 </nav>
             </div>
         </div>
@@ -52,3 +60,13 @@ export default function Header({cartCount}) {
 
 //{ isLoggedIn ? "Logout" :"Login"} 
 // 토큰이 있으면 로그아웃으로 버튼으로 바뀜//토큰이 없으면 로그인버튼
+
+/**
+ * 로그인에 성공했을때만 보임
+ * 
+ *  { isLoggedIn &&
+        <Link to='/product/new'>
+            <button type="button">New Product</button>
+        </Link>    
+    }
+ */
