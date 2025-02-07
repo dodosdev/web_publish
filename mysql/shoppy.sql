@@ -43,3 +43,34 @@ select count(*) as result_rows from shoppy_member
         where id = 'test1' and pwd = '1234';
 
 
+USE HRDB2019;
+SELECT * FROM INFORMATION_SCHMA.TABLES
+	WHERE TABLE_NAME LIKE 'SHOPPY%';
+    
+    
+-- SHOPPY_PRODUCT
+CREATE TABLE SHOPPY_PRODUCT(
+	PID  	INT  PRIMARY KEY   AUTO_INCREMENT,
+    PNAME  	VARCHAR(50)   NOT NULL,
+    PRICE  	INT,
+    DESCRIPTION   	VARCHAR(200),
+    UPLOAD_FILE     VARCHAR(100),
+    SOURCE_FILE     VARCHAR(100),
+    PDATA           DATETIME
+);
+
+DESC SHOPPY_PRODUCT;
+SELECT * FROM SHOPPY_PRODUCT;
+-- ** 자동번호 생성기 : AUTO_INCREMENT ===> 기본키
+
+
+select pid,
+		pname as name,
+		price,
+		description as info,
+		concat('http://localhost:9000/', upload_file) as image,
+		source_file,
+		pdata
+from shoppy_product;
+
+
