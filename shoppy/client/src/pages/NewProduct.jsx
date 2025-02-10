@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageUpload from '../components/ImageUpload.jsx';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import ImageUploadMultiple from '../components/ImageUploadMultiple.jsx';
 
 export default function NewProduct() {
     const navigate = useNavigate();
@@ -9,13 +10,17 @@ export default function NewProduct() {
     const [fname, setFnames ] = useState({});
     const [preview, setPreview] = useState('');
     let [formData, setFormData] = useState({});
+    const [previewList, setPreviewList] = useState([]);
 
 
 
     const getFileName = (fileNames) => {
-        console.log('fileNames-->', fileNames );
         setFnames(fileNames);
-        setPreview(`http://localhost:9000/${fileNames.uploadFileName}`);
+        setPreviewList(fileNames.uploadFileName);
+        // console.log('fileNames-->', fileNames );
+        // console.log('New');
+        
+        // setPreview(`http://localhost:9000/${fileNames.uploadFileName}`);
         //새로운이미지가 등록될마다 이미지 자동 업데이트 //multer사용
         //여러개 이미지를 등록해도 싱글파일만 등록되고 기존파일은 삭제되고 (싱글파일)새로운파일이 업로드됨
     }
@@ -40,8 +45,8 @@ export default function NewProduct() {
         } else {
             //서버 연동
             formData = {...formData, 
-                        "uploadFile": fname.uploadFileName,
-                        "sourceFile" : fname.sourceFileName};
+                            "uploadFile": fname.uploadFileName,
+                            "sourceFile" : fname.sourceFileName};
             console.log('formData -->', formData);
 
 
@@ -78,17 +83,35 @@ export default function NewProduct() {
                         <input type="text" 
                                 name="productName" 
                                 ref={productNameRef}
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                placeholder='상품명 입력'/>
                     </li>
                     <li>
                         <label>가격</label>
-                        <input type="text" name="price" onChange={handleChange}/>
+                        <input type="text" 
+                                name="price" 
+                                onChange={handleChange}
+                                placeholder='상품명 입력'/>
                     </li>
                     <li>
                         <label>상품정보</label>
-                        <input type="text" name="description" onChange={handleChange}/>
+                        <input type="text" 
+                                name="description"
+                                onChange={handleChange}
+                                placeholder='상품명 입력'/>
                     </li>
                     <li>
+                        <label>파일업로드(다중)</label>
+                        <ImageUploadMultiple getFileName={getFileName} />
+                        {/* 다중파일 priview */}
+                        {
+                            previewList && previewList.map((preview)=>
+                                <img src={`http://localhost:9000/${preview}`}  alt="preview image" 
+                                style={{width:'100px', height:'100px', margin:'5px'}} />
+                            )
+                        }
+                    </li>
+                    {/* <li>
                         <label>파일업로드</label>
                         <ImageUpload getFileName={getFileName} />
                         {preview && 
@@ -96,7 +119,7 @@ export default function NewProduct() {
                             alt="preview image" 
                             style={{width:'100px', height:'100px'}} />}
                         
-                    </li>
+                    </li> */}
                     <li>
                         <input type="hidden" name="upload" value={fname.uploadFileName} />
                         <input type="hidden" name="source" value={fname.sourceFileName} />

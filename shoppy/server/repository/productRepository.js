@@ -10,7 +10,7 @@ export const getList = async() => {
                 pname as name,
                 price,
                 description as info,
-                concat('http://localhost:9000/', upload_file) as image,
+                concat('http://localhost:9000/', upload_file->> '$[0]') as image,
                 source_file,
                 pdata
         from shoppy_product
@@ -36,20 +36,18 @@ export const registerProduct = async(formData) => { //시간이걸리는건async
                                     source_file,
                                     pdata)
         values(?,?,?,?,?, now())
-
     `;
 
     const values = [
         formData.productName,
-        formData.price,
-        formData.description,
-        formData.uploadFile,
-        formData.sourceFile
+        formData.price || 0,
+        formData.description || "", //또는
+        formData.uploadFile || null,
+        formData.sourceFile || null
     ];
 
     const [result] = await db.execute(sql, values);
     return {"result_rows": result.affectedRows};
-    // return {"result_rows": result.affectedRows};
 }
 
 

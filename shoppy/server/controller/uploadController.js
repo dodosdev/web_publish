@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
         }
     })
 
-const upload = multer({ storage: storage }).single("file");
+const upload = multer({ storage: storage }).single("file");  //single("file");파일 하나만 업로드
 
 
 

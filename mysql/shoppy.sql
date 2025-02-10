@@ -49,28 +49,56 @@ SELECT * FROM INFORMATION_SCHMA.TABLES
     
     
 -- SHOPPY_PRODUCT
+use hrd2019;
+drop table shoppy_product;
+
 CREATE TABLE SHOPPY_PRODUCT(
 	PID  	INT  PRIMARY KEY   AUTO_INCREMENT,
     PNAME  	VARCHAR(50)   NOT NULL,
     PRICE  	INT,
     DESCRIPTION   	VARCHAR(200),
-    UPLOAD_FILE     VARCHAR(100),
-    SOURCE_FILE     VARCHAR(100),
+    UPLOAD_FILE     json,
+    SOURCE_FILE     json,
     PDATA           DATETIME
 );
 
 DESC SHOPPY_PRODUCT;
 SELECT * FROM SHOPPY_PRODUCT;
--- ** 자동번호 생성기 : AUTO_INCREMENT ===> 기본키
 
+
+-- ** 자동번호 생성기 : AUTO_INCREMENT ===> 기본키
 
 select pid,
 		pname as name,
 		price,
 		description as info,
-		concat('http://localhost:9000/', upload_file) as image,
+		concat('http://localhost:9000/', upload_file->> '$[0]') as image, -- upload_file->> '$[0]'몇번째 이미지 불러오기
 		source_file,
 		pdata
 from shoppy_product;
+
+
+-- 상품목록 삭제
+SET SQL_SAFE_UPDATES = 0;  -- 해제: 0, 설정: 1
+delete from shoppy_product; -- 데이터 삭제
+commit;
+select * from shoppy_product;
+select source_file from shoppy_product;
+
+
+
+
+select pid,
+	pname as name,
+	price,
+	description as info,
+	concat('http://localhost:9000/', upload_file) as image,
+	source_file,
+	pdata
+from shoppy_product
+
+-- http://localhost:9000/["upload_files\\1739163877917-311254750-1.webp", "upload_files\\1739163877918-341370314-2.webp", "upload_files\\1739163877920-561426472-3.webp", "upload_files\\1739163877923-831694013-4.webp", "upload_files\\1739163877924-94484003-5.webp", "upload_files\\1739163877925-530696189-6.webp", "upload_files\\1739163877926-543617020-7.webp"]
+--
+-- http://localhost:9000/["upload_files\\1739163877917-311254750-1.webp"
 
 
