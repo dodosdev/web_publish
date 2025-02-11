@@ -128,6 +128,19 @@ p {
   justify-content: space-between;
 }
 
+.product-detail-top-list{
+  display: flex;
+}
+
+.product-detail-top-list li {
+  margin-right: 15px;
+}
+
+.product-detail-top-list li img{
+  width:100px;
+  height: 130px;
+}
+
 /**
   footer
 */

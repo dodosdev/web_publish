@@ -17,9 +17,15 @@ export const getProduct = async(pid) => {
 					concat('http://localhost:9000/', upload_file->>'$[0]'),
                     concat('http://localhost:9000/', upload_file->>'$[1]'),
                     concat('http://localhost:9000/', upload_file->>'$[2]')
-                ) as imgList
-        from shoppy_product
+                ) as imgList,
+                json_arrayagg(
+					concat('http://localhost:9000/', jt.filename)
+                ) as detailImagList					 
+        from shoppy_product, 
+			json_table (shoppy_product.upload_file, '$[*]'
+						columns (filename  varchar(100) path '$' ) ) as jt
         where pid = 1;
+
     `;
 
     //where pid = ?   -- 계속 바뀌는 문자는 ? 로 표기

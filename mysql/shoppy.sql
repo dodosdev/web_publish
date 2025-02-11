@@ -123,10 +123,21 @@ where pid = 1;
 					concat('http://localhost:9000/', upload_file->>'$[0]'),
                     concat('http://localhost:9000/', upload_file->>'$[1]'),
                     concat('http://localhost:9000/', upload_file->>'$[2]')
-                ) as imgList
-               -- json_array(0, 1, 2 번지의 이미지를 가져와서 베열객체로 생성하는 함수) as imgList
-        from shoppy_product
+                ) as imgList,
+                json_arrayagg(
+					concat('http://localhost:9000', jt.filename)
+                ) as detailImagList 					 -- json_array(0, 1, 2 번지의 이미지를 가져와서 베열객체로 생성하는 함수) as imgList
+        from shoppy_product, 
+			  json_table (shoppy_product.upload_file, '$[*]'
+						columns (filename  varchar(100) path '$' ) ) as jt
         where pid = 1;
-        
+		select upload_file from shoppy_product;
+	
         desc shoppy_product;
+        
+-- 			["upload_files\\1739239666777-707520522-1.jpg",
+-- 		   "upload_files\\1739239666784-381137757-1.webp", 
+-- 		   "upload_files\\1739239666784-755817781-2.jpg", 
+-- 		   "upload_files\\1739239666789-745872869-2.webp", 
+-- 		   "upload_files\\1739239666789-382947697-3.jpg"]
 

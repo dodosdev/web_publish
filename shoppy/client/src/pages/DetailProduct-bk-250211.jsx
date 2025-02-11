@@ -6,7 +6,6 @@ import ReturnDelivery from "../components/ReturnDelivery.jsx";
 import Detail from "../components/Detail.jsx";
 import Review from "../components/Review.jsx";
 import QnA2 from "../components/QnA2.jsx";
-import ImageList from "../components/commons/ImageList.jsx";
 
 
 
@@ -14,8 +13,8 @@ export default function DetailProduct({ addCart }) {
     
 const { pid } = useParams();
 const [product, setProduct] = useState({});
-const [imgList, setImgList] = useState([]);
-const [detailImgList, setDetailImgList] = useState([]);
+const [imgList, setImgList] = useState({});
+// const [detailImgList, setDetailImgList] = useState({});
 const [size, setSize] = useState("XS");
 // const [tabName, setTabName] = useState('detail');
 // const tabLabels = ['DETAIL', 'REVIEW', 'Q&A', 'RETURN & DELIVERY'];
@@ -31,7 +30,7 @@ useEffect(() => {
         //uploadFile 배열의 3개 이미지를 출력형태로 생성하여 배열에 저장
         // const imgList = res.data.uploadFile.filter((image, i) => (i<3) && image);
         setImgList(res.data.imgList);
-        setDetailImgList(res.data.detailImagList);
+        // setDetailImgList(res.data.detailImgList);
     })
     .catch((error) => console.log(error));
 }, []);
@@ -83,7 +82,7 @@ const handleClickQnA = () => {
             <div className="product-detail-top">
                 <div className="product-detail-image-top">
                 <img src={product.image}  />
-                <ImageList className="product-detail-top-list"
+                <imgList className="product-detail-top-list"
                             imgList={imgList} /> 
                 {/* 디테일 3장 이미지리스트 부분 */}
                 {/* <ul className="product-detail-image-top-list">
@@ -156,7 +155,7 @@ const handleClickQnA = () => {
                 </ul>
                 <div>
                     {category === "returnDelivery" ? <ReturnDelivery/>: null}
-                    {category === "detail" ? <Detail imgList={detailImgList} /> : null}
+                    {category === "detail" ? <Detail/> : null}
                     {category === "review" ? <Review/> : null}
                     {category === "qna" ? <QnA2/> : null}
                 </div>

@@ -1,72 +1,15 @@
-export default function Detail() {
-    const images = [
-        {
-            "img" : "https://image.wconcept.co.kr/images/Upload/VendorClosedBanner/20250117103402_3005374.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/2.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/3.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/4.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/6.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/7.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/8.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/9.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/10.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/11.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/12.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/13.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/14.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/15.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/21fall/balmacaan/black/16.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/22fall/balmacaan%20coat_mocha/1.jpg"
-        },
-        {
-            "img" : "http://qhdrus123.cafe24.com/web/22fall/balmacaan%20coat_mocha/dark%20brown.jpg"
-        },
-        
-    ]
+import ImageList from "./commons/ImageList.jsx";
+
+
+export default function Detail({imgList}) {
+    console.log("detail->", imgList);
+    
+
 return (
     <>
-
+    <ImageList imgList={imgList} className = "detail-images" />
     
-    <ul className="image-box">
-    {
-        images.map((item) => <>
-        <li className="detail-img">
-            <img src={item.img}/>
-        </li>
-        {item.describe && <p>{item.describe}</p>}
-        </>)
-    }
-    </ul>
+
 
     <div className="detail-info">
         <span className="detail-info-tit">
