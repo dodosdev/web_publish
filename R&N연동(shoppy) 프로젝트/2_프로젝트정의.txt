@@ -8,7 +8,7 @@
     cd client  (여기로 이동) > npm install (node_modules 설치)
 
      cat package.json (설치된 라이브러리 내용확인)
-     설치위치:  c:\dev\web_publish\shoppy\client (main -> origin)
+     설치위치(작업할 위치로 이동):  c:\dev\web_publish\shoppy\client (main -> origin)
 
      npm i react-router-dom  # 리액트 라우터 돔 패키지 설치
      npm i axios             # axios 패키지 설치
@@ -16,7 +16,7 @@
      npm start  
 
      http://localhost:3000/
-     https://react-icons.github.io/react-icons/
+     react-icons :  https://react-icons.github.io/react-icons/
 
 
 

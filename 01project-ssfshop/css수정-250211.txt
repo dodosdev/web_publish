@@ -1,0 +1,20 @@
+Nav.jsx
+Header.jsx
+
+
+style.css - svg 사이즈수정 
+
+
+.header-bottom{
+.header-bottom ul li a{
+    color: inherit;  --링크색깔 삭제
+}
+
+
+/*heder 상단메뉴  left-border삭제*/
+.header-middle .shop-wrap{
+    font-size: 1.5rem;
+    /* background-color: salmon; */
+    display: flex;
+    gap: 30px;
+}

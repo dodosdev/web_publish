@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Nav from "../commons/Nav.jsx";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
-import { AiOutlineShopping } from "react-icons/ai";
+import { IoBagOutline } from "react-icons/io5";
+
 // 헤더 메뉴 시작
 const categories = [
   { label: "여성", link: "#" },
@@ -50,20 +51,20 @@ export default function Header(){
 
         <div className='header-middle-wrap'>
           <div className='header-middle content-wrap'>
-            <Link to='/' className='header-logo'><h1><span className="big-logo">SSF</span> <span className="small-logo">SHOP</span></h1></Link>
+            <Link to='/' className='header-logo'><img src="/images/logo.png" alt="" /></Link>
 
             <div className='icon-shop-wrap'>
               <div className='icon-wrap'>
                 {/* <button type='button'><CiHeart /></button> */}
                 <Link to='/detail'><button type='button'><CiSearch /></button></Link>
                 <Link to='/carts'><button type='button'><CiHeart /></button></Link>
-                <Link to='/carts'><button type='button'><AiOutlineShopping  /></button></Link>
+                <Link to='/carts'><button type='button'><IoBagOutline  /></button></Link>
               </div>
               <span>|</span>
               <div className='shop-wrap'>
-                <a href='#'>site1</a>
-                <a href='#'>site2</a>
-                <a href='#'>site3</a>
+                <a href='#'><img src="/images/logo-10cc.png" alt="" /></a>
+                <a href='#'><img src="/images/logo-another.png" alt="" /></a>
+                <a href='#'><img src="/images/logo-beaker.png" alt="" /></a>
               </div>
             </div>
           </div>

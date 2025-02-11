@@ -134,7 +134,7 @@ thead {
 /* ============================================================================================= */
 /* ============================================================================================= */
 header{
-    background-color: skyblue;
+    /* background-color: skyblue; */
     width: 100%;
 }
 .content-wrap{
@@ -204,7 +204,7 @@ header{
     display: flex;
     align-items: center;
     gap: 30px;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 .header-middle .icon-wrap{
     display: flex;
@@ -220,11 +220,18 @@ header{
     height: 24px;
     margin-right: 0;
 }
+
+/* header icon 크기 수정*/
+svg{
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+}
+
+/*heder 상단메뉴  left-border삭제*/
 .header-middle .shop-wrap{
     font-size: 1.5rem;
-
-    border-left: 1px solid gray;
-    background-color: salmon;
+    /* background-color: salmon; */
     display: flex;
     gap: 30px;
 }
@@ -289,6 +296,73 @@ header{
     display: block;
     padding: 5px 0;
 }
+
+
+/**/
+.header-bottom-wrap{
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #f5f5f5
+}
+.header-bottom{
+    /* max-width: 1440px;
+    min-width: 1280px; */
+    color:var(--gray900);
+    height: 70px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-bottom ul li a{
+    color: inherit;
+}
+
+.header-bottom .nav-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+}
+
+.header-bottom .nav-right{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.header-bottom .nav-right .nav-special{
+    display: flex;
+    gap: 30px;
+}
+.header-bottom .nav-main{
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    font-weight: 1.2rem;
+}
+.header-bottom .nav-main>li>a{
+    display: block;
+    padding: 5px 0;
+}
+.header-bottom .nav-sub{
+    display: flex;
+    gap: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+    font-weight: 1.2rem;
+}
+.header-bottom .nav-sub>li>a{
+    display: block;
+    padding: 5px 0;
+}
+.header-bottom .nav-special>li>a{
+    display: block;
+    padding: 5px 0;
+}
+
+
 /* ============================================================================================= */
 /* ============================================================================================= */
 /* ============================================================================================= */
