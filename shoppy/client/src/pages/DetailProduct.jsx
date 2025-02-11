@@ -13,18 +13,28 @@ export default function DetailProduct({ addCart }) {
     
 const { pid } = useParams();
 const [product, setProduct] = useState({});
+const [imgList, setImgList] = useState({});
 const [size, setSize] = useState("XS");
+
 
 useEffect(() => {
     axios
-    .get("/data/products.json") // http://localhost:3000/data/products.json
+    .post("http://localhost:9000/product/detail", {"pid":pid}) 
     .then((res) => {
-        res.data.filter((product) => {
-        if (product.pid === pid) setProduct(product);
-        });
+        console.log('res.data-->', res.data);
+        setProduct(res.data);
+        //uploadFile 배열의 3개 이미지를 출력형태로 생성하여 배열에 저장
+        // const imgList = res.data.uploadFile.filter((image, i) => (i<3) && image);
+        setImgList(res.data.imgList);
     })
     .catch((error) => console.log(error));
 }, []);
+
+// console.log('imgList--->', imgList);
+
+
+
+
 
 //장바구니 추가 버튼 이벤트
 const addCartItem = () => {
@@ -66,8 +76,11 @@ const handleClickQnA = () => {
         <div className="content">
             <div className="product-detail-top">
                 <div className="product-detail-image-top">
-                <img src={product.image} />
-                <ul className="product-detail-image-top-list">
+                <img src={product.image}  />
+                <imgList className="product-detail-top-list"
+                            imgList={imgList} /> 
+                {/* 디테일 3장 이미지리스트 부분 */}
+                {/* <ul className="product-detail-image-top-list">
                     <li>
                     <img src={product.image} alt="" />
                     </li>
@@ -77,7 +90,7 @@ const handleClickQnA = () => {
                     <li>
                     <img src={product.image} alt="" />
                     </li>
-                </ul>
+                </ul> */}
                 </div>
 
                 <ul className="product-detail-info-top">

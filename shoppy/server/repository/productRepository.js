@@ -1,5 +1,37 @@
 import { db } from './db.js';
 
+/**
+ * 상품 상세 정보 조회
+ */
+export const getProduct = async(pid) => {
+    const sql = `
+        select pid,
+                pname as name,
+                price,
+                description as info,
+                upload_file as upload_file,
+                source_file as upload_file,
+                pdata,
+                concat('http://localhost:9000/', upload_file->>'$[0]') as image,
+                json_array (
+					concat('http://localhost:9000/', upload_file->>'$[0]'),
+                    concat('http://localhost:9000/', upload_file->>'$[1]'),
+                    concat('http://localhost:9000/', upload_file->>'$[2]')
+                ) as imgList
+        from shoppy_product
+        where pid = 1;
+    `;
+
+    //where pid = ?   -- 계속 바뀌는 문자는 ? 로 표기
+    const [result] = await db.execute(sql, [pid]);  // result = [(pid:4, ~)], [컬럼명, fields] ]
+                                                         // 이차원 배열로 나옴-->결과문자, 컬럼명                       
+    console.log('result-->', result[0]);
+
+    return result[0];
+    
+
+}
+
 
 /**
  * 전체 상품 리스트 조회

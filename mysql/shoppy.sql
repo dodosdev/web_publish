@@ -88,17 +88,45 @@ select source_file from shoppy_product;
 
 
 
+-- 제품 상세 정보 조회
 select pid,
-	pname as name,
-	price,
-	description as info,
-	concat('http://localhost:9000/', upload_file) as image,
-	source_file,
-	pdata
+	   pname,
+       price,
+       description,
+       upload_file,
+       source_file,
+       pdata,
+       concat('http://localhost:9000/', uploade_file->>'$[0]')as image
 from shoppy_product
+where pid = 1;
 
--- http://localhost:9000/["upload_files\\1739163877917-311254750-1.webp", "upload_files\\1739163877918-341370314-2.webp", "upload_files\\1739163877920-561426472-3.webp", "upload_files\\1739163877923-831694013-4.webp", "upload_files\\1739163877924-94484003-5.webp", "upload_files\\1739163877925-530696189-6.webp", "upload_files\\1739163877926-543617020-7.webp"]
---
--- http://localhost:9000/["upload_files\\1739163877917-311254750-1.webp"
+      select pid,
+                pname as name,
+                price,
+                description as info,
+                concat('http://localhost:9000/', upload_file->> '$[0]') as image,
+                source_file,
+                pdata
+        from shoppy_product;
 
+
+
+      select pid,
+                pname,
+                price,
+                description,
+                UPLOAD_FILE,
+                source_file,
+                pdata,
+                concat('http://localhost:9000/', upload_file->>'$[0]') as image,
+                json_array (
+					concat('http://localhost:9000/', upload_file->>'$[0]'),
+                    concat('http://localhost:9000/', upload_file->>'$[1]'),
+                    concat('http://localhost:9000/', upload_file->>'$[2]')
+                ) as imgList
+               -- json_array(0, 1, 2 번지의 이미지를 가져와서 베열객체로 생성하는 함수) as imgList
+        from shoppy_product
+        where pid = 1;
+        
+        desc shoppy_product;
 

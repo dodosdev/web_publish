@@ -18,20 +18,10 @@ export default function ProductList() {
             .get('http://localhost:9000/product/all')
             .then(res => setList(res.data))
             .catch((error) => console.log(error))
-            
-
-
-
-
-
-        
-        // fetch('/data/products.json')
-        //     .then((data) => data.json()) //json파일로바꿈
-        //     .then((jsonData) => {   //json 데이터는 (jsonData) 변수로 가져옴
-        //         setList(jsonData);  //setList를통해서 json데이터를 전역변수화 시킴
-        //     })  
-        //     .catch();
     }, []);
+
+    console.log(list);
+    
 
     //출력 리스트 생성 [ [{},{},{}], [{},{},{}], [{}]]
     const rows = [];
