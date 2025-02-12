@@ -5,7 +5,6 @@ import { FaPlus } from "react-icons/fa6";
 export default function ImageList({imgList, className}) { 
     // console.log('name==>> ', className.substring(0,6));
     const name = className.substring(0,6);  //review 이미지 
-    console.log(imgList);
     
     return (
         <ul className={className}>

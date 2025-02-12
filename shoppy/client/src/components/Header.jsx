@@ -20,7 +20,6 @@ export default function Header({cartCount}) {
 
             } else { //Login 버튼 클릭
                 navigate('/login');
-
             }
     }
 
@@ -32,7 +31,7 @@ export default function Header({cartCount}) {
                     <FiShoppingBag />
                     <span>Shoppy</span>
                 </Link>
-                <nav className='header-right'>
+                <nav className='header-right'>  
                     <Link to='/all'>Products</Link>
                     <Link to='/cart'>MyCart({cartCount})</Link>
                     {/* <Link to='/login'>

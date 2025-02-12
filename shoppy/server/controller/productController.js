@@ -2,6 +2,21 @@ import { response } from 'express';
 import * as repository from '../repository/productRepository.js';
 
 
+
+/**
+ * 장바구니 상품 정보 조회
+*/
+export const getCartList = async(req, res) => {
+
+    const result = await repository.getCartList(req.body);
+    res.json(result);
+    res.end();
+}
+
+
+
+
+
 /**
  * 상품 상세 정보 조회
  */

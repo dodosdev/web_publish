@@ -1,7 +1,38 @@
 import { db } from './db.js';
 
+
+
+
+
 /**
- * 상품 상세 정보 조회
+ * 장바구니 상품 정보 조회
+ */
+export const getCartList = async({pids}) => {
+    const strArray = [];
+    pids.forEach(pid => strArray.push("?"));
+    
+
+    const sql = `
+            select pid,
+                    pname,
+                    price,
+                    description,
+                    concat('http://localhost:9000/', upload_file->> '$[0]') as image
+            from shoppy_product
+            where pid in (${strArray.join(",")})
+    `;
+    const [result] = await db.execute(sql, pids);
+
+    return result; 
+    
+}
+
+//where pid in (?, ?, ?);
+
+
+
+/**
+ * 상품 상세 정보 조회 (이미지 3개)
  */
 export const getProduct = async(pid) => {
     const sql = `
