@@ -3,6 +3,7 @@ import * as repository from '../repository/productRepository.js';
 
 
 
+
 /**
  * 장바구니 상품 정보 조회
 */
@@ -27,6 +28,8 @@ export const getProduct = async(req, res) => {
 }
 
 
+
+
 /**
  * 전체 상품 리스트 조회
  */
@@ -36,6 +39,9 @@ export const getList = async(req, res) => {
     res.end();
 }
 
+
+
+
 /**
  * 상품 등록
  */
@@ -44,9 +50,12 @@ export const registerProduct = async(req, res) => {
     const result = await repository.registerProduct(req.body); //처리1순위
     //레파지토리 함수 //시간이 오래걸리는건 비동기처리
     res.json(result);
-    res.end();
-    
+    res.end();    
 }
+
+
+
+
 
 /**
     server port ===>> 9000

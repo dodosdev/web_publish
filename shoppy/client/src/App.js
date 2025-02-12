@@ -31,6 +31,7 @@ export default function App() {
     // updateCartList = []
 
 
+    
     /** 장바구니 추가 */
     const addCart = (cartItem) => {
         //입력받은 cartItem이 cartList에 존재하면 qty+1, 존재하지 않으면 새로 추가
