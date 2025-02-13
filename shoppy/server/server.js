@@ -4,6 +4,7 @@ import path from 'path';
 import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
 import productRouter from './router/productRouter.js';
+import cartRouter from './router/cartRouter.js';
 
 // 서버 생성 및 포트 정의
 const server = express();
@@ -22,6 +23,7 @@ server.use("/upload_files", express.static(path.join("upload_files")));
 server.use('/member', memberRouter);
 server.use('/uploads', uploadRouter);
 server.use('/product', productRouter);
+server.use('/cart', cartRouter);
 
 
 
