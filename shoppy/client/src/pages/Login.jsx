@@ -43,6 +43,7 @@ export default function Login() {
                     if(res.data.result_rows === 1){
                         alert("로그인 성공!!");
                         localStorage.setItem("token", res.data.token);
+                        localStorage.setItem("user_id", formData.id);   //key : user_id value: test1
                         setIsLoggedIn(true);
                         navigate('/');  //로그인하면 토큰이생성되고 홈으로 이동 로그아웃버튼으로바뀜
                     } else {
