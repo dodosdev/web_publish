@@ -14,18 +14,31 @@ export default function Carts({refreshStorage}) {
         useEffect(()=> {
             if(isLoggedIn){
                 //DB -shoppy_cart에서 정보
-                alert('db');
+                const id = localStorage.getItem("user_id");
+                console.log('db');
+
                 axios
-                    .post("http://localhost:9000/cart/items")
-                    .then(res=>
-                        console.log(res.data)                
-                    )
+                    .post("http://localhost:9000/cart/items", {"id":id}) //DB에 있을때 
+                    .then(res => setCartList(res.data))
                     .catch();
             } else {
-                alert('localStorge');
+                //localStorge 
+                console.log('localStorage ');  //DB에 없을때
+                addCartList(); 
+                // setCartList([...items]); //빈값에 값이 계속 추가됨
+
             }
         }, {isLoggedIn});
-    
+
+
+
+        /** 로컬스토리지 데이터 --> cartList add  //동기와 비동기를 같이사용한 방법*/
+        const addCartList = () => {
+            const items = localStorage.getItem("cartItems"); //비동기
+            setTimeout(()=>{
+                setCartList([...JSON.parse(items)]);
+            }, 0);
+        }
     
 
 
@@ -46,26 +59,37 @@ export default function Carts({refreshStorage}) {
                     <th>Qty</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th></th>                
+                    {
+                        isLoggedIn && 
+                        <>
+                            <th>배송지 주소</th>
+                            {/* <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th> */}
+                        </>
+                    }                
                 </tr>
-                {/* {
+                {
                     cartList && cartList.map((item) => 
                         <tr>
                             <td>{item.pid}</td>
                             <td>{item.pname}</td>
                             <td>{item.size}</td>
                             <td>{item.qty}</td>
-                            <td>{item.description}</td>
+                            <td>{item.info}</td>
                             <td>
                                 <img src={item.image} alt="" style={{width:"100px"}}/>
-                            </td>
-                            <td>
+                            </td>  
+                            { isLoggedIn && <td>{item.zipcode}/{item.address}</td> }
+                            {/* <td>
                                 <button 
-                                onClick={()=>{handleOrder("each", item.pid, item.size) }}>계속담아두기</button>
-                            </td>                            
+                                    onClick={()=>{ handleOrder("each", item.pid, item.size) }}> 계속담아두기 </button>
+                            </td>                           */}
                         </tr>
                     )
-                } */}
+                }
             </table>
             
         </div>

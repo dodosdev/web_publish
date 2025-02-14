@@ -3,24 +3,27 @@ import { db } from './db.js';
 /**
  * 장바구니 전체 조회
  */
-export const getItems = async()=> {
+export const getItems = async({id})=> {
     const sql = `
-            select sc.cid,
+        select sc.cid,
                 sc.size,
                 sc.qty,
                 sm.zipcode,
                 sm.address,
                 sp.pid,
+                sp.pname,
                 sp.price,
                 sp.description as info,
                 concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
             from shoppy_cart sc,
                 shoppy_member sm,
                 shoppy_product sp
-            where sc.id = sm.id and sc.pid =  sp.pid;
+            where sc.id = sm.id 
+                    and sc.pid =  sp.pid
+                    and sm = ?
 
     `;
-    const [result] = await db.execute(sql);
+    const [result] = await db.execute(sql, [id]);
     return result;
 }
 
