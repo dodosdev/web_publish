@@ -167,6 +167,7 @@ DESC SHOPPY_CART;
 SELECT * FROM SHOPPY_CART;
 
 drop table shoppy_cart;  -- 테이블 삭제
+select * from shoppy_member;
 
 
 
@@ -180,6 +181,33 @@ drop table shoppy_cart;  -- 테이블 삭제
             from shoppy_product
             where pid in (1,2);
 
+
+truncate table shoppy_cart;  -- 삭제
+
+
+
+---
+select * from shoppy_cart;
+insert into shoppy_cart(size, qty,cdate, id, pid)
+	value('XS', 1, now(), 'test1', 10);
+select * from shoppy_product where pid=3;
+
+
+-- shoppy_cart, shoppy_member, shoppy_product 조인
+-- 상품의 모든 정보를 가져옴
+select sc.cid,
+		sc.size,
+        sc.qty,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id and sc.pid =  sp.pid;
 
 
 
