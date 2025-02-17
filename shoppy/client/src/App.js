@@ -42,8 +42,8 @@ import { AuthProvider } from './auth/AuthContext.js';
     /**로컬스토리지 */
     /** cartList, cartCount 재호출 --> cartList, cartCount 업데이트 */
     const refreshStorage = (updateCart, updateCount) => {
-        setCartList([]);
-        setCartCount(0);
+        setCartList(updateCart);
+        setCartCount(updateCount);
     }
 
     // 담아둔 상품을 주문하기 누르면 장바구니에 있는 상품이 비워짐!!!!
@@ -55,9 +55,9 @@ import { AuthProvider } from './auth/AuthContext.js';
 
 
     /** cartCount가 업데이트가 되면 localStorage에 cartList를 저장 */
-    useEffect(()=>{
-        localStorage.setItem("cartItems", JSON.stringify(cartList));
-    }, [cartList]);
+    // useEffect(()=>{
+    //     localStorage.setItem("cartItems", JSON.stringify(cartList));
+    // }, [cartList]);
 
 
     /** 장바구니 추가 */
@@ -95,22 +95,24 @@ import { AuthProvider } from './auth/AuthContext.js';
 
     return (
         <div> 
+            <CartProvider>
             <AuthProvider>
-            <BrowserRouter> 
+            <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Layout cartCount={cartCount}/>}> 
-                        <Route index element={<Home />} /> 
-                        <Route path='/all' element={<Products />} />  
-                        <Route path='/cart' element={<Carts  refreshStorage={refreshStorage} />} />  
-                        <Route path='/login' element={<Login />} />  
-                        <Route path='/signup' element={<Signup />} />  
-                        <Route path='/products/:pid' element={<DetailProduct  addCart={addCart} />}/>  
-                        <Route path='/products/new' element={<NewProduct />}/>  
-                        <Route path='/cartsdb' element={<CartsDB />} />  
+                    <Route path='/' element={<Layout />} >
+                        <Route index element={<Home />} />
+                        <Route path='/all' element={<Products />} />
+                        <Route path='/cart' element={<Carts refreshStorage={refreshStorage} />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/signup' element={<Signup />} />
+                        <Route path='/products/:pid' element={<DetailProduct  addCart={addCart} />} />                  
+                        <Route path='/products/new' element={<NewProduct />} />                  
+                        <Route path='/cartdb' element={<CartsDB />} />                  
                     </Route>
-                </Routes>
+                </Routes>            
             </BrowserRouter>
             </AuthProvider>
+            </CartProvider>
         </div>  // <BrowserRouter> -->전체 페이지가 바뀜
     );
 }

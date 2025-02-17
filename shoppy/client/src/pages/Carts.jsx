@@ -1,97 +1,86 @@
-import React, {useState, useEffect, useContext} from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { LuShoppingBag } from 'react-icons/lu';
+import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from '../auth/AuthContext.js';
-import { useNavigate } from 'react-router-dom';
+import { CartContext } from "../context/CartContext.js";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../styles/cart.css";
 
 
-export default function Carts({refreshStorage}) {
-        const navigate = useNavigate
-        const{ isLoggedIn } = useContext(AuthContext);
-        const [ cartList, setCartList] = useState([]);
+export default function Carts() {
+    const navigate = useNavigate();
+    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const { cartList, setCartList } = useContext(CartContext);
 
-        useEffect(()=> {
-            if(isLoggedIn){
-                //DB -shoppy_cart에서 정보
-                const id = localStorage.getItem("user_id");
-                console.log('db');
-
-                axios
-                    .post("http://localhost:9000/cart/items", {"id":id}) //DB에 있을때 
-                    .then(res => setCartList(res.data))
-                    .catch();
-            } else {
-                //localStorge 
-                console.log('localStorage ');  //DB에 없을때
-                addCartList(); 
-                // setCartList([...items]); //빈값에 값이 계속 추가됨
-
-            }
-        }, {isLoggedIn});
-
-
-
-        /** 로컬스토리지 데이터 --> cartList add  //동기와 비동기를 같이사용한 방법*/
-        const addCartList = () => {
-            const items = localStorage.getItem("cartItems"); //비동기
-            setTimeout(()=>{
-                setCartList([...JSON.parse(items)]);
-            }, 0);
+    useEffect(()=>{
+        if(isLoggedIn) {
+            //테이블의 로그인 아이디의 카트 리스트 가져오기
+            const id = localStorage.getItem("user_id");
+            axios
+                .post("http://localhost:9000/cart/items", {"id":id}) 
+                .then((res) => {
+                    console.log('list-->', res.data);
+                    setCartList(res.data);
+                    })
+                .catch((error) => console.log(error));
+        } else {                            
+            const select = window.confirm("로그인 서비스가 필요합니다. \n로그인 하시겠습니까?");
+            if(select) {
+                navigate('/login');
+            }  
+            setCartList([]);
         }
+    } , [isLoggedIn]);
+
+    console.log('cartList--------->> ', cartList);
+
+
+
+        // /** 로컬스토리지 데이터 --> cartList add  //동기와 비동기를 같이사용한 방법*/
+        // const addCartList = () => {
+        //     const items = localStorage.getItem("cartItems"); //비동기
+        //     setTimeout(()=>{
+        //         setCartList([...JSON.parse(items)]);
+        //     }, 0);
+        // }
     
 
-
-
-
-
-
-
     return (
-        <div className="content">
-            <h1>MyCart!!</h1>
-            {/* <button onClick={()=>{handleOrder("all")}}>주문하기</button> */}
-            <table border="1">
-                <tr>
-                    <th>Pid</th>
-                    <th>Pname</th>
-                    <th>Size</th>
-                    <th>Qty</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    {
-                        isLoggedIn && 
-                        <>
-                            <th>배송지 주소</th>
-                            {/* <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th> */}
-                        </>
-                    }                
-                </tr>
-                {
-                    cartList && cartList.map((item) => 
-                        <tr>
-                            <td>{item.pid}</td>
-                            <td>{item.pname}</td>
-                            <td>{item.size}</td>
-                            <td>{item.qty}</td>
-                            <td>{item.info}</td>
-                            <td>
-                                <img src={item.image} alt="" style={{width:"100px"}}/>
-                            </td>  
-                            { isLoggedIn && <td>{item.zipcode}/{item.address}</td> }
-                            {/* <td>
-                                <button 
-                                    onClick={()=>{ handleOrder("each", item.pid, item.size) }}> 계속담아두기 </button>
-                            </td>                           */}
-                        </tr>
-                    )
-                }
-            </table>
-            
+        <div className="cart-container">
+        <h2 className="cart-header"> 장바구니</h2>
+        {
+            cartList && cartList.map(item => 
+            <>
+                <div className="cart-item" >
+                <img src={item.image} alt="" />
+                <div className="cart-item-details">
+                    <p className="cart-item-title">{item.pname}</p>
+                    <p className="cart-item-title">{item.size}</p> 
+                    <p className="cart-item-price">
+                    {item.price}원
+                    </p>
+                </div>
+                <div className="cart-quantity">
+                    <button >
+                    -
+                    </button>
+                    <input type="text" value={item.qty} readOnly />
+                    <button >
+                    +
+                    </button>
+                </div>
+                <button
+                    className="cart-remove"
+                >
+                    🗑
+                </button>
+                </div> 
+            </>
+            )
+        }  
+                <div className="cart-actions">                       
+                    <button>주문하기</button>
+                </div> 
+                        
         </div>
     );
-}
+    }
