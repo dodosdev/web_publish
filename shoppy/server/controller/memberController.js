@@ -1,25 +1,20 @@
 import * as repository from '../repository/memberRepository.js';
 import jwt from 'jsonwebtoken';
 
-
-
 /**
- * 로그인 체크 : checkLogin
+ * 로그인 : checkLogin
  */
 export const checkLogin = async(req, res) => {
-    // console.log('login data --->>', req.body);
-    let result = await repository.checkLogin(req.body);  // result_rows=1
+    let result = await repository.checkLogin(req.body); // result_rows=1
 
-    if(result.result_rows === 1){
-        //jwt 토큰 생성 및 result 객체에 추가 : {result_row:1, token: ~~~}
-        const token = jwt.sign({"userId": req.body.id}, '9DDhiD7XSP');  //토큰 생성
-        result = {...result, "token" :token};
-        
+    if(result.result_rows === 1) {
+        //keygen 사이트 : https://randomkeygen.com/
+        const token = jwt.sign({"userId":req.body.id}, 'moJQzU5U3I');
+        result = {...result, "token": token};        
     }
     res.json(result);
     res.end();
 }
-
 
 
 /**
@@ -41,7 +36,5 @@ export const registerMember = async(req, res) => {
     res.json(result);
     res.end();
 }
-
-
 
 

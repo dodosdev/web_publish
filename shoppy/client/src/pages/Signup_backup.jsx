@@ -3,66 +3,48 @@ import '../styles/signup.css';
 import { validateSignup } from '../utils/funcValidate.js';
 
 export default function Signup() {
-
     const msgRefs = {
-        'msgIdRef': useRef(null),
-        'msgPwdRef': useRef(null),
-        'msgCpwdRef': useRef(null),
-        'msgNameRef': useRef(null),
-        'msgPhoneRef': useRef(null),
-        'msgEmailnameRef': useRef(null),
-        'msgEmailDomainRef': useRef(null),
+        'msgIdRef' : useRef(null),
+        'msgPwdRef' : useRef(null),
+        'msgCpwdRef' : useRef(null),
+        'msgNameRef' : useRef(null),
+        'msgPhoneRef' : useRef(null),
+        'msgEmailnameRef' : useRef(null),
+        // 'msgEmaildomainRef' : useRef(null),
     }
-
-
-
-
     const refs = {
-        'idRef': useRef(null),
-        'pwdRef': useRef(null),
-        'cpwdRef': useRef(null),
-        'nameRef': useRef(null),
-        'phoneRef': useRef(null),
-        'emailnameRef': useRef(null),
-        'emailDomainRef': useRef(null),
+        'idRef' : useRef(null),
+        'pwdRef' : useRef(null),
+        'cpwdRef' : useRef(null),
+        'nameRef' : useRef(null),
+        'phoneRef' : useRef(null),
+        'emailnameRef' : useRef(null),
+        'emaildomainRef' : useRef(null),
     }
-
-
     const initFormData = {
         'id':'',
         'pwd':'',
         'cpwd':'',
         'name':'',
         'phone':'',
-        'email':'',
+        'emailname':'',
         'emaildomain':'',
     }
-
-
-
-
     const [formData, setFormData] = useState(initFormData);
-
 
     //change
     const handleChangeForm = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]:value});   
+        const {name, value} = e.target;
+        setFormData({...formData, [name]:value});       
     }
-
-
-
-
-
-
+    
     //submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(validateSignup(refs, msgRefs)){  //(validateSignup()괄호가 없으면 결과값이 안나옴//(refs, msgRefs) msgRefs메세지 위치정보
-            console.log('submit --->> ', formData);  //http://localhost:3000/signup (주소확인)리액트에서 관리
-        }   
+        if(validateSignup(refs, msgRefs)) {
+            console.log('submit ---->> ', formData);        
+        }
     }
-
 
 
     return (
@@ -86,7 +68,7 @@ export default function Signup() {
                     </li>
                     <li>
                         <label for=""><b>비밀번호</b></label>
-                        <span ref={msgRefs.msgPwdRef} >12자 이내의 비밀번호를 입력해주세요</span>
+                        <span ref={msgRefs.msgPwdRef}>12자 이내의 비밀번호를 입력해주세요</span>
                         <div>
                             <input type="password" 
                                     name="pwd"
@@ -140,10 +122,13 @@ export default function Signup() {
                                     name="emailname"
                                     id = "emailname"
                                     ref={refs.emailnameRef}
+                                    onChange={handleChangeForm}
                                     placeholder="이메일 주소" />
                             <span>@</span>       
                             <select name="emaildomain" 
-                                    id="emaildomain"  ref={refs.emailDomainRef} onChange={handleChangeForm} >
+                                    id="emaildomain" 
+                                    ref={refs.emaildomainRef}
+                                    onChange={handleChangeForm} >
                                 <option value="default">선택</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>

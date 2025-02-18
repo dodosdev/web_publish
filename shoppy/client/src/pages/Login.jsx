@@ -6,17 +6,14 @@ import { validateLogin } from '../utils/funcValidate.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext.js';
-// import ImageUpload from '../components/ImageUpload.jsx';
-
 
 export default function Login() {
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
-    const navigate = useNavigate(); 
+    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
     const refs = {
         "idRef" : useRef(null),
         "pwdRef" : useRef(null) 
     }  
-    
     const msgRefs = {
         "msgRef" : useRef(null)
     }
@@ -33,39 +30,35 @@ export default function Login() {
     const handleLoginSubmit = (event) => {
         event.preventDefault();        
         if(validateLogin(refs, msgRefs)) {
-            console.log('send data -->> ', formData);  
 
-            //리액트 --> 노드서버(express) 데이터 전송 로그인
+            //리액트 ---> 노드서버(express) 데이터 전송 로그인
             axios
                 .post('http://localhost:9000/member/login', formData)
                 .then(res => {
-                    // console.log('res.data --> ', res.data)
-                    if(res.data.result_rows === 1){
+                    // console.log('res.data-->', res.data) 
+                    if(res.data.result_rows === 1) {
                         alert("로그인 성공!!");
                         localStorage.setItem("token", res.data.token);
-                        localStorage.setItem("user_id", formData.id);   //key : user_id value: test1
+                        localStorage.setItem("user_id", formData.id);                        
                         setIsLoggedIn(true);
-                        navigate('/');  //로그인하면 토큰이생성되고 홈으로 이동 로그아웃버튼으로바뀜
+                        navigate('/');
                     } else {
-                        alert("로그인실패!!");
+                        alert("로그인 실패!!");
                     }
                 })
                 .catch(error => {
-                    alert("로그인 실패");
+                    alert("로그인 실패!!");
                     console.log(error);
-                });
-
-
-    
+                });    
+            
         }
     }
-
 
     return (
         <div className="content">
             <h1 className="center-title">LOGIN</h1>
-                {/* <ImageUpload /> */}
-            <form className="login-form" onSubmit={handleLoginSubmit}>
+            
+            <form className="login-form" onSubmit={handleLoginSubmit}>            
                 <ul>
                     <li>
                         <p className="login-form-message">✔ 아이디와 비밀번호를 입력하신 후, 로그인을 진행해주세요.</p>

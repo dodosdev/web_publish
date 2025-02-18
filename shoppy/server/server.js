@@ -14,9 +14,7 @@ const port = 9000;
 server.use(express.json());
 server.use(express.urlencoded());
 server.use(cors());  
-//업로드 파일 호출 경로 추가 - 이미지 호출
-server.use("/upload_files", express.static(path.join("upload_files"))); 
-//저장폴더 연결 //업로드폴더 이름
+server.use("/upload_files", express.static(path.join("upload_files"))); //저장폴더 연결
 
 
 /** 서버의 요청처리를 위한 미들웨어 정의 */
@@ -30,4 +28,3 @@ server.use('/cart', cartRouter);
 server.listen(port, ()=>{
     console.log(`server port ===>> ${port}`);    
 });
-

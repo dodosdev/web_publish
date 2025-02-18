@@ -1,65 +1,35 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate  } from 'react-router-dom';
 import { FiShoppingBag } from "react-icons/fi";
-import { AuthContext } from '../auth/AuthContext';
+import { AuthContext } from '../auth/AuthContext.js';
 import { CartContext } from '../context/CartContext.js';
 import { useCart } from "../hooks/useCart.js";
-import axios from 'axios';
 
-export default function Header({cartCount}) {
-    const { getCartList, saveToCartList, getCount } = useCart();
-    const { cartCount, setCartCount, setCartList, cartList } = useContext(CartContext);
+export default function Header() {
+    const { getCount, setCount } = useCart(); 
+    const { cartCount } = useContext(CartContext);
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     //로그인 상태에 따라 cartCount 값 변경
     useEffect(()=>{
-        if(isLoggedIn) {
-            getCount();
-            getCartList();
-            //DB연동  로그인 id --> 갯수가져옴
-            // const id = localStorage.getItem("user_id");
-            // axios
-            //     .post("http://localhost:9000/cart/count", {"id":id}) 
-            //     .then((res) => {
-            //         console.log('count-->', res.data.count);
-            //         setCartCount(res.data.count);
-            //         })
-            //     .catch((error) => console.log(error));
-
-            // axios
-            //     .post("http://localhost:9000/cart/items", {"id":id}) 
-            //     .then((res) => {
-            //         console.log('list-->', res.data);
-            //         setCartList(res.data);
-            //         })
-            //     .catch((error) => console.log(error));
-        } else {
-            setCartCount(0);
-        }
+        isLoggedIn ?    getCount() :   setCount(0);
     }, [isLoggedIn]);
 
-    console.log('Header :: cartList---------->', cartList);
-    console.log('Header :: cartCount---------->', cartCount);
-
-    // console.log('isLoggedIn-->', isLoggedIn);
     const handleLoginToggle = () => {
-        if(isLoggedIn) { //로그인 성공 :: Logout 로그아웃버튼 클
+        if(isLoggedIn) { 
             const select = window.confirm("정말로 로그아웃 하시겠습니까?");
-                if(select) {
-                localStorage.removeItem("token");  //토큰삭제
-                localStorage.removeItem("user_id");  
+            if(select) {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user_id");
                 setIsLoggedIn(false);
-                // alert("로그아웃 되었습니다");
                 navigate('/');
-            }
+            }    
+        } else {  
+            navigate('/login');
+        }
+    }   
 
-            } else { //Login 버튼 클릭
-                navigate('/login');
-            }
-    }
-
-    
     return (
         <div className='header-outer'>
             <div className='header'>
@@ -67,41 +37,25 @@ export default function Header({cartCount}) {
                     <FiShoppingBag />
                     <span>Shoppy</span>
                 </Link>
-                <nav className='header-right'>  
+                <nav className='header-right'>
                     <Link to='/all'>Products</Link>
                     <Link to='/cart'>MyCart({cartCount})</Link>
-                    {/* <Link to='/login'>
-                    </Link> */}
                     <button type="button" onClick={handleLoginToggle}>
-                        { isLoggedIn ? "Logout" :"Login"}
+                        { isLoggedIn ? "Logout" : "Login" }
                     </button>
                     <Link to='/signup'>
                         <button type="button">Signup</button>
-                    </Link>
-
+                    </Link>  
                     
-                    { isLoggedIn &&
+                    { isLoggedIn && 
                         <Link to='/products/new'>
                             <button type="button">New Product</button>
-                        </Link>    
+                        </Link> 
                     }
-
-
+                                        
                 </nav>
             </div>
         </div>
     );
 }
 
-//{ isLoggedIn ? "Logout" :"Login"} 
-// 토큰이 있으면 로그아웃으로 버튼으로 바뀜//토큰이 없으면 로그인버튼
-
-/**
- * 로그인에 성공했을때만 보임
- * 
- *  { isLoggedIn &&
-        <Link to='/product/new'>
-            <button type="button">New Product</button>
-        </Link>    
-    }
- */

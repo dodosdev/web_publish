@@ -9,4 +9,3 @@ router
     .post('/multiple', multipleController.fileUploadMultiple);
 
 export default router;
-

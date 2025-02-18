@@ -4,9 +4,9 @@ import * as controller from '../controller/productController.js';
 const router = express.Router();
 
 router
-    .post('/new', controller.registerProduct )
-    .get('/all', controller.getList)
+    .get('/all', controller.getList )
+    .post('/new', controller.registerProduct)
     .post('/detail', controller.getProduct)
-    .post('/cartList', controller.getCartList);
+    .post('/cartItems', controller.getCartItems);
 
 export default router;

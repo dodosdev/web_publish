@@ -1,20 +1,13 @@
-import { response } from 'express';
 import * as repository from '../repository/productRepository.js';
-
-
-
 
 /**
  * 장바구니 상품 정보 조회
-*/
-export const getCartList = async(req, res) => {
-
-    const result = await repository.getCartList(req.body);
+ */
+export const getCartItems = async(req, res) => {
+    const result = await repository.getCartItems(req.body);
     res.json(result);
     res.end();
 }
-
-
 
 
 
@@ -22,12 +15,10 @@ export const getCartList = async(req, res) => {
  * 상품 상세 정보 조회
  */
 export const getProduct = async(req, res) => {
-    const result = await repository.getProduct(req.body.pid);  
+    const result = await repository.getProduct(req.body.pid);  // pid=3
     res.json(result);
     res.end();
 }
-
-
 
 
 /**
@@ -40,31 +31,12 @@ export const getList = async(req, res) => {
 }
 
 
-
-
 /**
  * 상품 등록
  */
 export const registerProduct = async(req, res) => {
-    console.log('req.body-->', req.body);
-    const result = await repository.registerProduct(req.body); //처리1순위
-    //레파지토리 함수 //시간이 오래걸리는건 비동기처리
+    console.log('req.body--> ', req.body);
+    const result = await repository.registerProduct(req.body); //레파지토리 함수
     res.json(result);
-    res.end();    
-}
-
-
-
-
-
-/**
-    server port ===>> 9000
-    req.body--> {
-    productName: '키보드',
-    price: '1000',
-    description: '분홍키보드',
-    uploadFile: 'upload_files\\1738903853851-439401887-6.webp',
-    sourceFile: '6.webp'
-    }
-    
- */
+    res.end();
+}    
