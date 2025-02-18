@@ -11,7 +11,7 @@ export default function Header() {
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    //로그인 상태에 따라 cartCount 값 변경
+    // 로그인 상태에 따라 cartCount 값 변경
     useEffect(()=>{
         isLoggedIn ?    getCount() :   setCount(0);
     }, [isLoggedIn]);
