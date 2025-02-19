@@ -2,16 +2,29 @@ import React, { useState, useEffect, useContext } from "react";
 import DaumPostcode from "react-daum-postcode";
 import { useOrder } from '../hooks/useOrder.js';
 import { AuthContext } from '../auth/AuthContext.js';
+import {CartContext} from '../context/CartContext.js';
+import { OrderContext } from '../context/OrderContext.js';
+import {useCart} from '../hooks/useCart.js';
 
 import "../styles/cart.css";
 import "../styles/checkoutinfo.css";
 
 export default function CheckoutInfo() {
     const { isLoggedIn } = useContext(AuthContext);
-    const { getOrderList } = useOrder();
+    const { orderList, member } = useContext(OrderContext);
+    const { getOrderList} = useOrder();
+    // const [member, setMember] = useState({});
+
     useEffect(()=>{
-        if(isLoggedIn) getOrderList();
+        if(isLoggedIn) {
+            getOrderList();
+            // setMember(orderList[0]);
+        }
     }, [isLoggedIn]);
+    console.log('orderList--->', orderList);
+    console.log('member--->', member);
+    console.log('member--->', member);
+    
     
 
 const [isOpen, setIsOpen] = useState(false);    /** 주소검색 버튼Toggle */
@@ -57,14 +70,14 @@ return (
         <div className="info-box">
         <div className="info-grid">
             <div className="label">이름</div>
-            <div className="value">홍길동</div>
+            <div className="value">{member.name}</div>
 
             <div className="label">이메일</div>
-            <div className="value">hong1234@naver.com</div>
+            <div className="value">{member.email}</div>
 
             <div className="label">휴대폰 번호</div>
             <div className="value phone-input">
-            <input type="text" defaultValue="010-1234-5678" />
+            <input type="text" defaultValue={member.phone} />
             <button className="btn">수정</button>
             </div>
         </div>
@@ -79,13 +92,14 @@ return (
         <div className="info-box">
         <div className="info-grid">
             <div className="label">이름</div>
-            <div className="value">홍길동</div>
+            <div className="value">{member.name}</div>
 
             <div className="label">배송주소</div>
-            <div className="value">서울시 강남구 123</div>
+                <div className="value">{member.zipcode}/{member.address}</div>
+                <div className="value">베송지를 추가해주세요</div>
 
             <div className="label">연락처</div>
-            <div className="value">010 - 1234 - 5678 / 010 - 9919 - 1234</div>
+            <div className="value">{member.phone}/{member.phone}</div>
 
             <div className="label">배송 요청사항</div>
             <div className="value phone-input">
@@ -112,14 +126,19 @@ return (
         <h2 className="section-title">주문 상품</h2>
         <div className="info-box">
         <div className="info-grid">
-            <div className="label">상품명</div>
-            <div className="value">홍길동</div>
+            { orderList && orderList.map(item => 
+                <>
+                    <div className="label">상품명</div>
+                    <div className="value">{item.pname},{item.info},{item.image}</div>
+                </>
 
-            <div className="label">배송주소</div>
+            )}
+
+            {/* <div className="label">배송주소</div>
             <div className="value">서울시 강남구 123</div>
 
             <div className="label">연락처</div>
-            <div className="value">010 - 1234 - 5678 / 010 - 9919 - 1234</div>
+            <div className="value">010 - 1234 - 5678 / 010 - 9919 - 1234</div> */}
         </div>
         </div>
     </div>
@@ -153,7 +172,7 @@ return (
         </tr>
         <tr class="total">
             <td>총결제금액</td>
-            <td class="total-price">18,900원</td>
+            <td class="total-price">{totalprice.totalprice}</td>
         </tr>
         </table>
     </div>

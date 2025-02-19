@@ -232,32 +232,92 @@ select * from shoppy_cart where id='test1';
 -- 주문/결제 페이지 : 출력
 -- shoppy_cart, shoppy_member, shoppy_product 조인
 select * from shoppy_member where id='test1';
-select  sc.cid,
-		sc.size,
-        sc.qty,
-        sm.id,
-        sm.name,
-        sm.phone,
-        sm.emailname,
-        concat(sm.emaildomain, '@', sm.emaildomail)as email,
-        sm.zipcode,
-        sm.address,
-        sp.pid,
-        sp.pname,
-        sp.price,
-        sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
-	from shoppy_cart sc,
-		 shoppy_member sm,
-         shoppy_product sp
-	where sc.id = sm.id 
-			and sc.pid = sp.pid
-            and sm.id = 'test1'
-    ;
+SELECT sc.cid,
+       sc.size,
+       sc.qty,
+       sm.id,
+       sm.name,
+       sm.phone,
+       sm.emailname,
+       CONCAT(sm.emaildomain, '@', sm.emaildomain) AS email,
+       sm.zipcode,
+       sm.address,
+       sp.pid,
+       sp.pname,
+       sp.price,
+       sp.description AS info,
+       CONCAT('http://localhost:9000/', sp.upload_file->>'$[0]') AS image
+FROM shoppy_cart sc,
+     shoppy_member sm,
+     shoppy_product sp
+WHERE sc.id = sm.id
+  AND sc.pid = sp.pid
+  AND sm.id = 'test1';
 
+
+
+-- 테이블 이름 변경 / 상품 삭제!!!
 select * from shoppy_product;
+select * from shoppy_cart;
 
-truncate table shoppy_product;
+DELETE FROM shoppy_product WHERE pid = 7;
+
+
+
+--  전체주문 리스트 view 
+create view view_order_list
+SELECT sc.cid,
+       sc.size,
+       sc.qty,
+       sm.name,
+       sm.phone,
+       sm.emailname,
+       CONCAT(sm.emaildomain, '@', sm.emaildomain) AS email,
+       sm.zipcode,
+       sm.address,
+       sp.pid,
+       sp.pname,
+       sp.price,
+       sp.description AS info,
+       CONCAT('http://localhost:9000/', sp.upload_file->>'$[0]') AS image
+FROM shoppy_cart sc,
+     shoppy_member sm,
+     shoppy_product sp
+WHERE sc.id = sm.id
+  AND sc.pid = sp.pid;
+
+select * from view_order_list
+where id='test1';
+
+
+
+
+-- view_cart_list
+create view view_cart_list;
+   select  sc.cid,
+			sc.size,
+			sc.qty,
+			sm.id,
+			sm.zipcode,
+			sm.address,
+			sp.pid,
+			sp.pname,
+			sp.price,
+
+			sp.description as info,
+			concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+		from shoppy_cart sc,
+			shoppy_member sm,
+			shoppy_product sp
+		where sc.id = sm.id 
+		and sc.pid = sp.pid
+	
+select * from view_cart_list
+where id='test1';
+
+
+
+
 
 
 

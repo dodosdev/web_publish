@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { OrderContext } from '../context/OrderContext';
+import { useCart } from '../hooks/useCart.js';
 import axios from 'axios';
 
 export function useOrder() {
+    const {calculatorTotalPrice, setCalculatorTotalPrice} = useCart();
     const {orderList, setOrderList,
-        orderPrice, setOrderPrice } = useContext(OrderContext);
+        orderPrice, setOrderPrice, member, setMember, calculatorTotalPrice, setCalculatorTotalPrice } = useContext(OrderContext);
 
     /** useContext로 관리되는 객체들의 CRUD 함수 정의 */
     /**
