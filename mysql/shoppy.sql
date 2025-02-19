@@ -49,6 +49,11 @@ CREATE TABLE SHOPPY_PRODUCT(
 DESC SHOPPY_PRODUCT;
 SELECT * FROM SHOPPY_PRODUCT;
 
+
+alter table shoppy_product
+change pdata pdate datetime;
+
+
 SET SQL_SAFE_UPDATES = 0;   -- 해제: 0, 설정: 1
 delete from shoppy_product;
 commit;
@@ -214,17 +219,45 @@ select * from shoppy_cart
 select * from shoppy_cart
 	where id='test1';
 
-use hrdb2019;
+
 
 select * from shoppy_cart;
 
 
+--
+use hrdb2019;
+select * from shoppy_cart where id='test1';
 
+--
+-- 주문/결제 페이지 : 출력
+-- shoppy_cart, shoppy_member, shoppy_product 조인
+select * from shoppy_member where id='test1';
+select  sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        sm.emailname,
+        concat(sm.emaildomain, '@', sm.emaildomail)as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid
+            and sm.id = 'test1'
+    ;
 
+select * from shoppy_product;
 
-
-
-
+truncate table shoppy_product;
 
 
 
