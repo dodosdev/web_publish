@@ -390,6 +390,10 @@ use hrdb2019;
                 
 select * from shoppy_member;
 
+desc shoppy_order;
+select * from soppy_order;
+
+
 
 
 
@@ -418,6 +422,9 @@ CREATE TABLE SHOPPY_ORDER(
 
 DESC SHOPPY_ORDER;
 SELECT * FROM SHOPPY_ORDER;
+
+
+
 
 
 
