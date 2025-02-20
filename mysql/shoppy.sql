@@ -49,11 +49,6 @@ CREATE TABLE SHOPPY_PRODUCT(
 DESC SHOPPY_PRODUCT;
 SELECT * FROM SHOPPY_PRODUCT;
 
-
-alter table shoppy_product
-change pdata pdate datetime;
-
-
 SET SQL_SAFE_UPDATES = 0;   -- 해제: 0, 설정: 1
 delete from shoppy_product;
 commit;
@@ -195,14 +190,38 @@ select  sc.cid,
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
 		 shoppy_member sm,
          shoppy_product sp
 	where sc.id = sm.id 
 			and sc.pid = sp.pid
-            and sm.id = 'test1'
-    ;
+            and sm.id = 'test1'  ;
+            
+-- VIEW 생성 - 아이디별 장바구니 리스트 조회            
+create view shoppy_cart_list
+as
+select  sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        format(sp.price,0) as sprice,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+            
+drop view shoppy_cart_list;
+select * from shoppy_cart_list;
+
    
 -- 
 use hrdb2019;
@@ -219,107 +238,186 @@ select * from shoppy_cart
 select * from shoppy_cart
 	where id='test1';
 
+use hrdb2019;
 
-
+select * from shoppy_member;
 select * from shoppy_cart;
+select * from shoppy_product;
+delete from shoppy_product where pid=15;
+commit;
 
-
---
+-- 
 use hrdb2019;
 select * from shoppy_cart where id='test1';
 
---
--- 주문/결제 페이지 : 출력
+-- 주문/결제페이지 : 출력 
 -- shoppy_cart, shoppy_member, shoppy_product 조인
 select * from shoppy_member where id='test1';
-SELECT sc.cid,
-       sc.size,
-       sc.qty,
-       sm.id,
-       sm.name,
-       sm.phone,
-       sm.emailname,
-       CONCAT(sm.emaildomain, '@', sm.emaildomain) AS email,
-       sm.zipcode,
-       sm.address,
-       sp.pid,
-       sp.pname,
-       sp.price,
-       sp.description AS info,
-       CONCAT('http://localhost:9000/', sp.upload_file->>'$[0]') AS image
-FROM shoppy_cart sc,
-     shoppy_member sm,
-     shoppy_product sp
-WHERE sc.id = sm.id
-  AND sc.pid = sp.pid
-  AND sm.id = 'test1';
+select  sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid
+            and sm.id = 'test1'  ;
 
-
-
--- 테이블 이름 변경 / 상품 삭제!!!
-select * from shoppy_product;
-select * from shoppy_cart;
-
-DELETE FROM shoppy_product WHERE pid = 7;
-
-
-
---  전체주문 리스트 view 
+-- 전체 주문 리스트 뷰 생성
 create view view_order_list
-SELECT sc.cid,
-       sc.size,
-       sc.qty,
-       sm.name,
-       sm.phone,
-       sm.emailname,
-       CONCAT(sm.emaildomain, '@', sm.emaildomain) AS email,
-       sm.zipcode,
-       sm.address,
-       sp.pid,
-       sp.pname,
-       sp.price,
-       sp.description AS info,
-       CONCAT('http://localhost:9000/', sp.upload_file->>'$[0]') AS image
-FROM shoppy_cart sc,
-     shoppy_member sm,
-     shoppy_product sp
-WHERE sc.id = sm.id
-  AND sc.pid = sp.pid;
-
+as 
+ select  sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+	from shoppy_cart sc,
+            shoppy_member sm,
+            shoppy_product sp
+        where sc.id = sm.id 
+                and sc.pid = sp.pid;
+               
 select * from view_order_list
-where id='test1';
-
-
-
-
+	where id='test1';
+    
 -- view_cart_list
-create view view_cart_list;
-   select  sc.cid,
-			sc.size,
-			sc.qty,
-			sm.id,
-			sm.zipcode,
-			sm.address,
-			sp.pid,
-			sp.pname,
-			sp.price,
+create view view_cart_list
+as
+select  sc.cid,
+	sc.size,
+	sc.qty,
+	sm.id,
+	sm.zipcode,
+	sm.address,
+	sp.pid,
+	sp.pname,
+	sp.price,
+	sp.description as info,
+	concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+from shoppy_cart sc,
+	shoppy_member sm,
+	shoppy_product sp
+where sc.id = sm.id 
+		and sc.pid = sp.pid;
 
-			sp.description as info,
-			concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
-		from shoppy_cart sc,
-			shoppy_member sm,
-			shoppy_product sp
-		where sc.id = sm.id 
-		and sc.pid = sp.pid
-	
-select * from view_cart_list
+
+select * from view_cart_list 
 where id='test1';
 
 
 
 
+--
+
+-- 전체 주문 리스트 뷰 생성
+drop view view_order_list;
+create view view_order_list
+as 
+ select  sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+	from shoppy_cart sc,
+            shoppy_member sm,
+            shoppy_product sp
+        where sc.id = sm.id 
+                and sc.pid = sp.pid;
+               
+select * from view_order_list
+	where id='test1';
+    
+-- view_cart_list
+drop view view_cart_list;
+create view view_cart_list
+as
+select  sc.cid,
+	sc.size,
+	sc.qty,
+	sm.id,
+	sm.zipcode,
+	sm.address,
+	sp.pid,
+	sp.pname,
+	sp.price,
+	sp.description as info,
+	concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+from shoppy_cart sc,
+	shoppy_member sm,
+	shoppy_product sp
+where sc.id = sm.id 
+		and sc.pid = sp.pid;
 
 
+select * from view_cart_list 
+where id='test1';
+
+
+use hrdb2019;
+
+ select * from view_order_list
+			where id= 'test1';
+		
+                
+select * from shoppy_member;
+
+
+
+
+
+
+
+-- 250220   pg_token && tid 가 존재하면 shoppy_order 테이블에 주문내역을 insert, shoppy_cart는 delete
+-- oid(pk), pid, id, odate, total_price, tid, type, pname, qty 등.. (shoppy_order 테이블)
+
+
+CREATE TABLE SHOPPY_ORDER(
+	OID		INT			PRIMARY KEY		AUTO_INCREMENT,
+    SIZE	VARCHAR(10)	NOT NULL,
+    QTY		INT			NOT NULL,
+    TPRICE  INT         NOT NULL,
+    ODATE	DATETIME,
+    TYPE    VARCHAR(30) NOT NULL,
+    TID     VARCHAR(50) NOT NULL,
+    ID		VARCHAR(30)	NOT NULL,
+    PID		INT			NOT NULL,
+    CONSTRAINT FK_ORDER_ID_SHOPPY_MEMBER_ID	FOREIGN KEY(ID)
+					REFERENCES SHOPPY_MEMBER(ID),
+	CONSTRAINT FK_ORDER_PID_SHOPPY_PRODUCT_PID FOREIGN KEY(PID)
+					REFERENCES SHOPPY_PRODUCT(PID)
+);
+
+DESC SHOPPY_ORDER;
+SELECT * FROM SHOPPY_ORDER;
 
 
 
