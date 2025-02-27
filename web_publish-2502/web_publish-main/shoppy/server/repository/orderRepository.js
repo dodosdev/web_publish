@@ -8,23 +8,28 @@ export const add = async(formData) => {
     console.log('2222222222222222222', formData);    
     // console.log('add : orderList',formData.orderList);
     
-    const result = await Promise.all(  
+    const result = await Promise.all(          
         formData.orderList.map(async(item) => {
-                const values = [
-                    item.size,
-                    item.qty,
-                    formData.totalPrice,
-                    formData.type,
-                    formData.tid,
-                    formData.id,
-                    item.pid
-                ];                   
-                const sql = `
-                    insert into shoppy_order(size, qty, tprice, type, tid, id, pid, odate)
-                        values(?, ?, ?, ?, ?, ?, ?, current_date())
-                `;
-                const [result] = await db.execute(sql, values); //Promise형태로 실행
-                return result.affectedRows;            
+            // const id= 'guest';
+            const id = formData.id;
+            const values = [
+                item.size,
+                item.qty,
+                formData.totalPrice,
+                formData.type,
+                formData.tid,
+                id,
+                item.pid
+            ];    
+            formData.id === 'guest' && await execute(`SET FOREIGN_KEY_CHECKS = 0 `);
+            const sql = `
+                insert into shoppy_order(size, qty, tprice, type, tid, id, pid, odate)
+                    values(?, ?, ?, ?, ?, ?, ?, current_date())
+            `;
+            const [result] = await db.execute(sql, values); //Promise형태로 실행
+            formData.id === 'guest' && await db.execute(`SET FOREIGN_KEY_CHECKS = 1 `);
+
+            return result.affectedRows;            
         })   
     )
     console.log('33333333333333');   
